@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/post/post",
+    "pages/school/school",
+    "image"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "神话校园",
+    "navigationBarTextStyle":"black"
+  },
+    "tabBar": {
+      "color": "#7A7E83",
+      "selectedColor": "#0aecc3",
+      "borderStyle": "black",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "image/love.png",
+          "selectedIconPath": "image/select_love.png",
+          "text": "表白墙"
+        },
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "image/select_book.png",
+          "selectedIconPath": "image/book.png",
+          "text": "小情书"
+        },
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "image/select_book.png",
+          "selectedIconPath": "image/book.png",
+          "text": "小故事"
+        },
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "image/me.png",
+          "selectedIconPath": "image/select_me.png",
+          "text": "我的"
+        }
+      ]
+    }
+}

@@ -1,1 +1,115 @@
-/* pages/post/post.wxss */
+page{
+ background: #E8E8E8; 
+}
+
+.post-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.post-container .form{
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .input{
+  width: 95%;
+  font-weight: 200;
+  font-size: 30rpx;
+}
+
+
+.image-form{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-form .select-image{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40rpx;
+}
+
+.select-image image{
+  width: 130rpx;
+  height: 130rpx;
+  margin-right: 10rpx;
+}
+
+.middle{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40rpx;
+  background: white;
+}
+
+.middle .location{
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+  font-weight: 200;
+  font-size: 35rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  align-items: center;
+}
+
+
+.middle .private{
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+  font-weight: 200;
+  font-size: 35rpx;
+  align-items: center;
+}
+
+.item{
+  margin-left: 15rpx;
+}
+
+
+.location-image image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 5rpx;
+}
+
+
+.button-container{
+  display: flex;
+  flex-direction: column;
+  bottom: 0rxp;
+}
+
+.button-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container .button{
+  background: white;
+  width: 95%;
+  padding: 10rpx 10rpx;
+}
+button{
+  background: #66CDAA;
+  color: white;
+  width: 95%;
+}
+

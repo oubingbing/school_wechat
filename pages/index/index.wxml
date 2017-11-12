@@ -7,7 +7,7 @@
         <image class="location-icon" mode="" src="./../../image/location.png"></image>
       </view>
       <view class="location-name">
-        <view>岭南师范学院</view>
+        <view>{{school}}</view>
       </view>
     </view>
   </view>
@@ -30,7 +30,7 @@
       </view>
       <view class="item-content">
         <view class="user-name">叶子</view>
-          <view class="content">慧怡，我喜欢你</view>
+          <view class="content">世界，你好呀</view>
           <view class="content-image">
             <image mode="aspectFill" class="image-item" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509644348402&di=476d1e26cb137061bb7c361bdc5d14bf&imgtype=0&src=http%3A%2F%2Fimg2.3lian.com%2F2014%2Ff2%2F15%2Fd%2F47.jpg"></image>
           </view>
@@ -55,7 +55,7 @@
       </view>
       <view class="item-content">
         <view class="user-name">叶子</view>
-          <view class="content">慧怡，我喜欢你</view>
+          <view class="content">世界，你好呀</view>
           <view class="content-image">
             <image mode="aspectFill" class="image-item" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509644348402&di=476d1e26cb137061bb7c361bdc5d14bf&imgtype=0&src=http%3A%2F%2Fimg2.3lian.com%2F2014%2Ff2%2F15%2Fd%2F47.jpg"></image>
           </view>

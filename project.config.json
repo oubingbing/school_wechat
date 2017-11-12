@@ -19,6 +19,12 @@
 					"name": "搜索学校",
 					"pathName": "pages/school/school",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "表白",
+					"pathName": "pages/post/post",
+					"query": ""
 				}
 			]
 		},

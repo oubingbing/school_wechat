@@ -1,1 +1,33 @@
-<view>hello world</view>
+<view class='post-container container'>
+  <view class='form'>
+
+    <view class='input'>
+      <textarea placeholder="爱情属于勇敢的人儿"/>
+    </view>
+    <view class='image-form'>
+      <view class='select-image'>
+        <image src='/image/select-image.png'></image>
+        <image src='/image/select-image.png'></image>
+      </view>
+    </view>  
+  </view>
+
+<view class='middle'>
+  <view class='location'>
+    <view class='location-image'><image src='/image/my-location.png'></image></view>
+    <view class='item'>定位</view>
+  </view>
+
+  <view class='private'>
+    <view class='location-image'><image src='/image/private.png'></image></view>
+    <view class='item'>匿名</view>
+  </view>
+  
+</view>
+
+
+  <view class='button-container'>
+    <button > 发表 </button>
+  </view>
+
+</view>

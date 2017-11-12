@@ -2,8 +2,8 @@
 
   <view class='search-container'>
       <view class='search'>
-        <input class='search-input' placeholder="搜索学校" auto-focus/>
-        <view class='search-image'>
+        <input type='text' class='search-input' placeholder="搜索学校" bindblur='getCollegeName' auto-focus/>
+        <view class='search-image' bindtap='searchCollege'>
             <image mode="" src='/image/search.png'></image>
         </view>
       </view>
@@ -12,19 +12,22 @@
   <view class='content'>
    
       <view class='header'>
-        <view class='title'>热门学校</view>
-        <view class='change'>换一批</view>
+        <view class='title'>推荐学校</view>
+        <view class='change' bindtap='moreColleges'>换一批</view>
       </view>
  
-    <view class='school-list'>
-        <view class='school-item'>岭南师范学院</view>
-        <view class='school-item'>清华大学</view>
-        <view class='school-item'>香港中文大学珠海分校</view>
-        <view class='school-item'>中山大学</view>
-        <view class='school-item'>广东科技师范学院</view>
-        <view class='school-item'>北京大学</view>
-        <view class='school-item'>中山大学</view>
-        <view class='school-item'>深圳大学</view>
+    <view class="{{!showEmpty?'school-list':'school-empty'}}">
+        <view hidden='{{showEmpty}}'
+              class='school-item' 
+              wx:for="{{colleges}}" 
+              wx:key='{{item.id}}' 
+              id='{{item.id}}' 
+              bindtap='selectCollege'>{{item.name}}</view>
+        
+          <view class='empty' wx:if='{{showEmpty}}'>
+            <view wx:if='{{showEmpty}}' class='empty-image'><image src='/image/empty.png'></image></view>
+            <view wx:if='{{showEmpty}}' class='empty-word'>空荡荡的~</view>
+          </view>
     </view>
   </view>
 

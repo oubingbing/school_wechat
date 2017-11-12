@@ -7,6 +7,7 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    school:'',
     avatar:"http://wx.qlogo.cn/mmhead/Q3auHgzwzM5guVcHYGyerpKIqHsklVJhk118GzqwcNYFTthiawhYHYg/132"
   },
   //事件处理函数
@@ -15,16 +16,21 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {   
+  onLoad: function () {  
+    
+    let _this =this;
 
-    let token = wx.getStorageSync('token')
+    let token = wx.getStorageSync('token');
     console.log('获取到token:'+token);
-    if(!token){
-      let _this = this;
-      let _app = app;
-      app.refreshToken(this, app);
-    }
 
+    this.getSchool(_this);
+
+  },
+  onShow:function(){
+    console.log('on show');
+
+    let _this = this;
+    this.getSchool(_this);
 
   },
   getUserInfo: function(e) {
@@ -39,15 +45,30 @@ Page({
     console.log('Post');
 
     wx.navigateTo({
-      url: '../post/post'
+      url: '/pages/post/post'
     })
   },
   selectSchool:function(){
     console.log('select school');
 
     wx.navigateTo({
-      url: '../school/school'
+      url: '/pages/school/school'
     })
+  },
+  getSchool:function(_this){
+    console.log('get school');
+
+    app.http('GET','/school',{},function(res){
+
+      console.log(res.data);
+
+      _this.setData({
+        school:res.data.data
+      });
+
+
+    });
+
   }
 
 })

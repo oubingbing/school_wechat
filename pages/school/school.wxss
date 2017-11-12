@@ -80,6 +80,15 @@
   flex-wrap:wrap;
 }
 
+.school-empty{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25rpx;
+  flex-wrap:wrap;
+}
+
 .school-list .school-item{
   background: #E6E6E6;
   font-weight: 200;
@@ -89,3 +98,22 @@
   margin-right: 15rpx;
   margin-bottom: 15rpx;
 }
+
+.school-list .empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-word{
+  color: darkgray;
+  font-size: 30rpx;
+  font-weight: 200;
+}
+
+.empty-image image{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+

@@ -8,20 +8,22 @@ App({
     wx.setStorageSync('logs', logs);
 
     //设置基本接口全局变量
-    this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
-    //this.globalData.apiUrl = 'http://school.dev/api/wechat';
+    //this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
+    this.globalData.apiUrl = 'http://school.dev/api/wechat';
     console.log(this.globalData.apiUrl);
 
     let token = wx.getStorageSync('token');
     if(!token){
       let _this = this;
-      this.login(_this);
+      this.login();
     }else{
       console.log('token='+token);
     }
 
   },
-  login:function(_this){
+  login:function(){
+
+    let _this = this;
 
     // 登录
     wx.login({
@@ -76,15 +78,11 @@ App({
                 success: function (res) {
                   console.log(res.data);
                   wx.setStorageSync('token', res.data.data);
+                  
+                  console.log('获得token');
                 }
               })
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (_this.userInfoReadyCallback) {
-                _this.userInfoReadyCallback(res);
-                console.log('回调');
-              }
+              
             }
           })
         }
@@ -92,7 +90,9 @@ App({
     })
 
   },
-  refreshToken:function(_this,_app){
+  refreshToken:function(_this,_app,callback=null){
+
+    console.log('刷新token');
 
     wx.login({
       success: res => {
@@ -127,6 +127,11 @@ App({
                   success: function (res) {
                     console.log(res.data);
                     wx.setStorageSync('token', res.data.data);
+
+                    if(callback){
+                      callback(res);
+                    }
+                  
                   }
                 })
 
@@ -142,17 +147,49 @@ App({
   },
   http:function(_method,_url,_data,callback){
 
+    let token = wx.getStorageSync('token');
+    let _this = this;
+
+    console.log('http token:'+token);
+
     wx.request({
-      url: _url,
+      url: this.globalData.apiUrl+_url,
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Authorization':'Bearer '+token
       },
       method: _method,
       data: _data,
       success: function (res) {
+
         console.log(res.data);
-        wx.setStorageSync('token', res.data.data);
-        callback();
+
+        if(res.data.error_message){
+
+          if(res.data.error_code == 4000){
+            console.log('token非法');
+            _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+          }
+
+          if(res.data.error_code == 4004){
+            console.log('未授权');
+            _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+          }
+
+          if(res.data.error_code == 4001){
+              console.log('token过期了');
+             _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+          }
+
+          if(res.data.error_code == 5000){
+            console.log('token缺失');
+           _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+          }
+        
+        }
+
+        callback(res);
+
       }
     })
 
@@ -160,6 +197,7 @@ App({
   globalData: {
     userInfo: null,
     apiUrl:null,
-    color:'0aecc3'
+    color:'0aecc3',
+    
   }
 })

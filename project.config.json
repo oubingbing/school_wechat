@@ -2,12 +2,12 @@
 	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": false,
-		"es6": true,
+		"es6": false,
 		"postcss": false,
 		"minified": true
 	},
 	"compileType": "weapp",
-	"libVersion": "1.5.2",
+	"libVersion": "1.6.0",
 	"appid": "wx46d5674c81153f30",
 	"projectname": "%E6%A0%A1%E5%9B%AD%E7%A5%9E%E8%AF%9D",
 	"condition": {

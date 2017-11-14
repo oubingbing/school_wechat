@@ -19,21 +19,21 @@
       "list": [
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/love.png",
-          "selectedIconPath": "image/select_love.png",
-          "text": "表白墙"
+          "iconPath": "image/select_me.png",
+          "selectedIconPath": "image/select_me.png",
+          "text": "我"
         },
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/select_book.png",
-          "selectedIconPath": "image/book.png",
-          "text": "小情书"
+          "iconPath": "image/select_me.png",
+          "selectedIconPath": "image/select_me.png",
+          "text": "我"
         },
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/select_book.png",
-          "selectedIconPath": "image/book.png",
-          "text": "小故事"
+          "iconPath": "image/select_me.png",
+          "selectedIconPath": "image/select_me.png",
+          "text": "我"
         },
         {
           "pagePath": "pages/index/index",

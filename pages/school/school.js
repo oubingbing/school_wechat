@@ -21,10 +21,17 @@ Page({
     app.http('GET','/recommend_school',{},function(res){
       console.log(res.data);
 
-      _this.setData({
-        colleges:res.data.data
-      });
-
+      if(res.data.data.length !== 0){
+        _this.setData({
+          colleges:res.data.data,
+          showEmpty:false
+        });
+      }else{
+        _this.setData({
+          colleges:res.data.data,
+          showEmpty:true
+        });
+      }
 
     });
   },
@@ -74,7 +81,7 @@ Page({
       wx.showToast({
         title: '内容不能为空',
         icon: 'loading',
-        duration: 2000
+        duration: 1000
       })
       return;
     }

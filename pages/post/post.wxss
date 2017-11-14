@@ -37,12 +37,28 @@ page{
   display: flex;
   flex-direction: row;
   margin-bottom: 40rpx;
+  flex-wrap:wrap;
 }
 
-.select-image image{
+.select-image .upload-image{
   width: 130rpx;
   height: 130rpx;
   margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+.select-image .image-item{
+  position: relative;
+}
+
+.remove-image{
+  width: 35rpx;
+  height: 35rpx;
+  position:absolute;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 10;
+  
 }
 
 .middle{

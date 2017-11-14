@@ -6,8 +6,15 @@
     </view>
     <view class='image-form'>
       <view class='select-image'>
-        <image src='/image/select-image.png'></image>
-        <image src='/image/select-image.png'></image>
+        <view class='image-item' wx:for="{{imageArray}}" wx:key='{{imageArray}}'>
+            <image class='upload-image' 
+            bindtap='previewImage' 
+            id='{{item}}' mode='aspectFill' src='{{item}}'></image>
+            <image src='/image/delete.png' id='{{index}}' wx:key='{{imageArray}}' bindtap='removeImage' class='remove-image'></image>
+        </view>
+        <view>
+          <image class='upload-image' bindtap='selectImage' src='/image/select-image.png'></image>
+        </view>
       </view>
     </view>  
   </view>
@@ -27,7 +34,7 @@
 
 
   <view class='button-container'>
-    <button > 发表 </button>
+    <button bindtap='post'> 发表 </button>
   </view>
 
 </view>

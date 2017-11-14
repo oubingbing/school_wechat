@@ -2,7 +2,7 @@
 
   <view class='search-container'>
       <view class='search'>
-        <input type='text' class='search-input' placeholder="搜索学校" bindblur='getCollegeName' auto-focus/>
+        <input type='text' class='search-input' placeholder="搜索学校" bindinput='getCollegeName' auto-focus/>
         <view class='search-image' bindtap='searchCollege'>
             <image mode="" src='/image/search.png'></image>
         </view>

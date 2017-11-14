@@ -1,27 +1,26 @@
-//app.js
+
 App({
   onLaunch: function () {
 
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs);
+    console.log('app');
 
     //设置基本接口全局变量
-    //this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
-    this.globalData.apiUrl = 'http://school.dev/api/wechat';
+    this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
+    //this.globalData.apiUrl = 'http://school.dev/api/wechat';
     console.log(this.globalData.apiUrl);
 
     let token = wx.getStorageSync('token');
-    if(!token){
+    if (!token) {
       let _this = this;
       this.login();
-    }else{
-      console.log('token='+token);
+    } else {
+      console.log('token=' + token);
     }
 
   },
-  login:function(){
+
+  /** 登录 */
+  login: function () {
 
     let _this = this;
 
@@ -42,7 +41,7 @@ App({
           success: function (res) {
             console.log(res.data);
             let openId = res.data.data;
-            
+
             //获取token
             _this.getToken(_this, openId);
           }
@@ -51,7 +50,9 @@ App({
     })
 
   },
-  getToken: function (_this, openId){
+
+  /** 获取token */
+  getToken: function (_this, openId) {
 
     // 获取用户信息
     wx.getSetting({
@@ -78,11 +79,11 @@ App({
                 success: function (res) {
                   console.log(res.data);
                   wx.setStorageSync('token', res.data.data);
-                  
+
                   console.log('获得token');
                 }
               })
-              
+
             }
           })
         }
@@ -90,7 +91,9 @@ App({
     })
 
   },
-  refreshToken:function(_this,_app,callback=null){
+
+  /**刷新本地token**/
+  refreshToken: function (_this, _app, callback = null) {
 
     console.log('刷新token');
 
@@ -99,9 +102,9 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res);
         wx.request({
-          url: _app.globalData.apiUrl + '/auth/login?type=weChat', 
+          url: _app.globalData.apiUrl + '/auth/login?type=weChat',
           header: {
-            'content-type': 'application/json' 
+            'content-type': 'application/json'
           },
           method: 'POST',
           data: {
@@ -128,10 +131,10 @@ App({
                     console.log(res.data);
                     wx.setStorageSync('token', res.data.data);
 
-                    if(callback){
+                    if (callback) {
                       callback(res);
                     }
-                  
+
                   }
                 })
 
@@ -145,18 +148,20 @@ App({
     })
 
   },
-  http:function(_method,_url,_data,callback){
+
+  /** 封装微信http请求 */
+  http: function (_method, _url, _data, callback) {
 
     let token = wx.getStorageSync('token');
     let _this = this;
 
-    console.log('http token:'+token);
+    console.log('http token:' + token);
 
     wx.request({
-      url: this.globalData.apiUrl+_url,
+      url: this.globalData.apiUrl + _url,
       header: {
         'content-type': 'application/json',
-        'Authorization':'Bearer '+token
+        'Authorization': 'Bearer ' + token
       },
       method: _method,
       data: _data,
@@ -164,28 +169,28 @@ App({
 
         console.log(res.data);
 
-        if(res.data.error_message){
+        if (res.data.error_message) {
 
-          if(res.data.error_code == 4000){
+          if (res.data.error_code == 4000) {
             console.log('token非法');
-            _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
           }
 
-          if(res.data.error_code == 4004){
+          if (res.data.error_code == 4004) {
             console.log('未授权');
-            _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
           }
 
-          if(res.data.error_code == 4001){
-              console.log('token过期了');
-             _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+          if (res.data.error_code == 4001) {
+            console.log('token过期了');
+            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
           }
 
-          if(res.data.error_code == 5000){
+          if (res.data.error_code == 5000) {
             console.log('token缺失');
-           _this.refreshToken(_this,_this,_this.http(_method,_url,_data,callback));
+            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
           }
-        
+
         }
 
         callback(res);
@@ -194,10 +199,40 @@ App({
     })
 
   },
+
+  /** 获取七牛上传token */
+  setUploadToken: function () {
+
+    this.http('GET', '/upload_token', {}, function (res) {
+
+      var token = res.data.data.uptoken;
+
+      console.log('设置七牛upload token' + token);
+
+      wx.setStorageSync('uploadToken', token);
+
+    });
+
+  },
+
+  getUploadToken: function () {
+
+    console.log('获取七牛upload token');
+
+    let token = wx.getStorageSync('uploadToken');
+
+    console.log('七牛token:' + token);
+
+    return token;
+
+  },
+
+
+
   globalData: {
     userInfo: null,
-    apiUrl:null,
-    color:'0aecc3',
-    
+    apiUrl: null,
+    color: '0aecc3',
+
   }
 })

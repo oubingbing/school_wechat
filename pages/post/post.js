@@ -1,87 +1,42 @@
 
 const app = getApp();
 const qiniuUploader = require("../../utils/qiniuUploader");
-const upload = require("../../utils/upload");
-const uploadToken = app.getUploadToken();
-
-console.log('post七牛token'+uploadToken);
-
-// 初始化七牛相关参数
-function initQiniu() {
-  var options = {
-    region: 'SCN', // 华北区
-    uptokenURL: app.globalData.apiUrl + '/upload_token',
-    uptoken: uploadToken,
-    domain: 'http://school.bkt.clouddn.com',
-    shouldUseQiniuFileName: false
-  };
-  qiniuUploader.init(options);
-  console.log('post int');
-}
+const uploader = require("../../utils/uploadImage");
 
 Page({
   data: {
     logs: [],
     imageArray: [],
-    uploadToken: null
+    uploadToken: null,
+    attachments:[],
+    private:false,
+    textContent:''
   },
   onLoad: function () {
-
     //设置七牛上传token
     app.setUploadToken();
 
   },
 
   /** 提交 */
-  post:async function () {
+  post: function () {
 
     console.log('post');
+    console.log(this.data.attachments);
 
-    let qiNiuImageUrl = [];
-    let imageArray = this.data.imageArray;
-
-    console.log('upload'+upload);
-
-
-    let result = await upload.upload(imageArray);
-
-    console.log(result);
-
+    let content = this.data.textContent;
+    let attachments = this.data.attachments;
+    let privateValue = this.data.private;
   
-
-  },
-
-
-
-  /** 异步上传图片 */
-  asyncUploadImage:async function(){
-
-    initQiniu();
-
-    return new Promise(function(resolve, reject) {
-
-    let filePath = this.data.imageArray[0];
-
-    qiniuUploader.upload(filePath, (res) => {
-
-    let url = res.imageURL;
-     console.log(url);
-
-     resolve(url);
-
-     }, (error) => {
-
-      console.error('error: ' + JSON.stringify(error));
-
-      reject('网络错误，请重试');
-
-    });
-
+    //_method, _url, _data, callback
+    app.http('post','/post',{content:content,attachments:attachments,private:privateValue},res=>{
+      wx.navigateBack();
+      console.log(res);
     });
 
   },
 
-  /** 选择图片 */
+  /** 选择图片并且上传到七牛 */
   selectImage: function () {
 
     console.log('select image');
@@ -94,18 +49,32 @@ Page({
       success: function (res) {
 
         let temArray = _this.data.imageArray;
+        let temUrlArray = _this.data.attachments;
 
         var filePaths = res.tempFilePaths;
 
-        filePaths.map(item=>{
+        filePaths.map((item,index)=>{
           temArray.push(item);
+
+          uploader.upload(item,key=>{
+
+            let temAttachments = _this.data.attachments;
+
+            temAttachments.push(key);
+            
+            _this.setData({
+              attachments:temAttachments
+            });
+
+            console.log(key);
+          })
+
         });
 
         _this.setData({
           imageArray: temArray
         });
 
-        console.log(filePaths);
       }
     })
 
@@ -127,9 +96,13 @@ Page({
   /** 移除图片 */
   removeImage: function (event) {
     console.log(event.target.id);
+    console.log(event);
 
     let id = event.target.id;
     let arr = this.data.imageArray;
+    let newAttachments = this.data.attachments;
+
+    console.log(id);
 
     let newArray = arr.filter((item, index) => {
       if (index != id) {
@@ -137,10 +110,35 @@ Page({
       }
     });
 
-    this.setData({
-      imageArray: newArray
+    newAttachments = newAttachments.filter((item,index)=>{
+      if (index != id) {
+        return item;
+      }
     });
 
+    this.setData({
+      imageArray: newArray,
+      attachments:newAttachments
+    });
+
+  },
+
+  /** 设置是否匿名 */
+  setPrivate:function(event){
+    console.log(event.detail.value);
+
+    this.setData({
+      private:event.detail.value
+    });
+
+    console.log(this.data.private);
+  },
+  getTextContent:function(event){
+    let value = event.detail.value;
+    this.setData({
+      textContent:value
+    });
   }
+  
 
 })

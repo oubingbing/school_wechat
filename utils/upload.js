@@ -16,7 +16,7 @@ function initQiniu() {
 
 
 /** 异步上传单张图片 */
-async function asyncUploadImage(image) {
+let asyncUploadImage = async function(image) {
 
     initQiniu();
 

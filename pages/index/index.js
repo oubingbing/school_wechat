@@ -8,7 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     school:'',
-    avatar:"http://wx.qlogo.cn/mmhead/Q3auHgzwzM5guVcHYGyerpKIqHsklVJhk118GzqwcNYFTthiawhYHYg/132"
+    posts:null,
+    baseImageUrl: app.globalData.imageUrl
   },
   //事件处理函数
   bindViewTap: function() {
@@ -25,12 +26,16 @@ Page({
 
     this.getSchool(_this);
 
+    this.getPost();
+
   },
   onShow:function(){
     console.log('on show');
 
     let _this = this;
     this.getSchool(_this);
+
+    this.getPost();
 
   },
   getUserInfo: function(e) {
@@ -55,6 +60,8 @@ Page({
       url: '/pages/school/school'
     })
   },
+
+  /** 获取学校 */
   getSchool:function(_this){
     console.log('get school');
 
@@ -66,9 +73,37 @@ Page({
         school:res.data.data
       });
 
+    });
+  },
+
+  /** 获取贴子 */
+  getPost:function(_this){
+
+    console.log('function getPost');
+
+    app.http('get','/post',{},res=>{
+
+      this.setData({
+        posts:res.data.data
+      });
+
+      console.log(res.data);
 
     });
 
-  }
+  },
+  /** 预览图片 */
+  previewImage: function (event) {
+
+    console.log(event.target.id);
+
+    let url = event.target.id;
+
+    wx.previewImage({
+      current: '',
+      urls: [url]
+    })
+  },
+  
 
 })

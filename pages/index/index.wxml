@@ -23,44 +23,36 @@
 
   <view class="container-wall">
 
-    <view class="wall-item">
+    <view class="wall-item" wx:for="{{posts}}" wx:key="{{posts}}">
       <view class="item-container">
         <view class="item-image">
-          <image src="{{avatar}}"></image>
+          <image bindtap='previewImage'
+                   id="{{item.poster.avatar}}" 
+                   src="{{item.poster.avatar}}"></image>
       </view>
       <view class="item-content">
-        <view class="user-name">叶子</view>
-          <view class="content">世界，你好呀</view>
-          <view class="content-image">
-            <image mode="aspectFill" class="image-item" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509644348402&di=476d1e26cb137061bb7c361bdc5d14bf&imgtype=0&src=http%3A%2F%2Fimg2.3lian.com%2F2014%2Ff2%2F15%2Fd%2F47.jpg"></image>
+        <view class="user-name">{{item.poster.nickname}}</view>
+          <view class="content">{{item.content}}</view>
+          <view class="single-image" wx:if='{{item.attachments.length==1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' wx:if='{{item.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
           </view>
           <view class="post-time">
-            <view>2017年11月1日</view>
-            <view ><image style='width:40rpx;height:40rpx' src="./../../image/comment.png"></image></view>
-          </view>
-          <view class="comment">
-            <view class="qipao"></view>
-            <view class="comment-detail">
-              <view class="comment-user">邱慧怡：</view> 你说的是真的吗
-            </view>
-          </view>
-      </view>
-      </view>
-    </view>
-
-    <view class="wall-item">
-      <view class="item-container">
-        <view class="item-image">
-          <image src="{{avatar}}"></image>
-      </view>
-      <view class="item-content">
-        <view class="user-name">叶子</view>
-          <view class="content">世界，你好呀</view>
-          <view class="content-image">
-            <image mode="aspectFill" class="image-item" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509644348402&di=476d1e26cb137061bb7c361bdc5d14bf&imgtype=0&src=http%3A%2F%2Fimg2.3lian.com%2F2014%2Ff2%2F15%2Fd%2F47.jpg"></image>
-          </view>
-          <view class="post-time">
-            <view>2017年11月1日</view>
+            <view>{{item.created_at}}</view>
             <view ><image style='width:40rpx;height:40rpx' src="./../../image/comment.png"></image></view>
           </view>
           <view class="comment">

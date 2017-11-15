@@ -2,7 +2,7 @@
   <view class='form'>
 
     <view class='input'>
-      <textarea placeholder="爱情属于勇敢的人儿"/>
+      <textarea placeholder="爱情属于勇敢的人儿" bindinput="getTextContent"/>
     </view>
     <view class='image-form'>
       <view class='select-image'>
@@ -21,13 +21,13 @@
 
 <view class='middle'>
   <view class='location'>
+  <view class='item'>定位</view>
     <view class='location-image'><image src='/image/my-location.png'></image></view>
-    <view class='item'>定位</view>
   </view>
 
   <view class='private'>
-    <view class='location-image'><image src='/image/private.png'></image></view>
     <view class='item'>匿名</view>
+    <switch bindchange="setPrivate" color='#0aecc3'/>
   </view>
   
 </view>

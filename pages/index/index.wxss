@@ -102,8 +102,21 @@
   justify-content: space-between;
 }
 
-.content-image image{
+.single-image image{
   width: 400rpx;
+}
+
+.more-image{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+
+.more-image image{
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .post-time .comment-image{

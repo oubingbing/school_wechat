@@ -7,7 +7,9 @@ App({
     //设置基本接口全局变量
     this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
     //this.globalData.apiUrl = 'http://school.dev/api/wechat';
-    console.log(this.globalData.apiUrl);
+  
+    //七牛图片外链域名
+    this.globalData.imageUrl = 'http://image.kucaroom.com/';
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -53,6 +55,8 @@ App({
 
   /** 获取token */
   getToken: function (_this, openId) {
+
+    console.log('function getToen');
 
     // 获取用户信息
     wx.getSetting({
@@ -141,7 +145,6 @@ App({
               }
             })
 
-
           }
         })
       }
@@ -215,7 +218,10 @@ App({
 
   },
 
+  /** 获取七牛上传token */
   getUploadToken: function () {
+
+    this.setUploadToken();
 
     console.log('获取七牛upload token');
 
@@ -227,12 +233,10 @@ App({
 
   },
 
-
-
   globalData: {
     userInfo: null,
     apiUrl: null,
     color: '0aecc3',
-
+    imageUrl:''
   }
 })

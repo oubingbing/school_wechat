@@ -99,6 +99,7 @@
   color: darkgray;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -121,6 +122,32 @@
 
 .post-time .comment-image{
   width: 40prx;
+}
+
+.post-time .comment-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20rpx;
+  height: 65rpx;
+}
+
+.comment-container .comment-icon{
+  height: 65rpx;
+  width: 200rpx;
+  background: #0aecc3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 13rpx;
+  border-radius:7rpx;
+  
+}
+
+.comment-icon image{
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .item-content .comment{

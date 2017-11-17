@@ -4,7 +4,7 @@
   <view class="select-school">
     <view class="school-location" bindtap='selectSchool'>
       <view class="location-image">
-        <image class="location-icon" mode="" src="./../../image/location.png"></image>
+        <image class="location-icon" mode="" src="/image/location.png"></image>
       </view>
       <view class="location-name">
         <view>{{school}}</view>
@@ -53,7 +53,16 @@
           </view>
           <view class="post-time">
             <view>{{item.created_at}}</view>
-            <view ><image style='width:40rpx;height:40rpx' src="./../../image/comment.png"></image></view>
+            <view class='comment-container'>
+              <view class='comment-icon' wx:if="{{item.id==show}}">
+                <image src='/image/zan.png' style='width:60rpx;height:60rpx'></image>
+                <view style='color:white'>|</view>
+                <image src='/image/pinglun.png'></image>
+              </view>
+              <image style='width:40rpx;height:40rpx'
+              src="/image/comment.png" bindtap="showComment" id="{{item.id}}" data-show="{{hidden}}">
+              </image>
+             </view>
           </view>
           <view class="comment">
             <view class="qipao"></view>

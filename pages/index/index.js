@@ -9,7 +9,9 @@ Page({
     hasUserInfo: false,
     school:'',
     posts:null,
-    baseImageUrl: app.globalData.imageUrl
+    baseImageUrl: app.globalData.imageUrl,
+    show:0,
+    hidden:false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -104,6 +106,34 @@ Page({
       urls: [url]
     })
   },
+
+  /** 显示评论框 */
+  showComment:function(event){
+
+    this.setData({
+      show:0
+    });
+
+    let id = event.target.id;
+    let hidden = event.target.dataset.show;
+
+    if(!hidden){
+      this.setData({
+        show:id,
+        hidden:true
+      });
+    }else{
+      this.setData({
+        show:0,
+        hidden:false
+      });
+    }
+
+    console.log(hidden)
+    console.log(event)
+    console.log(id);
+    
+  }
   
 
 })

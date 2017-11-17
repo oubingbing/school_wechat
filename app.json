@@ -19,26 +19,26 @@
       "list": [
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/select_me.png",
-          "selectedIconPath": "image/select_me.png",
-          "text": "我"
+          "iconPath": "image/saylove.png",
+          "selectedIconPath": "image/select-saylove.png",
+          "text": "表白墙"
         },
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/select_me.png",
-          "selectedIconPath": "image/select_me.png",
-          "text": "我"
+          "iconPath": "image/sale.png",
+          "selectedIconPath": "image/select-sale.png",
+          "text": "卖舍友"
         },
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/select_me.png",
-          "selectedIconPath": "image/select_me.png",
-          "text": "我"
+          "iconPath": "image/pipei.png",
+          "selectedIconPath": "image/select-pipei.png",
+          "text": "暗恋匹配"
         },
         {
           "pagePath": "pages/index/index",
-          "iconPath": "image/me.png",
-          "selectedIconPath": "image/select_me.png",
+          "iconPath": "image/iam.png",
+          "selectedIconPath": "image/select-iam.png",
           "text": "我的"
         }
       ]

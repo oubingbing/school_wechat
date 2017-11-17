@@ -11,7 +11,8 @@ Page({
     posts:null,
     baseImageUrl: app.globalData.imageUrl,
     show:0,
-    hidden:false
+    hidden:false,
+    showCommentInput:false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -107,7 +108,7 @@ Page({
     })
   },
 
-  /** 显示评论框 */
+  /** 显示评论控制面板 */
   showComment:function(event){
 
     this.setData({
@@ -133,6 +134,65 @@ Page({
     console.log(event)
     console.log(id);
     
+  },
+
+  /** 触摸屏幕后移动触发一些隐藏操作 */
+  hiddenComment:function(){
+    console.log('inde-hiddenComment：触摸后移动');
+    this.setData({
+      show:0,
+      hidden:false
+    });
+  },
+
+  /** 点赞 */
+  praise:function(event){
+    console.log('index-praise：点赞');
+
+    let obiId = event.target.id;
+
+    app.http('post',`/praise`,{},res=>{
+
+      console.log('点赞成功');
+
+    });
+
+  },
+
+  /** 激活评论框 */
+  commentInput:function(event){
+    console.log('index-showCommentInput：激活评论框');
+
+    let objId = event.target.id;
+
+    this.setData({
+      showCommentInput:true
+    });
+  },
+
+  /** 提交评论 */
+  sendComment:function(e){
+
+  },
+
+  /** 取消赞 */
+  deletePraise:function(e){
+
+  },
+
+  /** 删除评论 */
+  deleteComment:function(e){
+
+  },
+
+  /** 关注 */
+  follow:function(e){
+
+  },
+
+  /** 取消关注 */
+  cancelFollow:function(e){
+
   }
   
 

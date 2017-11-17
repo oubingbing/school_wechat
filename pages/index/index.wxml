@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" bindtouchmove="hiddenComment">
 
   <view class="select-school">
     <view class="school-location" bindtap='selectSchool'>
@@ -67,7 +67,21 @@
           <view class="comment">
             <view class="qipao"></view>
             <view class="comment-detail">
-              <view class="comment-user">邱慧怡：</view> 你说的是真的吗
+              <view class='praise-container'>
+                <image class='praise-user praise-item' src='/image/praise_user.png'></image>
+                <view class='praise-item'>
+                  <image class='praise-user-avatar' src='{{item.poster.avatar}}'></image>
+                  <view class='praise-user-name'>叶子,</view>
+                </view>
+                <view class='praise-item'>
+                  <image class='praise-user-avatar' src='{{item.poster.avatar}}'></image>
+                  <view class='praise-user-name'>慧怡</view>
+                </view>
+              </view>
+              <view class='comment-user-container'>
+                <view class="comment-user">邱慧怡：</view>
+                 <view>你说的是真的吗</view>
+              </view>
             </view>
           </view>
       </view>

@@ -134,7 +134,7 @@
 
 .comment-container .comment-icon{
   height: 65rpx;
-  width: 200rpx;
+  width: 250rpx;
   background: #0aecc3;
   display: flex;
   flex-direction: row;
@@ -170,7 +170,44 @@
   font-size: 30rpx;
   font-weight: 200;
   display: flex;
+  flex-direction: column;
+}
+
+.comment-user-container{
+  display: flex;
   flex-direction: row;
+}
+
+.praise-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  margin-bottom: 10rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #E8E8E8;
+  padding-bottom: 10rpx;
+  
+}
+
+.praise-container .praise-item{
+  display: flex;
+  flex-direction: row;
+  margin-right: 10rpx;
+}
+
+.praise-item .praise-user-avatar{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:8rpx;
+}
+
+
+.praise-container .praise-user{
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 10rpx;
 }
 
 .comment-detail .comment-user{

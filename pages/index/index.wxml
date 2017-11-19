@@ -28,10 +28,18 @@
         <view class="item-image">
           <image bindtap='previewImage'
                    id="{{item.poster.avatar}}" 
-                   src="{{item.poster.avatar}}"></image>
+                   src="{{item.poster.avatar}}"
+                   wx:if="{{item.private == 0}}"></image>
+          <image bindtap='previewImage'
+                   src="/image/niming.png"
+                   wx:if="{{item.private == 1}}"></image>
       </view>
       <view class="item-content">
-        <view class="user-name">{{item.poster.nickname}}</view>
+        <view class="user-name">
+          <view wx:if="{{item.private == 0}}">{{item.poster.nickname}}</view>
+          <view wx:if="{{item.private == 1}}">匿名者</view>
+          <view class='follow'>关注</view>
+        </view>
           <view class="content">{{item.content}}</view>
           <view class="single-image" wx:if='{{item.attachments.length==1}}'>
             <image mode="aspectFill" 
@@ -52,12 +60,18 @@
                    id="{{baseImageUrl+item}}"></image>
           </view>
           <view class="post-time">
-            <view>{{item.created_at}}</view>
+            <view class='time-and-delete'>
+              <view>{{item.created_at}}</view> 
+              <view class='delete-post'>删除</view>
+            </view>
             <view class='comment-container'>
               <view class='comment-icon' wx:if="{{item.id==show}}">
-                <image src='/image/zan.png' style='width:60rpx;height:60rpx'></image>
+                <image src='/image/zan.png' 
+                style='width:60rpx;height:60rpx'
+                data-obj="{{item.id}}"
+                bindtap='praise'></image>
                 <view style='color:white'>|</view>
-                <image src='/image/pinglun.png'></image>
+                <image src='/image/pinglun.png' bindtap='showCommentInput'></image>
               </view>
               <image style='width:40rpx;height:40rpx'
               src="/image/comment.png" bindtap="showComment" id="{{item.id}}" data-show="{{hidden}}">
@@ -67,15 +81,11 @@
           <view class="comment">
             <view class="qipao"></view>
             <view class="comment-detail">
-              <view class='praise-container'>
+              <view class='praise-container' wx:if="{{item.praises.length > 0}}">
                 <image class='praise-user praise-item' src='/image/praise_user.png'></image>
-                <view class='praise-item'>
-                  <image class='praise-user-avatar' src='{{item.poster.avatar}}'></image>
-                  <view class='praise-user-name'>叶子,</view>
-                </view>
-                <view class='praise-item'>
-                  <image class='praise-user-avatar' src='{{item.poster.avatar}}'></image>
-                  <view class='praise-user-name'>慧怡</view>
+                <view class='praise-item' wx:for="{{item.praises}}">
+                  <image class='praise-user-avatar' src='{{item.avatar}}'></image>
+                  <view class='praise-user-name'>{{item.nickname}}</view>
                 </view>
               </view>
               <view class='comment-user-container'>
@@ -96,5 +106,10 @@
   <view class='post'>
     <image src='./../../image/post.png' bindtap='post'></image>
   </view>
+</view>
+
+<view class='comment-input-container' wx:if="{{showCommentInput}}">
+  <input placeholder="评论" auto-focus/>
+  <view class='send-button'><view>发送</view></view>
 </view>
 

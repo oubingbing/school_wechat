@@ -12,6 +12,7 @@ Page({
     baseImageUrl: app.globalData.imageUrl,
     show:0,
     hidden:false,
+    showCommentInput:false,
     showCommentInput:false
   },
   //事件处理函数
@@ -49,6 +50,8 @@ Page({
       hasUserInfo: true
     })
   },
+
+  /** 进入发表页面 */
   post:function(){
     console.log('Post');
 
@@ -141,7 +144,8 @@ Page({
     console.log('inde-hiddenComment：触摸后移动');
     this.setData({
       show:0,
-      hidden:false
+      hidden:false,
+      showCommentInput:false
     });
   },
 
@@ -149,23 +153,27 @@ Page({
   praise:function(event){
     console.log('index-praise：点赞');
 
-    let obiId = event.target.id;
+    let objId = event.target.dataset.obj;
+    let objType = 1;
+    console.log(objId);
 
-    app.http('post',`/praise`,{},res=>{
 
-      console.log('点赞成功');
+    app.http('post', `/praise`, { obj_id: objId, obj_type: objType},res=>{
+      console.log('点赞成功'+res);
 
     });
 
   },
 
   /** 激活评论框 */
-  commentInput:function(event){
+  showCommentInput:function(event){
     console.log('index-showCommentInput：激活评论框');
 
     let objId = event.target.id;
 
     this.setData({
+      show: 0,
+      hidden: false,
       showCommentInput:true
     });
   },

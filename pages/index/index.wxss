@@ -79,10 +79,19 @@
 }
 
 .item-content .user-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-weight: 300;
   font-size: 38rpx;
   margin-bottom: 8rpx;
   margin-top: -5rpx;
+}
+
+.user-name .follow{
+  font-size: 30rpx;
+  font-weight: 200;
+  color: #BEBEBE;
 }
 
 .item-content .content{
@@ -101,6 +110,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.post-time .time-and-delete{
+  display: flex;
+  flex-direction: row;
+}
+
+.time-and-delete .delete-post{
+  margin-left: 20rpx;
 }
 
 .single-image image{
@@ -134,7 +152,7 @@
 
 .comment-container .comment-icon{
   height: 65rpx;
-  width: 250rpx;
+  width: 200rpx;
   background: #0aecc3;
   display: flex;
   flex-direction: row;
@@ -255,4 +273,45 @@
 
 .nav-bar .all{
   color: #FF4500;
+}
+
+.comment-input-container{
+  position:fixed;
+  bottom: 0rpx;
+  z-index:100;
+  width: 100%;
+  height: 200prx;
+  background: #DCDCDC;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.comment-input-container input{
+  width: 100%;
+  margin-left: 20rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #0aecc3;
+  margin-right: 20rpx;
+  padding-bottom: 15rpx;
+  font: 30rpx;
+  font-weight: 200;
+  margin-bottom: 30rpx;
+  padding-top: 17rpx;
+}
+
+.comment-input-container .send-button{
+  width: 130rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  background: #0aecc3;
+  color: white;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10rpx;
 }

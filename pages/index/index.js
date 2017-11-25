@@ -1,5 +1,6 @@
-//index.js
-//获取应用实例
+
+const uploader = require("../../utils/util.js");
+
 const app = getApp()
 
 Page({
@@ -9,7 +10,7 @@ Page({
     school: '',
     praiseBorder: '',
     notPraiseBorder: '',
-    posts: null,
+    posts: [],
     baseImageUrl: app.globalData.imageUrl,
     show: 0,
     hidden: false,
@@ -18,15 +19,21 @@ Page({
     commentContent: '',
     commentObjId: '',
     commentType: '',
-    refcommentId: ''
+    refcommentId: '',
+    pageSize: 10,
+    pageNumber: 1,
+    showGeMoreLoadin: false,
+    currentTime: '',
+    notDataTips:false
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+
   onLoad: function () {
+
+    console.log('工具类' + uploader.formatTime(new Date()));
+    //设置当前时间
+    this.setData({
+      currentTime: uploader.formatTime(new Date())
+    });
 
     let _this = this;
 
@@ -43,8 +50,6 @@ Page({
       });
     }
 
-    this.getPost();
-
   },
   onShow: function () {
     console.log('on show');
@@ -52,8 +57,41 @@ Page({
     let _this = this;
     this.getSchool(_this);
 
-    this.getPost();
+    this.getNewPost();
 
+  },
+
+  /**
+   * 下拉刷新，获取最新的贴子
+   */
+  onPullDownRefresh: function () {
+      this.getMostNewPost();
+  },
+
+  /**
+   * 上拉加载跟多
+   */
+  onReachBottom: function () {
+
+    console.log('到底了');
+
+    let _this = this;
+
+    this.setData({
+      showGeMoreLoadin: true
+    });
+
+    this.getPost(_this);
+
+  },
+
+  /**
+   * 事件处理函数
+   */
+  bindViewTap: function () {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -92,12 +130,61 @@ Page({
         school: res.data.data
       });
 
-      wx.setStorage({
-        key: "posts",
-        data: res.data.data
-      })
+    });
+  },
+
+  /** 获取最新的贴子 */
+  getMostNewPost: function () {
+
+    //获取新的贴子
+    app.http('get', '/most_new_post', {
+      date_time: this.data.currentTime
+    }, res => {
+
+      wx.stopPullDownRefresh();
+
+      console.log('返回的贴子数据');
+      console.log(res.data.data);
+
+      let posts = this.data.posts;
+
+      if(res.data.data.length > 0){
+        
+        res.data.data.map(item=>{
+
+          posts.unshift(item);
+
+        });
+
+        this.setData({
+          posts:posts
+        });
+
+      }
 
     });
+
+  },
+  /** 发表贴子后获取最新的贴子 */
+  getNewPost: function () {
+
+    //获取新的贴子
+    app.http('get', '/post', {
+      page_size: 10,
+      page_number: 1
+    }, res => {
+
+      console.log('返回的贴子数据');
+      console.log(res.data.data.page_data);
+
+      this.setData({
+        posts: res.data.data.page_data,
+        pageNumber: this.data.pageNumber + 1
+      });
+
+    });
+
+
   },
 
   /** 获取贴子 */
@@ -105,13 +192,35 @@ Page({
 
     console.log('function getPost');
 
-    app.http('get', '/post', {}, res => {
+    app.http('get', '/post', {
+      page_size: this.data.pageSize,
+      page_number: this.data.pageNumber
+    }, res => {
 
       this.setData({
-        posts: res.data.data
-      });
+        showGeMoreLoadin: false
+      })
 
-      console.log(res.data);
+      let posts = this.data.posts;
+
+      console.log('返回的贴子数据');
+      console.log(res.data.data.page_data);
+      console.log('第几页' + this.data.pageNumber);
+
+      if (res.data.data.page_data.length > 0) {
+        res.data.data.page_data.map(item => {
+          posts.push(item);
+        });
+
+        this.setData({
+          posts: posts,
+          pageNumber: this.data.pageNumber + 1
+        });
+      }else{
+        this.setData({
+          notDataTips:true
+        });
+      }
 
     });
 
@@ -320,8 +429,8 @@ Page({
     let commentId = e.currentTarget.dataset.refid;
     let _this = this;
 
-    console.log('评论Id：'+commentId);
-    console.log('帖子Id'+objId);
+    console.log('评论Id：' + commentId);
+    console.log('帖子Id' + objId);
 
     wx.showModal({
       title: '提示',
@@ -339,10 +448,10 @@ Page({
 
                 if (objId == item.id) {
 
-                  let newComment = item.comments.filter((item,index)=>{
+                  let newComment = item.comments.filter((item, index) => {
 
-                    if(item.id != commentId){
-                        return item;
+                    if (item.id != commentId) {
+                      return item;
                     }
 
                   });
@@ -355,7 +464,7 @@ Page({
               });
 
               _this.setData({
-                posts:newPostList
+                posts: newPostList
               });
             }
 

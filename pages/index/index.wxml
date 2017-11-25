@@ -135,6 +135,17 @@
 
   </view>
 
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{notDataTips}}">
+    <view>到底啦~_~</view>
+  </view>
+
 </view>
 
 <view class='post-container'>

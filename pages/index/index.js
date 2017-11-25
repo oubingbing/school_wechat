@@ -320,6 +320,9 @@ Page({
     let commentId = e.currentTarget.dataset.refid;
     let _this = this;
 
+    console.log('评论Id：'+commentId);
+    console.log('帖子Id'+objId);
+
     wx.showModal({
       title: '提示',
       content: '确认删除该评论?',

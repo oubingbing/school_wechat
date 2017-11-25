@@ -106,7 +106,7 @@
                     wx:for="{{item.comments}}" 
                     wx:key="{{item.comments}}" wx:for-item="sub">
                   <view class='comment-wall-item' 
-                        bindtap="{{item.can_delete?'deleteComment':'commentOtherComment'}}"
+                        bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
                         data-objid="{{item.id}}"
                         data-refid="{{sub.id}}" 
                         data-objtype='2'>

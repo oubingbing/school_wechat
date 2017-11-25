@@ -1,0 +1,66 @@
+<view class="match-container">
+
+  <view class='match-item'>
+      <view class='header'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'></image>
+        <view>叶子</view>
+      </view>
+      <view class='content'>
+        <view class='content-left content-item'>
+          <image src='/image/shoot.png'></image>
+          <view>**彬</view>
+        </view>
+        <view class='content-middle content-item'>
+          <image src='/image/mylove.png'></image>
+          <view>暗恋</view>
+        </view>
+        <view class='content-right content-item'>
+          <image src='/image/givelove.png'></image>
+          <view>**怡</view>
+        </view>
+      </view>
+      <view class='comment-container'>
+        <view class='zan'>
+          <image src='/image/praise_user.png'></image>
+          <view>129</view>
+        </view>
+        <view class='comment'>
+          <image src='/image/comment.png'></image>
+          <view>99</view>
+        </view>
+      </view>
+  </view>
+
+
+  <view class='match-item'>
+      <view class='header'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'></image>
+        <view>叶子</view>
+      </view>
+      <view class='content'>
+        <view class='content-left content-item'>
+          <image src='/image/shoot.png'></image>
+          <view>**彬</view>
+        </view>
+        <view class='content-middle content-item'>
+          <image src='/image/mylove.png'></image>
+          <view>暗恋</view>
+        </view>
+        <view class='content-right content-item'>
+          <image src='/image/givelove.png'></image>
+          <view>**怡</view>
+        </view>
+      </view>
+      <view class='comment-container'>
+        <view class='zan'>
+          <image src='/image/praise_user.png'></image>
+          <view>129</view>
+        </view>
+        <view class='comment'>
+          <image src='/image/comment.png'></image>
+          <view>99</view>
+        </view>
+      </view>
+  </view>
+
+</view>

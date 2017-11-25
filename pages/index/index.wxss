@@ -199,26 +199,65 @@
 .praise-container{
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
   margin-bottom: 10rpx;
-  border-bottom-style:solid;
+  padding-bottom: 10rpx;
+}
+
+.praise-container .praise-icon{
+  width: 10%;
+}
+
+.praise-container .praise-content{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+
+.praise-container .praise-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.praise-item .praise-item-sub{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.praise-container-with-border{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+
+.comment-user-wall{
+  border-top-style:solid;
   border-width:1rpx;
   border-color: #E8E8E8;
+  padding-top: 10rpx;
+}
+
+.praise-container-border{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  margin-bottom: 10rpx;
   padding-bottom: 10rpx;
-  
 }
 
 .praise-container .praise-item{
   display: flex;
   flex-direction: row;
   margin-right: 10rpx;
+  margin-top: 15rpx;
 }
 
 .praise-item .praise-user-avatar{
   width: 40rpx;
   height: 40rpx;
   margin-right: 5rpx;
-  border-radius:8rpx;
+  border-radius:20rpx;
 }
 
 
@@ -230,6 +269,38 @@
 
 .comment-detail .comment-user{
   color: #0061b2;
+}
+
+.comment-wall-item{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-wall-item .comment-user-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-wall-item .comment-ref-user-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-ref-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
 }
 
 /**post css**/

@@ -1,0 +1,152 @@
+page{
+  background-color: #F0F8FF;
+}
+
+.sale-container{
+  width: 100%;
+}
+
+.sale-item{
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sale-item .header{
+  width: 95%;
+  background: white;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  margin-left: 15rpx;
+  margin-top: 9rpx;
+}
+
+.user-name{
+  font-size: 3prx;
+  font-weight: 200;
+  margin-left: 10rpx;
+}
+
+.content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.image-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .sale-image{
+  width: 95%;
+  height: 600rpx;
+  border-radius: 10rpx;
+}
+
+.content .craete_at{
+  color: darkgray;
+  font-size: 25rpx;
+  margin-left: 18rpx;
+  margin-top: 20rpx;
+}
+
+.content .content-detail{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 10rpx;
+}
+
+.content-detail .detail-item{
+  margin-right: 15rpx;
+  margin-top: 15rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+.detail-item-user{
+  background: #DB9019;
+  color: white;
+  margin-left: 10rpx;
+}
+
+.detail-item-gender{
+  background: #FF6E97;
+  color: white;
+}
+
+.detail-item-major{
+  background: #1A2D27;
+  color: white;
+}
+
+.detail-item-like{
+   background: #F1AAA6;
+   color: white;
+}
+
+.show-self{
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 20rpx;
+  background: #F1AAA6;
+  color: white;
+  font-size: 30rpx;
+  padding: 10rpx;
+  border-radius: 5rpx;
+  margin-bottom: 30rpx;
+}
+
+.comment-container{
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100rpx;
+  align-items: center;
+  margin-left: 15rpx;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #EEE9E9;
+  margin-top: 10rpx;
+}
+
+.comment-container .zan{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.comment-container .comment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.zan image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}
+
+.comment image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}

@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/post/post",
-    "pages/school/school"
+    "pages/school/school",
+    "pages/sale/sale",
+    "pages/match/match",
+    "pages/personal/personal"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -24,19 +27,19 @@
           "text": "表白墙"
         },
         {
-          "pagePath": "pages/index/index",
+          "pagePath": "pages/sale/sale",
           "iconPath": "image/sale.png",
           "selectedIconPath": "image/select-sale.png",
           "text": "卖舍友"
         },
         {
-          "pagePath": "pages/index/index",
+          "pagePath": "pages/match/match",
           "iconPath": "image/pipei.png",
           "selectedIconPath": "image/select-pipei.png",
           "text": "暗恋匹配"
         },
         {
-          "pagePath": "pages/index/index",
+          "pagePath": "pages/personal/personal",
           "iconPath": "image/iam.png",
           "selectedIconPath": "image/select-iam.png",
           "text": "我的"

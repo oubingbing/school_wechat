@@ -1,0 +1,42 @@
+<view class="personal-container">
+
+  <view class="bg-container">
+      <view class='bg-image'>
+        <image mode="aspectFill" src='http://image.kucaroom.com/30269a739a66831daa31ec93d28318af.jpg'></image>
+      </view>
+      <view>
+        <image class='user-image' src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'></image>
+      </view>
+      <view class='user-info'>
+          <view class='user-name'>叶子</view>
+          <view class='article'>爱情属于勇敢的人儿</view>
+      </view>
+  </view>
+
+  <view class='message'>
+    <view><image src='/image/message.png' class='item-image'></image></view>
+    <view class='word'>消息</view>
+  </view>
+
+  <view class='content-container'>
+    <view class='content-item say-love'>
+      <view><image src='/image/color-love.png' class='item-image'></image></view>
+      <view class='word'>表白墙</view>
+    </view>
+    <view class='content-item sale'>
+      <view><image src='/image/select-sale.png' class='item-image'></image></view>
+      <view class='word'>卖舍友</view>
+    </view>
+    <view class='content-item hide-love'>
+      <view><image src='/image/color-pipei.png' class='item-image'></image></view>
+      <view class='word'>暗恋匹配</view>
+    </view>
+  </view>
+
+  <view class='suggestion'>
+    <view><image src='/image/suggestion.png' class='item-image'></image></view>
+    <view class='word'>意见反馈</view>
+  </view>
+
+
+</view>

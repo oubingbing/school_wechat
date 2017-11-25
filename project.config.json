@@ -25,6 +25,24 @@
 					"name": "表白",
 					"pathName": "pages/post/post",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "卖舍友",
+					"pathName": "pages/sale/sale",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "暗恋匹配",
+					"pathName": "pages/match/match",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/personal/personal",
+					"query": ""
 				}
 			]
 		},

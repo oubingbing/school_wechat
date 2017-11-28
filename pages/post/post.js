@@ -14,7 +14,7 @@ Page({
   },
   onLoad: function () {
     //设置七牛上传token
-    app.setUploadToken();
+    //app.getUploadToken();
 
   },
 
@@ -51,20 +51,34 @@ Page({
         let temArray = _this.data.imageArray;
         let temUrlArray = _this.data.attachments;
 
+        console.log(res.tempFilePaths);
+
         var filePaths = res.tempFilePaths;
+
+        let position = res.tempFilePaths.length - 1;
+
+        wx.showLoading({
+          title: '加载中',
+        })
 
         filePaths.map((item,index)=>{
           temArray.push(item);
 
           uploader.upload(item,key=>{
+            console.log(index);
+            console.log(position);
+            if(position == index){
+              wx.hideLoading();
+            }
 
             let temAttachments = _this.data.attachments;
 
-            temAttachments.push(key);
-            
-            _this.setData({
-              attachments:temAttachments
-            });
+            if (key != '' || key != null){
+              temAttachments.push(key);
+              _this.setData({
+                attachments: temAttachments
+              });
+            }
 
             console.log(key);
           })

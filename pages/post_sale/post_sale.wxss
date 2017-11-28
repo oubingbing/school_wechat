@@ -1,0 +1,123 @@
+page{
+  background-color: #F0F8FF;
+}
+
+.post-sale-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rpx;
+  padding-top: 20rpx;
+}
+
+.post-sale-container .post-container{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10rpx;
+  -webkit-box-shadow:0 0 20rpx rgba(79, 79, 79, .5);
+  -moz-box-shadow:0 0 20rpx rgba(79, 79, 79, .5);
+  box-shadow:0 0 20rpx rgba(79, 79, 79, .5);
+}
+
+.post-sale-container .post-header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.post-header .left{
+  width: 40%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.left image{
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.left .remove-image{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 10;
+  margin-left: -50rpx;
+}
+
+.post-header .right{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+input{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #E8E8E8;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.right .gender{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #E8E8E8;
+}
+.post-content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 35rpx;
+}
+
+.post-content .like{
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+
+.post-content .introduce{
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 20rpx;
+}
+
+
+.button-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container .button{
+  background: white;
+  width: 95%;
+  padding: 10rpx 10rpx;
+}
+button{
+  background: #66CDAA;
+  color: white;
+  width: 95%;
+}
+
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+}
+
+.tips .warming{
+  color: darkgray;
+  width: 95%;
+  font-size: 35rpx;
+}

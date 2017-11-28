@@ -3,20 +3,20 @@
   <view class='sale-item'>
     <view class='header'>
       <view class='user-avatar'>
-        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'></image>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0' mode='widthFix'></image>
       </view>
       <view class='user-name'>叶子</view>
     </view>
     <view class='content'>
       <view class='image-container'>
-        <image class='sale-image' src='http://image.kucaroom.com/tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.97685e4ace3fdc8677307882b24cfdfd.jpeg' mode='aspectFill'></image>
+        <image class='sale-image' src='http://image.kucaroom.com/tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.97685e4ace3fdc8677307882b24cfdfd.jpeg' mode='widthFix'></image>
       </view>
       <view class='craete_at'>2017-11-1 12:23:19</view>
       <view class='content-detail'>
         <view class='detail-item detail-item-user'>区志彬</view>
         <view class='detail-item detail-item-gender'>男</view>
-        <view class='detail-item detail-item-major'>13信管</view>
-        <view class='detail-item detail-item-like'>女的就行啦</view>
+        <view class='detail-item detail-item-major'>13信息管理与信息系统</view>
+        <view class='detail-item detail-item-like'>女的就行啦,还要善良</view>
       </view>
       <view class='show-self'>
         我喜欢旅游，喜欢草原，希望能有人陪我去天天草原看看，看看那里的牛，看看那里的羊，看看那里的落日
@@ -26,7 +26,7 @@
           <image src='/image/praise_user.png'></image>
           <view>129</view>
         </view>
-        <view class='comment'>
+        <view class='comment' bindtap='comment'>
           <image src='/image/comment.png'></image>
           <view>99</view>
         </view>
@@ -68,4 +68,11 @@
     </view>
   </view>
 
+</view>
+
+
+<view class='post-container'>
+  <view class='post'>
+    <image src='/image/post.png' bindtap='post'></image>
+  </view>
 </view>

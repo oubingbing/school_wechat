@@ -22,6 +22,7 @@ Page({
     refcommentId: '',
     pageSize: 10,
     pageNumber: 1,
+    initPageNumber: 1,
     showGeMoreLoadin: false,
     currentTime: '',
     notDataTips:false
@@ -50,6 +51,8 @@ Page({
       });
     }
 
+    this.getNewPost();
+
   },
   onShow: function () {
     console.log('on show');
@@ -57,7 +60,8 @@ Page({
     let _this = this;
     this.getSchool(_this);
 
-    this.getNewPost();
+    //this.getNewPost();
+    this.getMostNewPost();
 
   },
 
@@ -65,6 +69,9 @@ Page({
    * 下拉刷新，获取最新的贴子
    */
   onPullDownRefresh: function () {
+
+    console.log('当前时间：'+this.data.currentTime);
+
       this.getMostNewPost();
   },
 
@@ -141,6 +148,10 @@ Page({
       date_time: this.data.currentTime
     }, res => {
 
+      this.setData({
+        currentTime: uploader.formatTime(new Date())
+      });
+
       wx.stopPullDownRefresh();
 
       console.log('返回的贴子数据');
@@ -179,7 +190,7 @@ Page({
 
       this.setData({
         posts: res.data.data.page_data,
-        pageNumber: this.data.pageNumber + 1
+        pageNumber: this.data.initPageNumber
       });
 
     });
@@ -191,6 +202,10 @@ Page({
   getPost: function (_this) {
 
     console.log('function getPost');
+
+    this.setData({
+      notDataTips: false
+    });
 
     app.http('get', '/post', {
       page_size: this.data.pageSize,

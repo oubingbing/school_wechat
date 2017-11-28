@@ -153,9 +153,16 @@ page{
   height: 65rpx;
 }
 
+.comment-icon-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .comment-container .comment-icon{
-  height: 65rpx;
-  width: 200rpx;
+  height: 75rpx;
+  width: 300rpx;
   background: #0aecc3;
   display: flex;
   flex-direction: row;
@@ -163,7 +170,9 @@ page{
   align-items: center;
   margin-right: 13rpx;
   border-radius:7rpx;
-  
+  position: absolute;
+  z-index: 10;
+  right: 70rpx;
 }
 
 .comment-icon image{
@@ -253,7 +262,8 @@ page{
   display: flex;
   flex-direction: row;
   margin-right: 10rpx;
-  margin-top: 15rpx;
+  margin-top: 5rpx;
+  margin-bottom: -20rpx;
 }
 
 .praise-item .praise-user-avatar{
@@ -424,8 +434,8 @@ page{
 .no-more-data{
   width: 100%;
   background: white;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
   justify-content: space-around;
   align-items: center;
   font-size: 25rpx;

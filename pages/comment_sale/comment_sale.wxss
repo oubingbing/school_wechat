@@ -4,10 +4,11 @@ page{
 
 .sale-container{
   width: 100%;
+  background: white;
 }
 
 .sale-item{
-  margin-top: 20rpx;
+  margin-top: 5rpx;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -51,7 +52,7 @@ page{
 }
 
 .content .sale-image{
-  width: 95%;
+  width: 97%;
   border-radius: 10rpx;
 }
 
@@ -59,7 +60,7 @@ page{
   color: darkgray;
   font-size: 25rpx;
   margin-left: 18rpx;
-  margin-top: 20rpx;
+  margin-top: 5rpx;
 }
 
 .content .content-detail{
@@ -111,44 +112,45 @@ page{
 }
 
 .comment-container{
-  width: 96%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50rpx;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #E8E8E8;
+}
+
+.comment-wall{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.comment-wall .comment-header{
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  font-size: 35rpx;
+  font-weight: 200;
+  color: darkgray;
   height: 100rpx;
-  align-items: center;
-  margin-left: 15rpx;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-color: #EEE9E9;
-  margin-top: 10rpx;
 }
 
-.comment-container .zan{
+.comment-header .zan{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  font-size: 30rpx;
 }
-
-.comment-container .comment{
+.comment-header .comment{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  font-size: 30rpx;
 }
 
-.zan image{
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 10rpx;
-}
-
-.comment image{
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 10rpx;
-}
 
 /**post css**/
 

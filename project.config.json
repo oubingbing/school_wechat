@@ -43,6 +43,18 @@
 					"name": "个人中心",
 					"pathName": "pages/personal/personal",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我要卖舍友",
+					"pathName": "pages/post_sale/post_sale",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "卖舍友详情",
+					"pathName": "pages/comment_sale/comment_sale",
+					"query": ""
 				}
 			]
 		},

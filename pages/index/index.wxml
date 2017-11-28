@@ -42,7 +42,7 @@
         </view>
           <view class="content">{{item.content}}</view>
           <view class="single-image" wx:if='{{item.attachments.length==1}}'>
-            <image mode="aspectFill" 
+            <image mode="widthFix" 
                    class="image-item" 
                    wx:for="{{item.attachments}}" 
                    wx:key="{{item.attachments}}"
@@ -79,9 +79,14 @@
                 data-objid="{{item.id}}"
                 data-objtype='1'></image>
               </view>
-              <image style='width:40rpx;height:40rpx'
-              src="/image/comment.png" bindtap="showComment" id="{{item.id}}" data-show="{{hidden}}">
+              <view class='comment-icon-container'>
+                <image style='width:50rpx;height:50rpx'
+                        src="/image/comment.png" 
+                        bindtap="showComment" 
+                        id="{{item.id}}" 
+                        data-show="{{hidden}}">
               </image>
+              </view>
              </view>
           </view>
           <view class="comment" wx:if="{{item.praises.length > 0 || item.comments.length > 0}}">

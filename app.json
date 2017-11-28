@@ -6,7 +6,9 @@
     "pages/school/school",
     "pages/sale/sale",
     "pages/match/match",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/post_sale/post_sale",
+    "pages/comment_sale/comment_sale"
   ],
   "window":{
     "backgroundTextStyle":"light",

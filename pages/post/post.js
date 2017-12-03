@@ -14,7 +14,11 @@ Page({
   },
   onLoad: function () {
     //设置七牛上传token
-    //app.getUploadToken();
+    app.getUploadToken(token=>{
+      this.setData({
+        uploadToken:token
+      });
+    });
 
   },
 
@@ -147,6 +151,7 @@ Page({
 
     console.log(this.data.private);
   },
+
   getTextContent:function(event){
     let value = event.detail.value;
     this.setData({

@@ -55,7 +55,19 @@ page{
   border-radius: 10rpx;
 }
 
-.content .craete_at{
+.other-info{
+  display: flex;
+  flex-direction: row;
+}
+
+ .craete_at{
+  color: darkgray;
+  font-size: 25rpx;
+  margin-left: 18rpx;
+  margin-top: 20rpx;
+}
+
+.delete{
   color: darkgray;
   font-size: 25rpx;
   margin-left: 18rpx;

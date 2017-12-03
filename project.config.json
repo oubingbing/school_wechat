@@ -12,7 +12,7 @@
 	"projectname": "%E6%A0%A1%E5%9B%AD%E7%A5%9E%E8%AF%9D",
 	"condition": {
 		"weapp": {
-			"current": -1,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -51,10 +51,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "卖舍友详情",
 					"pathName": "pages/comment_sale/comment_sale",
-					"query": ""
+					"query": "id=8"
 				}
 			]
 		},

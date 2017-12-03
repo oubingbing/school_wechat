@@ -3,23 +3,23 @@
   <view class='sale-item'>
     <view class='header'>
       <view class='user-avatar'>
-        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0' mode='widthFix'></image>
+        <image src='{{sale.poster.avatar}}' mode='widthFix'></image>
       </view>
-      <view class='user-name'>叶子</view>
+      <view class='user-name'>{{sale.poster.nickname}}</view>
     </view>
     <view class='content'>
-      <view class='craete_at'>2017-11-1 12:23:19</view>
+      <view class='craete_at'>{{sale.created_at}}</view>
       <view class='content-detail'>
-        <view class='detail-item detail-item-user'>区志彬</view>
-        <view class='detail-item detail-item-gender'>男</view>
-        <view class='detail-item detail-item-major'>13信息管理与信息系统</view>
-        <view class='detail-item detail-item-like'>女的就行啦,还要善良</view>
+        <view class='detail-item detail-item-user'>{{sale.name}}</view>
+        <view class='detail-item detail-item-gender'>{{sale.gender}}</view>
+        <view class='detail-item detail-item-major'>{{sale.major}}</view>
+        <view class='detail-item detail-item-like'>{{sale.expectation}}</view>
       </view>
-      <view class='show-self'>
-        我喜欢旅游，喜欢草原，希望能有人陪我去天天草原看看，看看那里的牛，看看那里的羊，看看那里的落日
-      </view>
+      <view class='show-self'>{{sale.introduce}}</view>
       <view class='image-container'>
-        <image class='sale-image' src='http://image.kucaroom.com/tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.97685e4ace3fdc8677307882b24cfdfd.jpeg' mode='widthFix'></image>
+        <image class='sale-image' 
+               src='{{baseImageUrl+sale.attachments[0]}}' 
+               mode='widthFix'></image>
       </view>
     </view>
   </view>
@@ -28,18 +28,77 @@
   
     <view class='comment-wall'>
         <view class='comment-header'>
-          <view class='zan'>
+          <view class='zan' bindtap='praise' data-objid="{{sale.id}}">
             <view>赞</view>
-            <view>129</view>
+            <view>{{sale.praise_number}}</view>
           </view>
-          <view class='comment'>
+          <view class='comment' 
+                bindtap='showCommentInput' 
+                data-objid="{{sale.id}}"
+                data-refid=""
+                data-type="2">
             <view>评论</view>
-            <view>99</view>
+            <view>{{sale.comment_number}}</view>
           </view>
         </view>
+    </view>
+
+    <view class='user-comment'>
+
+      <view class='comment-item' 
+            wx:for="{{sale.comments}}" 
+            wx:key="{{sale.comments}}">
+        <view class='left'>
+          <view class='user-image'>
+            <image src='{{item.commenter.avatar}}'></image>
+          </view>
+        </view>
+        <view class='right'>
+          <view class='comment-name right-item'>{{item.commenter.nickname}}</view>
+          <view class='content right-item'>{{item.content}}</view>
+          <view class='create_at right-item'>
+            <view>{{item.created_at}}</view>
+            <view class='comment-icon'>
+              <image src='/image/comment.png' 
+                bindtap='showCommentInput' 
+                data-objid="{{item.id}}"
+                data-type='4'
+                data-refid=""></image>
+            </view>
+          </view>
+          <view class='reply-comment' wx:if="{{item.sub_comments.length > 0}}">
+            <view class='reply-container' 
+                  wx:for="{{item.sub_comments}}" 
+                  wx:key="{{item.sub_comments}}" 
+                  wx:for-item="sub">
+              <view class='reply-item' 
+                    wx:if="{{!sub.ref_comment}}" 
+                    data-objid="{{item.id}}"
+                    data-type='4'
+                    bindtap='showCommentInput' 
+                    data-refid="{{sub.commenter.id}}">
+                <view class='reply-user'>{{sub.commenter.nickname}}：</view>
+                <view class='reply-content'>{{sub.content}}</view>
+              </view>
+              <view class='reply-item' wx:if="{{sub.ref_comment}}">
+                <view class='reply-user'>{{sub.commenter.nickname}}</view>
+                <view>回复</view>
+                <view class='reply-user'>{{sub.ref_comment.refCommenter.nickname}}：</view>
+              <view class='reply-content'>{{sub.content}}</view>
+            </view>
+            </view> 
+          </view>
+        </view>
+      </view>
+
     </view>
 
   </view>
 
 
+</view>
+
+<view class='comment-input-container' wx:if="{{showCommentInput}}">
+  <input placeholder="评论" auto-focus bindinput='getCommentContent'/>
+  <view class='send-button' bindtap='postComment'><view>发送</view></view>
 </view>

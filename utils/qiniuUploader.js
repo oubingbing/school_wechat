@@ -112,12 +112,16 @@
         if (!config.qiniuShouldUseQiniuFileName) {
             formData['key'] = fileName
         }
+
+        console.log('发送中');
+
         wx.uploadFile({
             url: url,
             filePath: filePath,
             name: 'file',
             formData: formData,
             success: function (res) {
+                console.log('success:'+res);
                 var dataString = res.data
                 try {
                     var dataObject = JSON.parse(dataString);

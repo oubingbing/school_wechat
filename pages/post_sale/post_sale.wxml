@@ -19,7 +19,10 @@
     </view>
     <view class='right'>
       <view class='user-name'>
-        <input placeholder="名字" class='right-item' placeholder-style="color:darkgray"/>
+        <input placeholder="名字" 
+               bindinput='getName' 
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
       </view>
       <view class='user-name right-item'>
         <picker bindchange="bindPickerChange" 
@@ -28,19 +31,25 @@
                 <view>
                   <input placeholder="性别" 
                           class='right-item' 
-                          placeholder-style="color:darkgray" value='{{gender}}'/>  
+                          value="{{gender}}"
+                          placeholder-style="color:darkgray"/>  
                 </view>
         </picker>
       </view>
       <view class='user-name'>
-        <input placeholder="专业" class='right-item' placeholder-style="color:darkgray"/>
+        <input placeholder="专业" 
+               bindinput='getMajor'
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
       </view>
     </view>
   </view>
   <view class='post-content'>
-    <view><input placeholder="你喜欢怎样的ta呢..." class='like'/></view>
+    <view><input placeholder="你喜欢怎样的ta呢..." class='like' bindinput="getLike"/></view>
     <view>
-      <textarea placeholder="介绍一下舍友吧" class='introduce'/>
+      <textarea placeholder="介绍一下舍友吧" 
+                class='introduce' 
+                bindinput='getContent'/>
     </view>
   </view>
   </view>

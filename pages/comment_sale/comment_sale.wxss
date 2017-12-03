@@ -167,3 +167,137 @@ page{
   width: 80rpx;
   height: 80rpx;
 }
+
+
+.comment-input-container{
+  position:fixed;
+  bottom: 0rpx;
+  z-index:100;
+  width: 100%;
+  height: 200prx;
+  background: #DCDCDC;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.comment-input-container input{
+  width: 100%;
+  margin-left: 20rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #0aecc3;
+  margin-right: 20rpx;
+  padding-bottom: 15rpx;
+  font: 30rpx;
+  font-weight: 200;
+  margin-bottom: 30rpx;
+  padding-top: 17rpx;
+}
+
+.comment-input-container .send-button{
+  width: 130rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  background: #0aecc3;
+  color: white;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+/** 用户评论内容 **/
+.user-comment{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-comment .comment-item{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.comment-item .left{
+  width: 15%;
+}
+
+.comment-item .right{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.comment-item .content{
+  font-size: 35rpx;
+  font-weight: 200;
+}
+
+.user-image image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.right .create_at{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: darkgray;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  align-items: center;
+}
+
+.comment-icon image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+.right .comment-name{
+  color: #0061b2;
+}
+
+.right .right-item{
+  margin-bottom: 10rpx;
+}
+
+.right .reply-comment{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  background: WhiteSmoke;
+  margin-top: 10rpx;
+  padding: 15rpx;
+}
+
+.reply-comment .reply-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.reply-comment .reply-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 35rpx;
+  font-weight: 200;
+}
+
+.reply-item .reply-user{
+  color: #0061b2;
+}

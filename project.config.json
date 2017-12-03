@@ -12,7 +12,7 @@
 	"projectname": "%E6%A0%A1%E5%9B%AD%E7%A5%9E%E8%AF%9D",
 	"condition": {
 		"weapp": {
-			"current": 6,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,

@@ -31,7 +31,7 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       gender: genderArray[e.detail.value],
-      genderValue:e.detail.value+1
+      genderValue:e.detail.value
     })
   },
   /**

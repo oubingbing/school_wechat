@@ -74,13 +74,7 @@ Page({
       console.log(res.data.data.page_data);
       console.log('第几页' + this.data.pageNumber);
 
-      let data = res.data.data.page_data.map((item,index)=>{
-
-        item['gender'] = genderArray[index];
-
-        return item;
-
-      });
+      let data = res.data.data.page_data;
 
       let sales = _this.data.sales;
 
@@ -146,6 +140,8 @@ Page({
     app.http('get', '/most_new_sale_friend?time='+time, {}, res => {
 
       let sales = _this.data.sales;
+
+      let data = 
 
       res.data.data.map(item => {
 

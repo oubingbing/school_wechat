@@ -88,3 +88,19 @@ page{
   height: 60rpx;
   margin-right: 10rpx;
 }
+
+/**post css**/
+
+.post-container{
+  position:fixed;
+  right:18rpx;
+  top:5rpx;
+  z-index:100;
+  width: 80prx;
+  height: 80prx;
+}
+
+.post image{
+  width: 80rpx;
+  height: 80rpx;
+}

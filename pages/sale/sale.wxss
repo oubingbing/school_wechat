@@ -15,7 +15,7 @@ page{
 }
 
 .sale-item .header{
-  width: 95%;
+  width: 100%;
   background: white;
   height: 100rpx;
   display: flex;
@@ -38,7 +38,7 @@ page{
 }
 
 .content{
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: white;
@@ -51,8 +51,7 @@ page{
 }
 
 .content .sale-image{
-  width: 95%;
-  border-radius: 10rpx;
+  width: 100%;
 }
 
 .other-info{
@@ -79,7 +78,7 @@ page{
   flex-direction: row;
   flex-wrap: wrap;
   margin-left: 15rpx;
-  width: 96%;
+  width: 100%;
 }
 
 .content-detail .detail-item{
@@ -218,4 +217,51 @@ page{
   font-weight: 200;
   text-align: center;
   color: darkgray;
+}
+
+.message-tip{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100rpx;
+  align-items: center;
+  background: white;
+}
+
+.message-tip .tip-content{
+  padding: 20rpx;
+  background: #575757;
+  color: white;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+/** nav-bar **/
+
+.nav-bar-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom-style:solid;
+  border-width:5rpx;
+  border-color: #F0F8FF;
+  background: white;
+  margin-top: 5rpx;
+}
+
+.nav-bar-container .nav-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  font-weight: 200;
+  font-size: 30rpx;
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+}
+
+.nav-bar .all{
+  color: #FF4500;
 }

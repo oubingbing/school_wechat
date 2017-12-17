@@ -21,6 +21,12 @@
     </view>
   </view>
 
+  <view class='message-tip' 
+        wx:if="{{newMessage}}" 
+        bindtap='openMessage'>
+    <view class='tip-content'>{{newMessageNumber}}条新消息</view>
+  </view>
+
   <view class="container-wall">
 
     <view class="wall-item" wx:for="{{posts}}" wx:key="{{posts}}">
@@ -73,7 +79,10 @@
                 style='width:60rpx;height:60rpx'
                 data-obj="{{item.id}}"
                 bindtap='praise'></image>
-                <view style='color:white'>|</view>
+                <image src='/image/letter1.png' 
+                style='width:60rpx;height:60rpx'
+                bindtap='letter'
+                data-obj="{{item.id}}"></image>
                 <image src='/image/pinglun.png' 
                 bindtap='showCommentInput' 
                 data-objid="{{item.id}}"
@@ -148,7 +157,7 @@
   </view>
 
   <view class='no-more-data' wx-if="{{notDataTips}}">
-    <view>到底啦~_~</view>
+    <view>我是一只有底线的神~_~</view>
   </view>
 
 </view>

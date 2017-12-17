@@ -1,5 +1,18 @@
 <view class="sale-container">
 
+  <view class='nav-bar-container'>
+    <view class='nav-bar'>
+      <view class='all'>全部</view>
+      <view class='follow'>关注</view>
+      <view class='new'>最新</view>
+      <view class='hot'>最热</view>
+    </view>
+  </view>
+
+  <view class='message-tip'>
+    <view class='tip-content'>2条新的消息</view>
+  </view>
+
   <view class='sale-item' wx:for="{{sales}}" wx:key="{{sales}}">
     <view class='header'>
       <view class='user-avatar'>
@@ -30,6 +43,9 @@
           <image src='/image/praise_user.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
+        <view class='zan' bindtap='praise' data-objid='{{item.id}}'>
+          <image src='/image/letter.png'></image>
+        </view>
         <view class='comment' bindtap='comment' data-objid="{{item.id}}">
           <image src='/image/comment.png'></image>
           <view>{{item.comment_number}}</view>
@@ -46,7 +62,7 @@
   </view>
 
   <view class='no-more-data' wx-if="{{notDataTips}}">
-    <view>到底啦~_~</view>
+    <view>我是一只有底线的神~_~</view>
   </view>
 
 </view>

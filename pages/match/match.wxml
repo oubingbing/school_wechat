@@ -1,5 +1,18 @@
 <view class="match-container">
 
+  <view class='nav-bar-container'>
+    <view class='nav-bar'>
+      <view class='all'>全部</view>
+      <view class='follow'>关注</view>
+      <view class='new'>最新</view>
+      <view class='hot'>最热</view>
+    </view>
+  </view>
+
+  <view class='message-tip'>
+    <view class='tip-content'>2条新的消息</view>
+  </view>
+
   <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
       <view class='header'>
         <image src='{{item.user.avatar}}'></image>
@@ -25,8 +38,7 @@
           <view>{{item.praise_number}}</view>
         </view>
         <view class='comment'>
-          <image src='/image/comment.png'></image>
-          <view>{{item.comment_number}}</view>
+          <image src='/image/letter.png'></image>
         </view>
       </view>
   </view>

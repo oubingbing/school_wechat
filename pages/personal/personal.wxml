@@ -13,7 +13,7 @@
       </view>
   </view>
 
-  <view class='message'>
+  <view class='message' bindtap='openMessage'>
     <view><image src='/image/message.png' class='item-image'></image></view>
     <view class='word'>消息</view>
   </view>
@@ -33,7 +33,7 @@
     </view>
   </view>
 
-  <view class='suggestion'>
+  <view class='suggestion' bindtap='openLetter'>
     <view><image src='/image/suggestion.png' class='item-image'></image></view>
     <view class='word'>意见反馈</view>
   </view>

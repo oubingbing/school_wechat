@@ -1,0 +1,35 @@
+{
+  "name": "easemob-websdk",
+  "version": "1.1.4",
+  "description": "Easemob im websdk",
+  "keywords": [
+    "realtime",
+    "im",
+    "easemob",
+    "xmpp",
+    "strophe"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WytheMe",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easemob/web-im"
+  },
+  "devDependencies": {
+    "gulp-rename": "^1.2.2",
+    "browserify": "^13.1.1",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack-stream": "^3.2.0"
+  }
+}

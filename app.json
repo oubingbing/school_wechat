@@ -9,7 +9,10 @@
     "pages/personal/personal",
     "pages/post_sale/post_sale",
     "pages/comment_sale/comment_sale",
-    "pages/post_match/post_match"
+    "pages/post_match/post_match",
+    "pages/letter/letter",
+    "pages/message/message",
+    "pages/suggestion/suggestion"
   ],
   "window":{
     "backgroundTextStyle":"light",

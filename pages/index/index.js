@@ -25,7 +25,9 @@ Page({
     initPageNumber: 1,
     showGeMoreLoadin: false,
     currentTime: '',
-    notDataTips:false
+    notDataTips:false,
+    newMessage:false,
+    newMessageNumber:0
   },
 
   onLoad: function () {
@@ -51,7 +53,9 @@ Page({
       });
     }
 
-    this.getNewPost();
+    this.getNewPost(res=>{
+      
+    });
 
   },
   onShow: function () {
@@ -63,6 +67,30 @@ Page({
     //this.getNewPost();
     this.getMostNewPost();
 
+    let type = 0;
+    app.getNewInbox(type,function(res){
+      console.log("新消息数量：" + res.data.data);
+      if(res.data.data != 0){
+        _this.setData({
+          newMessage:true,
+          newMessageNumber:res.data.data
+        });
+      }else{
+        _this.setData({
+          newMessage: false,
+          newMessageNumber: 0
+        });
+      }
+    });
+
+  },
+  /**
+   * 进入新消息列表
+   */
+  openMessage: function () {
+    wx.navigateTo({
+      url: '/pages/message/message?type=0&new_message=1'
+    })
   },
 
   /**
@@ -556,6 +584,12 @@ Page({
   /** 取消关注 */
   cancelFollow: function (e) {
 
+  },
+  letter:function(e){
+    console.log('跳转到私信');
+    wx.navigateTo({
+      url: '/pages/letter/letter'
+    })
   }
 
 

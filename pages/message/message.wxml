@@ -1,0 +1,33 @@
+<view class="message-container">
+  <view class='message-content'>
+
+        <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
+          <view class='item'>
+            <view class='left'>
+              <view>
+                <image src='{{item.from_user.avatar}}'></image>
+                </view>
+            </view>
+            <view class='content'>
+              <view class='username'>{{item.from_user.nickname}}</view>
+              <view class='message' wx:if="{{item.action_type == 1}}">{{item.obj.content}}</view>
+              <view class='praise' wx:if="{{item.action_type == 2}}">
+                <image src='/image/make_praise.png'></image>
+              </view>
+              <view class='created_at'>{{item.created_at}}</view>
+            </view>
+            <view class='right'>
+              <view class='image' 
+                    wx:if="{{item.parentObj.attachments.length != 0}}">
+                    <image src='{{baseImageUrl+item.parentObj.attachments[0]}}'></image>
+                    </view>
+              <view class='content' 
+                    wx:if="{{item.parentObj.attachments.length == 0}}">
+                   的地方对方答复的辅导辅导费对方答复的辅导辅导费对方答复
+                    </view>
+            </view>
+          </view>
+      </view>
+
+  </view>
+</view>

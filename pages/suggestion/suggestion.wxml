@@ -1,0 +1,79 @@
+<view class="letter-container">
+  <view class='letter-content'>
+
+      <view class='content-item content-item-left'>
+        <view class='avatar'>
+          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+          </image>
+        </view>
+        <view class='message-container'>
+          <view class='left-message'>你好呀</view>
+        </view>
+      </view>
+
+      <view class='content-item content-item-right'>
+      <view class='message-container'>
+        <view class='right-message'>好久不见了呢,最近还好吗，还记得我们的约定吗，你要来深圳找我的，我一直在深圳等着你</view>
+      </view>
+        <view class='avatar'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+        </image></view>
+      </view>
+
+            <view class='content-item content-item-right'>
+      <view class='message-container'>
+        <view class='right-message'>好久不见了呢,最近还好吗，还记得我们的约定吗，你要来深圳找我的，我一直在深圳等着你</view>
+      </view>
+        <view class='avatar'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+        </image></view>
+      </view>
+            <view class='content-item content-item-right'>
+      <view class='message-container'>
+        <view class='right-message'>好久不见了呢,最近还好吗，还记得我们的约定吗，你要来深圳找我的，我一直在深圳等着你</view>
+      </view>
+        <view class='avatar'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+        </image></view>
+      </view>
+
+            <view class='content-item content-item-right'>
+      <view class='message-container'>
+        <view class='right-message'>好久不见了呢,最近还好吗，还记得我们的约定吗，你要来深圳找我的，我一直在深圳等着你</view>
+      </view>
+        <view class='avatar'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+        </image></view>
+      </view>
+
+            <view class='content-item content-item-left'>
+        <view class='avatar'>
+          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+          </image>
+        </view>
+        <view class='message-container'>
+          <view class='left-message'>你好呀</view>
+        </view>
+      </view>
+
+            <view class='content-item content-item-left'>
+        <view class='avatar'>
+          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'>
+          </image>
+        </view>
+        <view class='message-container'>
+          <view class='left-message'>你好呀</view>
+        </view>
+      </view>
+
+  </view>
+
+  <view class='comment-input-container'>
+    <view class='add-image'>
+      <view><image src='/image/add-image.png'></image></view>
+    </view>
+    <input auto-height bindinput='getCommentContent'/>
+    <view class='send-button'><view>发送</view></view>
+  </view>
+
+</view>

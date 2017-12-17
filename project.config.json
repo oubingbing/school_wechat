@@ -61,6 +61,18 @@
 					"name": "发表暗恋匹配",
 					"pathName": "pages/post_match/post_match",
 					"query": "id=8"
+				},
+				{
+					"id": -1,
+					"name": "私信",
+					"pathName": "pages/letter/letter",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "消息列表",
+					"pathName": "pages/message/message",
+					"query": "type=0&new_message=1"
 				}
 			]
 		},

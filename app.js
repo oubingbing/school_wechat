@@ -5,8 +5,8 @@ App({
     console.log('app');
 
     //设置基本接口全局变量
-    this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
-    //this.globalData.apiUrl = 'http://school.dev/api/wechat';
+    //this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
+    this.globalData.apiUrl = 'http://school.dev/api/wechat';
 
   
     //七牛图片外链域名
@@ -226,6 +226,21 @@ App({
   getUploadToken: function (callback) {
 
     this.setUploadToken(callback);
+
+  },
+
+  /**
+   * 获取新的消息盒子
+   */
+  getNewInbox:function(type,callback){
+
+    this.http('GET', `/new/${type}/inbox`, {}, function (res) {
+
+      console.log(res);
+
+      callback(res);
+
+    });
 
   },
 

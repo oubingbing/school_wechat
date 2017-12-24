@@ -12,7 +12,8 @@
     "pages/post_match/post_match",
     "pages/letter/letter",
     "pages/message/message",
-    "pages/suggestion/suggestion"
+    "pages/suggestion/suggestion",
+    "pages/friends/friends"
   ],
   "window":{
     "backgroundTextStyle":"light",

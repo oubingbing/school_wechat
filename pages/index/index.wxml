@@ -14,10 +14,18 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='all'>全部</view>
-      <view class='follow'>关注</view>
-      <view class='new'>最新</view>
-      <view class='hot'>最热</view>
+      <view class='all {{select==1?"selected":""}}' 
+            bindtap="selected" 
+            data-type="1">全部</view>
+      <view class='follow {{select==2?"selected":""}}' 
+            bindtap="selected" 
+            data-type='2'>关注</view>
+      <view class='new {{select==3?"selected":""}}' 
+            bindtap="selected" 
+            data-type='3'>最新</view>
+      <view class='hot {{select==4?"selected":""}}' 
+            bindtap="selected" 
+            data-type='4'>最热</view>
     </view>
   </view>
 
@@ -44,7 +52,14 @@
         <view class="user-name">
           <view wx:if="{{item.private == 0}}">{{item.poster.nickname}}</view>
           <view wx:if="{{item.private == 1}}">匿名者</view>
-          <view class='follow'>关注</view>
+          <view class='follow' 
+                bindtap="follow" 
+                wx:if="{{!item.follow}}"
+                data-obj="{{item.id}}">关注</view>
+          <view class='had-follow' 
+                wx:if="{{item.follow}}"
+                bindtap="cancelFolllow" 
+                data-obj="{{item.id}}">已关注</view>
         </view>
           <view class="content">{{item.content}}</view>
           <view class="single-image" wx:if='{{item.attachments.length==1}}'>
@@ -82,7 +97,7 @@
                 <image src='/image/letter1.png' 
                 style='width:60rpx;height:60rpx'
                 bindtap='letter'
-                data-obj="{{item.id}}"></image>
+                data-obj="{{item.poster.id}}"></image>
                 <image src='/image/pinglun.png' 
                 bindtap='showCommentInput' 
                 data-objid="{{item.id}}"
@@ -98,22 +113,32 @@
               </view>
              </view>
           </view>
-          <view class="comment" wx:if="{{item.praises.length > 0 || item.comments.length > 0}}">
+          <view class="comment" 
+                wx:if="{{item.praises.length > 0 || item.comments.length > 0}}">
             <view class="qipao"></view>
             <view class="comment-detail">
               <view class="praise-container" 
                     wx:if="{{item.praises.length > 0}}">
                 <view class='praise-icon'>
-                  <image class='praise-user praise-item' src='/image/praise_user.png'></image>
+                  <image class='praise-user praise-item' 
+                     src='/image/make_praise.png'></image>
                 </view>
                 <view class='praise-content'>
-                  <view class='praise-item' wx:for="{{item.praises}}" wx:key="{{item.praises}}">
+                  <view class='praise-item' 
+                  wx:for="{{item.praises}}" 
+                  wx:key="{{item.praises}}">
                   <view class='praise-item-sub'>
-                    <view><image class='praise-user-avatar' src='{{item.avatar}}'></image></view>
+                    <view>
+                      <image class='praise-user-avatar' 
+                             src='{{item.avatar}}'></image>
+                    </view>
                     <view class='praise-user-name'>{{item.nickname}}</view>
                   </view>
                 </view>
                 </view>
+              </view>
+              <view class='line' 
+                    wx:if="{{item.comments.length > 0 && item.praises.length > 0}}">
               </view>
               <view class='comment-user-wall' wx:if='{{item.comments.length > 0}}'>
                 <view class='comment-user-container' 
@@ -125,8 +150,8 @@
                         data-refid="{{sub.id}}" 
                         data-objtype='2'>
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
-                          <view class="comment-user">{{sub.commenter.nickname}}：</view>
-                          <view>{{sub.content}}</view>
+                          <view class="comment-user inline-item">{{sub.commenter.nickname}}：</view>
+                          <view class='inline-item'>{{sub.content}}</view>
                         </view>
                         <view class='comment-ref-user-container' 
                               wx:if="{{sub.ref_comment}}">

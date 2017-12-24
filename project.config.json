@@ -12,7 +12,7 @@
 	"projectname": "%E6%A0%A1%E5%9B%AD%E7%A5%9E%E8%AF%9D",
 	"condition": {
 		"weapp": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -63,16 +63,34 @@
 					"query": "id=8"
 				},
 				{
-					"id": -1,
+					"id": 8,
 					"name": "私信",
 					"pathName": "pages/letter/letter",
-					"query": ""
+					"query": "friend_id=5"
 				},
 				{
 					"id": 9,
 					"name": "消息列表",
 					"pathName": "pages/message/message",
 					"query": "type=0&new_message=1"
+				},
+				{
+					"id": 10,
+					"name": "私信",
+					"pathName": "pages/letter/letter",
+					"query": "friend_id=5"
+				},
+				{
+					"id": -1,
+					"name": "好友列表",
+					"pathName": "pages/friends/friends",
+					"query": "friend_id=5"
+				},
+				{
+					"id": -1,
+					"name": "好友列表",
+					"pathName": "pages/friends/friends",
+					"query": "friend_id=5"
 				}
 			]
 		},

@@ -7,7 +7,7 @@ page{
 }
 
 .sale-item{
-  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,13 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+
+.user-avatar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .user-avatar image{
@@ -28,9 +35,19 @@ page{
   height: 80rpx;
   border-radius: 40rpx;
   margin-left: 15rpx;
-  margin-top: 9rpx;
+}
+.follow{
+  margin-right: 15rpx;
+  font-size: 30rpx;
+  color: #BEBEBE;
 }
 
+.had-follow{
+  font-size: 30rpx;
+  font-weight: 200;
+  margin-right: 15rpx;
+  color: red;
+}
 .user-name{
   font-size: 3prx;
   font-weight: 200;
@@ -166,7 +183,7 @@ page{
 .post-container{
   position:fixed;
   right:18rpx;
-  top:5rpx;
+  top:60rpx;
   z-index:100;
   width: 80prx;
   height: 80prx;

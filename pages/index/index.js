@@ -27,10 +27,13 @@ Page({
     currentTime: '',
     notDataTips:false,
     newMessage:false,
-    newMessageNumber:0
+    newMessageNumber:0,
+    select: 1
   },
 
   onLoad: function () {
+
+    wx.showLoading()
 
     console.log('工具类' + uploader.formatTime(new Date()));
     //设置当前时间
@@ -40,48 +43,76 @@ Page({
 
     let _this = this;
 
-    let token = wx.getStorageSync('token');
-    console.log('获取到token:' + token);
+      let token = wx.getStorageSync('token');
+      console.log('获取到token:' + token);
 
-    this.getSchool(_this);
+      _this.getSchool(_this);
 
-    //获取缓存的贴子列表
-    let posts = wx.getStorageSync('posts');
-    if (posts) {
-      this.setData({
-        posts: posts
-      });
-    }
+      //获取缓存的贴子列表
+      let posts = wx.getStorageSync('posts');
+      if (posts) {
+        _this.setData({
+          posts: posts
+        });
+      }
 
-    this.getNewPost(res=>{
-      
-    });
+      _this.getNewPost();
 
   },
   onShow: function () {
     console.log('on show');
 
     let _this = this;
-    this.getSchool(_this);
 
-    //this.getNewPost();
-    this.getMostNewPost();
+      _this.getSchool(_this);
 
-    let type = 0;
-    app.getNewInbox(type,function(res){
-      console.log("新消息数量：" + res.data.data);
-      if(res.data.data != 0){
-        _this.setData({
-          newMessage:true,
-          newMessageNumber:res.data.data
-        });
-      }else{
-        _this.setData({
-          newMessage: false,
-          newMessageNumber: 0
-        });
-      }
+      //this.getNewPost();
+      _this.getMostNewPost();
+
+      let type = 0;
+      app.getNewInbox(type, function (res) {
+        console.log("新消息数量：" + res.data.data);
+        if (res.data.data != 0) {
+          _this.setData({
+            newMessage: true,
+            newMessageNumber: res.data.data
+          });
+        } else {
+          _this.setData({
+            newMessage: false,
+            newMessageNumber: 0
+          });
+        }
+      });
+  },
+
+  /**
+   * 获取具体类型的贴子
+   */
+  selected(e) {
+    console.log(e);
+    console.log('selected');
+    console.log(e.target.dataset.type);
+
+    let objType = e.target.dataset.type;
+    this.setData({
+      select: objType
+    })
+
+    //getPost: function (_this, objType = null) 
+
+    this.setData({
+      pageNumber: this.data.initPageNumber
     });
+
+    let _this = this;
+
+    if(objType == 3){
+      this.getMostNewPost();
+    }else{
+      this.getPost(_this, objType);
+    }
+
 
   },
   /**
@@ -227,7 +258,7 @@ Page({
   },
 
   /** 获取贴子 */
-  getPost: function (_this) {
+  getPost: function (_this,objType=null) {
 
     console.log('function getPost');
 
@@ -237,7 +268,8 @@ Page({
 
     app.http('get', '/post', {
       page_size: this.data.pageSize,
-      page_number: this.data.pageNumber
+      page_number: this.data.pageNumber,
+      obj_type: objType
     }, res => {
 
       this.setData({
@@ -576,21 +608,87 @@ Page({
 
   },
 
-  /** 关注 */
-  follow: function (e) {
-
-  },
-
   /** 取消关注 */
   cancelFollow: function (e) {
 
   },
   letter:function(e){
     console.log('跳转到私信');
-    wx.navigateTo({
-      url: '/pages/letter/letter'
-    })
+    console.log(e.target.dataset.obj);
+
+    let id = e.target.dataset.obj;
+
+     wx.navigateTo({
+       url: '/pages/letter/letter?friend_id=' + id
+     })
+  },
+  /**
+   * 关注
+   */
+  follow:function(e){
+
+    console.log(e);
+
+    let _this = this;
+    let objId = e.target.dataset.obj;
+
+    console.log(objId);
+
+    app.http('post', '/follow', {
+      obj_id:objId,
+      obj_type:1
+    }, function (res) {
+
+      console.log(res.data);
+
+      let follow = res.data.data;
+      let post = _this.data.posts;
+
+      let newPost = post.map(item=>{
+
+        if (item.id == follow.obj_id){
+          item.follow = true;
+        }
+
+        return item;
+      });
+
+      _this.setData({
+        posts:newPost
+      });
+    });
+  },
+  /**
+   * 取消关注
+   */
+  cancelFolllow:function(e){
+
+    let _this = this;
+    let objId = e.target.dataset.obj;
+
+    app.http('patch', `/cancel/${objId}/follow/1`, {}, function (res) {
+
+      console.log(res.data);
+
+      let follow = res.data.data;
+      let post = _this.data.posts;
+
+      let newPost = post.map(item => {
+
+        if (item.id == objId) {
+          item.follow = false;
+        }
+
+        return item;
+      });
+
+      _this.setData({
+        posts: newPost
+      });
+    });
+
   }
+
 
 
 })

@@ -24,6 +24,13 @@
   align-items: center;
 }
 
+.delete-message{
+  background: darkgray;
+  font-size: 30rpx;
+  padding: 5rpx;
+  border-radius: 5rpx;
+}
+
 .message-item .item{
   width: 95%;
   display: flex;
@@ -73,8 +80,8 @@
 }
 
 .praise image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .right .content{

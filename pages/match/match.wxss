@@ -12,7 +12,7 @@ page{
 .match-container .match-item{
   width: 100%;
   background: white;
-  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   border-radius: 7rpx;
 }
 
@@ -26,6 +26,7 @@ page{
   border-bottom-style:solid;
   border-width:1rpx;
   border-color: #EEE9E9;
+  justify-content: space-between;
 }
 
 .header image{
@@ -34,6 +35,26 @@ page{
   border-radius: 50rpx;
   margin-right: 10rpx;
   margin-left: 15rpx;
+}
+
+.header-left{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.follow{
+  font-size: 30rpx;
+  font-weight: 200;
+  color: #BEBEBE;
+  margin-right: 15rpx;
+}
+
+.had-follow{
+  font-size: 30rpx;
+  font-weight: 200;
+  color: red;
+  margin-right: 15rpx;
 }
 
 .match-container .content{
@@ -78,8 +99,8 @@ page{
 }
 
 .zan image{
-  width: 60rpx;
-  height: 60rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 10rpx;
 }
 
@@ -94,7 +115,7 @@ page{
 .post-container{
   position:fixed;
   right:18rpx;
-  top:5rpx;
+  top:60rpx;
   z-index:100;
   width: 80prx;
   height: 80prx;

@@ -11,7 +11,9 @@ Page({
     pageNumber: 1,
     initPageNumber: 1,
     showGeMoreLoadin: false,
-    notDataTips: false
+    notDataTips: false,
+    newMessage: false,
+    newMessageNumber: 0
   },
   onLoad: function () {
     this.getList();
@@ -29,6 +31,24 @@ Page({
     console.log('当前时间：' + this.data.currentTime);
 
     this.getMostNewData();
+
+    let _this = this;
+
+    let type = 0;
+    app.getNewInbox(type, function (res) {
+      console.log("新消息数量：" + res.data.data);
+      if (res.data.data != 0) {
+        _this.setData({
+          newMessage: true,
+          newMessageNumber: res.data.data
+        });
+      } else {
+        _this.setData({
+          newMessage: false,
+          newMessageNumber: 0
+        });
+      }
+    });
 
   },
   /**
@@ -51,6 +71,15 @@ Page({
 
     wx.navigateTo({
       url: '/pages/comment_sale/comment_sale?id='+id
+    })
+  },
+
+  /**
+   * 进入新消息列表
+   */
+  openMessage: function () {
+    wx.navigateTo({
+      url: '/pages/message/message?type=0&new_message=1'
     })
   },
 
@@ -242,6 +271,72 @@ Page({
         sales:newSales
       });
 
+    });
+
+  },
+  /**
+ * 关注
+ */
+  follow: function (e) {
+
+    console.log(e);
+
+    let _this = this;
+    let objId = e.target.dataset.obj;
+
+    console.log(objId);
+
+    app.http('post', '/follow', {
+      obj_id: objId,
+      obj_type: 2
+    }, function (res) {
+
+      console.log(res.data);
+
+      let follow = res.data.data;
+      let sales = _this.data.sales;
+
+      let newSale = sales.map(item => {
+
+        if (item.id == follow.obj_id) {
+          item.follow = true;
+        }
+
+        return item;
+      });
+
+      _this.setData({
+        sales: newSale
+      });
+    });
+  },
+  /**
+   * 取消关注
+   */
+  cancelFolllow: function (e) {
+
+    let _this = this;
+    let objId = e.target.dataset.obj;
+
+    app.http('patch', `/cancel/${objId}/follow/2`, {}, function (res) {
+
+      console.log(res.data);
+
+      let follow = res.data.data;
+      let sales = _this.data.sales;
+
+      let newSale = sales.map(item => {
+
+        if (item.id == objId) {
+          item.follow = false;
+        }
+
+        return item;
+      });
+
+      _this.setData({
+        sales: newSale
+      });
     });
 
   }

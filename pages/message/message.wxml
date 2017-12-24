@@ -10,8 +10,14 @@
             </view>
             <view class='content'>
               <view class='username'>{{item.from_user.nickname}}</view>
-              <view class='message' wx:if="{{item.action_type == 1}}">{{item.obj.content}}</view>
-              <view class='praise' wx:if="{{item.action_type == 2}}">
+              <view class='message' 
+                    wx:if="{{item.action_type == 1 && item.parentObj.length != 0}}">{{item.obj.content}}</view>
+
+              <view class='message delete-message' 
+                    wx:if="{{item.parentObj == null}}">该消息已被删除</view>
+                    
+              <view class='praise' 
+              wx:if="{{item.action_type == 2 && item.parentObj.length != 0}}">
                 <image src='/image/make_praise.png'></image>
               </view>
               <view class='created_at'>{{item.created_at}}</view>
@@ -19,12 +25,14 @@
             <view class='right'>
               <view class='image' 
                     wx:if="{{item.parentObj.attachments.length != 0}}">
-                    <image src='{{baseImageUrl+item.parentObj.attachments[0]}}'></image>
+                    <image mode='aspectFill' 
+                    src='{{baseImageUrl+item.parentObj.attachments[0]}}'></image>
                     </view>
               <view class='content' 
                     wx:if="{{item.parentObj.attachments.length == 0}}">
-                   的地方对方答复的辅导辅导费对方答复的辅导辅导费对方答复
+                      {{item.parentObj.content}} 
                     </view>
+                  
             </view>
           </view>
       </view>

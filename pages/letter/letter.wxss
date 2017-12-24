@@ -14,6 +14,7 @@
   flex-direction: column;
   margin-top: 15rpx;
   margin-bottom: 135rpx;
+  
 }
 
 .letter-content .content-item{
@@ -29,7 +30,6 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
 }
 
 .content-item-left .message-container{
@@ -64,7 +64,7 @@
 }
 
 .message-container .right-message{
-  background: #48D1CC;
+  background: #37C6C0;
   color: white;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,8 @@
 }
 
 .message-container .left-message{
-  background: white;
+  background: #011935;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;

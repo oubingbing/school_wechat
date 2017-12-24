@@ -28,6 +28,32 @@ page{
   flex-direction: row;
 }
 
+.article{
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+  height: 80rpx;
+  align-items: center;
+}
+
+.letter{
+  display: flex;
+  flex-direction: row;
+  margin-right: 20rpx;
+  align-items: center;
+}
+
+.word{
+  margin-left: 20rpx;
+
+}
+
+.letter image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+}
+
 .bg-container .user-image{
   width: 150rpx;
   height: 150rpx;
@@ -53,6 +79,8 @@ page{
 
 .user-info .user-name{
   margin-top: 80rpx;
+  width: 35%;
+  text-align: center;
 }
 
 

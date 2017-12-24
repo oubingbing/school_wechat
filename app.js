@@ -56,7 +56,7 @@ App({
   },
 
   /** 获取token */
-  getToken: function (_this, openId) {
+  getToken: function (_this, openId,callback=null) {
 
     console.log('function getToen');
 
@@ -87,6 +87,10 @@ App({
                   wx.setStorageSync('token', res.data.data);
 
                   console.log('获得token');
+
+                  if(callback){
+                    callback(res.data.data);
+                  }
                 }
               })
 
@@ -178,28 +182,37 @@ App({
 
           if (res.data.error_code == 4000) {
             console.log('token非法');
-            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            setTimeout(function(){
+              _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            },2000);
           }
 
           if (res.data.error_code == 4004) {
             console.log('未授权');
-            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            setTimeout(function(){
+              _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            },2000);
           }
 
           if (res.data.error_code == 4001) {
             console.log('token过期了');
-            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            setTimeout(function(){
+              _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            },2000);
           }
 
           if (res.data.error_code == 5000) {
             console.log('token缺失');
-            _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            setTimeout(function(){
+              _this.refreshToken(_this, _this, _this.http(_method, _url, _data, callback));
+            },2000);
           }
 
+        }else{
+          wx.hideLoading();
+          callback(res);
         }
-
-        callback(res);
-
+    
       }
     })
 

@@ -10,12 +10,17 @@ Page({
   },
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/message/message?type=0'
+      url: '/pages/message/message?type=0&new_message=0'
     })
   },
   openLetter:function(){
       wx.navigateTo({
-        url: '/pages/suggestion/suggestion'
+        url: '/pages/friends/friends'
       })
+  },
+  openSugesstion: function () {
+    wx.navigateTo({
+      url: '/pages/suggestion/suggestion'
+    })
   }
 })

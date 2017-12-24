@@ -9,14 +9,26 @@
     </view>
   </view>
 
-  <view class='message-tip'>
-    <view class='tip-content'>2条新的消息</view>
+  <view class='message-tip' 
+        wx:if="{{newMessage}}" 
+        bindtap='openMessage'>
+    <view class='tip-content'>{{newMessageNumber}}条新消息</view>
   </view>
 
   <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
       <view class='header'>
-        <image src='{{item.user.avatar}}'></image>
-        <view>{{item.user.nickname}}</view>
+        <view class="header-left">
+          <image src='{{item.user.avatar}}'></image>
+          <view>{{item.user.nickname}}</view>
+          </view>
+           <view class='follow' 
+                bindtap="follow" 
+                wx:if="{{!item.follow}}"
+                data-obj="{{item.id}}">关注</view>
+          <view class='had-follow' 
+                wx:if="{{item.follow}}"
+                bindtap="cancelFolllow" 
+                data-obj="{{item.id}}">已关注</view>
       </view>
       <view class='content'>
         <view class='content-left content-item'>
@@ -34,7 +46,7 @@
       </view>
       <view class='comment-container'>
         <view class='zan'>
-          <image src='/image/praise_user.png'></image>
+          <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
         <view class='comment'>

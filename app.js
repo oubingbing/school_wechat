@@ -7,7 +7,6 @@ App({
     //设置基本接口全局变量
     //this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
     this.globalData.apiUrl = 'http://school.dev/api/wechat';
-
   
     //七牛图片外链域名
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
@@ -263,5 +262,9 @@ App({
     color: '0aecc3',
     imageUrl:'',
     bgImage:''
+    //  background-color: #F0F8FF;
+    //#73CB75
+    //E8E8E8
+
   }
 })

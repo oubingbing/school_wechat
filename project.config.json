@@ -91,6 +91,12 @@
 					"name": "好友列表",
 					"pathName": "pages/friends/friends",
 					"query": "friend_id=5"
+				},
+				{
+					"id": -1,
+					"name": "我的表白墙",
+					"pathName": "pages/post_list/post_list",
+					"query": ""
 				}
 			]
 		},

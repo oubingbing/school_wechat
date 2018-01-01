@@ -1,5 +1,5 @@
 page{
-  background-color: #F5F5F5;
+  background-color: #F0F8FF;
 }
 
 .sale-container{
@@ -7,6 +7,7 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20rpx;
 }
 
 .sale-item{
@@ -42,6 +43,7 @@ page{
 .follow{
   margin-right: 15rpx;
   font-size: 30rpx;
+  color: #BEBEBE;
 }
 
 .had-follow{
@@ -150,7 +152,7 @@ page{
   margin-left: 15rpx;
   border-top-style:solid;
   border-width:1rpx;
-  border-color: #F0F8FF;
+  border-color: #EEE9E9;
   margin-top: 10rpx;
 }
 
@@ -263,9 +265,11 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom-style:solid;
+  border-width:5rpx;
+  border-color: #F0F8FF;
   background: white;
-  margin-top: 2rpx;
-  margin-bottom: 20rpx;
+  margin-top: 5rpx;
 }
 
 .nav-bar-container .nav-bar{
@@ -279,6 +283,6 @@ page{
   margin-bottom: 5rpx;
 }
 
-.nav-bar .selected{
+.nav-bar .all{
   color: #FF4500;
 }

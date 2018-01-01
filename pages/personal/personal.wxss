@@ -1,5 +1,5 @@
 page{
-  background-color: #F0F8FF;
+  background-color: #F5F5F5;
   padding: 0rpx;
   margin: 0rpx;
 }

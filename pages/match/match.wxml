@@ -2,10 +2,10 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='all'>全部</view>
-      <view class='follow'>关注</view>
-      <view class='new'>最新</view>
-      <view class='hot'>最热</view>
+      <view class='new {{select==1?"selected":""}}' bindtap="selected" data-type="1">全部</view>
+      <view class='new {{select==2?"selected":""}}' bindtap="selected" data-type="2">关注</view>
+      <view class='new {{select==3?"selected":""}}' bindtap="selected" data-type="3">最新</view>
+      <view class='hot {{select==4?"selected":""}}' bindtap="selected" data-type="4">最热</view>
     </view>
   </view>
 
@@ -19,7 +19,13 @@
       <view class='header'>
         <view class="header-left">
           <image src='{{item.user.avatar}}'></image>
-          <view>{{item.user.nickname}}</view>
+          <view>
+            <view>{{item.user.nickname}}</view>
+            <view class="created-at">
+              <view>{{item.created_at}}</view>
+              <view class="delete" bindtap='delete' data-obj="{{item.id}}">删除</view>
+            </view>
+          </view>
           </view>
            <view class='follow' 
                 bindtap="follow" 
@@ -45,7 +51,7 @@
         </view>
       </view>
       <view class='comment-container'>
-        <view class='zan'>
+        <view class='zan' bindtap='praise' data-obj="{{item.id}}">
           <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
@@ -60,5 +66,16 @@
     <image src='/image/post.png' bindtap='post'></image>
   </view>
 </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{notDataTips}}">
+    <view>我是一只有底线的神~_~</view>
+  </view>
 
 </view>

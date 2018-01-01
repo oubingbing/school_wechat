@@ -4,17 +4,16 @@ let genderArray = ['男', '女', '人妖', '未知生物'];
 
 Page({
   data: {
-    sales:[],
+    sales: [],
     baseImageUrl: app.globalData.imageUrl,
-    currentTime:'',
+    currentTime: '',
     pageSize: 10,
     pageNumber: 1,
     initPageNumber: 1,
     showGeMoreLoadin: false,
     notDataTips: false,
     newMessage: false,
-    newMessageNumber: 0,
-    select: 1
+    newMessageNumber: 0
   },
   onLoad: function () {
     this.getList();
@@ -27,7 +26,7 @@ Page({
 
 
   },
-  onShow:function(){
+  onShow: function () {
 
     console.log('当前时间：' + this.data.currentTime);
 
@@ -52,93 +51,35 @@ Page({
     });
 
   },
-  /**
- * 获取具体类型的贴子
- */
-  selected:function(e) {
-    console.log('selected');
-    console.log(e.target.dataset.type);
-
-    let objType = e.target.dataset.type;
-    this.setData({
-      select: objType,
-      sales: []
-    })
-
-    this.setData({
-      pageNumber: this.data.initPageNumber
-    });
-
-    let _this = this;
-
-    _this.getList();
-
-  },
-  /**
-   * 进入发表页面
-   */
-  post: function () {
-    console.log('Post');
-
-    wx.navigateTo({
-      url: '/pages/post_sale/post_sale'
-    })
-  },
 
   /**
    * 进入品论页面
    */
-  comment:function(e){
-    
+  comment: function (e) {
+
     let id = e.currentTarget.dataset.objid;
 
     wx.navigateTo({
-      url: '/pages/comment_sale/comment_sale?id='+id
-    })
-  },
-
-  /**
-   * 进入新消息列表
-   */
-  openMessage: function () {
-    wx.navigateTo({
-      url: '/pages/message/message?type=0&new_message=1'
+      url: '/pages/comment_sale/comment_sale?id=' + id
     })
   },
 
   /**
    * 获取贴子列表
    */
-  getList:function(){
+  getList: function () {
 
     let _this = this;
-    let objType = this.data.select;
 
-    var order_by = 'created_at';
-    var sort_by = 'desc';
-
-    if (objType == 4) {
-      order_by = 'praise_number';
-      sort_by = 'desc';
-      console.log('最新');
-    }
-
-
-    if (this.data.postType == 3) {
-      this.setData({
-        pageNumber: this.data.initPageNumber
-      });
-    }
-
-    app.http('get',
-      `/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,
-     {},
-      res => {
+    app.http('get', '/sale_friends', {
+      page_size: this.data.pageSize,
+      page_number: this.data.pageNumber
+    }, res => {
 
       this.setData({
         showGeMoreLoadin: false
       });
-      
+
       console.log('返回的贴子数据');
       console.log(res.data.data.page_data);
       console.log('第几页' + this.data.pageNumber);
@@ -200,36 +141,36 @@ Page({
   /**
    * 获取当前最新的贴子
    */
-  getMostNewData:function(){
+  getMostNewData: function () {
 
     let _this = this;
 
     let time = this.data.currentTime;
 
-    app.http('get', '/most_new_sale_friend?time='+time, {}, res => {
+    app.http('get', '/most_new_sale_friend?time=' + time, {}, res => {
 
       let sales = _this.data.sales;
 
-      let data = 
+      let data =
 
-      res.data.data.map(item => {
+        res.data.data.map(item => {
 
-        let ifRepeat = false;
-        for(let sale of sales){
-          if(sale.id == item.id){
-            ifRepeat = true;
+          let ifRepeat = false;
+          for (let sale of sales) {
+            if (sale.id == item.id) {
+              ifRepeat = true;
+            }
           }
-        }
 
-        if(!ifRepeat){
-          sales.unshift(item);
-        }
+          if (!ifRepeat) {
+            sales.unshift(item);
+          }
 
-      });
+        });
 
       _this.setData({
-        sales:sales
-        });
+        sales: sales
+      });
 
       wx.stopPullDownRefresh();
 
@@ -246,28 +187,28 @@ Page({
   /**
    * 删除帖子
    */
-  delete:function(e){
+  delete: function (e) {
     console.log(e);
 
     let id = e.currentTarget.dataset.objid;
     let _this = this;
 
-    app.http('delete',`/delete/${id}/sale_friend`,{},res=>{
+    app.http('delete', `/delete/${id}/sale_friend`, {}, res => {
 
       console.log(res);
 
-      if(res.data.data){
+      if (res.data.data) {
 
         let oldSales = _this.data.sales;
-        let sales = oldSales.filter(item=>{
-          if(item.id != id){
+        let sales = oldSales.filter(item => {
+          if (item.id != id) {
             return item;
           }
 
         });
-        
+
         _this.setData({
-          sales:sales
+          sales: sales
         });
 
       }
@@ -278,7 +219,7 @@ Page({
   /**
    * 点赞
    */
-  praise:function(e){
+  praise: function (e) {
     console.log('点赞');
     let objId = e.currentTarget.dataset.objid;
     let objType = 2;
@@ -293,14 +234,14 @@ Page({
     let _this = this;
 
     app.http('post', `/praise`, {
-       obj_id: objId, 
-       obj_type: objType 
-       }, res => {
+      obj_id: objId,
+      obj_type: objType
+    }, res => {
       console.log('点赞成功' + res);
 
       let sales = _this.data.sales;
-      let newSales = sales.map(item=>{
-        if(item.id == objId){
+      let newSales = sales.map(item => {
+        if (item.id == objId) {
           item.praise_number += 1;
         }
 
@@ -308,7 +249,7 @@ Page({
       });
 
       _this.setData({
-        sales:newSales
+        sales: newSales
       });
 
     });

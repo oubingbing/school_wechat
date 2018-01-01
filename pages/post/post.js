@@ -34,7 +34,7 @@ Page({
   
     //_method, _url, _data, callback
     app.http('post','/post',{content:content,attachments:attachments,private:privateValue},res=>{
-      wx.navigateBack();
+      wx.navigateBack({comeBack:true});
       console.log(res);
     });
 

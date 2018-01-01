@@ -22,5 +22,20 @@ Page({
     wx.navigateTo({
       url: '/pages/suggestion/suggestion'
     })
+  },
+  opendPostList:function(){
+    wx.navigateTo({
+      url: '/pages/post_list/post_list'
+    })
+  },
+  openSaleList:function(){
+    wx.navigateTo({
+      url: '/pages/sale_list/sale_list'
+    })
+  },
+  openMatchList:function(){
+    wx.navigateTo({
+      url: '/pages/match_list/match_list'
+    })
   }
 })

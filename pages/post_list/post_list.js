@@ -11,7 +11,6 @@ Page({
     praiseBorder: '',
     notPraiseBorder: '',
     posts: [],
-    postType:1,
     baseImageUrl: app.globalData.imageUrl,
     show: 0,
     hidden: false,
@@ -26,15 +25,15 @@ Page({
     initPageNumber: 1,
     showGeMoreLoadin: false,
     currentTime: '',
-    notDataTips:false,
-    newMessage:false,
-    newMessageNumber:0,
+    notDataTips: false,
+    newMessage: false,
+    newMessageNumber: 0,
     select: 1
   },
 
-  onLoad: function (e) {
+  onLoad: function () {
 
-    wx.showLoading();
+    wx.showLoading()
 
     console.log('工具类' + uploader.formatTime(new Date()));
     //设置当前时间
@@ -44,75 +43,45 @@ Page({
 
     let _this = this;
 
-      let token = wx.getStorageSync('token');
-      console.log('获取到token:' + token);
+    let token = wx.getStorageSync('token');
+    console.log('获取到token:' + token);
 
-      _this.getSchool(_this);
-
-      _this.getPost(this);
-
-  },
-  onShow: function (option) {
-    console.log('on show');
-    console.log('显示页面');
-    console.log(option);
-
-    let _this = this;
-
-      _this.getSchool(_this);
-
-      _this.getMostNewPost();
-
-      let type = 0;
-      app.getNewInbox(type, function (res) {
-        console.log("新消息数量：" + res.data.data);
-        if (res.data.data != 0) {
-          _this.setData({
-            newMessage: true,
-            newMessageNumber: res.data.data
-          });
-        } else {
-          _this.setData({
-            newMessage: false,
-            newMessageNumber: 0
-          });
-        }
+    //获取缓存的贴子列表
+    let posts = wx.getStorageSync('posts');
+    if (posts) {
+      _this.setData({
+        posts: posts
       });
+    }
+
+    _this.getNewPost();
+
   },
-
-  /**
-   * 获取具体类型的贴子
-   */
-  selected(e) {
-    console.log(e);
-    console.log('selected');
-    console.log(e.target.dataset.type);
-
-    let objType = e.target.dataset.type;
-    this.setData({
-      select: objType,
-      postType:objType,
-      posts:[]
-    })
-
-    //getPost: function (_this, objType = null) 
-
-    this.setData({
-      pageNumber: this.data.initPageNumber
-    });
+  onShow: function () {
+    console.log('on show');
 
     let _this = this;
 
-    _this.getPost(this);
+    _this.getSchool(_this);
 
-  },
-  /**
-   * 进入新消息列表
-   */
-  openMessage: function () {
-    wx.navigateTo({
-      url: '/pages/message/message?type=0&new_message=1'
-    })
+    //this.getNewPost();
+    _this.getMostNewPost();
+
+    let type = 0;
+    app.getNewInbox(type, function (res) {
+      console.log("新消息数量：" + res.data.data);
+      if (res.data.data != 0) {
+        _this.setData({
+          newMessage: true,
+          newMessageNumber: res.data.data
+        });
+      } else {
+        _this.setData({
+          newMessage: false,
+          newMessageNumber: 0
+        });
+      }
+    });
   },
 
   /**
@@ -120,9 +89,9 @@ Page({
    */
   onPullDownRefresh: function () {
 
-    console.log('当前时间：'+this.data.currentTime);
+    console.log('当前时间：' + this.data.currentTime);
 
-      this.getMostNewPost();
+    this.getMostNewPost();
   },
 
   /**
@@ -159,48 +128,15 @@ Page({
     })
   },
 
-  /** 进入发表页面 */
-  post: function () {
-    console.log('Post');
-
-    wx.navigateTo({
-      url: '/pages/post/post'
-    })
-  },
-  selectSchool: function () {
-    console.log('select school');
-
-    wx.navigateTo({
-      url: '/pages/school/school'
-    })
-  },
-
-  /** 获取学校 */
-  getSchool: function (_this) {
-    console.log('get school');
-
-    app.http('GET', '/school', {}, function (res) {
-
-      console.log(res.data);
-
-      _this.setData({
-        school: res.data.data
-      });
-
-    });
-  },
-
   /** 获取最新的贴子 */
   getMostNewPost: function () {
-
-    let _this = this;
 
     //获取新的贴子
     app.http('get', '/most_new_post', {
       date_time: this.data.currentTime
     }, res => {
 
-      _this.setData({
+      this.setData({
         currentTime: uploader.formatTime(new Date())
       });
 
@@ -209,16 +145,18 @@ Page({
       console.log('返回的贴子数据');
       console.log(res.data.data);
 
-      let posts = _this.data.posts;
+      let posts = this.data.posts;
 
-      if(res.data.data.length > 0){
-        
-        res.data.data.map(item=>{
+      if (res.data.data.length > 0) {
+
+        res.data.data.map(item => {
+
           posts.unshift(item);
+
         });
 
-        _this.setData({
-          posts:posts
+        this.setData({
+          posts: posts
         });
 
       }
@@ -249,63 +187,42 @@ Page({
   },
 
   /** 获取贴子 */
-  getPost: function (_this,objType=null) {
+  getPost: function (_this, objType = null) {
 
     console.log('function getPost');
-    console.log(this.data.postType)
 
-    let that = this;
-
-    let order_by = 'created_at';
-    let sort_by = 'desc';
-
-    if (this.data.postType == 4){
-      order_by = 'praise_number';
-      sort_by = 'desc';
-    }
-
-    if (this.data.postType == 3){
-      this.setData({
-        pageNumber: this.data.initPageNumber
-      });
-    }
-
-    console.log(order_by)
-    console.log(sort_by)
-
-    _this.setData({
+    this.setData({
       notDataTips: false
     });
 
-    app.http('get',
-      `/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}`,
-      {}, 
-      res => {
+    app.http('get', '/post', {
+      page_size: this.data.pageSize,
+      page_number: this.data.pageNumber,
+      obj_type: objType
+    }, res => {
 
-      _this.setData({
+      this.setData({
         showGeMoreLoadin: false
       })
 
-      let posts = that.data.posts;
-
-      console.log("post数据："+posts);
+      let posts = this.data.posts;
 
       console.log('返回的贴子数据');
       console.log(res.data.data.page_data);
-      console.log('第几页' + _this.data.pageNumber);
+      console.log('第几页' + this.data.pageNumber);
 
       if (res.data.data.page_data.length > 0) {
         res.data.data.page_data.map(item => {
           posts.push(item);
         });
 
-        _this.setData({
+        this.setData({
           posts: posts,
-          pageNumber: _this.data.pageNumber + 1
+          pageNumber: this.data.pageNumber + 1
         });
-      }else{
-        _this.setData({
-          notDataTips:true
+      } else {
+        this.setData({
+          notDataTips: true
         });
       }
 
@@ -624,20 +541,20 @@ Page({
   cancelFollow: function (e) {
 
   },
-  letter:function(e){
+  letter: function (e) {
     console.log('跳转到私信');
     console.log(e.target.dataset.obj);
 
     let id = e.target.dataset.obj;
 
-     wx.navigateTo({
-       url: '/pages/letter/letter?friend_id=' + id
-     })
+    wx.navigateTo({
+      url: '/pages/letter/letter?friend_id=' + id
+    })
   },
   /**
    * 关注
    */
-  follow:function(e){
+  follow: function (e) {
 
     console.log(e);
 
@@ -647,8 +564,8 @@ Page({
     console.log(objId);
 
     app.http('post', '/follow', {
-      obj_id:objId,
-      obj_type:1
+      obj_id: objId,
+      obj_type: 1
     }, function (res) {
 
       console.log(res.data);
@@ -656,9 +573,9 @@ Page({
       let follow = res.data.data;
       let post = _this.data.posts;
 
-      let newPost = post.map(item=>{
+      let newPost = post.map(item => {
 
-        if (item.id == follow.obj_id){
+        if (item.id == follow.obj_id) {
           item.follow = true;
         }
 
@@ -666,14 +583,15 @@ Page({
       });
 
       _this.setData({
-        posts:newPost
+        posts: newPost
       });
     });
   },
+  
   /**
    * 取消关注
    */
-  cancelFolllow:function(e){
+  cancelFolllow: function (e) {
 
     let _this = this;
     let objId = e.target.dataset.obj;

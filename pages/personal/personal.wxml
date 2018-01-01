@@ -26,15 +26,15 @@
   </view>
 
   <view class='content-container'>
-    <view class='content-item say-love'>
+    <view class='content-item say-love' bindtap="opendPostList">
       <view><image src='/image/color-love.png' class='item-image'></image></view>
       <view class='word'>表白墙</view>
     </view>
-    <view class='content-item sale'>
+    <view class='content-item sale' bindtap="openSaleList">
       <view><image src='/image/select-sale.png' class='item-image'></image></view>
       <view class='word'>卖舍友</view>
     </view>
-    <view class='content-item hide-love'>
+    <view class='content-item hide-love' bindtap="openMatchList">
       <view><image src='/image/color-pipei.png' class='item-image'></image></view>
       <view class='word'>暗恋匹配</view>
     </view>

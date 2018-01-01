@@ -13,17 +13,20 @@
     "pages/letter/letter",
     "pages/message/message",
     "pages/suggestion/suggestion",
-    "pages/friends/friends"
+    "pages/friends/friends",
+    "pages/post_list/post_list",
+    "pages/sale_list/sale_list",
+    "pages/match_list/match_list"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "神话校园",
     "navigationBarTextStyle":"black"
   },
     "tabBar": {
       "color": "#7A7E83",
-      "selectedColor": "#0aecc3",
+      "selectedColor": "#73CB75",
       "borderStyle": "black",
       "backgroundColor": "#ffffff",
       "list": [

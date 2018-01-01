@@ -21,7 +21,7 @@
   </view>
 
   <view class='message' bindtap='openMessage'>
-    <view><image src='/image/comment.png' class='item-image'></image></view>
+    <view><image src='/image/my-message.png' class='item-image'></image></view>
     <view class='word'>消息</view>
   </view>
 

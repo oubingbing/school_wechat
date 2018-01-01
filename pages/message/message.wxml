@@ -2,7 +2,10 @@
   <view class='message-content'>
 
         <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
-          <view class='item'>
+          <view class='item' 
+                bindtap="opendDetail" 
+                data-type="{{item.obj.obj_type}}"
+                data-id="{{item.obj.obj_id}}">
             <view class='left'>
               <view>
                 <image src='{{item.from_user.avatar}}'></image>

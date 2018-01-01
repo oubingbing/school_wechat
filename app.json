@@ -16,7 +16,9 @@
     "pages/friends/friends",
     "pages/post_list/post_list",
     "pages/sale_list/sale_list",
-    "pages/match_list/match_list"
+    "pages/match_list/match_list",
+    "pages/post_detail/post_detail",
+    "pages/match_detail/match_detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

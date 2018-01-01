@@ -30,5 +30,30 @@ Page({
 
     });
 
+  },
+  opendDetail:function(e){
+    let objType = e.currentTarget.dataset.type;
+    let id = e.currentTarget.dataset.id;
+    console.log(objType);
+    console.log(e);
+
+    if (objType == 1){
+        wx.navigateTo({
+          url: `/pages/post_detail/post_detail?id=${id}`
+        })
+    }
+
+    if (objType == 2) {
+      wx.navigateTo({
+        url: `/pages/comment_sale/comment_sale?id=${id}`
+      })
+    }
+
+    if (objType == 3) {
+      wx.navigateTo({
+        url: `/pages/match_detail/match_detail?id=${id}`
+      })
+    }
+
   }
 })

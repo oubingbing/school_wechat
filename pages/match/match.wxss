@@ -216,7 +216,6 @@ page{
 
 .no-more-data{
   width: 100%;
-  background: white;
   padding-top: 20rpx;
   padding-bottom: 20rpx;
   justify-content: space-around;

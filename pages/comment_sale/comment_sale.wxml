@@ -10,10 +10,18 @@
     <view class='content'>
       <view class='craete_at'>{{sale.created_at}}</view>
       <view class='content-detail'>
-        <view class='detail-item detail-item-user'>{{sale.name}}</view>
-        <view class='detail-item detail-item-gender'>{{sale.gender}}</view>
-        <view class='detail-item detail-item-major'>{{sale.major}}</view>
-        <view class='detail-item detail-item-like'>{{sale.expectation}}</view>
+        <view class='detail-item detail-item-user'>
+          {{sale.name}}
+        </view>
+        <view class='detail-item detail-item-gender'>
+          {{sale.gender}}
+        </view>
+        <view class='detail-item detail-item-major'>
+          {{sale.major}}
+        </view>
+        <view class='detail-item detail-item-like'>
+          {{sale.expectation}}
+        </view>
       </view>
       <view class='show-self'>{{sale.introduce}}</view>
       <view class='image-container'>
@@ -28,7 +36,9 @@
   
     <view class='comment-wall'>
         <view class='comment-header'>
-          <view class='zan' bindtap='praise' data-objid="{{sale.id}}">
+          <view class='zan' 
+                bindtap='praise' 
+                data-objid="{{sale.id}}">
             <view>赞</view>
             <view>{{sale.praise_number}}</view>
           </view>
@@ -54,8 +64,13 @@
           </view>
         </view>
         <view class='right'>
-          <view class='comment-name right-item'>{{item.commenter.nickname}}</view>
-          <view class='content right-item'>{{item.content}}</view>
+          <view 
+            class='comment-name right-item'>
+              {{item.commenter.nickname}}
+          </view>
+          <view class='content right-item'>
+            {{item.content}}
+          </view>
           <view class='create_at right-item'>
             <view>{{item.created_at}}</view>
             <view class='comment-icon'>
@@ -66,7 +81,8 @@
                 data-refid=""></image>
             </view>
           </view>
-          <view class='reply-comment' wx:if="{{item.sub_comments.length > 0}}">
+          <view class='reply-comment' 
+              wx:if="{{item.sub_comments.length > 0}}">
             <view class='reply-container' 
                   wx:for="{{item.sub_comments}}" 
                   wx:key="{{item.sub_comments}}" 
@@ -75,16 +91,28 @@
                     wx:if="{{!sub.ref_comment}}" 
                     data-objid="{{item.id}}"
                     data-type='4'
-                    bindtap='showCommentInput' 
-                    data-refid="{{sub.commenter.id}}">
-                <view class='reply-user'>{{sub.commenter.nickname}}：</view>
-                <view class='reply-content'>{{sub.content}}</view>
+                    data-refid="{{sub.id}}"
+                    bindtap='showCommentInput'>
+                <view class='reply-user'>
+                  {{sub.commenter.nickname}}：
+                </view>
+                <view class='reply-content'>
+                  {{sub.content}}
+                </view>
               </view>
-              <view class='reply-item' wx:if="{{sub.ref_comment}}">
-                <view class='reply-user'>{{sub.commenter.nickname}}</view>
+              <view 
+                  class='reply-item' 
+                  wx:if="{{sub.ref_comment}}">
+                <view class='reply-user'>
+                  {{sub.commenter.nickname}}
+                </view>
                 <view>回复</view>
-                <view class='reply-user'>{{sub.ref_comment.refCommenter.nickname}}：</view>
-              <view class='reply-content'>{{sub.content}}</view>
+                <view class='reply-user'>
+                  {{sub.ref_comment.refCommenter.nickname}}：
+                </view>
+              <view class='reply-content'>
+                {{sub.content}}
+              </view>
             </view>
             </view> 
           </view>

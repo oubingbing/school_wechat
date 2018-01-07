@@ -261,7 +261,10 @@ App({
     apiUrl: null,
     color: '0aecc3',
     imageUrl:'',
-    bgImage:''
+    bgImage:'',
+    changeSchoolPost:false,
+    changeSchoolSale: false,
+    changeSchoolMatch: false
     //  background-color: #F0F8FF;
     //#73CB75
     //E8E8E8

@@ -56,6 +56,9 @@ Page({
         console.log(学校不存在);
       }else{
         console.log('选择学校成功返回主页面');
+        app.globalData.changeSchoolPost = true;
+        app.globalData.changeSchoolSale = true;
+        app.globalData.changeSchoolMatch = true;
         wx.navigateBack();
       }
 

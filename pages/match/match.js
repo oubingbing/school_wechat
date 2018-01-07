@@ -20,13 +20,26 @@ Page({
       currentTime: uploader.formatTime(new Date())
     });
 
-
     this.getList();
-
   },
   onShow(){
 
-    this.getMostNewMatch();
+    if (app.globalData.changeSchoolMatch) {
+      //切换了学校
+      this.setData({
+        matchs: [],
+        pageNumber: this.data.initPageNumber
+      });
+      app.globalData.changeSchoolMatch = false;
+      this.getList();
+
+      //设置当前时间
+      this.setData({
+        currentTime: uploader.formatTime(new Date())
+      });
+    } else {
+      this.getMostNewMatch();
+    }
 
     let _this = this;
 
@@ -345,4 +358,12 @@ Page({
     });
 
   },
+  matchResult:function(e){
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
+
+    wx.navigateTo({
+      url: `/pages/match_result/match_result?id=${id}`
+    })
+  }
 })

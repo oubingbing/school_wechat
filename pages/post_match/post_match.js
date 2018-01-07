@@ -84,14 +84,11 @@ Page({
       wx.hideLoading();
       console.log(res);
 
-      if (res.data.data.error_code) {
-        wx.showLoading({
-          title: res.data.data.error_message,
+      if(res.data.data != null){
+        wx.navigateTo({
+          url: `/pages/match_result/match_result?id=${res.data.data.id}`
         })
-        setTimeout(res => {
-          wx.hideLoading();
-        }, 2000);
-      } else {
+      }else{
         wx.navigateBack();
       }
 

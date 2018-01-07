@@ -57,11 +57,27 @@ Page({
     console.log('显示页面');
     console.log(option);
 
+    console.log('学校是否变了:' + app.globalData.changeSchool);
+
     let _this = this;
 
-      _this.getSchool(_this);
-
+    if (app.globalData.changeSchoolPost) {
+      //切换了学校
+      this.setData({
+        posts: [],
+        pageNumber: this.data.initPageNumber
+      });
+      app.globalData.changeSchoolPost = false;
+      _this.getPost(this);
+      //设置当前时间
+      this.setData({
+        currentTime: uploader.formatTime(new Date())
+      });
+    }else{
       _this.getMostNewPost();
+    }
+
+      _this.getSchool(_this);
 
       let type = 0;
       app.getNewInbox(type, function (res) {

@@ -1,0 +1,41 @@
+<view class="letter-container">
+  <view style="height: 1100rpx;" class='letter-content' wx:if="{{result.length>0}}">
+
+    <view>
+      <view class='content-item content-item-left'>
+        <view class='avatar'>
+          <image src='{{result[0]["user"]["avatar"]}}'>
+          </image>
+        </view>
+        <view class='message-container'>
+          <view class='left-message'>
+            <view class='user'>{{result[0]['user']['nickname']}}({{result[0]['user_name']}})</view>
+            <view class='content'>{{result[0]['content']}}</view>
+            <view class='created-at'>{{result[0]['created_at']}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class='content-item content-item-right'>
+      <view class='message-container'>
+        <view class='right-message'>
+          <view class='user'>{{result[1]['user']['nickname']}}({{result[1]['user_name']}})</view>
+          <view class='content'>{{result[1]['content']}}</view>
+          <view class='created-at'>{{result[1]['created_at']}}</view>
+        </view>
+      </view>
+        <view class='avatar'>
+          <image src='{{result[1]["user"]["avatar"]}}'>
+          </image>
+        </view>
+      </view>
+    </view>
+
+      <view class="bless">
+        缘分是天注定，你喜欢的人正好也喜欢你，这是人世间做美好的事儿，珍惜你的ta，祝福你们。
+      </view>
+
+
+  </view>
+
+</view>

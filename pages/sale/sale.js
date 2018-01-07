@@ -31,7 +31,21 @@ Page({
 
     console.log('当前时间：' + this.data.currentTime);
 
-    this.getMostNewData();
+    if (app.globalData.changeSchoolSale) {
+      //切换了学校
+      this.setData({
+        sales: [],
+        pageNumber: this.data.initPageNumber
+      });
+      app.globalData.changeSchoolSale = false;
+      this.getList();
+      //设置当前时间
+      this.setData({
+        currentTime: util.formatTime(new Date())
+      });
+    }else{
+      this.getMostNewData();
+    }
 
     let _this = this;
 

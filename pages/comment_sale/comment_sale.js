@@ -54,7 +54,9 @@ Page({
     let type = e.currentTarget.dataset.type;
     let refId = e.currentTarget.dataset.refid;
 
-    console.log(type)
+    console.log(e)
+
+    console.log('评论人的Id:'+refId);
 
     this.setData({
       showCommentInput: true,

@@ -109,6 +109,12 @@
 					"name": "匹配详情详情",
 					"pathName": "pages/match_detail/match_detail",
 					"query": ""
+				},
+				{
+					"id": 16,
+					"name": "匹配结果",
+					"pathName": "pages/match_result/match_result",
+					"query": "username=我&match_name=你"
 				}
 			]
 		},

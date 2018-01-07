@@ -18,7 +18,8 @@
     "pages/sale_list/sale_list",
     "pages/match_list/match_list",
     "pages/post_detail/post_detail",
-    "pages/match_detail/match_detail"
+    "pages/match_detail/match_detail",
+    "pages/match_result/match_result"
   ],
   "window":{
     "backgroundTextStyle":"light",

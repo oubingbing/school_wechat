@@ -55,6 +55,14 @@
           <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
+
+        <view class='zan' 
+              bindtap='matchResult' 
+              data-id="{{item.id}}"
+              wx:if="{{item.can_see && item.status==2}}">
+              <image src='/image/success.png'></image>
+        </view>
+
         <view class='comment'>
           <image src='/image/letter.png'></image>
         </view>

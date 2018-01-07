@@ -1,0 +1,127 @@
+.letter-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+}
+
+.letter-container .letter-content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15rpx;
+  margin-bottom: 135rpx;
+  
+}
+
+.letter-content .content-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 50rpx;
+}
+
+.content-item-left .avatar{
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.content-item-left .message-container{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.created-at{
+  font-size: 30rpx;
+}
+
+.content-item-right{
+  justify-content:flex-end;
+}
+
+.content-item-right .avatar{
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.content-item-right .message-container{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.content-item image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.message-container .right-message{
+  background: #37C6C0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.right-message .user{
+  text-align: right;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  padding-bottom: 15rpx;
+}
+
+.message-container .left-message{
+  background: #FFB6C1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  border-style:solid;
+  border-width:1rpx;
+  border-color: white;
+}
+
+.left-message .user{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  padding-bottom: 15rpx;
+}
+
+.left-message .content{
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  font-size: 35rpx;
+}
+
+.right-message .content{
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  font-size: 35rpx;
+}
+
+
+.bless{
+  margin-top: 40rpx;
+  background: #F5F5F5;
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: gray;
+}

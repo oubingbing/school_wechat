@@ -8,83 +8,113 @@
   border-color: #F0F8FF;
 }
 
-.letter-container .letter-content{
+.letter-content{
   width: 95%;
   display: flex;
   flex-direction: column;
-  margin-top: 15rpx;
-  margin-bottom: 135rpx;
-  
+  margin-bottom: 50rpx;
 }
 
-.letter-content .content-item{
+.scroll-view-item{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.scroll-view-item .user-left{
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-top: 20rpx;
-  margin-bottom: 15rpx;
 }
 
-.content-item-left .avatar{
+.user-left .left-content-avatar{
   width: 15%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
-.content-item-left .message-container{
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.content-item-right{
-  justify-content:flex-end;
-}
-
-.content-item-right .avatar{
-  width: 15%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.content-item-right .message-container{
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.content-item image{
+.left-content-avatar image{
   width: 80rpx;
   height: 80rpx;
   border-radius: 40rpx;
 }
 
-.message-container .right-message{
-  background: #37C6C0;
-  color: white;
+.left-content{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 70%;
+}
+
+.left-content .left-content-message{
+  display: flex;
+  flex-direction: row;
+}
+
+.left-content-message .left-content-item{
+  background: #48D1CC;
+  color: white;
   padding: 20rpx;
   border-radius: 20rpx;
 }
 
-.message-container .left-message{
-  background: #011935;
-  color: white;
+.left-content .left-time{
+  font-size: 30rpx;
+  color: darkgray;
+  margin-top: 15rpx;
+}
+
+/** right **/
+.scroll-view-item .user-right{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.user-right .right-content-avatar{
+  width: 15%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.right-content-avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.right-content{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  justify-content: flex-end;
+}
+
+.right-content .right-content-message{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.right-content-message .right-content-item{
+  background: #48D1CC;
+  color: white;
   padding: 20rpx;
   border-radius: 20rpx;
-  border-style:solid;
-  border-width:1rpx;
-  border-color: gainsboro;
 }
+
+.right-content .right-time{
+  font-size: 30rpx;
+  color: darkgray;
+  margin-top: 15rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 /** 底部发送 **/
 
@@ -144,3 +174,8 @@
   height: 75rpx;
   margin-left: 10rpx;
 }
+
+.hei{  
+  margin-top: 50px;  
+  height: 20rpx;  
+} 

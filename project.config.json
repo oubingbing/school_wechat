@@ -4,14 +4,27 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": false,
-		"minified": true
+		"minified": true,
+		"newFeature": true
 	},
-	"compileType": "weapp",
+	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
 	"appid": "wx46d5674c81153f30",
 	"projectname": "%E6%A0%A1%E5%9B%AD%E7%A5%9E%E8%AF%9D",
 	"condition": {
-		"weapp": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
 			"current": -1,
 			"list": [
 				{
@@ -115,16 +128,14 @@
 					"name": "匹配结果",
 					"pathName": "pages/match_result/match_result",
 					"query": "username=我&match_name=你"
+				},
+				{
+					"id": -1,
+					"name": "测试",
+					"pathName": "pages/logs/logs",
+					"query": ""
 				}
 			]
-		},
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
 		}
 	}
 }

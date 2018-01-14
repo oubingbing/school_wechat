@@ -91,3 +91,63 @@
   overflow: hidden;
   text-overflow:ellipsis;
 }
+
+/** 加载更多 **/
+
+.get-more{
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30rpx;
+  font-weight: 200;
+  width: 100%;
+  background: white;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.get-more image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.get-more .get-more-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.loading{
+  margin-left: 15rpx;
+}
+
+.no-more-data{
+  width: 100%;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25rpx;
+  font-weight: 200;
+  text-align: center;
+  color: darkgray;
+}
+
+.message-tip{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100rpx;
+  align-items: center;
+  background: white;
+}
+
+.message-tip .tip-content{
+  padding: 20rpx;
+  background: #575757;
+  color: white;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}

@@ -114,7 +114,7 @@
                         bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
                         data-objid="{{item.id}}"
                         data-refid="{{sub.id}}" 
-                        data-objtype='2'>
+                        data-objtype='1'>
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
                           <view class="comment-user inline-item">{{sub.commenter.nickname}}：</view>
                           <view class='inline-item'>{{sub.content}}</view>

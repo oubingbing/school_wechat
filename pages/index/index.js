@@ -29,10 +29,12 @@ Page({
     notDataTips:false,
     newMessage:false,
     newMessageNumber:0,
-    select: 1
+    select: 1,
+    animationData: {}
   },
 
   onLoad: function (e) {
+
 
     wx.showLoading();
 

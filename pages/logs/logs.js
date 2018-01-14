@@ -1,8 +1,21 @@
-var order = ['red', 'yellow', 'blue', 'green', 'red']
+var order = ['red', 'yellow', 'blue', 'green', 'red'];
+var data = [
+  { "color":"red","id":"a"},
+  { "color": "yellow", "id": "b" },
+  { "color": "blue", "id": "c" },
+  { "color": "red", "id": "d" },
+  { "color": "green", "id": "e" },
+  { "color": "yellow", "id": "f" },
+  { "color": "green", "id": "g" },
+  { "color": "blue", "id": "h" },
+  { "color": "red", "id": "o" },
+];
+
 Page({
   data: {
     toView: 'red',
-    scrollTop: 100
+    scrollTop: 100,
+    list:data
   },
   upper: function (e) {
     console.log(e)

@@ -62,7 +62,8 @@
                 data-obj="{{item.id}}">已关注</view>
         </view>
           <view class="content">{{item.content}}</view>
-          <view class="single-image" wx:if='{{item.attachments.length==1}}'>
+          <view class="single-image" 
+                wx:if='{{item.attachments.length==1}}'>
             <image mode="widthFix" 
                    class="image-item" 
                    wx:for="{{item.attachments}}" 
@@ -71,7 +72,8 @@
                    bindtap='previewImage'
                    id="{{baseImageUrl+item}}"></image>
           </view>
-          <view class='more-image' wx:if='{{item.attachments.length>1}}'>
+          <view class='more-image' 
+                wx:if='{{item.attachments.length>1}}'>
             <image mode="aspectFill" 
                    class="image-item" 
                    wx:for="{{item.attachments}}" 
@@ -89,7 +91,9 @@
                     bindtap='deletePost'>删除</view>
             </view>
             <view class='comment-container'>
-              <view class='comment-icon' wx:if="{{item.id==show}}">
+              <view
+               class='comment-icon' 
+              wx:if="{{item.id==show}}">
                 <image src='/image/zan.png' 
                 style='width:60rpx;height:60rpx'
                 data-obj="{{item.id}}"
@@ -132,7 +136,9 @@
                       <image class='praise-user-avatar' 
                              src='{{item.avatar}}'></image>
                     </view>
-                    <view class='praise-user-name'>{{item.nickname}}</view>
+                    <view class='praise-user-name'>
+                      {{item.nickname}}
+                    </view>
                   </view>
                 </view>
                 </view>
@@ -140,7 +146,8 @@
               <view class='line' 
                     wx:if="{{item.comments.length > 0 && item.praises.length > 0}}">
               </view>
-              <view class='comment-user-wall' wx:if='{{item.comments.length > 0}}'>
+              <view class='comment-user-wall' 
+                    wx:if='{{item.comments.length > 0}}'>
                 <view class='comment-user-container' 
                     wx:for="{{item.comments}}" 
                     wx:key="{{item.comments}}" wx:for-item="sub">
@@ -148,7 +155,7 @@
                         bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
                         data-objid="{{item.id}}"
                         data-refid="{{sub.id}}" 
-                        data-objtype='4'>
+                        data-objtype='1'>
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
                           <view class="comment-user inline-item">
                             {{sub.commenter.nickname}}：

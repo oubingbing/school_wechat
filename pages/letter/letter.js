@@ -1,5 +1,5 @@
 const util = require('../../utils/util.js')
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -7,7 +7,8 @@ Page({
     friendId:'',
     content:'',
     list:[],
-    to:12
+    to:12,
+    scrollTop:1200
   },
   onLoad: function (option) {
     
@@ -19,10 +20,43 @@ Page({
 
     console.log(friendId);
 
+    this.setTitle(friendId);
+
     this.getMessageList(friendId);
 
+    let _this = this;
+    setTimeout(function () {
+      wx.pageScrollTo({
+        scrollTop: _this.data.scrollTop
+      })
+    }, 500); 
+
+    this.polling(_this);
+
   },
-  getMessageList:function(id){
+  /**
+   * 设置title
+   */
+  setTitle: function (id){
+
+    let _this = this;
+
+    app.http('get', `/user/${id}`,
+      {},
+      function (res) {
+
+        console.log(res.data.data);
+        let name = res.data.data.nickname;
+        wx.setNavigationBarTitle({ title: name });
+
+      });
+
+  },
+
+/**
+ * 获取消息 
+ */
+getMessageList:function(id){
 
     let _this = this;
 
@@ -37,7 +71,6 @@ Page({
           list:data
         })
         
-
       });
 
   },
@@ -50,6 +83,9 @@ Page({
       content: content
     })
   },
+  /**
+   * 发送消息
+   */
   send:function(){
     let friendId = this.data.friendId;
     let content = this.data.content;
@@ -79,7 +115,50 @@ Page({
         content:''
         })
 
+      setTimeout(function () {
+        wx.pageScrollTo({
+          scrollTop: _this.data.scrollTop += 700
+        })
+      }, 500); 
+
     });
 
+  },
+  /**
+   * 轮询
+   */
+  polling:function(_this){
+
+    let friendId = _this.data.friendId;
+
+    setInterval(function(){
+      
+      app.http('get', `/new/${friendId}/messages`,
+        {},
+        function (res) {
+
+          console.log("消息："+res.data);
+          let newMessages = res.data.data;
+          if(newMessages.length > 0){
+            let list = _this.data.list;
+
+            newMessages.map(item => {
+              list.push(item);
+            });
+
+            _this.setData({
+              list: list
+            })
+
+            setTimeout(function () {
+              wx.pageScrollTo({
+                scrollTop: _this.data.scrollTop += 700
+              })
+            }, 500); 
+          }
+
+        });
+
+    }, 5000);
   }
 })

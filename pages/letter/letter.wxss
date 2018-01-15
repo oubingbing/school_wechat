@@ -53,16 +53,44 @@
 }
 
 .left-content-message .left-content-item{
-  background: #48D1CC;
-  color: white;
-  padding: 20rpx;
   border-radius: 20rpx;
+  padding: 20rpx;
+  background: #F1AAA6;
+  color: white;
+}
+
+.left-content image{
+  width: 350rpx;
+}
+
+.right-content image{
+  width: 350rpx;
 }
 
 .left-content .left-time{
   font-size: 30rpx;
   color: darkgray;
   margin-top: 15rpx;
+  margin-left: 30rpx;
+}
+
+.left-content-message .qipao{
+  width: 0;
+  height: 0;
+  border-top: 15rpx solid white;
+  border-right: 15rpx solid #F1AAA6;
+  border-bottom: 15rpx solid white;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.right-content-message .qipao{
+  width: 0;
+  height: 0;
+  border-top: 15rpx solid white;
+  border-left: 15rpx solid #48D1CC;
+  border-bottom: 15rpx solid white;
+  margin-top: 20rpx;
 }
 
 /** right **/
@@ -123,7 +151,7 @@
   bottom: 0rpx;
   z-index:100;
   width: 100%;
-  height: 200prx;
+  height: 250prx;
   background: #DCDCDC;
   display: flex;
   flex-direction: row;
@@ -145,9 +173,9 @@
   padding-top: 17rpx;
 }
 
-.comment-input-container .send-button{
-  width: 130rpx;
+.send-button{
   height: 70rpx;
+  width: 17%;
   font-size: 30rpx;
   background: #0aecc3;
   color: white;
@@ -160,8 +188,8 @@
 }
 
 .comment-input-container .add-image{
-  width: 100rpx;
   height: 100rpx;
+  width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,3 +207,13 @@
   margin-top: 50px;  
   height: 20rpx;  
 } 
+
+.text-content{
+  width: 95%;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #0aecc3;
+  margin-bottom: -10rpx;
+}

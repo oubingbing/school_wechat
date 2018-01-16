@@ -9,6 +9,9 @@ Page({
   onLoad: function (option) {
     this.friends();
   },
+  onShow(){
+    this.friends();
+  },
   friends:function(){
     let _this = this;
 
@@ -17,6 +20,8 @@ Page({
       function (res) {
 
         console.log(res.data.data);
+
+        console.log('获取好友列表');
 
         _this.setData({
           friends: res.data.data
@@ -29,7 +34,9 @@ Page({
     console.log('跳转到私信');
     console.log(e.target.dataset.obj);
 
-    let id = e.target.dataset.obj;
+    let id = e.currentTarget.dataset.obj;
+
+    console.log(e);
 
     wx.navigateTo({
       url: '/pages/letter/letter?friend_id=' + id

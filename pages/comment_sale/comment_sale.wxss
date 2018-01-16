@@ -305,8 +305,19 @@ page{
 
 /** 新的评论css **/
 
-.comment-user-wall{
+.comment-user-container{
   font-size: 30rpx;
+  background: WhiteSmoke;
+  padding: 10rpx;
+}
+
+.qipao{
+  width: 0;
+  height: 0;
+  border-right: 20rpx solid white;
+  border-bottom: 20rpx solid WhiteSmoke;
+  border-left: 20rpx solid white;
+  margin-left: 20rpx;
 }
 
 .inline-item{

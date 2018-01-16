@@ -36,7 +36,9 @@ Page({
   onLoad: function (e) {
 
 
-    wx.showLoading();
+    wx.showLoading({
+      title: '加载中',
+    });
 
     console.log('工具类' + uploader.formatTime(new Date()));
     //设置当前时间
@@ -655,6 +657,7 @@ Page({
     console.log(e.target.dataset.obj);
 
     let id = e.target.dataset.obj;
+    let canChat = e.target.dataset.chat;
 
      wx.navigateTo({
        url: '/pages/letter/letter?friend_id=' + id

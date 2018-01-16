@@ -106,10 +106,12 @@
                 style='width:60rpx;height:60rpx'
                 data-obj="{{item.id}}"
                 bindtap='praise'></image>
-                <image src='/image/letter1.png' 
+                <image  
+                src='/image/letter1.png' 
                 style='width:60rpx;height:60rpx'
                 bindtap='letter'
-                data-obj="{{item.poster.id}}"></image>
+                data-obj="{{item.poster.id}}"
+                data-chat="{{item.can_chat}}"></image>
                 <image src='/image/pinglun.png' 
                 bindtap='showCommentInput' 
                 data-objid="{{item.id}}"

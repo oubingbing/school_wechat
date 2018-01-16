@@ -85,11 +85,11 @@
             </view>
                 <view class='comment-user-wall' 
                       wx:if='{{item.sub_comments.length > 0}}'>
+                  <view class="qipao"></view>
                   <view class='comment-user-container' 
                         wx:for="{{item.sub_comments}}" 
                         wx:key="{{item.sub_comments}}" 
                         wx:for-item="sub">
-                        
                       <view class='comment-wall-item' 
                             wx:if="{{!sub.ref_comment}}" 
                             data-objid="{{item.id}}"

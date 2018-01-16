@@ -279,27 +279,43 @@ Page({
     let id = e.currentTarget.dataset.objid;
     let _this = this;
 
-    app.http('delete',`/delete/${id}/sale_friend`,{},res=>{
 
-      console.log(res);
+    wx.showModal({
+      title: '提示',
+      content: '确认删除?',
+      success: function (res) {
+        if (res.confirm) {
 
-      if(res.data.data){
+          console.log('用户点击确定')
 
-        let oldSales = _this.data.sales;
-        let sales = oldSales.filter(item=>{
-          if(item.id != id){
-            return item;
-          }
+          app.http('delete', `/delete/${id}/sale_friend`, {}, res => {
 
-        });
-        
-        _this.setData({
-          sales:sales
-        });
+            console.log(res);
 
+            if (res.data.data) {
+
+              let oldSales = _this.data.sales;
+              let sales = oldSales.filter(item => {
+                if (item.id != id) {
+                  return item;
+                }
+
+              });
+
+              _this.setData({
+                sales: sales
+              });
+
+            }
+
+          });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
-
-    });
+    })
+  
   },
 
   /**

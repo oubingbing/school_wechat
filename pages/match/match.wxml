@@ -2,10 +2,18 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='new {{select==1?"selected":""}}' bindtap="selected" data-type="1">全部</view>
-      <view class='new {{select==2?"selected":""}}' bindtap="selected" data-type="2">关注</view>
-      <view class='new {{select==3?"selected":""}}' bindtap="selected" data-type="3">最新</view>
-      <view class='hot {{select==4?"selected":""}}' bindtap="selected" data-type="4">最热</view>
+      <view class='new {{select==1?"selected":""}}' 
+            bindtap="selected" 
+            data-type="1">全部</view>
+      <view class='new {{select==2?"selected":""}}' 
+            bindtap="selected" 
+            data-type="2">关注</view>
+      <view class='new {{select==3?"selected":""}}' 
+            bindtap="selected" 
+            data-type="3">最新</view>
+      <view class='hot {{select==4?"selected":""}}' 
+            bindtap="selected" 
+            data-type="4">最热</view>
     </view>
   </view>
 
@@ -23,7 +31,10 @@
             <view>{{item.user.nickname}}</view>
             <view class="created-at">
               <view>{{item.created_at}}</view>
-              <view class="delete" bindtap='delete' data-obj="{{item.id}}">删除</view>
+              <view class="delete" 
+                    bindtap='delete' 
+                    data-obj="{{item.id}}"
+                    wx:if="{{item.can_delete == true}}">删除</view>
             </view>
           </view>
           </view>
@@ -68,6 +79,7 @@
         <view class='comment'>
           <image bindtap='letter' 
                  data-obj='{{item.owner_id}}'   
+                 data-chat="{{item.can_chat}}"
                  src='/image/letter.png'></image>
         </view>
       </view>

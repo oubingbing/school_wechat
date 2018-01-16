@@ -2,13 +2,13 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='follow {{select==1?"selected":""}}'                   bindtap="selected" 
+      <view class='follow {{select==1?"selected":""}}'               bindtap="selected" 
             data-type="1">全部</view>
-      <view class='follow {{select==2?"selected":""}}'                   bindtap="selected" 
+      <view class='follow {{select==2?"selected":""}}'               bindtap="selected" 
             data-type="2">关注</view>
-      <view class='new {{select==3?"selected":""}}'                      bindtap="selected" 
+      <view class='new {{select==3?"selected":""}}'                  bindtap="selected" 
             data-type="3">最新</view>
-      <view class='hot {{select==4?"selected":""}}'                      bindtap="selected" 
+      <view class='hot {{select==4?"selected":""}}'                  bindtap="selected" 
             data-type="4">最热</view>
     </view>
   </view>
@@ -36,7 +36,10 @@
     </view>
     <view class='content'>
       <view class='image-container'>
-        <image class='sale-image' mode="widthFix" src='{{baseImageUrl+item.attachments[0]}}' mode='widthFix'></image>
+        <image class='sale-image' 
+               mode="widthFix" 
+               src='{{baseImageUrl+item.attachments[0]}}' 
+               mode='widthFix'></image>
       </view>
       <view class='other-info'>
         <view class='craete_at'>{{item.created_at}}</view>

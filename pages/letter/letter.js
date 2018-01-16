@@ -241,7 +241,9 @@ Page({
             let list = _this.data.list;
 
             newMessages.map(item => {
-              list.push(item);
+              if(item.from_user_id != item.to_user_id){
+                list.push(item);
+              }
             });
 
             _this.setData({

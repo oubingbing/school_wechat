@@ -4,7 +4,9 @@
   <view class="select-school">
     <view class="school-location" bindtap='selectSchool'>
       <view class="location-image">
-        <image class="location-icon" mode="" src="/image/location.png"></image>
+        <image class="location-icon" 
+               mode="" 
+               src="/image/location.png"></image>
       </view>
       <view class="location-name">
         <view>{{school}}</view>
@@ -50,7 +52,9 @@
       </view>
       <view class="item-content">
         <view class="user-name">
-          <view wx:if="{{item.private == 0}}">{{item.poster.nickname}}</view>
+          <view wx:if="{{item.private == 0}}">
+            {{item.poster.nickname}}
+          </view>
           <view wx:if="{{item.private == 1}}">匿名者</view>
           <view class='follow' 
                 bindtap="follow" 
@@ -61,6 +65,10 @@
                 bindtap="cancelFolllow" 
                 data-obj="{{item.id}}">已关注</view>
         </view>
+        <view class='for-user' 
+              wx:if="{{item.topic != '无'}}">
+                @#{{item.topic}}#
+          </view>
           <view class="content">{{item.content}}</view>
           <view class="single-image" 
                 wx:if='{{item.attachments.length==1}}'>
@@ -156,22 +164,26 @@
                         data-objid="{{item.id}}"
                         data-refid="{{sub.id}}" 
                         data-objtype='1'>
+
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
                           <view class="comment-user inline-item">
                             {{sub.commenter.nickname}}：
                           </view>
                           <view class='inline-item'>{{sub.content}}</view>
                         </view>
-                        <view class='comment-ref-user-container' 
+
+                        <view class='comment-user-container' 
                               wx:if="{{sub.ref_comment}}">
-                          
-                          <view class="comment-user">{{sub.commenter.nickname}}</view>
-                          <view>回复</view>
-                          <view class="comment-user">
+                          <view class="comment-user inline-item">
+                            {{sub.commenter.nickname}}
+                          </view>
+                          <view class="comment-user inline-item">回复</view>
+                          <view class="comment-user inline-item">
                             {{sub.ref_comment.refCommenter.nickname}}：
                           </view>
-                          <view>{{sub.content}}</view>
+                          <view class='inline-item'>{{sub.content}}</view>
                         </view>
+
                       </view>
                   </view>
               </view>
@@ -203,7 +215,12 @@
 </view>
 
 <view class='comment-input-container' wx:if="{{showCommentInput}}">
-  <input placeholder="评论" auto-focus bindinput='getCommentContent'/>
+  <textarea placeholder="评论" 
+            auto-focus
+            cursor-spacing="10"
+            fixed="true"
+            auto-height 
+            bindinput='getCommentContent'/>
   <view class='send-button' bindtap='sendComment'><view>发送</view></view>
 </view>
 

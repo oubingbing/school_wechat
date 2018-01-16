@@ -20,7 +20,9 @@
           <view class='left-content-message'>
           <view class="qipao"></view>
             <view wx:if="{{item.content != null}}" 
-                  class='left-content-item'>{{item.content}}</view>
+                  class='left-content-item'>
+                  {{item.content}}
+            </view>
             <view class='left-content-item' 
                   wx:if="{{item.attachments.length != 0}}">
               <image mode='widthFix' 
@@ -46,7 +48,9 @@
               bindlongpress="deleteContent">
           <view class='right-content-message'>
             <view class='right-content-item'
-                  wx:if="{{item.content != null}}">{{item.content}}</view>
+                  wx:if="{{item.content != null}}">
+                  {{item.content}}
+            </view>
             <view class='right-content-item' 
                   wx:if="{{item.attachments.length != 0}}">
               <image mode='widthFix' 

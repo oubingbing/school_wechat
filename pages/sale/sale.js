@@ -67,6 +67,18 @@ Page({
 
   },
   /**
+  * 跳转到私信
+  */
+  letter: function (e) {
+    console.log('跳转到私信');
+
+    let id = e.currentTarget.dataset.obj;
+
+    wx.navigateTo({
+      url: '/pages/letter/letter?friend_id=' + id
+    })
+  },
+  /**
  * 获取具体类型的贴子
  */
   selected:function(e) {
@@ -220,7 +232,8 @@ Page({
 
     let time = this.data.currentTime;
 
-    app.http('get', '/most_new_sale_friend?time='+time, {}, res => {
+    app.http('get',
+     '/most_new_sale_friend?time='+time, {}, res => {
 
       let sales = _this.data.sales;
 
@@ -312,18 +325,20 @@ Page({
        }, res => {
       console.log('点赞成功' + res);
 
-      let sales = _this.data.sales;
-      let newSales = sales.map(item=>{
-        if(item.id == objId){
-          item.praise_number += 1;
+        if(res.data.data.length != 0){
+          let sales = _this.data.sales;
+          let newSales = sales.map(item => {
+            if (item.id == objId) {
+              item.praise_number += 1;
+            }
+
+            return item;
+          });
+
+          _this.setData({
+            sales: newSales
+          });
         }
-
-        return item;
-      });
-
-      _this.setData({
-        sales:newSales
-      });
 
     });
 

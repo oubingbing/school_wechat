@@ -103,6 +103,11 @@ page{
   color: red;
 }
 
+.for-user{
+  font-size: 35rpx;
+  color: #5CACEE;
+}
+
 .item-content .content{
   font-weight: 200;
   font-size: 35rpx;
@@ -305,9 +310,7 @@ page{
 }
 
 .comment-wall-item .comment-ref-user-container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  display: inline;
 }
 
 .comment-ref-user-container image{
@@ -374,7 +377,7 @@ page{
   padding-top: 10rpx;
 }
 
-.comment-input-container input{
+.comment-input-container textarea{
   width: 100%;
   margin-left: 20rpx;
   border-bottom-style:solid;

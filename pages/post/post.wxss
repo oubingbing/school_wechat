@@ -17,6 +17,11 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1rpx;
+}
+
+.textarea-content{
+  padding: 15rpx;
 }
 
 .form .input{
@@ -72,7 +77,6 @@ page{
 .middle .location{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   padding: 15rpx;
   font-weight: 200;
   font-size: 35rpx;
@@ -80,6 +84,20 @@ page{
   border-width:1rpx;
   border-color: #F0F8FF;
   align-items: center;
+}
+
+.like-word{
+  width: 17%;
+}
+
+.like-content{
+  width: 83%;
+  background: #E6E6E6;
+  height: 75rpx;
+  font-weight: 200;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius:15rpx;
 }
 
 

@@ -2,7 +2,10 @@
   <view class='form'>
 
     <view class='input'>
-      <textarea placeholder="爱情属于勇敢的人儿" bindinput="getTextContent"/>
+      <textarea 
+        class='textarea-content'
+        placeholder="爱情属于勇敢的人儿"    
+        bindinput="getTextContent"/>
     </view>
     <view class='image-form'>
       <view class='select-image'>
@@ -11,7 +14,9 @@
               wx:key='{{imageArray}}'>
             <image class='upload-image' 
             bindtap='previewImage' 
-            id='{{item}}' mode='aspectFill' src='{{item}}'></image>
+            id='{{item}}' 
+            mode='aspectFill' 
+            src='{{item}}'></image>
             <image src='/image/delete.png' 
                    id='{{index}}' 
                    wx:key='{{imageArray}}' 
@@ -29,8 +34,10 @@
 
 <view class='middle'>
   <view class='location'>
-  <view class='item'>定位</view>
-    <view class='location-image'><image src='/image/my-location.png'></image></view>
+  <view class='like-word'>我喜欢</view>
+    <input class='like-content' 
+           placeholder="小微" 
+           bindinput="getName"/>
   </view>
 
   <view class='private'>

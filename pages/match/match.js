@@ -77,7 +77,7 @@ Page({
 
   },
 
-  /**
+ /**
  * 下拉刷新，获取最新的贴子
  */
   onPullDownRefresh: function () {
@@ -85,6 +85,19 @@ Page({
     console.log('当前时间：' + this.data.currentTime);
 
     this.getMostNewMatch();
+  },
+
+  /**
+  * 跳转到私信
+  */
+  letter: function (e) {
+    console.log('跳转到私信');
+
+    let id = e.currentTarget.dataset.obj;
+
+    wx.navigateTo({
+      url: '/pages/letter/letter?friend_id=' + id
+    })
   },
 
   /**
@@ -328,7 +341,9 @@ Page({
       }
     })
   },
-  /** 点赞 */
+  /**
+   * 点赞
+   */
   praise: function (event) {
 
     let objId = event.currentTarget.dataset.obj;
@@ -340,20 +355,22 @@ Page({
     app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
       console.log('点赞成功' + res);
 
-      let matchList = _this.data.matchs;
-      let newMatchs = matchList.map(item => {
+        if(res.data.data.length != 0){
+          let matchList = _this.data.matchs;
+          let newMatchs = matchList.map(item => {
 
-        if (objId == item.id) {
-          item.praise_number += 1;
+            if (objId == item.id) {
+              item.praise_number += 1;
+            }
+
+            return item;
+          });
+
+          //重新赋值，更新数据列表
+          _this.setData({
+            matchs: newMatchs
+          });
         }
-
-        return item;
-      });
-
-      //重新赋值，更新数据列表
-      _this.setData({
-        matchs: newMatchs
-      });
 
     });
 

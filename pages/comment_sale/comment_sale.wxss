@@ -34,7 +34,6 @@ page{
 
 .user-name{
   font-size: 3prx;
-  font-weight: 200;
   margin-left: 10rpx;
 }
 
@@ -99,17 +98,6 @@ page{
    color: white;
 }
 
-.show-self{
-  margin-left: 15rpx;
-  margin-right: 15rpx;
-  margin-top: 20rpx;
-  background: #F1AAA6;
-  color: white;
-  font-size: 30rpx;
-  padding: 10rpx;
-  border-radius: 5rpx;
-  margin-bottom: 30rpx;
-}
 
 .comment-container{
   width: 100%;
@@ -182,7 +170,7 @@ page{
   padding-top: 10rpx;
 }
 
-.comment-input-container input{
+.comment-input-container textarea{
   width: 100%;
   margin-left: 20rpx;
   border-bottom-style:solid;
@@ -207,6 +195,23 @@ page{
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  border-radius: 10rpx;
+}
+
+.show-self{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.introduce{
+  background: #F1AAA6;
+  color: white;
+  font-size: 30rpx;
+  padding: 10rpx;
   border-radius: 10rpx;
 }
 
@@ -241,7 +246,6 @@ page{
 
 .comment-item .content{
   font-size: 35rpx;
-  font-weight: 200;
 }
 
 .user-image image{
@@ -285,19 +289,59 @@ page{
 }
 
 .reply-comment .reply-container{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: inline;
 }
 
 .reply-comment .reply-item{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
   font-size: 35rpx;
   font-weight: 200;
+  display: flex;
+  flex-direction: row;
 }
 
 .reply-item .reply-user{
   color: #0061b2;
 }
+
+/** 新的评论css **/
+
+.comment-user-wall{
+  font-size: 30rpx;
+}
+
+.inline-item{
+  display: inline;
+}
+
+.comment-wall-item .comment-user-container{
+  display: inline;
+}
+
+.comment-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-wall-item .comment-ref-user-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-ref-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-user{
+  color: #0061b2;
+}
+
+.user-comment .content{
+
+}
+

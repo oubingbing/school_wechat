@@ -129,15 +129,20 @@ page{
 }
 
 .show-self{
+  display: flex;
+  flex-direction: row;
   margin-left: 15rpx;
   margin-right: 15rpx;
   margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.introduce{
   background: #F1AAA6;
   color: white;
   font-size: 30rpx;
   padding: 10rpx;
-  border-radius: 5rpx;
-  margin-bottom: 30rpx;
+  border-radius: 10rpx;
 }
 
 .comment-container{

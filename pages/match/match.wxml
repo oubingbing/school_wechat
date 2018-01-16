@@ -51,7 +51,9 @@
         </view>
       </view>
       <view class='comment-container'>
-        <view class='zan' bindtap='praise' data-obj="{{item.id}}">
+        <view class='zan' 
+              bindtap='praise' 
+              data-obj="{{item.id}}">
           <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
@@ -64,7 +66,9 @@
         </view>
 
         <view class='comment'>
-          <image src='/image/letter.png'></image>
+          <image bindtap='letter' 
+                 data-obj='{{item.owner_id}}'   
+                 src='/image/letter.png'></image>
         </view>
       </view>
   </view>

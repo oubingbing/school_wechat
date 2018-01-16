@@ -381,7 +381,9 @@ Page({
     });
   },
 
-  /** 点赞 */
+  /**
+   * 点赞
+   */
   praise: function (event) {
     console.log('index-praise：点赞');
 
@@ -397,7 +399,10 @@ Page({
 
     let _this = this;
 
-    app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
+    app.http(
+      'post', 
+      `/praise`,
+      { obj_id: objId, obj_type: objType }, res => {
       console.log('点赞成功' + res);
 
       let postList = _this.data.posts;
@@ -642,6 +647,9 @@ Page({
   cancelFollow: function (e) {
 
   },
+  /**
+   * 跳转到私信
+   */
   letter:function(e){
     console.log('跳转到私信');
     console.log(e.target.dataset.obj);

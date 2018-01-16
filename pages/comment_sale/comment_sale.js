@@ -28,8 +28,6 @@ Page({
 
       data.comments = data.comments.reverse();
 
-      data.gender = genderArray[data.gender];
-
       this.setData({
         sale: data,
       });
@@ -37,7 +35,9 @@ Page({
     });
 
   },
-  /** 触摸屏幕后移动触发一些隐藏操作 */
+  /**
+   * 触摸屏幕后移动触发一些隐藏操作
+   */
   hiddenComment: function () {
     console.log('inde-hiddenComment：触摸后移动');
     this.setData({
@@ -65,8 +65,70 @@ Page({
       refCommentId:refId
     });
   },
+  /** 删除评论 */
+  deleteComment: function (e) {
+    console.log('删除评论')
 
-  /** 获取评论框的输入内容 */
+    let objId = e.currentTarget.dataset.objid;
+    let commentId = e.currentTarget.dataset.refid;
+    let _this = this;
+
+    console.log('评论Id：' + commentId);
+    console.log('帖子Id' + objId);
+
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该评论?',
+      success: function (res) {
+        if (res.confirm) {
+
+          console.log('用户点击确定')
+
+          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+
+            if (res.data.data == 1) {
+
+              let sale = _this.data.sale;
+              let comments = sale.comments;
+
+              let newComment = comments.map(comment=>{
+                let sub_comments = comment.sub_comments;
+                let newSubComments = sub_comments.filter((item, index) => {
+                  if (item.id != commentId) {
+                    console.log("item.id:" + item.id);
+                    console.log("commentId:" + commentId);
+                    return item;
+                  }
+                });
+
+                comment.sub_comments = newSubComments;
+
+                return comment;
+              })
+
+              sale.comments = newComment;
+
+              console.log(sale);
+
+              _this.setData({
+                sale: sale
+              });
+            }
+
+          });
+
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+
+  /**
+   * 获取评论框的输入内容
+   */
   getCommentContent: function (event) {
     console.log("评论框输入内容:" + event.detail.value);
 
@@ -161,7 +223,11 @@ Page({
 
     let _this = this;
 
-    app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
+    app.http(
+      'post', 
+      `/praise`,
+      { obj_id: objId, obj_type: objType },
+      res => {
       console.log('点赞成功' + res);
 
       if (!res.data.data.error_code){

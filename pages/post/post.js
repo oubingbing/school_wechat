@@ -10,7 +10,8 @@ Page({
     uploadToken: null,
     attachments:[],
     private:false,
-    textContent:''
+    textContent:'',
+    name:''
   },
   onLoad: function () {
     //设置七牛上传token
@@ -31,11 +32,24 @@ Page({
     let content = this.data.textContent;
     let attachments = this.data.attachments;
     let privateValue = this.data.private;
+    let username = this.data.name;
   
     //_method, _url, _data, callback
-    app.http('post','/post',{content:content,attachments:attachments,private:privateValue},res=>{
+    app.http('post','/post',{
+      content:content,
+      attachments:attachments,
+      private:privateValue,
+      username: username
+      },res=>{
       wx.navigateBack({comeBack:true});
       console.log(res);
+    });
+
+  },
+  getName: function (event){
+    let value = event.detail.value;
+    this.setData({
+      name: value
     });
 
   },

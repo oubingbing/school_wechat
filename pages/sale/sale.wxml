@@ -2,10 +2,14 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='follow {{select==1?"selected":""}}'      bindtap="selected" data-type="1">全部</view>
-      <view class='follow {{select==2?"selected":""}}' bindtap="selected" data-type="2">关注</view>
-      <view class='new {{select==3?"selected":""}}' bindtap="selected" data-type="3">最新</view>
-      <view class='hot {{select==4?"selected":""}}' bindtap="selected" data-type="4">最热</view>
+      <view class='follow {{select==1?"selected":""}}'                   bindtap="selected" 
+            data-type="1">全部</view>
+      <view class='follow {{select==2?"selected":""}}'                   bindtap="selected" 
+            data-type="2">关注</view>
+      <view class='new {{select==3?"selected":""}}'                      bindtap="selected" 
+            data-type="3">最新</view>
+      <view class='hot {{select==4?"selected":""}}'                      bindtap="selected" 
+            data-type="4">最热</view>
     </view>
   </view>
 
@@ -42,21 +46,37 @@
               bindtap='delete'>删除</view>
       </view>
       <view class='content-detail'>
-        <view class='detail-item detail-item-user'>{{item.name}}</view>
-        <view class='detail-item detail-item-gender'>{{item.gender}}</view>
-        <view class='detail-item detail-item-major'>{{item.major}}</view>
-        <view class='detail-item detail-item-like'>{{item.expectation}}</view>
+        <view class='detail-item detail-item-user'>
+          {{item.name}}
+        </view>
+        <view class='detail-item detail-item-gender'>
+          {{item.gender}}
+        </view>
+        <view class='detail-item detail-item-major'>
+          {{item.major}}
+        </view>
+        <view class='detail-item detail-item-like'>
+          {{item.expectation}}
+        </view>
       </view>
-      <view class='show-self'>{{item.introduce}}</view>
+      <view class='show-self'>
+        <view class='introduce'>{{item.introduce}}</view>
+      </view>
       <view class='comment-container'>
-        <view class='zan' bindtap='praise' data-objid='{{item.id}}'>
+        <view class='zan' 
+              bindtap='praise' 
+              data-objid='{{item.id}}'>
           <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
-        <view class='zan' bindtap='praise' data-objid='{{item.id}}'>
+        <view class='zan' 
+              bindtap='letter' 
+              data-obj='{{item.owner_id}}'>
           <image src='/image/letter.png'></image>
         </view>
-        <view class='comment' bindtap='comment' data-objid="{{item.id}}">
+        <view class='comment' 
+              bindtap='comment' 
+              data-objid="{{item.id}}">
           <image src='/image/comment.png'></image>
           <view>{{item.comment_number}}</view>
         </view>

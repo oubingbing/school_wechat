@@ -4,6 +4,8 @@
         <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
           <view class='item' 
                 bindtap="opendDetail" 
+                data-parent="{{item.parentObj}}"
+                data-pobj="{{item.parentObj.obj_id}}"
                 data-type="{{item.obj.obj_type}}"
                 data-id="{{item.obj.obj_id}}">
             <view class='left'>
@@ -16,14 +18,16 @@
                 {{item.from_user.nickname}}
               </view>
               <view class='message' 
-                    wx:if="{{item.action_type == 1 && item.parentObj.length != 0}}">
+                    wx:if="{{item.action_type == 1 && item.parentObj != null}}">
                     {{item.obj.content}}</view>
 
-              <view class='message delete-message' 
-                    wx:if="{{item.parentObj == null}}">该消息已被删除</view>
+              <view class='delete-message' 
+                    wx:if="{{item.parentObj == null}}">
+                    该消息已被删除
+              </view>
                     
               <view class='praise' 
-              wx:if="{{item.action_type == 2 && item.parentObj.length != 0}}">
+              wx:if="{{item.action_type == 2 && item.parentObj != null}}">
                 <image src='/image/make_praise.png'></image>
               </view>
               <view class='created_at'>{{item.created_at}}</view>

@@ -206,6 +206,10 @@ Page({
   getCommentContent: function (event) {
     console.log("评论框输入内容:" + event.detail.value);
 
+    this.setData({
+      commentContent: ''
+    })
+
     let content = event.detail.value;
     this.setData({
       commentContent: content

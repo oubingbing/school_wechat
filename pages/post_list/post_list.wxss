@@ -46,6 +46,7 @@ page{
   flex-direction: column;
   justify-content:space-around;
   background: white;
+  margin-top: 1rpx;
 }
 
 .container-wall .wall-item{
@@ -101,6 +102,11 @@ page{
   font-size: 30rpx;
   font-weight: 200;
   color: red;
+}
+
+.for-user{
+  font-size: 35rpx;
+  color: #5CACEE;
 }
 
 .item-content .content{
@@ -305,9 +311,7 @@ page{
 }
 
 .comment-wall-item .comment-ref-user-container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  display: inline;
 }
 
 .comment-ref-user-container image{
@@ -374,7 +378,7 @@ page{
   padding-top: 10rpx;
 }
 
-.comment-input-container input{
+.comment-input-container textarea{
   width: 100%;
   margin-left: 20rpx;
   border-bottom-style:solid;

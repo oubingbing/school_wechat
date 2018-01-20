@@ -35,37 +35,19 @@ Page({
 
     wx.showLoading()
 
-    console.log('工具类' + uploader.formatTime(new Date()));
-    //设置当前时间
-    this.setData({
-      currentTime: uploader.formatTime(new Date())
-    });
 
     let _this = this;
 
     let token = wx.getStorageSync('token');
     console.log('获取到token:' + token);
 
-    //获取缓存的贴子列表
-    let posts = wx.getStorageSync('posts');
-    if (posts) {
-      _this.setData({
-        posts: posts
-      });
-    }
-
-    _this.getNewPost();
+    this.getPost(_this);
 
   },
   onShow: function () {
     console.log('on show');
 
     let _this = this;
-
-    _this.getSchool(_this);
-
-    //this.getNewPost();
-    _this.getMostNewPost();
 
     let type = 0;
     app.getNewInbox(type, function (res) {
@@ -82,16 +64,6 @@ Page({
         });
       }
     });
-  },
-
-  /**
-   * 下拉刷新，获取最新的贴子
-   */
-  onPullDownRefresh: function () {
-
-    console.log('当前时间：' + this.data.currentTime);
-
-    this.getMostNewPost();
   },
 
   /**
@@ -128,64 +100,6 @@ Page({
     })
   },
 
-  /** 获取最新的贴子 */
-  getMostNewPost: function () {
-
-    //获取新的贴子
-    app.http('get', '/most_new_post', {
-      date_time: this.data.currentTime
-    }, res => {
-
-      this.setData({
-        currentTime: uploader.formatTime(new Date())
-      });
-
-      wx.stopPullDownRefresh();
-
-      console.log('返回的贴子数据');
-      console.log(res.data.data);
-
-      let posts = this.data.posts;
-
-      if (res.data.data.length > 0) {
-
-        res.data.data.map(item => {
-
-          posts.unshift(item);
-
-        });
-
-        this.setData({
-          posts: posts
-        });
-
-      }
-
-    });
-
-  },
-  /** 发表贴子后获取最新的贴子 */
-  getNewPost: function () {
-
-    //获取新的贴子
-    app.http('get', '/post', {
-      page_size: 10,
-      page_number: 1
-    }, res => {
-
-      console.log('返回的贴子数据');
-      console.log(res.data.data.page_data);
-
-      this.setData({
-        posts: res.data.data.page_data,
-        pageNumber: this.data.initPageNumber
-      });
-
-    });
-
-
-  },
-
   /** 获取贴子 */
   getPost: function (_this, objType = null) {
 
@@ -195,10 +109,9 @@ Page({
       notDataTips: false
     });
 
-    app.http('get', '/post', {
-      page_size: this.data.pageSize,
-      page_number: this.data.pageNumber,
-      obj_type: objType
+    app.http('get',
+      `/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&just=1`, {
+      
     }, res => {
 
       this.setData({
@@ -339,6 +252,10 @@ Page({
   /** 获取评论框的输入内容 */
   getCommentContent: function (event) {
     console.log("评论框输入内容:" + event.detail.value);
+
+    this.setData({
+      commentContent: ''
+    })
 
     let content = event.detail.value;
     this.setData({

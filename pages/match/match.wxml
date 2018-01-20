@@ -26,9 +26,16 @@
   <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
       <view class='header'>
         <view class="header-left">
-          <image src='{{item.user.avatar}}'></image>
+          <image src='{{item.user.avatar}}' wx:if="{{item.private == 0}}"></image>
+          <image src="/image/boy.png"
+                 wx:elif="{{item.private == 1 && item.user.gender ==1}}"></image>
+          <image src="/image/girl.png" wx:else></image>
           <view>
-            <view>{{item.user.nickname}}</view>
+            <view wx:if="{{item.private == 0}}">{{item.user.nickname}}</view>
+            <view wx:if="{{item.private == 1}}">匿名の同学</view>
+            <view class="created-at" wx:if="{{item.show_college}}">
+              <view>{{item.college}}</view>
+            </view>
             <view class="created-at">
               <view>{{item.created_at}}</view>
               <view class="delete" 
@@ -98,7 +105,12 @@
     </view>
   </view>
 
-  <view class='no-more-data' wx-if="{{notDataTips}}">
+  <view class='no-more-data' wx-if="{{matchs.length == 0}}">
+    <view>你是第一个来到这里的人~_~</view>
+    <view>点击右上角，留下你暗恋的那个ta吧</view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{notDataTips && matchs.length != 0}}">
     <view>我是一只有底线的神~_~</view>
   </view>
 

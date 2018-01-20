@@ -79,8 +79,15 @@ Page({
   opendDetail:function(e){
     let objType = e.currentTarget.dataset.type;
     let id = e.currentTarget.dataset.id;
+    let parent = e.currentTarget.dataset.parent;
+    let pobj = e.currentTarget.dataset.pobj;
     console.log(objType);
-    console.log(e);
+    console.log(parent);
+    console.log(pobj);
+
+    if (parent == null){
+      return;
+    }
 
     if (objType == 1){
         wx.navigateTo({
@@ -97,6 +104,12 @@ Page({
     if (objType == 3) {
       wx.navigateTo({
         url: `/pages/match_detail/match_detail?id=${id}`
+      })
+    }
+
+    if(objType == 4){
+      wx.navigateTo({
+        url: `/pages/comment_sale/comment_sale?id=${pobj}`
       })
     }
 

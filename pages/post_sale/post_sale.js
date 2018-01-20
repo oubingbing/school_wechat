@@ -19,6 +19,9 @@ Page({
   },
   onLoad: function () {
 
+  },
+  onShow:function(){
+
     //设置七牛上传token
     app.getUploadToken(token => {
       this.setData({
@@ -151,13 +154,14 @@ Page({
     let expectation = this.data.expectation;
     let introduce = this.data.introduce;
 
-    if (attachments == '') {
+    if (attachments.length == 0) {
       wx.showLoading({
         title: '图片不能为空',
       })
       setTimeout(res => {
         wx.hideLoading();
       }, 2000);
+      return;
     }
 
     if (name == '') {

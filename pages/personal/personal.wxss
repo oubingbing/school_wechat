@@ -74,13 +74,13 @@ page{
   justify-content: space-around;
   align-items: center;
   font-size: 35rpx;
-  color: grey;
 }
 
 .user-info .user-name{
   margin-top: 80rpx;
   width: 35%;
   text-align: center;
+  font-size: 30rpx;
 }
 
 
@@ -119,7 +119,6 @@ page{
 .word{
   font-size: 30rpx;
   margin-left: 30rpx;
-  color: gray;
 }
 
 .content-container{

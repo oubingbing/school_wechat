@@ -180,7 +180,7 @@ page{
   padding-bottom: 15rpx;
   font: 30rpx;
   font-weight: 200;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   padding-top: 17rpx;
 }
 

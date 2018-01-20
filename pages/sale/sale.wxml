@@ -2,13 +2,17 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='follow {{select==1?"selected":""}}'               bindtap="selected" 
+      <view class='follow {{select==1?"selected":""}}'  
+            bindtap="selected" 
             data-type="1">全部</view>
-      <view class='follow {{select==2?"selected":""}}'               bindtap="selected" 
+      <view class='follow {{select==2?"selected":""}}'               
+            bindtap="selected" 
             data-type="2">关注</view>
-      <view class='new {{select==3?"selected":""}}'                  bindtap="selected" 
+      <view class='new {{select==3?"selected":""}}'                  
+            bindtap="selected" 
             data-type="3">最新</view>
-      <view class='hot {{select==4?"selected":""}}'                  bindtap="selected" 
+      <view class='hot {{select==4?"selected":""}}'                  
+            bindtap="selected" 
             data-type="4">最热</view>
     </view>
   </view>
@@ -40,6 +44,9 @@
                mode="widthFix" 
                src='{{baseImageUrl+item.attachments[0]}}' 
                mode='widthFix'></image>
+      </view>
+      <view class='other-info'>
+        <view class='craete_at' wx:if="{{item.show_college}}">{{item.college}}</view>
       </view>
       <view class='other-info'>
         <view class='craete_at'>{{item.created_at}}</view>
@@ -94,8 +101,13 @@
     </view>
   </view>
 
-  <view class='no-more-data' wx-if="{{notDataTips}}">
+  <view class='no-more-data' wx-if="{{notDataTips && sales.length != 0}}">
     <view>我是一只有底线的神~_~</view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{sales.length == 0}}">
+    <view>你是第一个来到这里的人~_~</view>
+    <view>点击右上角卖出第一个舍友吧</view>
   </view>
 
 </view>

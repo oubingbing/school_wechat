@@ -8,6 +8,7 @@
         <view class='user-name'>{{sale.poster.nickname}}</view>
       </view>
       <view class='content'>
+       <view class='craete_at' wx:if="{{sale.show_college}}">{{sale.college}}</view>
         <view class='craete_at'>{{sale.created_at}}</view>
         <view class='content-detail'>
           <view class='detail-item detail-item-user'>
@@ -132,7 +133,7 @@
     <textarea 
         placeholder="评论" 
         auto-focus 
-        cursor-spacing="10"
+        cursor-spacing="15"
         fixed="true"
         auto-height 
         bindinput='getCommentContent'/>

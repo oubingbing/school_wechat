@@ -11,13 +11,13 @@
                    src="{{item.poster.avatar}}"
                    wx:if="{{item.private == 0}}"></image>
           <image bindtap='previewImage'
-                   src="/image/niming.png"
+                   src="/image/boy.png"
                    wx:if="{{item.private == 1}}"></image>
       </view>
       <view class="item-content">
         <view class="user-name">
           <view wx:if="{{item.private == 0}}">{{item.poster.nickname}}</view>
-          <view wx:if="{{item.private == 1}}">匿名者</view>
+          <view wx:if="{{item.private == 1}}">匿名の同学</view>
           <view class='follow' 
                 bindtap="follow" 
                 wx:if="{{!item.follow}}"
@@ -116,16 +116,17 @@
                         data-refid="{{sub.id}}" 
                         data-objtype='1'>
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
-                          <view class="comment-user inline-item">{{sub.commenter.nickname}}：</view>
+                          <view class="comment-user inline-item">
+                            {{sub.commenter.nickname}}:
+                          </view>
                           <view class='inline-item'>{{sub.content}}</view>
                         </view>
                         <view class='comment-ref-user-container' 
                               wx:if="{{sub.ref_comment}}">
-                          
                           <view class="comment-user">{{sub.commenter.nickname}}</view>
                           <view>回复</view>
                           <view class="comment-user">
-                            {{sub.ref_comment.refCommenter.nickname}}：
+                            {{sub.ref_comment.refCommenter.nickname}}:
                           </view>
                           <view>{{sub.content}}</view>
                         </view>

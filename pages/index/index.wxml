@@ -1,5 +1,6 @@
 <!--index.wxml-->
-<view class="container" bindtouchmove="hiddenComment">
+<view class='all-container'>
+  <view class="container" bindtouchmove="hiddenComment">
 
   <view class="select-school">
     <view class="school-location" bindtap='selectSchool'>
@@ -47,15 +48,18 @@
                    src="{{item.poster.avatar}}"
                    wx:if="{{item.private == 0}}"></image>
           <image bindtap='previewImage'
-                   src="/image/niming.png"
-                   wx:if="{{item.private == 1}}"></image>
+                   src="/image/boy.png"
+                   wx:elif="{{item.private == 1 && item.poster.gender == 1}}"></image>
+          <image bindtap='previewImage'
+                   src="/image/girl.png"
+                   wx:else></image>
       </view>
       <view class="item-content">
         <view class="user-name">
           <view wx:if="{{item.private == 0}}">
             {{item.poster.nickname}}
           </view>
-          <view wx:if="{{item.private == 1}}">匿名者</view>
+          <view wx:if="{{item.private == 1}}">匿名の同学</view>
           <view class='follow' 
                 bindtap="follow" 
                 wx:if="{{!item.follow}}"
@@ -90,6 +94,9 @@
                    bindtap='previewImage'
                    id="{{baseImageUrl+item}}"></image>
           </view>
+           <view class='user-college' wx:if="{{item.show_college}}">
+              <view>{{item.college}}</view> 
+            </view>
           <view class="post-time">
             <view class='time-and-delete'>
               <view>{{item.created_at}}</view> 
@@ -169,7 +176,7 @@
 
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
                           <view class="comment-user inline-item">
-                            {{sub.commenter.nickname}}：
+                            {{sub.commenter.nickname}}:
                           </view>
                           <view class='inline-item'>{{sub.content}}</view>
                         </view>
@@ -179,9 +186,9 @@
                           <view class="comment-user inline-item">
                             {{sub.commenter.nickname}}
                           </view>
-                          <view class="comment-user inline-item">回复</view>
+                          <view class="inline-item">回复</view>
                           <view class="comment-user inline-item">
-                            {{sub.ref_comment.refCommenter.nickname}}：
+                            {{sub.ref_comment.refCommenter.nickname}}:
                           </view>
                           <view class='inline-item'>{{sub.content}}</view>
                         </view>
@@ -204,8 +211,13 @@
     </view>
   </view>
 
-  <view class='no-more-data' wx-if="{{notDataTips}}">
+  <view class='no-more-data' wx-if="{{notDataTips && posts.length != 0}}">
     <view>我是一只有底线的神~_~</view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{posts.length == 0}}">
+    <view>你是第一个来到这里的人~_~</view>
+    <view>点击右上角，表白你喜欢的那个ta吧</view>
   </view>
 
 </view>
@@ -219,10 +231,11 @@
 <view class='comment-input-container' wx:if="{{showCommentInput}}">
   <textarea placeholder="评论" 
             auto-focus
-            cursor-spacing="10"
+            cursor-spacing="15"
             fixed="true"
             auto-height 
             bindinput='getCommentContent'/>
   <view class='send-button' bindtap='sendComment'><view>发送</view></view>
+</view>
 </view>
 

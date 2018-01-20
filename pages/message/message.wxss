@@ -29,6 +29,8 @@
   font-size: 30rpx;
   padding: 5rpx;
   border-radius: 5rpx;
+  width: 220rpx;
+  text-align: center;
 }
 
 .message-item .item{

@@ -17,6 +17,9 @@
       </view>
  
     <view class="{{!showEmpty?'school-list':'school-empty'}}">
+        <view hidden='{{showEmpty}}' 
+              class='school-item'
+              bindtap='clearSchool'>全部学校</view>
         <view hidden='{{showEmpty}}'
               class='school-item' 
               wx:for="{{colleges}}" 
@@ -25,7 +28,9 @@
               bindtap='selectCollege'>{{item.name}}</view>
         
           <view class='empty' wx:if='{{showEmpty}}'>
-            <view wx:if='{{showEmpty}}' class='empty-image'><image src='/image/empty.png'></image></view>
+            <view wx:if='{{showEmpty}}' class='empty-image'>
+            <image src='/image/empty.png'></image>
+          </view>
             <view wx:if='{{showEmpty}}' class='empty-word'>空荡荡的~</view>
           </view>
     </view>

@@ -14,7 +14,9 @@ Page({
     this.recommendSchool(_this);
   },
 
-  //推荐学校
+  /**
+   * 推荐学校
+   */
   recommendSchool:function(_this){
     console.log('recommmend school');
 
@@ -36,12 +38,17 @@ Page({
     });
   },
 
-  //获取更多学校信息
+  /**
+   * 获取更多学校信息
+   * 
+  */
   moreColleges:function(){
     this.recommendSchool(this);
   },
 
-  //选择学校
+  /**
+   * 选择学校
+   */
   selectCollege:function(event){
 
     console.log(event.target.id);
@@ -65,7 +72,9 @@ Page({
     });
   },
 
-  //获取输入框的内容
+  /**
+   * 获取输入框的内容
+   */
   getCollegeName:function(event){
 
     let value = event.detail.value;
@@ -75,7 +84,9 @@ Page({
 
   },
 
-  //搜索学校
+  /**
+   * 搜索学校
+   */
   searchCollege:function(event){
     
     console.log(this.data.collegeName);
@@ -116,9 +127,17 @@ Page({
           showEmpty:true
         });
       }
-
-
     });
-
+  },
+  /**
+   * 选择所有学校
+   */
+  clearSchool:function(){
+    app.http('patch', `/clear_school`, {}, function (res) {
+      app.globalData.changeSchoolPost = true;
+      app.globalData.changeSchoolSale = true;
+      app.globalData.changeSchoolMatch = true;
+      wx.navigateBack();
+    })
   }
 })

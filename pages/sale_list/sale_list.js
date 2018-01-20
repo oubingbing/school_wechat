@@ -13,42 +13,48 @@ Page({
     showGeMoreLoadin: false,
     notDataTips: false,
     newMessage: false,
-    newMessageNumber: 0
+    newMessageNumber: 0,
+    select: 1
   },
   onLoad: function () {
     this.getList();
-
-    //设置当前时间
-    this.setData({
-      currentTime: util.formatTime(new Date())
-    });
-    console.log('当前时间：' + this.data.currentTime);
-
-
   },
   onShow: function () {
 
-    console.log('当前时间：' + this.data.currentTime);
+    let _this = this;
+  },
+  /**
+  * 跳转到私信
+  */
+  letter: function (e) {
+    console.log('跳转到私信');
 
-    this.getMostNewData();
+    let id = e.currentTarget.dataset.obj;
+
+    wx.navigateTo({
+      url: '/pages/letter/letter?friend_id=' + id
+    })
+  },
+  /**
+ * 获取具体类型的贴子
+ */
+  selected: function (e) {
+    console.log('selected');
+    console.log(e.target.dataset.type);
+
+    let objType = e.target.dataset.type;
+    this.setData({
+      select: objType,
+      sales: []
+    })
+
+    this.setData({
+      pageNumber: this.data.initPageNumber
+    });
 
     let _this = this;
 
-    let type = 0;
-    app.getNewInbox(type, function (res) {
-      console.log("新消息数量：" + res.data.data);
-      if (res.data.data != 0) {
-        _this.setData({
-          newMessage: true,
-          newMessageNumber: res.data.data
-        });
-      } else {
-        _this.setData({
-          newMessage: false,
-          newMessageNumber: 0
-        });
-      }
-    });
+    _this.getList();
 
   },
 
@@ -65,56 +71,72 @@ Page({
   },
 
   /**
+   * 进入新消息列表
+   */
+  openMessage: function () {
+    wx.navigateTo({
+      url: '/pages/message/message?type=0&new_message=1'
+    })
+  },
+
+  /**
    * 获取贴子列表
    */
   getList: function () {
 
     let _this = this;
+    let objType = this.data.select;
 
-    app.http('get', '/sale_friends', {
-      page_size: this.data.pageSize,
-      page_number: this.data.pageNumber
-    }, res => {
+    var order_by = 'created_at';
+    var sort_by = 'desc';
 
+    if (objType == 4) {
+      order_by = 'praise_number';
+      sort_by = 'desc';
+      console.log('最新');
+    }
+
+
+    if (this.data.postType == 3) {
       this.setData({
-        showGeMoreLoadin: false
+        pageNumber: this.data.initPageNumber
+      });
+    }
+
+    app.http('get',
+      `/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}&just=1`,
+      {},
+      res => {
+
+        this.setData({
+          showGeMoreLoadin: false
+        });
+
+        console.log('返回的贴子数据');
+        console.log(res.data.data.page_data);
+        console.log('第几页' + this.data.pageNumber);
+
+        let data = res.data.data.page_data;
+
+        let sales = _this.data.sales;
+
+        if (data.length > 0) {
+          data.map(item => {
+            sales.push(item);
+          });
+
+          this.setData({
+            sales: sales,
+            pageNumber: this.data.pageNumber + 1
+          });
+        } else {
+          this.setData({
+            notDataTips: true
+          });
+        }
+
       });
 
-      console.log('返回的贴子数据');
-      console.log(res.data.data.page_data);
-      console.log('第几页' + this.data.pageNumber);
-
-      let data = res.data.data.page_data;
-
-      let sales = _this.data.sales;
-
-      if (data.length > 0) {
-        data.map(item => {
-          sales.push(item);
-        });
-
-        this.setData({
-          sales: sales,
-          pageNumber: this.data.pageNumber + 1
-        });
-      } else {
-        this.setData({
-          notDataTips: true
-        });
-      }
-
-    });
-
-  },
-
-  /**
-* 下拉刷新，获取最新的贴子
-*/
-  onPullDownRefresh: function () {
-
-    console.log('当前时间：' + this.data.currentTime);
-
-    this.getMostNewData();
   },
 
   /**
@@ -139,52 +161,6 @@ Page({
   },
 
   /**
-   * 获取当前最新的贴子
-   */
-  getMostNewData: function () {
-
-    let _this = this;
-
-    let time = this.data.currentTime;
-
-    app.http('get', '/most_new_sale_friend?time=' + time, {}, res => {
-
-      let sales = _this.data.sales;
-
-      let data =
-
-        res.data.data.map(item => {
-
-          let ifRepeat = false;
-          for (let sale of sales) {
-            if (sale.id == item.id) {
-              ifRepeat = true;
-            }
-          }
-
-          if (!ifRepeat) {
-            sales.unshift(item);
-          }
-
-        });
-
-      _this.setData({
-        sales: sales
-      });
-
-      wx.stopPullDownRefresh();
-
-      console.log(res);
-
-      _this.setData({
-        currentTime: util.formatTime(new Date())
-      });
-
-    });
-
-  },
-
-  /**
    * 删除帖子
    */
   delete: function (e) {
@@ -193,27 +169,43 @@ Page({
     let id = e.currentTarget.dataset.objid;
     let _this = this;
 
-    app.http('delete', `/delete/${id}/sale_friend`, {}, res => {
 
-      console.log(res);
+    wx.showModal({
+      title: '提示',
+      content: '确认删除?',
+      success: function (res) {
+        if (res.confirm) {
 
-      if (res.data.data) {
+          console.log('用户点击确定')
 
-        let oldSales = _this.data.sales;
-        let sales = oldSales.filter(item => {
-          if (item.id != id) {
-            return item;
-          }
+          app.http('delete', `/delete/${id}/sale_friend`, {}, res => {
 
-        });
+            console.log(res);
 
-        _this.setData({
-          sales: sales
-        });
+            if (res.data.data) {
 
+              let oldSales = _this.data.sales;
+              let sales = oldSales.filter(item => {
+                if (item.id != id) {
+                  return item;
+                }
+
+              });
+
+              _this.setData({
+                sales: sales
+              });
+
+            }
+
+          });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
+    })
 
-    });
   },
 
   /**
@@ -239,18 +231,20 @@ Page({
     }, res => {
       console.log('点赞成功' + res);
 
-      let sales = _this.data.sales;
-      let newSales = sales.map(item => {
-        if (item.id == objId) {
-          item.praise_number += 1;
-        }
+      if (res.data.data.length != 0) {
+        let sales = _this.data.sales;
+        let newSales = sales.map(item => {
+          if (item.id == objId) {
+            item.praise_number += 1;
+          }
 
-        return item;
-      });
+          return item;
+        });
 
-      _this.setData({
-        sales: newSales
-      });
+        _this.setData({
+          sales: newSales
+        });
+      }
 
     });
 

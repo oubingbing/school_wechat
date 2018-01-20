@@ -30,12 +30,11 @@ Page({
     newMessage:false,
     newMessageNumber:0,
     select: 1,
-    animationData: {}
+    animationData: {},
+    commentValue:''
   },
 
   onLoad: function (e) {
-
-
     wx.showLoading({
       title: '加载中',
     });
@@ -99,6 +98,22 @@ Page({
         }
       });
   },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '说出你心中最想对ta说的话吧',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 
   /**
    * 获取具体类型的贴子
@@ -114,8 +129,6 @@ Page({
       postType:objType,
       posts:[]
     })
-
-    //getPost: function (_this, objType = null) 
 
     this.setData({
       pageNumber: this.data.initPageNumber
@@ -146,7 +159,7 @@ Page({
   },
 
   /**
-   * 上拉加载跟多
+   * 上拉加载更多
    */
   onReachBottom: function () {
 
@@ -234,7 +247,17 @@ Page({
       if(res.data.data.length > 0){
         
         res.data.data.map(item=>{
-          posts.unshift(item);
+          let ifRepeat = false;
+
+          for (let post of posts) {
+            if (post.id == item.id) {
+              ifRepeat = true;
+            }
+          }
+
+          if (!ifRepeat) {
+            posts.unshift(item);
+          }
         });
 
         _this.setData({
@@ -450,6 +473,10 @@ Page({
 
     let content = event.detail.value;
     this.setData({
+      commentContent: ''
+    })
+
+    this.setData({
       commentContent: content
     })
   },
@@ -463,6 +490,8 @@ Page({
     let objId = this.data.commentObjId;
     let type = this.data.commentType;
     let refcommentId = this.data.refcommentId;
+
+    console.log("comment:" + content);
 
     if (content == '') {
       return;

@@ -1,5 +1,7 @@
 page{
   background-color: #F0F8FF;
+  display: flex;
+  flex-direction: column;
 }
 .select-school{
   display: flex;
@@ -40,6 +42,16 @@ page{
   font-size: 30rpx;
 }
 
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-container{
+  background: red;
+}
+
 .container .container-wall{
   width: 100%;
   display: flex;
@@ -78,7 +90,8 @@ page{
 
 .item-image image{
   width:90rpx;
-  height:90rpx
+  height:90rpx;
+  border-radius: 45rpx;
 }
 
 .item-content .user-name{
@@ -118,12 +131,13 @@ page{
 .item-content .post-time{
   font-weight: 100;
   font-size: 25rpx;
-  margin-bottom: 8rpx;
   color: darkgray;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 40rpx;
+  margin-bottom: 25rpx;
 }
 
 .post-time .time-and-delete{
@@ -133,6 +147,15 @@ page{
 
 .time-and-delete .delete-post{
   margin-left: 20rpx;
+}
+
+.user-college{
+  font-weight: 100;
+  font-size: 25rpx;
+  margin-bottom: 8rpx;
+  color: darkgray;
+  display: flex;
+  flex-direction: row;
 }
 
 .single-image image{
@@ -298,6 +321,12 @@ page{
   display: inline;
 }
 
+.comment-user-wall{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .comment-wall-item .comment-user-container{
   display: inline;
 }
@@ -387,7 +416,7 @@ page{
   padding-bottom: 15rpx;
   font: 30rpx;
   font-weight: 200;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   padding-top: 17rpx;
 }
 

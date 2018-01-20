@@ -5,10 +5,10 @@
         <image mode="aspectFill" src='http://image.kucaroom.com/30269a739a66831daa31ec93d28318af.jpg'></image>
       </view>
       <view>
-        <image class='user-image' src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLfibIwL69rkQFg61JCOhjZhAgAxlG4cLGKkl0XsUoMyItJDFHdlCukicog5fNq9z5XhauVuicdVXEDg/0'></image>
+        <image class='user-image' src='{{user.avatar}}'></image>
       </view>
       <view class='user-info'>
-          <view class='user-name'>叶子</view>
+          <view class='user-name'>{{user.nickname}}</view>
           <view class='article'>
             <view class="letter" bindtap="openLetter">
               <image src="/image/message.png"></image>

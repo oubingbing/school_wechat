@@ -17,7 +17,10 @@
     </view>
     <view class='content'>
       <view class='image-container'>
-        <image class='sale-image' src='{{baseImageUrl+item.attachments[0]}}' mode='widthFix'></image>
+        <image class='sale-image' 
+               mode="widthFix" 
+               src='{{baseImageUrl+item.attachments[0]}}' 
+               mode='widthFix'></image>
       </view>
       <view class='other-info'>
         <view class='craete_at'>{{item.created_at}}</view>
@@ -27,21 +30,37 @@
               bindtap='delete'>删除</view>
       </view>
       <view class='content-detail'>
-        <view class='detail-item detail-item-user'>{{item.name}}</view>
-        <view class='detail-item detail-item-gender'>{{item.gender}}</view>
-        <view class='detail-item detail-item-major'>{{item.major}}</view>
-        <view class='detail-item detail-item-like'>{{item.expectation}}</view>
+        <view class='detail-item detail-item-user'>
+          {{item.name}}
+        </view>
+        <view class='detail-item detail-item-gender'>
+          {{item.gender}}
+        </view>
+        <view class='detail-item detail-item-major'>
+          {{item.major}}
+        </view>
+        <view class='detail-item detail-item-like'>
+          {{item.expectation}}
+        </view>
       </view>
-      <view class='show-self'>{{item.introduce}}</view>
+      <view class='show-self'>
+        <view class='introduce'>{{item.introduce}}</view>
+      </view>
       <view class='comment-container'>
-        <view class='zan' bindtap='praise' data-objid='{{item.id}}'>
+        <view class='zan' 
+              bindtap='praise' 
+              data-objid='{{item.id}}'>
           <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
-        <view class='zan' bindtap='praise' data-objid='{{item.id}}'>
+        <view class='zan' 
+              bindtap='letter' 
+              data-obj='{{item.owner_id}}'>
           <image src='/image/letter.png'></image>
         </view>
-        <view class='comment' bindtap='comment' data-objid="{{item.id}}">
+        <view class='comment' 
+              bindtap='comment' 
+              data-objid="{{item.id}}">
           <image src='/image/comment.png'></image>
           <view>{{item.comment_number}}</view>
         </view>
@@ -56,8 +75,12 @@
     </view>
   </view>
 
-  <view class='no-more-data' wx-if="{{notDataTips}}">
+  <view class='no-more-data' wx-if="{{notDataTips && sales.length != 0}}">
     <view>我是一只有底线的神~_~</view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{sales.length == 0}}">
+    <view>快去把你最可爱的舍友卖了吧~_~</view>
   </view>
 
 </view>

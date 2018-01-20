@@ -3,9 +3,12 @@
   <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
       <view class='header'>
         <view class="header-left">
-          <image src='{{item.user.avatar}}'></image>
+          <image src='{{item.user.avatar}}' wx:if="{{item.private == 0}}"></image>
+          <image src="/image/boy.png"
+                   wx:if="{{item.private == 1}}"></image>
           <view>
-            <view>{{item.user.nickname}}</view>
+            <view wx:if="{{item.private == 0}}">{{item.user.nickname}}</view>
+            <view wx:if="{{item.private == 1}}">匿名の同学</view>
             <view class="created-at">
               <view>{{item.created_at}}</view>
               <view class="delete" bindtap='delete' data-obj="{{item.id}}">删除</view>

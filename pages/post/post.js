@@ -14,13 +14,15 @@ Page({
     name:''
   },
   onLoad: function () {
+
+  },
+  onShow:function(){
     //设置七牛上传token
-    app.getUploadToken(token=>{
+    app.getUploadToken(token => {
       this.setData({
-        uploadToken:token
+        uploadToken: token
       });
     });
-
   },
 
   /** 提交 */
@@ -33,8 +35,7 @@ Page({
     let attachments = this.data.attachments;
     let privateValue = this.data.private;
     let username = this.data.name;
-  
-    //_method, _url, _data, callback
+
     app.http('post','/post',{
       content:content,
       attachments:attachments,

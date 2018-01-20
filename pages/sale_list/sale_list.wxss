@@ -1,5 +1,5 @@
 page{
-  background-color: #F0F8FF;
+  background-color: #F5F5F5;
 }
 
 .sale-container{
@@ -43,7 +43,6 @@ page{
 .follow{
   margin-right: 15rpx;
   font-size: 30rpx;
-  color: #BEBEBE;
 }
 
 .had-follow{
@@ -131,15 +130,20 @@ page{
 }
 
 .show-self{
+  display: flex;
+  flex-direction: row;
   margin-left: 15rpx;
   margin-right: 15rpx;
   margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.introduce{
   background: #F1AAA6;
   color: white;
   font-size: 30rpx;
   padding: 10rpx;
-  border-radius: 5rpx;
-  margin-bottom: 30rpx;
+  border-radius: 10rpx;
 }
 
 .comment-container{
@@ -152,7 +156,7 @@ page{
   margin-left: 15rpx;
   border-top-style:solid;
   border-width:1rpx;
-  border-color: #EEE9E9;
+  border-color: #F0F8FF;
   margin-top: 10rpx;
 }
 
@@ -265,11 +269,9 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border-bottom-style:solid;
-  border-width:5rpx;
-  border-color: #F0F8FF;
   background: white;
-  margin-top: 5rpx;
+  margin-top: 2rpx;
+  margin-bottom: 20rpx;
 }
 
 .nav-bar-container .nav-bar{
@@ -283,6 +285,6 @@ page{
   margin-bottom: 5rpx;
 }
 
-.nav-bar .all{
+.nav-bar .selected{
   color: #FF4500;
 }

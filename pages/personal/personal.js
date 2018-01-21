@@ -3,10 +3,15 @@ const app = getApp();
 
 Page({
   data: {
-    user:''
+    user:'',
+    newLetterNumber:0
   },
   onLoad: function () {
     this.getPersonalInfo();
+    this.newLetterCount();
+  },
+  onShow:function(){
+    this.newLetterCount();
   },
   /**
    * 获取个人信息
@@ -19,6 +24,19 @@ Page({
       console.log(res.data.data);
       _this.setData({
         user:res.data.data
+      })
+    });
+  },
+  /**
+   * 获取未读私信数量
+   */
+  newLetterCount:function(){
+    let _this = this;
+
+    app.http('get', `/new_messages`, {}, res => {
+      console.log(res.data.data);
+      _this.setData({
+        newLetterNumber: res.data.data
       })
     });
   },

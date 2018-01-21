@@ -87,7 +87,7 @@ Page({
     let _this = this;
     let objId = e.target.dataset.obj;
 
-    app.http('patch', `/cancel/${objId}/follow/3`, {}, function (res) {
+    app.http('put', `/cancel/${objId}/follow/3`, {}, function (res) {
 
       console.log(res.data);
 

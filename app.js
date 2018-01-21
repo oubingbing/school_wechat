@@ -163,6 +163,8 @@ App({
     let token = wx.getStorageSync('token');
     let _this = this;
 
+    console.log('url:' + this.globalData.apiUrl + _url);
+
     console.log('http token:' + token);
 
     wx.request({
@@ -212,6 +214,10 @@ App({
           callback(res);
         }
     
+      },
+      fail:function(res){
+        console.log(res);
+        console.log('出错了');
       }
     })
 

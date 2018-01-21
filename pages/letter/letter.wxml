@@ -81,7 +81,8 @@
     <view class='add-image' bindtap='sendImage'>
       <view><image src='/image/add-image.png'></image></view>
     </view>
-    <textarea class='text-content' 
+    <textarea class='text-content'
+              maxlength="1024" 
               bindinput='getContent' 
               value='{{content}}' 
               fixed="true"

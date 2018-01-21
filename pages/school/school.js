@@ -52,12 +52,16 @@ Page({
   selectCollege:function(event){
 
     console.log(event.target.id);
+
+    console.log('选择学校');
     
     let collegeId = event.target.id;
     let _this = this;
 
-    app.http('PATCH',`/set/${collegeId}/college`,{},function(res){
+    app.http('put',`/set/${collegeId}/college`,{},function(res){
       console.log(res.data);
+
+      console.log('服务器返回信息');
 
       if(res.data.error_message || res.data.error_code == 5004){
         console.log(学校不存在);
@@ -66,8 +70,9 @@ Page({
         app.globalData.changeSchoolPost = true;
         app.globalData.changeSchoolSale = true;
         app.globalData.changeSchoolMatch = true;
-        wx.navigateBack();
       }
+
+      wx.navigateBack({ comeBack: true });
 
     });
   },
@@ -87,11 +92,11 @@ Page({
   /**
    * 搜索学校
    */
-  searchCollege:function(event){
-    
+  searchCollege: function (event) {
+
     console.log(this.data.collegeName);
 
-    if(this.data.collegeName == null || this.data.collegeName == ''){
+    if (this.data.collegeName == null || this.data.collegeName == '') {
       wx.showToast({
         title: '内容不能为空',
         icon: 'loading',
@@ -103,10 +108,12 @@ Page({
     let collegeName = this.data.collegeName;
     let _this = this;
 
-    app.http('get',`/search/${collegeName}/college`,{},function(res){
+    app.http('GET', `/search_college`, {
+      'college': collegeName
+    }, function (res) {
       console.log(res.data);
 
-      if(res.data.error_code){
+      if (res.data.error_code) {
         wx.showToast({
           title: res.data.error_message,
           icon: 'loading',
@@ -114,17 +121,17 @@ Page({
         })
       }
 
-      if(res.data.data.length !== 0){
+      if (res.data.data.length !== 0) {
         console.log('not empty');
         _this.setData({
-          colleges:res.data.data,
-          showEmpty:false
+          colleges: res.data.data,
+          showEmpty: false
         });
-      }else{
+      } else {
         console.log('empty');
         _this.setData({
-          colleges:null,
-          showEmpty:true
+          colleges: null,
+          showEmpty: true
         });
       }
     });
@@ -133,11 +140,11 @@ Page({
    * 选择所有学校
    */
   clearSchool:function(){
-    app.http('patch', `/clear_school`, {}, function (res) {
+    app.http('put', `/clear_school`, {}, function (res) {
       app.globalData.changeSchoolPost = true;
       app.globalData.changeSchoolSale = true;
       app.globalData.changeSchoolMatch = true;
-      wx.navigateBack();
+      wx.navigateBack({ comeBack: true });
     })
   }
 })

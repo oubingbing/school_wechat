@@ -125,7 +125,7 @@
                 data-objtype='1'></image>
               </view>
               <view class='comment-icon-container'>
-                <image style='width:50rpx;height:50rpx'
+                <image style='width:45rpx;height:45rpx'
                         src="/image/comment.png" 
                         bindtap="showComment" 
                         id="{{item.id}}" 
@@ -231,6 +231,7 @@
 <view class='comment-input-container' wx:if="{{showCommentInput}}">
   <textarea placeholder="评论" 
             auto-focus
+            maxlength="1024"
             cursor-spacing="15"
             fixed="true"
             auto-height 

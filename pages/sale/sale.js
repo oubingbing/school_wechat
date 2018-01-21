@@ -82,6 +82,18 @@ Page({
       }
     }
   },
+  /** 预览图片 */
+  previewImage: function (event) {
+
+    console.log(event.target.id);
+
+    let url = event.target.id;
+
+    wx.previewImage({
+      current: '',
+      urls: [url]
+    })
+  },
   /**
   * 跳转到私信
   */

@@ -48,10 +48,6 @@ page{
   flex-direction: column;
 }
 
-.all-container{
-  background: red;
-}
-
 .container .container-wall{
   width: 100%;
   display: flex;
@@ -136,7 +132,7 @@ page{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 40rpx;
+  height: 80rpx;
   margin-bottom: 25rpx;
 }
 
@@ -152,7 +148,7 @@ page{
 .user-college{
   font-weight: 100;
   font-size: 25rpx;
-  margin-bottom: 8rpx;
+  margin-bottom: -20rpx;
   color: darkgray;
   display: flex;
   flex-direction: row;
@@ -217,6 +213,7 @@ page{
 .item-content .comment{
   background: WhiteSmoke;
   margin-bottom: 20rpx;
+  margin-top: -20rpx;
 }
 
 .comment .qipao{

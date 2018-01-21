@@ -45,10 +45,11 @@
     </view>
   </view>
   <view class='post-content'>
-    <view><input placeholder="你喜欢怎样的ta呢..." class='like' bindinput="getLike"/></view>
+    <view><input placeholder="喜欢怎样的ta呢..." class='like' bindinput="getLike"/></view>
     <view>
       <textarea placeholder="介绍一下舍友吧" 
-                class='introduce' 
+                class='introduce'
+                maxlength="1024" 
                 bindinput='getContent'/>
     </view>
   </view>

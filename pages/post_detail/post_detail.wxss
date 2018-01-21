@@ -336,7 +336,7 @@ page{
   padding-top: 10rpx;
 }
 
-.comment-input-container input{
+.comment-input-container textarea{
   width: 100%;
   margin-left: 20rpx;
   border-bottom-style:solid;

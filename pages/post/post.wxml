@@ -3,6 +3,7 @@
 
     <view class='input'>
       <textarea 
+        maxlength="1024"
         class='textarea-content'
         placeholder="爱情属于勇敢的人儿"    
         bindinput="getTextContent"/>
@@ -36,7 +37,7 @@
   <view class='location'>
   <view class='like-word'>我喜欢</view>
     <input class='like-content' 
-           placeholder="小微" 
+           placeholder="小薇" 
            bindinput="getName"/>
   </view>
 

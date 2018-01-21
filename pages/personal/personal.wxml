@@ -2,7 +2,7 @@
 
   <view class="bg-container">
       <view class='bg-image'>
-        <image mode="aspectFill" src='http://image.kucaroom.com/30269a739a66831daa31ec93d28318af.jpg'></image>
+        <image mode="aspectFill"      src='http://image.kucaroom.com/30269a739a66831daa31ec93d28318af.jpg'></image>
       </view>
       <view>
         <image class='user-image' src='{{user.avatar}}'></image>
@@ -13,6 +13,9 @@
             <view class="letter" bindtap="openLetter">
               <image src="/image/message.png"></image>
               <view class="letter-item">私信</view>
+              <view class='new-letter' wx:if="{{newLetterNumber != 0}}">
+                ({{newLetterNumber}})
+              </view>
             </view>
             <view>|</view>
             <view class="word">爱情属于勇敢的人儿</view>
@@ -44,6 +47,5 @@
     <view><image src='/image/suggestion.png' class='item-image'></image></view>
     <view class='word'>意见反馈</view>
   </view>
-
 
 </view>

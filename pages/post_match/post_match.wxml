@@ -14,7 +14,10 @@
       </view>
     </view>
     <view class='text'>
-      <textarea placeholder="我想对你说..." bindinput="getContent"/>
+      <textarea 
+        maxlength="1024" 
+        placeholder="我想对你说..." 
+        bindinput="getContent"/>
     </view>
 
 

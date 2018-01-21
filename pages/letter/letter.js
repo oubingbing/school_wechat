@@ -38,7 +38,7 @@ Page({
       })
     }, 500); 
 
-    this.polling(_this);
+    //this.polling(_this);
 
   },
   /**
@@ -229,7 +229,7 @@ Page({
 
     let friendId = _this.data.friendId;
 
-    setInterval(function(){
+    setTimeout(function () {//setInterval
       
       app.http('get', `/new/${friendId}/messages`,
         {},
@@ -259,7 +259,7 @@ Page({
 
         });
 
-    }, 8000);
+    }, 1000);
   },
   /**
    * 发图片

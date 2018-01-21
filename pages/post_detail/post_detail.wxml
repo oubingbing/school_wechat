@@ -144,7 +144,13 @@
 </view>
 
 <view class='comment-input-container' wx:if="{{showCommentInput}}">
-  <input placeholder="评论" auto-focus bindinput='getCommentContent'/>
+<textarea placeholder="评论"
+            maxlength="1024" 
+            auto-focus
+            cursor-spacing="10"
+            fixed="true"
+            auto-height 
+            bindinput='getCommentContent'/>
   <view class='send-button' bindtap='sendComment'><view>发送</view></view>
 </view>
 

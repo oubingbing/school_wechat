@@ -244,7 +244,7 @@ Page({
           wx.hideLoading();
         }, 2000);
       }else{
-        wx.navigateBack();
+        wx.navigateBack({ comeBack: true });
       }
 
     });

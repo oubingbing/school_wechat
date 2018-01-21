@@ -89,7 +89,7 @@ Page({
           url: `/pages/match_result/match_result?id=${res.data.data.id}`
         })
       }else{
-        wx.navigateBack();
+        wx.navigateBack({ comeBack: true });
       }
 
     });

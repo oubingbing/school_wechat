@@ -131,6 +131,7 @@
 
   <view class='comment-input-container' wx:if="{{showCommentInput}}">
     <textarea 
+        maxlength="1024"
         placeholder="评论" 
         auto-focus 
         cursor-spacing="15"

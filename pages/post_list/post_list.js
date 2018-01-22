@@ -100,7 +100,9 @@ Page({
     })
   },
 
-  /** 获取贴子 */
+  /**
+   * 获取贴子
+   */
   getPost: function (_this, objType = null) {
 
     console.log('function getPost');
@@ -142,7 +144,9 @@ Page({
     });
 
   },
-  /** 预览图片 */
+  /**
+   * 预览图片
+   */
   previewImage: function (event) {
 
     console.log(event.target.id);
@@ -155,7 +159,9 @@ Page({
     })
   },
 
-  /** 显示评论控制面板 */
+  /** 
+   * 显示评论控制面板
+   */
   showComment: function (event) {
 
     this.setData({
@@ -183,7 +189,9 @@ Page({
 
   },
 
-  /** 触摸屏幕后移动触发一些隐藏操作 */
+  /** 
+   * 触摸屏幕后移动触发一些隐藏操作
+   */
   hiddenComment: function () {
     console.log('inde-hiddenComment：触摸后移动');
     this.setData({
@@ -193,7 +201,9 @@ Page({
     });
   },
 
-  /** 点赞 */
+  /** 
+   * 点赞
+   */
   praise: function (event) {
     console.log('index-praise：点赞');
 
@@ -231,7 +241,9 @@ Page({
 
   },
 
-  /** 激活评论框 */
+  /** 
+   * 激活评论框
+   */
   showCommentInput: function (event) {
     console.log('index-showCommentInput：激活评论框');
 
@@ -249,7 +261,9 @@ Page({
     });
   },
 
-  /** 获取评论框的输入内容 */
+  /** 
+   * 获取评论框的输入内容
+   */
   getCommentContent: function (event) {
     console.log("评论框输入内容:" + event.detail.value);
 
@@ -263,7 +277,9 @@ Page({
     })
   },
 
-  /** 提交评论 */
+  /** 
+   * 提交评论
+   */
   sendComment: function (e) {
 
     let _this = this;
@@ -321,7 +337,9 @@ Page({
 
   },
 
-  /** 回复别人 */
+  /** 
+   * 回复别人
+   */
   commentOtherComment: function (e) {
 
     console.log(e.currentTarget.dataset);
@@ -342,7 +360,9 @@ Page({
     });
   },
 
-  /** 删除评论 */
+  /** 
+   * 删除评论
+   */
   deleteComment: function (e) {
     console.log('删除评论')
 
@@ -400,8 +420,9 @@ Page({
 
   },
 
-
-  /** 删除帖子 */
+  /** 
+   * 删除帖子
+   */
   deletePost: function (e) {
 
     let objId = e.target.id;

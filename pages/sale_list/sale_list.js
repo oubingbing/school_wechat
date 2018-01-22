@@ -36,8 +36,8 @@ Page({
     })
   },
   /**
- * 获取具体类型的贴子
- */
+   * 获取具体类型的贴子
+   */
   selected: function (e) {
     console.log('selected');
     console.log(e.target.dataset.type);
@@ -140,8 +140,8 @@ Page({
   },
 
   /**
- * 上拉加载跟多
- */
+   * 上拉加载跟多
+   */
   onReachBottom: function () {
 
     console.log('到底了');
@@ -250,8 +250,8 @@ Page({
 
   },
   /**
- * 关注
- */
+   * 关注
+  */
   follow: function (e) {
 
     console.log(e);

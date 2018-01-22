@@ -145,16 +145,16 @@ Page({
 
   },
   /**
- * 进入新消息列表
- */
+   * 进入新消息列表
+   */
   openMessage: function () {
     wx.navigateTo({
       url: '/pages/message/message?type=0&new_message=1'
     })
   },
   /**
- * 关注
- */
+   * 关注
+   */
   follow: function (e) {
 
     console.log(e);
@@ -297,6 +297,9 @@ Page({
     });
 
   },
+  /**
+   * 匹配结果
+   */
   matchResult: function (e) {
     let id = e.currentTarget.dataset.id;
     console.log(id);

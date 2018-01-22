@@ -44,8 +44,8 @@ Page({
 
   },
   /**
- * 关注
- */
+   * 关注
+   */
   follow: function (e) {
 
     console.log(e);
@@ -154,7 +154,9 @@ Page({
       }
     })
   },
-  /** 点赞 */
+  /**
+   * 点赞
+   */
   praise: function (event) {
 
     let objId = event.currentTarget.dataset.obj;

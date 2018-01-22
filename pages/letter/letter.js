@@ -163,7 +163,9 @@ Page({
     })
   },
 
-  /** 获取输入内容 */
+  /**
+   * 获取输入内容
+   */
   getContent: function (event) {
     console.log("评论框输入内容:" + event.detail.value);
 
@@ -309,7 +311,9 @@ Page({
         }
       })
   },
-  /** 预览图片 */
+  /**
+   * 预览图片
+   */
   previewImage: function (event) {
 
     console.log(event.target.id);

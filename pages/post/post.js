@@ -55,7 +55,9 @@ Page({
 
   },
 
-  /** 选择图片并且上传到七牛 */
+  /**
+   * 选择图片并且上传到七牛
+   */
   selectImage: function () {
 
     console.log('select image');
@@ -113,7 +115,9 @@ Page({
 
   },
 
-  /** 预览图片 */
+  /**
+   * 预览图片
+   */
   previewImage: function (event) {
 
     console.log(event.target.id);
@@ -126,7 +130,9 @@ Page({
     })
   },
 
-  /** 移除图片 */
+  /**
+   * 移除图片
+   */
   removeImage: function (event) {
     console.log(event.target.id);
     console.log(event);
@@ -156,7 +162,9 @@ Page({
 
   },
 
-  /** 设置是否匿名 */
+  /**
+   * 设置是否匿
+   */
   setPrivate:function(event){
     console.log(event.detail.value);
 
@@ -167,6 +175,9 @@ Page({
     console.log(this.data.private);
   },
 
+  /**
+   * 获取输入内容
+   */
   getTextContent:function(event){
     let value = event.detail.value;
     this.setData({

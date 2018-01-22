@@ -65,7 +65,9 @@ Page({
       refCommentId:refId
     });
   },
-  /** 删除评论 */
+  /**
+   * 删除评论
+   */
   deleteComment: function (e) {
     console.log('删除评论')
 

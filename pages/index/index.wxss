@@ -75,7 +75,7 @@ page{
 }
 
 .item-container .item-image{
-  width: 16%;
+  width: 13%;
 }
 
 .item-container .item-content{
@@ -85,9 +85,9 @@ page{
 }
 
 .item-image image{
-  width:90rpx;
-  height:90rpx;
-  border-radius: 45rpx;
+  width:80rpx;
+  height:80rpx;
+  border-radius: 40rpx;
 }
 
 .item-content .user-name{
@@ -95,7 +95,7 @@ page{
   flex-direction: row;
   justify-content: space-between;
   font-weight: 300;
-  font-size: 38rpx;
+  font-size: 35rpx;
   margin-bottom: 8rpx;
   margin-top: -5rpx;
 }

@@ -25,11 +25,11 @@
 
   <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
       <view class='header'>
-        <view class="header-left">
-          <image src='{{item.user.avatar}}' wx:if="{{item.private == 0}}"></image>
-          <image src="/image/boy.png"
+          <view class="header-left">
+            <image src='{{item.user.avatar}}' wx:if="{{item.private == 0}}"></image>
+            <image src="/image/boy.png"
                  wx:elif="{{item.private == 1 && item.user.gender ==1}}"></image>
-          <image src="/image/girl.png" wx:else></image>
+            <image src="/image/girl.png" wx:else></image>
           <view>
             <view wx:if="{{item.private == 0}}">{{item.user.nickname}}</view>
             <view wx:if="{{item.private == 1}}">匿名の同学</view>

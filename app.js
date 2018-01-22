@@ -10,7 +10,7 @@ App({
   
     //七牛图片外链域名
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
-    this.globalData.bgIimage = this.globalData.imageUrl +'30269a739a66831daa31ec93d28318af.jpg';
+    this.globalData.bgIimage = this.globalData.imageUrl+'30269a739a66831daa31ec93d28318af.jpg';
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -22,7 +22,9 @@ App({
 
   },
 
-  /** 登录 */
+  /** 
+   * 登录
+   */
   login: function () {
 
     let _this = this;
@@ -54,7 +56,9 @@ App({
 
   },
 
-  /** 获取token */
+  /** 
+   * 获取token
+   */
   getToken: function (_this, openId,callback=null) {
 
     console.log('function getToen');
@@ -101,7 +105,9 @@ App({
 
   },
 
-  /**刷新本地token**/
+  /** 
+   * 刷新本地token
+  */
   refreshToken: function (_this, _app, callback = null) {
 
     console.log('刷新token');
@@ -157,7 +163,9 @@ App({
 
   },
 
-  /** 封装微信http请求 */
+  /** 
+   * 封装微信http请求
+   */
   http: function (_method, _url, _data, callback) {
 
     let token = wx.getStorageSync('token');
@@ -223,7 +231,9 @@ App({
 
   },
 
-  /** 获取七牛上传token */
+  /** 
+   * 获取七牛上传token
+   */
   setUploadToken: function (call) {
 
     this.http('GET', '/upload_token', {}, function (res) {
@@ -240,7 +250,9 @@ App({
 
   },
 
-  /** 获取七牛上传token */
+  /** 
+   * 获取七牛上传token
+   */
   getUploadToken: function (callback) {
 
     this.setUploadToken(callback);

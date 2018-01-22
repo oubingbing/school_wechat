@@ -12,6 +12,9 @@ Page({
 
     this.getResult(id);
   },
+  /**
+   * 获取匹配结果信息
+   */
   getResult:function(id){
 
     let _this = this;

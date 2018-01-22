@@ -12,6 +12,9 @@ Page({
   onShow(){
     this.friends();
   },
+  /**
+   * 好友列表
+   */
   friends:function(){
     let _this = this;
 
@@ -30,6 +33,9 @@ Page({
       });
 
   },
+  /**
+   * 跳转私信
+   */
   letter: function (e) {
     console.log('跳转到私信');
     console.log(e.target.dataset.obj);

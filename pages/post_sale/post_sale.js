@@ -140,8 +140,8 @@ Page({
     console.log(value);
   },
   /**
- * 提交数据
- */
+   * 提交数据
+  */
   post: function () {
     console.log('提交数据');
 

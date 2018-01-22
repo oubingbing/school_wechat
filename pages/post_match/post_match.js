@@ -34,7 +34,9 @@ Page({
     });
   },
 
-  /** 设置是否匿名 */
+  /** 
+   * 设置是否匿名
+   */
   setPrivate: function (event) {
     console.log(event.detail.value);
 
@@ -93,7 +95,6 @@ Page({
       }
 
     });
-
 
   }
 

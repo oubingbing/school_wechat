@@ -82,7 +82,9 @@ Page({
       }
     }
   },
-  /** 预览图片 */
+  /** 
+   * 预览图片
+   */
   previewImage: function (event) {
 
     console.log(event.target.id);
@@ -107,8 +109,8 @@ Page({
     })
   },
   /**
- * 获取具体类型的贴子
- */
+   * 获取具体类型的贴子
+   */
   selected:function(e) {
     console.log('selected');
     console.log(e.target.dataset.type);
@@ -221,8 +223,8 @@ Page({
   },
 
   /**
-* 下拉刷新，获取最新的贴子
-*/
+  * 下拉刷新，获取最新的贴子
+  */
   onPullDownRefresh: function () {
 
     console.log('当前时间：' + this.data.currentTime);
@@ -231,8 +233,8 @@ Page({
   },
 
   /**
- * 上拉加载跟多
- */
+   * 上拉加载跟多
+  */
   onReachBottom: function () {
 
     console.log('到底了');
@@ -306,7 +308,6 @@ Page({
 
     let id = e.currentTarget.dataset.objid;
     let _this = this;
-
 
     wx.showModal({
       title: '提示',
@@ -388,8 +389,8 @@ Page({
 
   },
   /**
- * 关注
- */
+   * 关注
+   */
   follow: function (e) {
 
     console.log(e);

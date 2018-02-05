@@ -51,15 +51,14 @@ Page({
     });
 
     let _this = this;
-
     let token = wx.getStorageSync('token');
     console.log('获取到token:' + token);
 
     _this.getSchool(_this);
-
     _this.getPost(this);
 
   },
+  
   onShow: function (option) {
     console.log('on show');
     console.log('显示页面');
@@ -188,6 +187,10 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  /**
+   * 获取用户信息
+   */
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -197,7 +200,9 @@ Page({
     })
   },
 
-  /** 进入发表页面 */
+  /** 
+   * 进入发表页面
+   */
   post: function () {
     console.log('Post');
 
@@ -205,6 +210,10 @@ Page({
       url: '/pages/post/post'
     })
   },
+
+  /**
+   * 进入选择学校页面
+   */
   selectSchool: function () {
     console.log('select school');
 
@@ -252,9 +261,7 @@ Page({
       console.log(res.data.data);
 
       let posts = _this.data.posts;
-
       if (res.data.data.length > 0) {
-
         res.data.data.map(item => {
           let ifRepeat = false;
 
@@ -278,6 +285,7 @@ Page({
     });
 
   },
+
   /**
    * 发表贴子后获取最新的贴子
    */
@@ -368,7 +376,10 @@ Page({
       });
 
   },
-  /** 预览图片 */
+
+  /**
+   * 预览图片
+   */
   previewImage: function (event) {
 
     console.log(event.target.id);
@@ -689,15 +700,6 @@ Page({
     })
   },
 
-  /** 取消赞 */
-  deletePraise: function (e) {
-
-  },
-
-  /** 取消关注 */
-  cancelFollow: function (e) {
-
-  },
   /**
    * 跳转到私信
    */
@@ -748,6 +750,7 @@ Page({
       });
     });
   },
+
   /**
    * 取消关注
    */
@@ -776,7 +779,5 @@ Page({
     });
 
   }
-
-
 
 })

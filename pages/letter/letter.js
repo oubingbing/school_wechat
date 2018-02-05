@@ -28,7 +28,6 @@ Page({
     console.log(friendId);
 
     this.setTitle(friendId);
-
     this.getMessageList(friendId);
 
     let _this = this;
@@ -51,11 +50,9 @@ Page({
     app.http('get', `/user/${id}`,
       {},
       function (res) {
-
         console.log(res.data.data);
         let name = res.data.data.nickname;
         wx.setNavigationBarTitle({ title: name });
-
       });
 
   },
@@ -78,7 +75,6 @@ Page({
 
         console.log(res.data.data);
         let data = res.data.data.page_data;
-
         let list = _this.data.list;
 
         if (oprateType == 'unshift'){

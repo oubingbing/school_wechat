@@ -16,7 +16,7 @@ Page({
     praiseBorder: '',
     notPraiseBorder: '',
     posts: [],
-    postType:1,
+    postType: 1,
     baseImageUrl: app.globalData.imageUrl,
     show: 0,
     hidden: false,
@@ -31,12 +31,12 @@ Page({
     initPageNumber: 1,
     showGeMoreLoadin: false,
     currentTime: '',
-    notDataTips:false,
-    newMessage:false,
-    newMessageNumber:0,
+    notDataTips: false,
+    newMessage: false,
+    newMessageNumber: 0,
     select: 1,
     animationData: {},
-    commentValue:''
+    commentValue: ''
   },
 
   onLoad: function (e) {
@@ -52,12 +52,12 @@ Page({
 
     let _this = this;
 
-      let token = wx.getStorageSync('token');
-      console.log('获取到token:' + token);
+    let token = wx.getStorageSync('token');
+    console.log('获取到token:' + token);
 
-      _this.getSchool(_this);
+    _this.getSchool(_this);
 
-      _this.getPost(this);
+    _this.getPost(this);
 
   },
   onShow: function (option) {
@@ -81,27 +81,27 @@ Page({
       this.setData({
         currentTime: uploader.formatTime(new Date())
       });
-    }else{
+    } else {
       _this.getMostNewPost();
     }
 
-      _this.getSchool(_this);
+    _this.getSchool(_this);
 
-      let type = 0;
-      app.getNewInbox(type, function (res) {
-        console.log("新消息数量：" + res.data.data);
-        if (res.data.data != 0) {
-          _this.setData({
-            newMessage: true,
-            newMessageNumber: res.data.data
-          });
-        } else {
-          _this.setData({
-            newMessage: false,
-            newMessageNumber: 0
-          });
-        }
-      });
+    let type = 0;
+    app.getNewInbox(type, function (res) {
+      console.log("新消息数量：" + res.data.data);
+      if (res.data.data != 0) {
+        _this.setData({
+          newMessage: true,
+          newMessageNumber: res.data.data
+        });
+      } else {
+        _this.setData({
+          newMessage: false,
+          newMessageNumber: 0
+        });
+      }
+    });
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -131,8 +131,8 @@ Page({
     let objType = e.target.dataset.type;
     this.setData({
       select: objType,
-      postType:objType,
-      posts:[]
+      postType: objType,
+      posts: []
     })
 
     this.setData({
@@ -158,9 +158,9 @@ Page({
    */
   onPullDownRefresh: function () {
 
-    console.log('当前时间：'+this.data.currentTime);
+    console.log('当前时间：' + this.data.currentTime);
 
-      this.getMostNewPost();
+    this.getMostNewPost();
   },
 
   /**
@@ -253,9 +253,9 @@ Page({
 
       let posts = _this.data.posts;
 
-      if(res.data.data.length > 0){
-        
-        res.data.data.map(item=>{
+      if (res.data.data.length > 0) {
+
+        res.data.data.map(item => {
           let ifRepeat = false;
 
           for (let post of posts) {
@@ -270,7 +270,7 @@ Page({
         });
 
         _this.setData({
-          posts:posts
+          posts: posts
         });
 
       }
@@ -305,7 +305,7 @@ Page({
   /**
    * 获取贴子
    */
-  getPost: function (_this,objType=null) {
+  getPost: function (_this, objType = null) {
 
     console.log('function getPost');
     console.log(this.data.postType)
@@ -315,12 +315,12 @@ Page({
     let order_by = 'created_at';
     let sort_by = 'desc';
 
-    if (this.data.postType == 4){
+    if (this.data.postType == 4) {
       order_by = 'praise_number';
       sort_by = 'desc';
     }
 
-    if (this.data.postType == 3){
+    if (this.data.postType == 3) {
       this.setData({
         pageNumber: this.data.initPageNumber
       });
@@ -335,37 +335,37 @@ Page({
 
     app.http('get',
       `/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}`,
-      {}, 
+      {},
       res => {
 
-      _this.setData({
-        showGeMoreLoadin: false
-      })
-
-      let posts = that.data.posts;
-
-      console.log("post数据："+posts);
-
-      console.log('返回的贴子数据');
-      console.log(res.data.data.page_data);
-      console.log('第几页' + _this.data.pageNumber);
-
-      if (res.data.data.page_data.length > 0) {
-        res.data.data.page_data.map(item => {
-          posts.push(item);
-        });
-
         _this.setData({
-          posts: posts,
-          pageNumber: _this.data.pageNumber + 1
-        });
-      }else{
-        _this.setData({
-          notDataTips:true
-        });
-      }
+          showGeMoreLoadin: false
+        })
 
-    });
+        let posts = that.data.posts;
+
+        console.log("post数据：" + posts);
+
+        console.log('返回的贴子数据');
+        console.log(res.data.data.page_data);
+        console.log('第几页' + _this.data.pageNumber);
+
+        if (res.data.data.page_data.length > 0) {
+          res.data.data.page_data.map(item => {
+            posts.push(item);
+          });
+
+          _this.setData({
+            posts: posts,
+            pageNumber: _this.data.pageNumber + 1
+          });
+        } else {
+          _this.setData({
+            notDataTips: true
+          });
+        }
+
+      });
 
   },
   /** 预览图片 */
@@ -442,27 +442,27 @@ Page({
     let _this = this;
 
     app.http(
-      'post', 
+      'post',
       `/praise`,
       { obj_id: objId, obj_type: objType }, res => {
-      console.log('点赞成功' + res);
+        console.log('点赞成功' + res);
 
-      let postList = _this.data.posts;
-      let newPostList = postList.map(item => {
+        let postList = _this.data.posts;
+        let newPostList = postList.map(item => {
 
-        if (objId == item.id) {
-          item.praises.push(res.data.data);
-        }
+          if (objId == item.id) {
+            item.praises.push(res.data.data);
+          }
 
-        return item;
+          return item;
+        });
+
+        //重新赋值，更新数据列表
+        _this.setData({
+          posts: newPostList
+        });
+
       });
-
-      //重新赋值，更新数据列表
-      _this.setData({
-        posts: newPostList
-      });
-
-    });
 
   },
 
@@ -613,19 +613,13 @@ Page({
             if (res.data.data == 1) {
 
               let newPostList = _this.data.posts.map(item => {
-
                 if (objId == item.id) {
-
                   let newComment = item.comments.filter((item, index) => {
-
                     if (item.id != commentId) {
                       return item;
                     }
-
                   });
-
                   item.comments = newComment;
-
                 }
 
                 return item;
@@ -674,9 +668,7 @@ Page({
 
               let newPosts = _this.data.posts.filter((item, index) => {
                 if (item.id != objId) {
-
                   return item;
-
                 }
               });
 
@@ -709,21 +701,21 @@ Page({
   /**
    * 跳转到私信
    */
-  letter:function(e){
+  letter: function (e) {
     console.log('跳转到私信');
     console.log(e.target.dataset.obj);
 
     let id = e.target.dataset.obj;
     let canChat = e.target.dataset.chat;
 
-     wx.navigateTo({
-       url: '/pages/letter/letter?friend_id=' + id
-     })
+    wx.navigateTo({
+      url: '/pages/letter/letter?friend_id=' + id
+    })
   },
   /**
    * 关注
    */
-  follow:function(e){
+  follow: function (e) {
 
     console.log(e);
 
@@ -733,8 +725,8 @@ Page({
     console.log(objId);
 
     app.http('post', '/follow', {
-      obj_id:objId,
-      obj_type:1
+      obj_id: objId,
+      obj_type: 1
     }, function (res) {
 
       console.log(res.data);
@@ -742,9 +734,9 @@ Page({
       let follow = res.data.data;
       let post = _this.data.posts;
 
-      let newPost = post.map(item=>{
+      let newPost = post.map(item => {
 
-        if (item.id == follow.obj_id){
+        if (item.id == follow.obj_id) {
           item.follow = true;
         }
 
@@ -752,14 +744,14 @@ Page({
       });
 
       _this.setData({
-        posts:newPost
+        posts: newPost
       });
     });
   },
   /**
    * 取消关注
    */
-  cancelFolllow:function(e){
+  cancelFolllow: function (e) {
 
     let _this = this;
     let objId = e.target.dataset.obj;
@@ -772,11 +764,9 @@ Page({
       let post = _this.data.posts;
 
       let newPost = post.map(item => {
-
         if (item.id == objId) {
           item.follow = false;
         }
-
         return item;
       });
 

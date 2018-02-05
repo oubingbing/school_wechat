@@ -202,7 +202,7 @@ page{
   border-radius:7rpx;
   position: absolute;
   z-index: 10;
-  right: 70rpx;
+  right: 85rpx;
 }
 
 .comment-icon image{

@@ -11,15 +11,18 @@
                    src="{{item.poster.avatar}}"
                    wx:if="{{item.private == 0}}"></image>
           <image bindtap='previewImage'
-                   src="/image/niming.png"
-                   wx:if="{{item.private == 1}}"></image>
+                   src="/image/boy.png"
+                   wx:elif="{{item.private == 1 && item.poster.gender == 1}}"></image>
+          <image bindtap='previewImage'
+                   src="/image/girl.png"
+                   wx:else></image>
       </view>
       <view class="item-content">
         <view class="user-name">
           <view wx:if="{{item.private == 0}}">
             {{item.poster.nickname}}
           </view>
-          <view wx:if="{{item.private == 1}}">匿名者</view>
+          <view wx:if="{{item.private == 1}}">匿名の同学</view>
           <view class='follow' 
                 bindtap="follow" 
                 wx:if="{{!item.follow}}"

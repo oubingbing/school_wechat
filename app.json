@@ -23,9 +23,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "white",
-    "navigationBarTitleText": "神话校园",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#66CDAA",
+    "navigationBarTitleText": "校园小情书",
+    "navigationBarTextStyle":"white"
   },
     "tabBar": {
       "color": "#7A7E83",

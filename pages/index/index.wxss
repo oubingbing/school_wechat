@@ -192,7 +192,7 @@ page{
 
 .comment-container .comment-icon{
   height: 75rpx;
-  width: 350rpx;
+  width: 250rpx;
   background: #0aecc3;
   display: flex;
   flex-direction: row;

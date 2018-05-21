@@ -10,14 +10,14 @@
       <view class='user-info'>
           <view class='user-name'>{{user.nickname}}</view>
           <view class='article'>
-            <view class="letter" bindtap="openLetter">
+            <!--<view class="letter" bindtap="openLetter">
               <image src="/image/message.png"></image>
               <view class="letter-item">私信</view>
               <view class='new-letter' wx:if="{{newLetterNumber != 0}}">
                 ({{newLetterNumber}})
               </view>
             </view>
-            <view>|</view>
+            <view>|</view>-->
             <view class="word">爱情属于勇敢的人儿</view>
           </view>
       </view>

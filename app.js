@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
 
-    console.log('app');
+    this.globalData.appKey = 'zxcvbnm';
 
     //设置基本接口全局变量
     //this.globalData.apiUrl = 'https://www.kucaroom.com/api/wechat';
@@ -60,7 +60,8 @@ App({
                 method: 'POST',
                 data: {
                   user_info: res.userInfo,
-                  code: code
+                  code: code,
+                  app_id: this.globalData.appKey
                 },
                 success: function (res) {
                   wx.setStorageSync('token', res.data.data);
@@ -160,6 +161,7 @@ App({
   },
 
   globalData: {
+    appId:null,
     userInfo: null,
     apiUrl: null,
     color: '0aecc3',
@@ -168,9 +170,5 @@ App({
     changeSchoolPost:false,
     changeSchoolSale: false,
     changeSchoolMatch: false
-    //  background-color: #F0F8FF;
-    //#73CB75
-    //E8E8E8
-
   }
 })

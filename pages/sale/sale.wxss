@@ -48,11 +48,23 @@ page{
   font-size: 30rpx;
 }
 
+.follow-label{
+  font-size: 25rpx;
+  font-weight: 200;
+  color: white;
+  background: #8B8989;
+  padding: 5rpx;
+  border-radius: 10rpx;
+}
+
 .had-follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
   margin-right: 15rpx;
-  color: red;
+  color: white;
+  background: #FF7F00;
+  padding: 5rpx;
+  border-radius: 10rpx;
 }
 .user-name{
   font-size: 3prx;
@@ -200,13 +212,13 @@ page{
   right:18rpx;
   bottom:5rpx;
   z-index:100;
-  width: 130prx;
-  height: 130prx;
+  width: 110prx;
+  height: 110prx;
 }
 
 .post image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 110rpx;
+  height: 110rpx;
 }
 
 /** 加载更多 **/

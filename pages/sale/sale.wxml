@@ -30,7 +30,7 @@
         <image src='{{item.poster.avatar}}' mode='widthFix'></image>
         <view class='user-name'>{{item.poster.nickname}}</view>
       </view>
-      <view class='follow' 
+      <view class='follow follow-label' 
                 bindtap="follow" 
                 wx:if="{{!item.follow}}"
                 data-obj="{{item.id}}">关注</view>

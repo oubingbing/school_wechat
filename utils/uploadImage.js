@@ -2,9 +2,9 @@ const app = getApp();
 const qiniuUploader = require("qiniuUploader.js");
 
 let uploadToken = '';
-app.getUploadToken(token=>{
-  uploadToken = token;
-});
+//app.getUploadToken(token=>{
+  //uploadToken = token;
+//});
 
 // 初始化七牛相关参数
 function initQiniu() {

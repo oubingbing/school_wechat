@@ -55,15 +55,23 @@ page{
 }
 
 .user-name .follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
-  color: #BEBEBE;
+  color: white;
+  background: #8B8989;
+  padding-bottom: -5rpx;
+  padding-right: 5rpx;
+  padding-left: 5rpx;
+  border-radius: 10rpx;
 }
 
 .user-name .had-follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
-  color: red;
+  color: white;
+  background: #FF7F00;
+  padding: 5rpx;
+  border-radius: 10rpx;
 }
 
 .for-user{
@@ -137,7 +145,7 @@ page{
 .comment-container .comment-icon{
   height: 75rpx;
   width: 350rpx;
-  background: #0aecc3;
+  background: #424242;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

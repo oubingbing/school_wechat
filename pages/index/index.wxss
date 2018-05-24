@@ -16,7 +16,7 @@ page{
   flex-direction: column;
   justify-content:space-around;
   background: white;
-  margin-top: 70rpx;
+  margin-top: 75rpx;
 }
 
 .container-wall .wall-item{
@@ -73,9 +73,12 @@ page{
 }
 
 .user-name .had-follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
-  color: red;
+  color: white;
+  background: #FF7F00;
+  padding: 5rpx;
+  border-radius: 10rpx;
 }
 
 .for-user{
@@ -319,13 +322,13 @@ page{
   right:18rpx;
   bottom:5rpx;
   z-index:100;
-  width: 150prx;
-  height: 150prx;
+  width: 110prx;
+  height: 110prx;
 }
 
 .post image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 110rpx;
+  height: 110rpx;
 }
 
 /** nav-bar **/
@@ -339,7 +342,7 @@ page{
   justify-content: space-around;
   border-bottom-style:solid;
   border-width:5rpx;
-  border-color: #F0F8FF;
+  border-color: white;
   background: white;
   position: fixed;
 }
@@ -432,7 +435,6 @@ page{
 
 .no-more-data{
   width: 100%;
-  background: white;
   padding-top: 20rpx;
   padding-bottom: 20rpx;
   justify-content: space-around;

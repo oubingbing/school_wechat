@@ -30,12 +30,12 @@
         };
         updateConfigWithOptions(options);
 
-        console.log('int:' + options);
+        console.log('int options:' + JSON.stringify(options));
     }
 
     function updateConfigWithOptions(options) {
 
-        console.log(JSON.stringify(options));
+      console.log('updateConfigWithOptions:'+JSON.stringify(options));
 
         if (options.region) {
 
@@ -69,7 +69,8 @@
 
     function upload(filePath, success, fail, options) {
 
-        console.log('options:' + options);
+      console.log('filePath:' + filePath);
+      console.log('qiniuUploadToken:' + config.qiniuUploadToken);
 
         if (null == filePath) {
             console.error('qiniu uploader need filePath to upload');
@@ -79,6 +80,7 @@
             updateConfigWithOptions(options);
         }
         if (config.qiniuUploadToken) {
+          console.log('我在这里了');
             doUpload(filePath, success, fail, options);
         } else if (config.qiniuUploadTokenURL) {
             getQiniuToken(function () {
@@ -112,6 +114,8 @@
         if (!config.qiniuShouldUseQiniuFileName) {
             formData['key'] = fileName
         }
+
+        console.log('发送中的options:'+options);
 
         console.log('发送中');
 
@@ -150,7 +154,7 @@
 
     function getQiniuToken(callback) {
 
-        const uploadToken = app.getUploadToken();
+      const uploadToken = app.getUploadToken(callback);
 
         config.qiniuUploadToken = uploadToken;
         if (callback) {

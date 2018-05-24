@@ -1,4 +1,6 @@
 
+//post
+
 const app = getApp();
 const qiniuUploader = require("../../utils/qiniuUploader");
 const uploader = require("../../utils/uploadImage");
@@ -8,15 +10,15 @@ Page({
     logs: [],
     imageArray: [],
     uploadToken: null,
-    attachments:[],
-    private:false,
-    textContent:'',
-    name:''
+    attachments: [],
+    private: false,
+    textContent: '',
+    name: ''
   },
   onLoad: function () {
 
   },
-  onShow:function(){
+  onShow: function () {
     //设置七牛上传token
     app.getUploadToken(token => {
       this.setData({
@@ -36,18 +38,18 @@ Page({
     let privateValue = this.data.private;
     let username = this.data.name;
 
-    app.http('post','/post',{
-      content:content,
-      attachments:attachments,
-      private:privateValue,
+    app.http('post', '/post', {
+      content: content,
+      attachments: attachments,
+      private: privateValue,
       username: username
-      },res=>{
-      wx.navigateBack({comeBack:true});
+    }, res => {
+      wx.navigateBack({ comeBack: true });
       console.log(res);
     });
 
   },
-  getName: function (event){
+  getName: function (event) {
     let value = event.detail.value;
     this.setData({
       name: value
@@ -82,19 +84,19 @@ Page({
           title: '加载中',
         })
 
-        filePaths.map((item,index)=>{
+        filePaths.map((item, index) => {
           temArray.push(item);
 
-          uploader.upload(item,key=>{
+          uploader.upload(item, key => {
             console.log(index);
             console.log(position);
-            if(position == index){
+            if (position == index) {
               wx.hideLoading();
             }
 
             let temAttachments = _this.data.attachments;
 
-            if (key != '' || key != null){
+            if (key != '' || key != null) {
               temAttachments.push(key);
               _this.setData({
                 attachments: temAttachments
@@ -149,7 +151,7 @@ Page({
       }
     });
 
-    newAttachments = newAttachments.filter((item,index)=>{
+    newAttachments = newAttachments.filter((item, index) => {
       if (index != id) {
         return item;
       }
@@ -157,7 +159,7 @@ Page({
 
     this.setData({
       imageArray: newArray,
-      attachments:newAttachments
+      attachments: newAttachments
     });
 
   },
@@ -165,11 +167,11 @@ Page({
   /**
    * 设置是否匿
    */
-  setPrivate:function(event){
+  setPrivate: function (event) {
     console.log(event.detail.value);
 
     this.setData({
-      private:event.detail.value
+      private: event.detail.value
     });
 
     console.log(this.data.private);
@@ -178,12 +180,12 @@ Page({
   /**
    * 获取输入内容
    */
-  getTextContent:function(event){
+  getTextContent: function (event) {
     let value = event.detail.value;
     this.setData({
-      textContent:value
+      textContent: value
     });
   }
-  
+
 
 })

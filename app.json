@@ -24,12 +24,12 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#66CDAA",
-    "navigationBarTitleText": "校园小情书",
+    "navigationBarTitleText": "岭师小情书",
     "navigationBarTextStyle":"white"
   },
     "tabBar": {
-      "color": "#7A7E83",
-      "selectedColor": "#73CB75",
+      "color": "#515151",
+      "selectedColor": "#66CDAA",
       "borderStyle": "black",
       "backgroundColor": "#ffffff",
       "list": [

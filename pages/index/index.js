@@ -346,6 +346,8 @@ Page({
       {},
       res => {
 
+        wx.hideLoading();
+
         _this.setData({
           showGeMoreLoadin: false
         })

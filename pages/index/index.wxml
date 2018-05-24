@@ -2,19 +2,6 @@
 <view class='all-container'>
   <view class="container" bindtouchmove="hiddenComment">
 
-  <view class="select-school">
-    <view class="school-location" bindtap='selectSchool'>
-      <view class="location-image">
-        <image class="location-icon" 
-               mode="" 
-               src="/image/location.png"></image>
-      </view>
-      <view class="location-name">
-        <view>{{school}}</view>
-      </view>
-    </view>
-  </view>
-
   <view class='nav-bar-container'>
     <view class='nav-bar'>
       <view class='all {{select==1?"selected":""}}' 
@@ -212,6 +199,7 @@
   <view class='no-more-data' wx-if="{{posts.length == 0}}">
     <view>你是第一个来到这里的人~_~</view>
     <view>点击右上角，表白你喜欢的那个ta吧</view>
+     <!--<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>-->
   </view>
 
 </view>

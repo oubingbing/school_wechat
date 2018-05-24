@@ -190,15 +190,15 @@ page{
 .post-container{
   position:fixed;
   right:18rpx;
-  top:60rpx;
+  bottom:5rpx;
   z-index:100;
-  width: 80prx;
-  height: 80prx;
+  width: 130prx;
+  height: 130prx;
 }
 
 .post image{
-  width: 80rpx;
-  height: 80rpx;
+  width: 130rpx;
+  height: 130rpx;
 }
 
 /** 加载更多 **/

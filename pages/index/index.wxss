@@ -3,44 +3,6 @@ page{
   display: flex;
   flex-direction: column;
 }
-.select-school{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  width: 100%;
-  height: 90rpx;
-  background-color: #F0F8FF;
-}
-
-.select-school .school-location{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  background: white;
-  width: 95%;
-  margin-top: 8rpx;
-  margin-bottom: 8rpx;
-}
-
-.school-location .location-image{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.location-icon{
-  width: 50rpx;
-  height: 50rpx;
-  margin-top: 5rpx;
-}
-
-.school-location .location-name{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-weight: 200;
-  font-size: 30rpx;
-}
 
 .container{
   width: 100%;
@@ -101,9 +63,12 @@ page{
 }
 
 .user-name .follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
-  color: #BEBEBE;
+  color: white;
+  background: #8B8989;
+  padding: 5rpx;
+  border-radius: 10rpx;
 }
 
 .user-name .had-follow{
@@ -351,15 +316,15 @@ page{
 .post-container{
   position:fixed;
   right:18rpx;
-  top:5rpx;
+  bottom:5rpx;
   z-index:100;
-  width: 80prx;
-  height: 80prx;
+  width: 150prx;
+  height: 150prx;
 }
 
 .post image{
-  width: 80rpx;
-  height: 80rpx;
+  width: 130rpx;
+  height: 130rpx;
 }
 
 /** nav-bar **/

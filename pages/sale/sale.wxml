@@ -23,6 +23,7 @@
     <view class='tip-content'>{{newMessageNumber}}条新消息</view>
   </view>
 
+  <view class='sale-wall'>
   <view class='sale-item' wx:for="{{sales}}" wx:key="{{sales}}">
     <view class='header'>
       <view class='user-avatar'>
@@ -41,11 +42,10 @@
     <view class='content'>
       <view class='image-container'>
         <image class='sale-image' 
-               mode="widthFix" 
+               mode="aspectFill" 
                src='{{baseImageUrl+item.attachments[0]}}' 
                bindtap='previewImage'
-               id="{{baseImageUrl+item.attachments[0]}}"
-               mode='widthFix'></image>
+               id="{{baseImageUrl+item.attachments[0]}}"></image>
       </view>
       <view class='other-info'>
         <view class='craete_at' wx:if="{{item.show_college}}">{{item.college}}</view>
@@ -81,11 +81,11 @@
           <image src='/image/make_praise.png'></image>
           <view>{{item.praise_number}}</view>
         </view>
-        <!--<view class='zan' 
+        <view class='zan' 
               bindtap='letter' 
               data-obj='{{item.owner_id}}'>
           <image src='/image/letter.png'></image>
-        </view>-->
+        </view>
         <view class='comment' 
               bindtap='comment' 
               data-objid="{{item.id}}">
@@ -95,7 +95,7 @@
       </view>
     </view>
   </view>
-
+  </view>
   <view class='get-more' wx:if="{{showGeMoreLoadin}}">
     <view class='get-more-item'>
       <image src='/image/get-more.gif' mode='aspectFit'></image>

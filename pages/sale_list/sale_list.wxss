@@ -7,12 +7,12 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20rpx;
+  margin-top: 5rpx;
 }
 
 .sale-item{
-  margin-bottom: 20rpx;
-  width: 95%;
+  margin-bottom: 5rpx;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +71,8 @@ page{
 }
 
 .content .sale-image{
-  width: 95%;
+  width: 100%;
+  height: 500rpx;
 }
 
 .other-info{

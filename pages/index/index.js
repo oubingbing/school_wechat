@@ -40,9 +40,9 @@ Page({
   },
 
   onLoad: function (e) {
-    wx.showLoading({
-      title: '加载中',
-    });
+    //wx.showLoading({
+     // title: '加载中',
+    //});
 
     console.log('工具类' + uploader.formatTime(new Date()));
     //设置当前时间

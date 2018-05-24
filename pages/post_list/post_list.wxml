@@ -181,12 +181,6 @@
 
 </view>
 
-<view class='post-container'>
-  <view class='post'>
-    <image src='/image/post.png' bindtap='post'></image>
-  </view>
-</view>
-
 <view class='comment-input-container' wx:if="{{showCommentInput}}">
   <textarea placeholder="评论"
             maxlength="1024" 

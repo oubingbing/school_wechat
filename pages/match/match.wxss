@@ -10,10 +10,16 @@ page{
 }
 
 .match-container .match-item{
-  width: 95%;
+  width: 100%;
   background: white;
-  margin-bottom: 20rpx;
-  border-radius: 10rpx;
+  margin-bottom: 5rpx;
+}
+
+.match-wall{
+  margin-top: 75rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .match-item .header{
@@ -148,6 +154,8 @@ page{
 /** nav-bar **/
 
 .nav-bar-container{
+  height: 70rpx;
+  position: fixed;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -155,6 +163,7 @@ page{
   background: white;
   margin-top: 2rpx;
   margin-bottom: 20rpx;
+  align-items: center;
 }
 
 .nav-bar-container .nav-bar{

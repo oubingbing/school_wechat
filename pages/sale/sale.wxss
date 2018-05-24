@@ -9,9 +9,13 @@ page{
   align-items: center;
 }
 
+.sale-wall{
+  margin-top: 72rpx;
+}
+
 .sale-item{
-  margin-bottom: 20rpx;
-  width: 95%;
+  margin-bottom: 5rpx;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +74,11 @@ page{
 }
 
 .content .sale-image{
-  width: 95%;
+  height: 500rpx;
+}
+
+.sale-image image{
+  height: 500rpx;
 }
 
 .other-info{
@@ -265,12 +273,13 @@ page{
 
 .nav-bar-container{
   width: 100%;
+  height: 70rpx;
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background: white;
-  margin-top: 2rpx;
-  margin-bottom: 20rpx;
+  position: fixed;
 }
 
 .nav-bar-container .nav-bar{

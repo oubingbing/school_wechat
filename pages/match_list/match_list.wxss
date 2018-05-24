@@ -11,10 +11,9 @@ page{
 }
 
 .match-container .match-item{
-  width: 95%;
+  width: 100%;
   background: white;
-  margin-bottom: 20rpx;
-  border-radius: 10rpx;
+  margin-bottom: 5rpx;
 }
 
 .match-item .header{

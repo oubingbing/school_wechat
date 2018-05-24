@@ -23,6 +23,7 @@
     <view class='tip-content'>{{newMessageNumber}}条新消息</view>
   </view>
 
+  <view class='match-wall'>
   <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
       <view class='header'>
           <view class="header-left">
@@ -73,6 +74,7 @@
               bindtap='praise' 
               data-obj="{{item.id}}">
           <image src='/image/make_praise.png'></image>
+          <view>{{item.praise_number}}</view>
         </view>
 
         <view class='zan' 
@@ -83,13 +85,15 @@
         </view>
 
         <view class='comment'>
-          <!--<image bindtap='letter' 
+          <image bindtap='letter' 
                  data-obj='{{item.owner_id}}'   
                  data-chat="{{item.can_chat}}"
-                 src='/image/letter.png'></image>-->
-                 <view>{{item.praise_number}}</view>
+                 src='/image/letter.png'></image>
+          
         </view>
       </view>
+  </view>
+
   </view>
 
   <view class='post-container'>

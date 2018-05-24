@@ -18,9 +18,8 @@
     <view class='content'>
       <view class='image-container'>
         <image class='sale-image' 
-               mode="widthFix" 
-               src='{{baseImageUrl+item.attachments[0]}}' 
-               mode='widthFix'></image>
+               mode="aspectFill" 
+               src='{{baseImageUrl+item.attachments[0]}}'></image>
       </view>
       <view class='other-info'>
         <view class='craete_at'>{{item.created_at}}</view>

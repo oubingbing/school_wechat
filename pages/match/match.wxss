@@ -180,7 +180,7 @@ page{
   justify-content: space-between;
   width: 95%;
   font-weight: 200;
-  font-size: 30rpx;
+  font-size: 35rpx;
   margin-top: 5rpx;
   margin-bottom: 5rpx;
 }

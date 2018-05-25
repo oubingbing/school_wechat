@@ -101,8 +101,8 @@ App({
       data: _data,
       success: function (res) {
 
-        if (res.data.error_code) {
-          console.log('token非法');
+        if (res.data.error_code == '4001') {
+          console.log('token过期了');
           _this.login(_method, _url, _data, callback);
         } else {
           callback(res);

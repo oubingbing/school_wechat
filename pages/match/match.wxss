@@ -147,6 +147,8 @@ page{
   height: 100rpx;
   align-items: center;
   background: white;
+  margin-top: 73rpx;
+  margin-bottom: -72rpx;
 }
 
 .message-tip .tip-content{

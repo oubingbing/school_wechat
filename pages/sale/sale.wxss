@@ -11,6 +11,7 @@ page{
 
 .sale-wall{
   margin-top: 72rpx;
+  width: 100%;
 }
 
 .sale-item{

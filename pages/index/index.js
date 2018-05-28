@@ -298,12 +298,14 @@ Page({
     }, res => {
 
       console.log('返回的贴子数据');
-      console.log(res.data.data.page_data);
+      console.log(res.data.data);
 
-      this.setData({
-        posts: res.data.data.page_data,
-        pageNumber: this.data.initPageNumber
-      });
+      if (res.data.data != null){
+        this.setData({
+          posts: res.data.data.page_data,
+          pageNumber: this.data.initPageNumber
+        });
+      }
 
     });
 

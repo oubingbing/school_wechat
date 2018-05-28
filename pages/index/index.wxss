@@ -353,7 +353,7 @@ page{
   justify-content: space-between;
   width: 95%;
   font-weight: 200;
-  font-size: 30rpx;
+  font-size: 35rpx;
   margin-top: 5rpx;
   margin-bottom: 5rpx;
 }
@@ -453,6 +453,8 @@ page{
   height: 100rpx;
   align-items: center;
   background: white;
+  margin-top: 75rpx;
+  margin-bottom: -72rpx;
 }
 
 .message-tip .tip-content{

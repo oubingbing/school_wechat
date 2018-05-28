@@ -2,7 +2,7 @@
 
   <view class="bg-container">
       <view class='bg-image'>
-        <image mode="aspectFill"      src='http://image.kucaroom.com/30269a739a66831daa31ec93d28318af.jpg'></image>
+        <image mode="aspectFill" src='http://image.kucaroom.com/timg (1).jfif'></image>
       </view>
       <view>
         <image class='user-image' src='{{user.avatar}}'></image>
@@ -47,5 +47,4 @@
     <view><image src='/image/suggestion.png' class='item-image'></image></view>
     <view class='word'>意见反馈</view>
   </view>
-
 </view>

@@ -28,8 +28,11 @@
     <view class='content'>
       <view class='image-container'>
         <view class='praise-image'>
-          <view class='praise-container'><view><image src='/image/sale_praise.png'></image></view></view>
-          <view class='praise-number'>20</view>
+          <view class='praise-container'>
+            <view bindtap='praise' 
+              data-objid='{{item.id}}'><image src='/image/sale_praise.png'></image>
+            </view></view>
+          <view class='praise-number'>{{item.praise_number}}</view>
         </view>
         <view class='slae-person-container'>
         <view>
@@ -84,12 +87,6 @@
 
       <view class='comment-container'>
         <view class='zan' 
-              bindtap='praise' 
-              data-objid='{{item.id}}'>
-          <image src='/image/make_praise.png'></image>
-          <view>{{item.praise_number}}</view>
-        </view>
-        <view class='zan' 
               bindtap='letter' 
               data-obj='{{item.owner_id}}'>
           <image src='/image/letter.png'></image>
@@ -116,8 +113,7 @@
   </view>
 
   <view class='no-more-data' wx-if="{{sales.length == 0}}">
-    <view>你是第一个来到这里的人~_~</view>
-    <view>点击右上角卖出第一个舍友吧</view>
+    <view>power by 叶子</view>
   </view>
 
 </view>

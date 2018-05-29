@@ -327,8 +327,8 @@ page{
 }
 
 .post image{
-  width: 110rpx;
-  height: 110rpx;
+  width: 130rpx;
+  height: 130rpx;
 }
 
 /** nav-bar **/

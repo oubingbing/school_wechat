@@ -203,9 +203,8 @@
   </view>
 
   <view class='no-more-data' wx-if="{{posts.length == 0}}">
-    <view>你是第一个来到这里的人~_~</view>
-    <view>点击右上角，表白你喜欢的那个ta吧</view>
-     <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>
+    <view>power by 叶子</view>
+     <!--<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>-->
   </view>
 
 </view>

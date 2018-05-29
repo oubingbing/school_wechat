@@ -1,5 +1,5 @@
 page{
-
+  background: #F5F5F5;
 }
 
 .sale-container{
@@ -230,7 +230,7 @@ page{
   width: 96%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 80rpx;
   align-items: center;
   margin-left: 15rpx;
@@ -278,8 +278,8 @@ page{
 }
 
 .post image{
-  width: 110rpx;
-  height: 110rpx;
+  width: 130rpx;
+  height: 130rpx;
 }
 
 /** 加载更多 **/

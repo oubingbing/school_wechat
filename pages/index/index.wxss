@@ -65,20 +65,23 @@ page{
 
 .user-name .follow{
   font-size: 25rpx;
-  font-weight: 200;
   color: white;
-  background: #8B8989;
-  padding: 5rpx;
+  background: #C0C0C0;
   border-radius: 10rpx;
+  padding-top: 8rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
 }
 
 .user-name .had-follow{
   font-size: 25rpx;
-  font-weight: 200;
   color: white;
   background: #FF7F00;
   padding: 5rpx;
   border-radius: 10rpx;
+  padding-top: 8rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
 }
 
 .for-user{

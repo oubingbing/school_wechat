@@ -94,8 +94,8 @@
         <view class='comment' 
               bindtap='comment' 
               data-objid="{{item.id}}">
-          <image src='/image/comment.png'></image>
-          <view>{{item.comment_number}}</view>
+          <view class='comment-icon'><image src='/image/comment.png'></image></view>
+          <view class='comment-num'>{{item.comment_number}}</view>
         </view>
       </view>
     </view>

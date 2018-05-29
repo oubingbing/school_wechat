@@ -54,9 +54,9 @@ page{
   font-size: 25rpx;
   font-weight: 200;
   margin-right: 15rpx;
-    color: white;
+  color: white;
   background: #8B8989;
-  padding: 5rpx;
+  padding: 8rpx;
   border-radius: 10rpx;
 }
 
@@ -66,7 +66,7 @@ page{
   margin-right: 15rpx;
   color: white;
   background: #FF7F00;
-  padding: 5rpx;
+  padding: 8rpx;
   border-radius: 10rpx;
 }
 

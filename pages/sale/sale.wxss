@@ -78,6 +78,7 @@ page{
   display: flex;
   flex-direction: row;
   background: #F5F5F5;
+  margin-top: -2rpx;
 }
 
 .praise-image{
@@ -227,7 +228,8 @@ page{
 
 
 .comment-container{
-  width: 96%;
+  width: 95%;
+  background: whitesmoke;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -236,7 +238,7 @@ page{
   margin-left: 15rpx;
   border-top-style:solid;
   border-width:1rpx;
-  border-color: #F0F8FF;
+  border-top-color: snow;
   margin-top: 10rpx;
 }
 
@@ -245,13 +247,49 @@ page{
   flex-direction: row;
   align-items: center;
   font-size: 30rpx;
+  justify-content: center;
+  background: white;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  text-align: center;
+}
+.zan image{
+  margin-left: 11rpx;
 }
 
 .comment-container .comment{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.comment .comment-icon{
+  background: white;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.comment-icon image{
+  margin-left: 12rpx;
+}
+
+.comment .comment-num{
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   font-size: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  color: gray;
 }
 
 .zan image{

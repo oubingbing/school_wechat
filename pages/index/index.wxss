@@ -66,11 +66,11 @@ page{
 .user-name .follow{
   font-size: 25rpx;
   color: white;
-  background: #C0C0C0;
+  background: #8B8989;
   border-radius: 10rpx;
   padding-top: 8rpx;
-  padding-left: 8rpx;
-  padding-right: 8rpx;
+  padding-left: 6rpx;
+  padding-right: 6rpx;
 }
 
 .user-name .had-follow{
@@ -80,8 +80,8 @@ page{
   padding: 5rpx;
   border-radius: 10rpx;
   padding-top: 8rpx;
-  padding-left: 8rpx;
-  padding-right: 8rpx;
+  padding-left: 6rpx;
+  padding-right: 6rpx;
 }
 
 .for-user{

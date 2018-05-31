@@ -2,16 +2,20 @@
 App({
   onLaunch: function () {
 
+    //修改为后台分发给你的alliance_key
     this.globalData.appKey = 'uNy6iug7SmrN3uCY';
 
-    //设置基本接口全局变量
+    //换成后台分发给你的域名
+    var domain = 'https://lianyan.kucaroom.com'
 
-    this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
+    this.globalData.apiUrl = domain+'/api/wechat';
     //this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
   
     //七牛图片外链域名
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
+
     this.globalData.bgIimage = this.globalData.imageUrl+'30269a739a66831daa31ec93d28318af.jpg';
+    this.globalData.show_auth = false;
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -46,6 +50,9 @@ App({
         console.log(res);
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+
+          this.globalData.show_auth = false;
+
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
@@ -69,6 +76,10 @@ App({
                   console.log('token:' + res.data.data);
                   if (_method) {
                     that.http(_method, _url, _data, callback);
+                  }else{
+                    if(callback){
+                      callback();
+                    }
                   }
                 }
               })
@@ -76,6 +87,7 @@ App({
             }
           })
         } else {
+          this.globalData.show_auth = true;
           console.log('未授权');
         }
       }
@@ -125,13 +137,15 @@ App({
 
     this.http('GET', '/upload_token', {}, function (res) {
 
-      var token = res.data.data.uptoken;
+      if(res.data.data){
+        var token = res.data.data.uptoken;
 
-      call(token);
+        call(token);
 
-      console.log('设置七牛upload token' + token);
+        console.log('设置七牛upload token' + token);
 
-      wx.setStorageSync('uploadToken', token);
+        wx.setStorageSync('uploadToken', token);
+      }
 
     });
 
@@ -162,6 +176,7 @@ App({
   },
 
   globalData: {
+    show_auth:false,
     appId:null,
     userInfo: null,
     apiUrl: null,

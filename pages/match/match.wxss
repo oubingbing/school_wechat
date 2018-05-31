@@ -261,3 +261,7 @@ page{
   border-radius: 10rpx;
   font-size: 30rpx;
 }
+
+.power_by{
+  color: #D3D3D3;
+}

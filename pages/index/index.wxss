@@ -467,3 +467,30 @@ page{
   border-radius: 10rpx;
   font-size: 30rpx;
 }
+
+.auth-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #66CDAA;
+  width: 50%;
+  color: white;
+  margin-top: 300rpx;
+  font-size: 35rpx;
+}
+
+.auth-button .image-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-button image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+
+.power_by{
+  color: #D3D3D3;
+}

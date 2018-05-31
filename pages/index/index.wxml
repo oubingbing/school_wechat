@@ -203,8 +203,7 @@
   </view>
 
   <view class='no-more-data' wx-if="{{posts.length == 0}}">
-    <view>power by 叶子</view>
-     <!--<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>-->
+    <view class='power_by'>power by 叶子</view>
   </view>
 
 </view>
@@ -225,5 +224,16 @@
             bindinput='getCommentContent'/>
   <view class='send-button' bindtap='sendComment'><view>发送</view></view>
 </view>
+</view>
+
+<view wx:if="{{show_auth}}" class='auth-container'>
+  <view class='auth-wall'>
+    <button open-type="getUserInfo" 
+        bindgetuserinfo="getAuthUserInfo" 
+        class='auth-button'>
+      <view class='image-container'><image src='/image/wx_log.png'></image></view>
+      <view>授权登录</view>
+    </button>
+  </view>
 </view>
 

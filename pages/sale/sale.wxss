@@ -409,3 +409,7 @@ page{
 .nav-bar .selected{
   color: #FF4500;
 }
+
+.power_by{
+  color: #D3D3D3;
+}

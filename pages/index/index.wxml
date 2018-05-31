@@ -204,7 +204,7 @@
 
   <view class='no-more-data' wx-if="{{posts.length == 0}}">
     <view>power by 叶子</view>
-     <!--<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>-->
+     <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>
   </view>
 
 </view>

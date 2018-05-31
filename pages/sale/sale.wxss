@@ -380,6 +380,15 @@ page{
   color: white;
   border-radius: 10rpx;
   font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.tip-content image{
+  width: 35rpx;
+  height: 35rpx;
 }
 
 /** nav-bar **/

@@ -85,6 +85,8 @@ Page({
 
     app.http('get', `/post/${id}`, {}, res => {
 
+      wx.hideLoading();
+
       console.log(res);
 
       let post = _this.data.posts;

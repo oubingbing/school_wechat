@@ -20,7 +20,10 @@
   <view class='message-tip' 
         wx:if="{{newMessage}}" 
         bindtap='openMessage'>
-    <view class='tip-content'>{{newMessageNumber}}条新消息</view>
+    <view class='tip-content'>
+      <view>远方飞来{{newMessageNumber}}条新消息</view>
+      <view><image src='/image/qiqiu.png'></image></view>
+    </view>
   </view>
 
   <view class='sale-wall'>

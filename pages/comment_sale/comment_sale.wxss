@@ -1,5 +1,5 @@
 page{
-  background-color: #F0F8FF;
+  background-color: #F5F5F5;
 }
 
 .sale-container{
@@ -28,76 +28,104 @@ page{
   width: 80rpx;
   height: 80rpx;
   border-radius: 40rpx;
-  margin-left: 15rpx;
   margin-top: 9rpx;
 }
 
 .user-name{
   font-size: 3prx;
   margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name .user-name-created{
+  font-size: 27rpx;
+  color: gray;
 }
 
 .content{
-  width: 95%;
-  display: flex;
-  flex-direction: column;
-  background: white;
-}
-
-.image-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.content .sale-image{
-  width: 97%;
-  border-radius: 10rpx;
-}
-
-.content .craete_at{
-  color: darkgray;
-  font-size: 25rpx;
-  margin-left: 18rpx;
-  margin-top: 5rpx;
+  width: 100%;
 }
 
 .content .content-detail{
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 15rpx;
-  width: 96%;
 }
 
 .content-detail .detail-item{
-  margin-right: 15rpx;
-  margin-top: 15rpx;
-  padding: 10rpx;
+  width: 100%;
+  padding: 5rpx;
   border-radius: 10rpx;
   font-size: 30rpx;
 }
 
+.detail-item{
+  color: gray;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .detail-item-user{
-  background: #DB9019;
-  color: white;
+  width: 100%;
+  text-align: center;
+  color: black;
 }
 
 .detail-item-gender{
-  background: #FF6E97;
-  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.detail-item-major{
-  background: #1A2D27;
-  color: white;
+.detail-item-gray{
+  background: #DCDCDC;
+  background:rgba(0,0,0,0.02);
 }
 
-.detail-item-like{
-   background: #F1AAA6;
-   color: white;
+.detail-item-gender .gender-image{
+  width: 12%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
+.detail-item-gender image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.detail-item-gender .gender-world{
+  width: 88%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10rpx;
+}
+
+.show-self{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.image-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container image{
+  width: 100%;
+  height: 500rpx;
+}
 
 .comment-container{
   width: 100%;
@@ -208,7 +236,6 @@ page{
 }
 
 .introduce{
-  background: #F1AAA6;
   color: white;
   font-size: 30rpx;
   padding: 10rpx;
@@ -355,4 +382,3 @@ page{
 .user-comment .content{
 
 }
-

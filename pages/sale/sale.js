@@ -17,6 +17,9 @@ Page({
     select: 1
   },
   onLoad: function () {
+
+    wx.showLoading();
+
     this.getList();
 
     //设置当前时间
@@ -190,6 +193,8 @@ Page({
       `/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,
      {},
       res => {
+
+      wx.hideLoading();
 
       this.setData({
         showGeMoreLoadin: false

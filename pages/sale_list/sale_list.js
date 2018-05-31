@@ -17,6 +17,9 @@ Page({
     select: 1
   },
   onLoad: function () {
+    wx.showLoading({
+      title: '加载中',
+    });
     this.getList();
   },
   onShow: function () {
@@ -34,28 +37,6 @@ Page({
     wx.navigateTo({
       url: '/pages/letter/letter?friend_id=' + id
     })
-  },
-  /**
-   * 获取具体类型的贴子
-   */
-  selected: function (e) {
-    console.log('selected');
-    console.log(e.target.dataset.type);
-
-    let objType = e.target.dataset.type;
-    this.setData({
-      select: objType,
-      sales: []
-    })
-
-    this.setData({
-      pageNumber: this.data.initPageNumber
-    });
-
-    let _this = this;
-
-    _this.getList();
-
   },
 
   /**
@@ -107,6 +88,8 @@ Page({
       `/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}&just=1`,
       {},
       res => {
+
+        wx.hideLoading();
 
         this.setData({
           showGeMoreLoadin: false

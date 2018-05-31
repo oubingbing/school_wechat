@@ -1,36 +1,39 @@
-  <view class="sale-container">
+ <view class="sale-container">
 
     <view class='sale-item'>
       <view class='header'>
         <view class='user-avatar'>
           <image src='{{sale.poster.avatar}}' mode='widthFix'></image>
         </view>
-        <view class='user-name'>{{sale.poster.nickname}}</view>
+        <view class='user-name'>
+          <view class='user-name-nickname'>{{sale.poster.nickname}}</view>
+          <view class='user-name-created'>{{sale.created_at}}</view>
+        </view>
       </view>
       <view class='content'>
        <view class='craete_at' wx:if="{{sale.show_college}}">{{sale.college}}</view>
-        <view class='craete_at'>{{sale.created_at}}</view>
-        <view class='content-detail'>
-          <view class='detail-item detail-item-user'>
-            {{sale.name}}
-          </view>
-          <view class='detail-item detail-item-gender'>
-            {{sale.gender}}
-          </view>
-          <view class='detail-item detail-item-major'>
-            {{sale.major}}
-          </view>
-          <view class='detail-item detail-item-like'>
-            {{sale.expectation}}
-          </view>
+      <view class='content-detail'>
+        <view class='detail-item detail-item-gender detail-item-gray'>
+          <view class='gender-image'><image src='/image/gender.png'></image></view>
+          <view class='gender-world'>{{sale.gender}}</view>
         </view>
-        <view class='show-self'>
-          <view class='introduce'>{{sale.introduce}}</view>
+        <view class='detail-item detail-item-gender'>
+          <view class='gender-image'><image src='/image/major.png'></image></view>
+          <view class='gender-world'>{{sale.major}}</view>
         </view>
+        <view class='detail-item detail-item-gender detail-item-gray'>
+          <view class='gender-image'><image src='/image/ilike.png'></image></view>
+          <view class='gender-world'>{{sale.expectation}}</view>
+        </view>
+        <view class='detail-item detail-item-gender'>
+          <view class='gender-image'><image src='/image/show-self.png'></image></view>
+          <view class='gender-world'>{{sale.introduce}}</view>
+        </view>
+      </view>
         <view class='image-container'>
           <image class='sale-image' 
                 src='{{baseImageUrl+sale.attachments[0]}}' 
-                mode='widthFix'></image>
+                mode='aspectFill'></image>
         </view>
       </view>
     </view>

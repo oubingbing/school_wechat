@@ -14,6 +14,11 @@ Page({
     currentTime:''
   },
   onLoad: function () {
+
+    wx.showLoading({
+      title: '加载中',
+    });
+
     console.log('工具类' + uploader.formatTime(new Date()));
     //设置当前时间
     this.setData({
@@ -172,6 +177,8 @@ Page({
     }
 
     app.http('get', `/match_loves?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`, {}, res => {
+      
+      wx.hideLoading();
     
       console.log(res);
       _this.setData({

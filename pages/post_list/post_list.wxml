@@ -176,7 +176,7 @@
   </view>
 
   <view class='no-more-data' wx-if="{{posts.length == 0}}">
-    <view>空空的，快去跟你喜欢的那个ta表白吧~_~</view>
+    <view>power by 叶子</view>
   </view>
 
 </view>

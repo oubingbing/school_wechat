@@ -4,7 +4,6 @@ const uploader = require("../../utils/util.js");
 const app = getApp()
 
 wx.onUserCaptureScreen(function (res) {
-  console.log('用户截屏了')
   console.log("res：" + JSON.stringify(res));
 })
 
@@ -41,9 +40,9 @@ Page({
   },
 
   onLoad: function (e) {
-    //wx.showLoading({
-     // title: '加载中',
-    //});
+    wx.showLoading({
+      title: '加载中',
+    });
 
     let that = this;
     wx.getSetting({
@@ -56,9 +55,6 @@ Page({
       }
     })
 
-    console.log('是否需要显示授权按钮:' + this.data.show_auth);
-
-    console.log('工具类' + uploader.formatTime(new Date()));
     //设置当前时间
     this.setData({
       currentTime: uploader.formatTime(new Date())
@@ -74,9 +70,6 @@ Page({
   },
   
   onShow: function (option) {
-    console.log('on show');
-    console.log('显示页面');
-    console.log(option);
 
     console.log('学校是否变了:' + app.globalData.changeSchool);
 
@@ -125,7 +118,6 @@ Page({
       show_auth:false
     });
 
-    console.log('进行授权:'+this.data.show_auth);
     let _this = this;
     app.login(null, null, null, function(){
       _this.getPost(_this);

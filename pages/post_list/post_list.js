@@ -33,8 +33,9 @@ Page({
 
   onLoad: function () {
 
-    wx.showLoading()
-
+    wx.showLoading({
+      title: '加载中',
+    });
 
     let _this = this;
 
@@ -115,6 +116,8 @@ Page({
       `/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&just=1`, {
       
     }, res => {
+
+      wx.hideLoading();
 
       this.setData({
         showGeMoreLoadin: false

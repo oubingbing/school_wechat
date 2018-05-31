@@ -1,5 +1,5 @@
 page{
- background: #E8E8E8; 
+  background-color: #F5F5F5;
 }
 
 .post-container{

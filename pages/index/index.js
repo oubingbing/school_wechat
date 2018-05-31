@@ -4,12 +4,12 @@ const uploader = require("../../utils/util.js");
 const app = getApp()
 
 wx.onUserCaptureScreen(function (res) {
-  console.log('用户截屏了')
   console.log("res：" + JSON.stringify(res));
 })
 
 Page({
   data: {
+    show_auth:app.globalData.show_auth,
     userInfo: {},
     hasUserInfo: false,
     school: '',
@@ -40,11 +40,21 @@ Page({
   },
 
   onLoad: function (e) {
-    //wx.showLoading({
-     // title: '加载中',
-    //});
+    wx.showLoading({
+      title: '加载中',
+    });
 
-    console.log('工具类' + uploader.formatTime(new Date()));
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          that.setData({
+            show_auth:true
+          });
+        }
+      }
+    })
+
     //设置当前时间
     this.setData({
       currentTime: uploader.formatTime(new Date())
@@ -60,9 +70,6 @@ Page({
   },
   
   onShow: function (option) {
-    console.log('on show');
-    console.log('显示页面');
-    console.log(option);
 
     console.log('学校是否变了:' + app.globalData.changeSchool);
 
@@ -89,7 +96,7 @@ Page({
     let type = 0;
     app.getNewInbox(type, function (res) {
       console.log("新消息数量：" + res.data.data);
-      if (res.data.data != 0) {
+      if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
         _this.setData({
           newMessage: true,
           newMessageNumber: res.data.data
@@ -100,6 +107,20 @@ Page({
           newMessageNumber: 0
         });
       }
+    });
+  },
+  /**
+   * 监听用户点击授权按钮
+   */
+  getAuthUserInfo:function(data){
+    app.globalData.show_auth = false;
+    this.setData({
+      show_auth:false
+    });
+
+    let _this = this;
+    app.login(null, null, null, function(){
+      _this.getPost(_this);
     });
   },
   onShareAppMessage: function (res) {
@@ -261,25 +282,27 @@ Page({
       console.log(res.data.data);
 
       let posts = _this.data.posts;
-      if (res.data.data.length > 0) {
-        res.data.data.map(item => {
-          let ifRepeat = false;
+      if(res.data.data){
+        if (res.data.data.length > 0) {
+          res.data.data.map(item => {
+            let ifRepeat = false;
 
-          for (let post of posts) {
-            if (post.id == item.id) {
-              ifRepeat = true;
+            for (let post of posts) {
+              if (post.id == item.id) {
+                ifRepeat = true;
+              }
             }
-          }
 
-          if (!ifRepeat) {
-            posts.unshift(item);
-          }
-        });
+            if (!ifRepeat) {
+              posts.unshift(item);
+            }
+          });
 
-        _this.setData({
-          posts: posts
-        });
+          _this.setData({
+            posts: posts
+          });
 
+        }
       }
 
     });
@@ -358,23 +381,25 @@ Page({
 
         console.log("post数据：" + posts);
 
-        console.log('返回的贴子数据');
-        console.log(res.data.data.page_data);
-        console.log('第几页' + _this.data.pageNumber);
+        if(res.data.data){
+          console.log('返回的贴子数据');
+          console.log(res.data.data.page_data);
+          console.log('第几页' + _this.data.pageNumber);
 
-        if (res.data.data.page_data.length > 0) {
-          res.data.data.page_data.map(item => {
-            posts.push(item);
-          });
+          if (res.data.data.page_data.length > 0) {
+            res.data.data.page_data.map(item => {
+              posts.push(item);
+            });
 
-          _this.setData({
-            posts: posts,
-            pageNumber: _this.data.pageNumber + 1
-          });
-        } else {
-          _this.setData({
-            notDataTips: true
-          });
+            _this.setData({
+              posts: posts,
+              pageNumber: _this.data.pageNumber + 1              
+            });
+          } else {
+            _this.setData({
+              notDataTips: true
+            });
+          }
         }
 
       });

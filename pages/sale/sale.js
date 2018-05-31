@@ -17,6 +17,9 @@ Page({
     select: 1
   },
   onLoad: function () {
+
+    wx.showLoading();
+
     this.getList();
 
     //设置当前时间
@@ -52,7 +55,7 @@ Page({
     let type = 0;
     app.getNewInbox(type, function (res) {
       console.log("新消息数量：" + res.data.data);
-      if (res.data.data != 0) {
+      if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
         _this.setData({
           newMessage: true,
           newMessageNumber: res.data.data
@@ -190,6 +193,8 @@ Page({
       `/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,
      {},
       res => {
+
+      wx.hideLoading();
 
       this.setData({
         showGeMoreLoadin: false

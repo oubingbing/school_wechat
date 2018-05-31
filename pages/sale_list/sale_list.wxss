@@ -1,13 +1,17 @@
 page{
-  background-color: #F5F5F5;
+  background: #F5F5F5;
 }
 
 .sale-container{
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 5rpx;
+}
+
+.sale-wall{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .sale-item{
@@ -15,17 +19,16 @@ page{
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #F5F5F5;
 }
 
 .sale-item .header{
   width: 100%;
-  background: white;
-  height: 100rpx;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  
 }
 
 .user-avatar{
@@ -42,42 +45,103 @@ page{
 }
 .follow{
   margin-right: 15rpx;
-  font-size: 30rpx;
+  font-size: 35rpx;
 }
 
-.had-follow{
-  font-size: 30rpx;
-  font-weight: 200;
-  margin-right: 15rpx;
-  color: red;
+.follow-label{
+  background: #FF8C00;
+  margin-top: 30rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 70rpx;
+  padding-right: 80rpx;
+  border-radius: 80rpx;
+  color: white;
 }
+
 .user-name{
-  font-size: 3prx;
-  font-weight: 200;
-  margin-left: 10rpx;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: darkgray;
 }
 
 .content{
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: white;
+  border-radius: 30rpx;
 }
 
 .image-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #F5F5F5;
+  margin-top: -2rpx;
+}
+
+.praise-image{
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30rpx;
+}
+
+.praise-number{
+  font-size: 30rpx;
+  color: darkgray;
+  background: white;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 15rpx;
+}
+
+.praise-container{
+  width: 80rpx;
+  height: 80rpx;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 40rpx;
+}
+
+.praise-image image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 20rpx;
+}
+
+.slae-person-container{
+  width: 80%;
+  background: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding-bottom:30rpx; 
+  padding-top: 30rpx;
 }
 
 .content .sale-image{
-  width: 100%;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 150rpx;
+  border-style:solid;
+  border-width:8rpx;
+  border-color: #FFEFD5;
+}
+
+.sale-image image{
   height: 500rpx;
 }
 
 .other-info{
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
  .craete_at{
@@ -96,38 +160,60 @@ page{
 
 .content .content-detail{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 15rpx;
   width: 100%;
 }
 
 .content-detail .detail-item{
-  margin-right: 15rpx;
-  margin-top: 15rpx;
-  padding: 10rpx;
+  padding: 5rpx;
   border-radius: 10rpx;
   font-size: 30rpx;
 }
 
+.detail-item{
+  color: gray;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .detail-item-user{
-  background: #DB9019;
-  color: white;
+  width: 100%;
+  text-align: center;
+  color: black;
 }
 
 .detail-item-gender{
-  background: #FF6E97;
-  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.detail-item-major{
-  background: #1A2D27;
-  color: white;
+.detail-item-gray{
+  background: #DCDCDC;
+  background:rgba(0,0,0,0.02);
 }
 
-.detail-item-like{
-   background: #F1AAA6;
-   color: white;
+.detail-item-gender .gender-image{
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.detail-item-gender image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.detail-item-gender .gender-world{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10rpx;
 }
 
 .show-self{
@@ -139,25 +225,21 @@ page{
   margin-bottom: 30rpx;
 }
 
-.introduce{
-  background: #F1AAA6;
-  color: white;
-  font-size: 30rpx;
-  padding: 10rpx;
-  border-radius: 10rpx;
-}
+
+
 
 .comment-container{
-  width: 96%;
+  width: 95%;
+  background: whitesmoke;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 80rpx;
   align-items: center;
   margin-left: 15rpx;
   border-top-style:solid;
   border-width:1rpx;
-  border-color: #F0F8FF;
+  border-top-color: snow;
   margin-top: 10rpx;
 }
 
@@ -166,13 +248,49 @@ page{
   flex-direction: row;
   align-items: center;
   font-size: 30rpx;
+  justify-content: center;
+  background: white;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  text-align: center;
+}
+.zan image{
+  margin-left: 11rpx;
 }
 
 .comment-container .comment{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.comment .comment-icon{
+  background: white;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.comment-icon image{
+  margin-left: 12rpx;
+}
+
+.comment .comment-num{
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   font-size: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  color: gray;
 }
 
 .zan image{
@@ -192,15 +310,15 @@ page{
 .post-container{
   position:fixed;
   right:18rpx;
-  top:60rpx;
+  bottom:5rpx;
   z-index:100;
-  width: 80prx;
-  height: 80prx;
+  width: 110prx;
+  height: 110prx;
 }
 
 .post image{
-  width: 80rpx;
-  height: 80rpx;
+  width: 130rpx;
+  height: 130rpx;
 }
 
 /** 加载更多 **/
@@ -253,6 +371,8 @@ page{
   height: 100rpx;
   align-items: center;
   background: white;
+  margin-top: 72rpx;
+  margin-bottom: -67rpx;
 }
 
 .message-tip .tip-content{
@@ -267,12 +387,14 @@ page{
 
 .nav-bar-container{
   width: 100%;
+  height: 70rpx;
+  align-items: center;
+  font-size: 35rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background: white;
-  margin-top: 2rpx;
-  margin-bottom: 20rpx;
+  position: fixed;
 }
 
 .nav-bar-container .nav-bar{
@@ -281,11 +403,14 @@ page{
   justify-content: space-between;
   width: 95%;
   font-weight: 200;
-  font-size: 30rpx;
   margin-top: 5rpx;
   margin-bottom: 5rpx;
 }
 
 .nav-bar .selected{
   color: #FF4500;
+}
+
+.power_by{
+  color: #D3D3D3;
 }

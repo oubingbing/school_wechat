@@ -113,7 +113,7 @@
   </view>
 
   <view class='no-more-data' wx-if="{{sales.length == 0}}">
-    <view>power by 叶子</view>
+    <view class='power_by'>power by 叶子</view>
   </view>
 
 </view>

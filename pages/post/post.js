@@ -38,6 +38,18 @@ Page({
     let privateValue = this.data.private;
     let username = this.data.name;
 
+    console.log('发送的图片是什么：'+attachments);
+
+    if(content == '' && attachments == ''){
+      wx.showLoading({
+        title: '内容不能为空！',
+      });
+      setTimeout(function(){
+        wx.hideLoading();
+      },1500)
+      return false;
+    }
+
     app.http('post', '/post', {
       content: content,
       attachments: attachments,
@@ -74,7 +86,7 @@ Page({
         let temArray = _this.data.imageArray;
         let temUrlArray = _this.data.attachments;
 
-        console.log(res.tempFilePaths);
+        console.log('图片：'+res.tempFilePaths);
 
         var filePaths = res.tempFilePaths;
 

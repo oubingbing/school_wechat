@@ -99,6 +99,11 @@
   }
 
   function doUpload(filePath, success, fail, options) {
+
+    if(!config.qiniuUploadToken){
+      config.qiniuUploadToken = wx.getStorageSync('uploadToken');
+    }
+
     if (null == config.qiniuUploadToken && config.qiniuUploadToken.length > 0) {
       console.error('qiniu UploadToken is null, please check the init config or networking');
       return

@@ -139,7 +139,7 @@ Page({
     let _this = this;
     app.login(null, null, null, function(){
       _this.getPost(_this);
-      app.getUploadToken();
+      console.log('加载信息');
     });
   },
   onShareAppMessage: function (res) {

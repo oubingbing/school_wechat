@@ -73,6 +73,10 @@ App({
                   if (_method) {
                     that.http(_method, _url, _data, callback);
                   }
+
+                  if(callback){
+                    callback();
+                  }
                 }
               })
 
@@ -130,7 +134,9 @@ App({
 
       var token = res.data.data.uptoken;
 
-      call(token);
+      if(call){
+        call(token);
+      }
 
       console.log('设置七牛upload token' + token);
 

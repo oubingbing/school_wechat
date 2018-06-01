@@ -63,7 +63,7 @@
               wx:if="{{item.topic != '无'}}">
                 @#{{item.topic}}#
           </view>
-          <view class="content">{{item.content}}</view>
+          <view class="content" wx:if="{{item.content}}">{{item.content}}</view>
           <view class="single-image" 
                 wx:if='{{item.attachments.length==1}}'>
             <image mode="widthFix" 

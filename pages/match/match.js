@@ -11,12 +11,19 @@ Page({
     pageNumber: 1,
     initPageNumber: 1,
     showGeMoreLoadin:false,
-    currentTime:''
+    currentTime:'',
+    showNormal: app.globalData.showNormal,
+    showAudit: app.globalData.showAudit
   },
   onLoad: function () {
 
     wx.showLoading({
       title: '加载中',
+    });
+
+    this.setData({
+      showNormal: app.globalData.showNormal,
+      showAudit: app.globalData.showAudit
     });
 
     console.log('工具类' + uploader.formatTime(new Date()));

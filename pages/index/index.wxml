@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='all-container'>
+<view class='all-container' wx:if="{{showNormal}}">
   <view class="container" bindtouchmove="hiddenComment">
 
   <view class='nav-bar-container'>
@@ -23,7 +23,7 @@
         wx:if="{{newMessage}}" 
         bindtap='openMessage'>
     <view class='tip-content'>
-      <view>远方飞来{{newMessageNumber}}条新消息</view>
+      <view>远方飘来{{newMessageNumber}}条新消息</view>
       <view><image src='/image/qiqiu.png'></image></view>
     </view>
   </view>
@@ -211,7 +211,7 @@
 
 </view>
 
-<view class='post-container'>
+<view class='post-container' wx:if="{{showNormal}}">
   <view class='post'>
     <image src='/image/post.png' bindtap='post'></image>
   </view>
@@ -237,6 +237,27 @@
       <view class='image-container'><image src='/image/wx_log.png'></image></view>
       <view>授权登录</view>
     </button>
+  </view>
+</view>
+
+<view class='audit-container' wx:if="{{showAudit}}">
+
+  <view class='search-container'>
+      <view class='search' bindtap='searchAudit'>
+        <input type='text' 
+               class='search-input' 
+               placeholder="搜索名字"         
+               bindinput='getCollegeName'/>
+        <view class='search-image' bindtap='searchCollege'>
+            <image mode="" src='/image/search.png'></image>
+        </view>
+      </view>
+  </view>
+
+  <view class='audit-item' wx:for="{{posts}}" wx:key="{{posts}}">
+    <view class='say-name'><view class='love-object'>{{item.topic == '无'? 'ta':item.topic}}</view></view>
+    <view class='post-user'>投稿人#{{item.poster.nickname}}#</view>
+    <view class='content'>表白@ {{item.content}}</view>
   </view>
 </view>
 

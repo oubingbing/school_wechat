@@ -6,7 +6,6 @@
 
 .school-container .search-container{
   width: 100%;
-  
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -115,5 +114,116 @@
   width: 150rpx;
   height: 150rpx;
 }
+
+/** audit status **/
+.audit-container1{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.audit-container1 .audit-item1{
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  background: #FFC0CB;
+  color: white;
+  border-radius: 5rpx;
+  padding: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.audit-item1 .poster-name{
+  background: darkgray;
+  padding: 5rpx;
+}
+
+.audit-item1 .say-name{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20rpx;
+  justify-content: center;
+}
+
+.audit-item1 .love-object{
+  background: #FF4500;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  border-radius: 10rpx;
+}
+
+.audit-item1 .post-user{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  padding-bottom: 8rpx;
+}
+
+.audit-item1 .content{
+  margin-top: 13rpx;
+}
+
+
+/** audit status **/
+.audit-container2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.audit-container2 .audit-item2{
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  background: #87CEEB;
+  color: white;
+  border-radius: 5rpx;
+  padding: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.audit-item2 .poster-name{
+  background: darkgray;
+  padding: 5rpx;
+}
+
+.audit-item2 .say-name{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20rpx;
+  justify-content: center;
+}
+
+.audit-item2 .love-object{
+  background: #FF6347;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  border-radius: 10rpx;
+}
+
+.audit-item2 .post-user{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  padding-bottom: 8rpx;
+}
+
+.content2{
+  margin-top: 13rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 
 

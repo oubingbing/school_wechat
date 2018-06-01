@@ -4,9 +4,17 @@ const app = getApp();
 Page({
   data: {
     user:'',
-    newLetterNumber:0
+    newLetterNumber:0,
+    showNormal: app.globalData.showNormal,
+    showAudit: app.globalData.showAudit
   },
   onLoad: function () {
+
+    this.setData({
+      showNormal: app.globalData.showNormal,
+      showAudit: app.globalData.showAudit
+    });
+
     this.getPersonalInfo();
     this.newLetterCount();
   },

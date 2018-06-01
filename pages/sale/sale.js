@@ -14,11 +14,18 @@ Page({
     notDataTips: false,
     newMessage: false,
     newMessageNumber: 0,
-    select: 1
+    select: 1,
+    showNormal: app.globalData.showNormal,
+    showAudit: app.globalData.showAudit
   },
   onLoad: function () {
 
     wx.showLoading();
+
+    this.setData({
+      showNormal: app.globalData.showNormal,
+      showAudit: app.globalData.showAudit
+    });
 
     this.getList();
 
@@ -457,6 +464,13 @@ Page({
         sales: newSale
       });
     });
+
+  },
+  searchAudit: function () {
+
+    wx.navigateTo({
+      url: '/pages/school/school?type=2'
+    })
 
   }
 

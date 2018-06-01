@@ -4,8 +4,8 @@
       <view class='search'>
         <input type='text' 
                class='search-input' 
-               placeholder="搜索学校"         
-               bindinput='getCollegeName' 
+               placeholder="搜索名字"         
+               bindinput='getCollegeName'
                auto-focus/>
         <view class='search-image' bindtap='searchCollege'>
             <image mode="" src='/image/search.png'></image>
@@ -13,31 +13,24 @@
       </view>
   </view>
 
-  <view class='content'>
-   
-      <view class='header'>
-        <view class='title'>推荐学校</view>
-        <view class='change' bindtap='moreColleges'>换一批</view>
-      </view>
- 
-    <view class="{{!showEmpty?'school-list':'school-empty'}}">
-        <view hidden='{{showEmpty}}' 
-              class='school-item'
-              bindtap='clearSchool'>全部学校</view>
-        <view hidden='{{showEmpty}}'
-              class='school-item' 
-              wx:for="{{colleges}}" 
-              wx:key='{{item.id}}' 
-              id='{{item.id}}' 
-              bindtap='selectCollege'>{{item.name}}</view>
-        
-          <view class='empty' wx:if='{{showEmpty}}'>
-            <view wx:if='{{showEmpty}}' class='empty-image'>
-            <image src='/image/empty.png'></image>
-          </view>
-            <view wx:if='{{showEmpty}}' class='empty-word'>空荡荡的~</view>
-          </view>
-    </view>
+<view class='audit-container1'>
+  <view class='audit-item1' wx:for="{{list}}" wx:key="{{list}}" wx:if="{{showPost}}">
+    <view class='say-name'><view class='love-object'>{{item.topic == '无'? 'ta':item.topic}}</view></view>
+    <view class='post-user'>投稿人#{{item.poster.nickname}}#</view>
+    <view class='content'>表白@ {{item.content}}</view>
+  </view>
+</view>
+
+</view>
+
+<view class='audit-container2' wx:if="{{showSale}}">
+  <view class='audit-item2' wx:for="{{list}}" wx:key="{{list}}" wx:if="{{showSale}}">
+    <view class='say-name'><view class='love-object'>舍友# {{item.name}} #</view></view>
+    <view class='post-user'>编号：{{item.id}}</view>
+    <view class='post-user'>投稿人 {{item.poster.nickname}}</view>
+    <view class='post-user'>性别 {{item.gender}}</view>
+    <view class='post-user'>专业 {{item.major}}</view>
+    <view class='content2'>自我介绍 {{item.introduce}}</view>
   </view>
 
 </view>

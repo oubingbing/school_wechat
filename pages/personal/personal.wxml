@@ -10,25 +10,25 @@
       <view class='user-info'>
           <view class='user-name'>{{user.nickname}}</view>
           <view class='article'>
-            <view class="letter" bindtap="openLetter">
+            <view class="letter" bindtap="openLetter" wx:if="{{showNormal}}">
               <image src="/image/message.png"></image>
               <view class="letter-item">私信</view>
               <view class='new-letter' wx:if="{{newLetterNumber != 0}}">
                 ({{newLetterNumber}})
               </view>
             </view>
-            <view>|</view>
+            <view wx:if="{{showNormal}}">|</view>
             <view class="word">爱情属于勇敢的人儿</view>
           </view>
       </view>
   </view>
 
-  <view class='message' bindtap='openMessage'>
+  <view class='message' bindtap='openMessage' wx:if="{{showNormal}}">
     <view><image src='/image/my-message.png' class='item-image'></image></view>
     <view class='word'>消息</view>
   </view>
 
-  <view class='content-container'>
+  <view class='content-container' wx:if="{{showNormal}}">
     <view class='content-item say-love' bindtap="opendPostList">
       <view><image src='/image/color-love.png' class='item-image'></image></view>
       <view class='word'>表白墙</view>

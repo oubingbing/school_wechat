@@ -13,6 +13,9 @@ App({
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
     this.globalData.bgIimage = this.globalData.imageUrl+'30269a739a66831daa31ec93d28318af.jpg';
 
+    this.globalData.showNormal=false;
+    this.globalData.showAudit=false;
+
     let token = wx.getStorageSync('token');
     if (!token) {
       let _this = this;
@@ -160,6 +163,29 @@ App({
     });
 
   },
+  getConfig:function(callback){
+    wx.request({
+      url: this.globalData.apiUrl + '/config?',
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'GET',
+      data: {
+        app_id: this.globalData.appKey
+      },
+      success: function (res) {
+
+        console.log(res.data);
+        var config = res.data.data
+
+        callback(config);
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
+
+  },
 
   globalData: {
     appId:null,
@@ -170,6 +196,8 @@ App({
     bgImage:'',
     changeSchoolPost:false,
     changeSchoolSale: false,
-    changeSchoolMatch: false
+    changeSchoolMatch: false,
+    showNormal:false,
+    showAudit:false
   }
 })

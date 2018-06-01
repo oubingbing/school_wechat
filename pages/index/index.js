@@ -36,12 +36,30 @@ Page({
     newMessageNumber: 0,
     select: 1,
     animationData: {},
-    commentValue: ''
+    commentValue: '',
+    showNormal: app.globalData.showNormal,
+    showAudit: app.globalData.showAudit
   },
 
   onLoad: function (e) {
     wx.showLoading({
       title: '加载中',
+    });
+
+    app.getConfig(config=>{
+
+      if (config == 3) {
+        app.globalData.showNormal = false;
+        app.globalData.showAudit = true;
+      } else {
+        app.globalData.showNormal = true;
+        app.globalData.showAudit = false;
+      }
+
+      this.setData({
+        showNormal: app.globalData.showNormal,
+        showAudit: app.globalData.showAudit
+      });
     });
 
     let that = this;
@@ -121,6 +139,7 @@ Page({
     let _this = this;
     app.login(null, null, null, function(){
       _this.getPost(_this);
+      app.getUploadToken();
     });
   },
   onShareAppMessage: function (res) {
@@ -806,6 +825,13 @@ Page({
         posts: newPost
       });
     });
+
+  },
+  searchAudit:function(){
+
+    wx.navigateTo({
+      url: '/pages/school/school?type=1'
+    })
 
   }
 

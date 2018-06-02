@@ -232,7 +232,7 @@ page{
   background: whitesmoke;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 80rpx;
   align-items: center;
   margin-left: 15rpx;
@@ -274,6 +274,23 @@ page{
   align-items: center;
   justify-content: center;
   
+}
+
+.delete-icon image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.delete-icon .delete{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5rpx;
 }
 
 .comment-icon image{

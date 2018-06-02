@@ -62,13 +62,6 @@
       <view class='other-info'>
         <view class='craete_at' wx:if="{{item.show_college}}">{{item.college}}</view>
       </view>
-      <!--<view class='other-info'>
-        <view class='craete_at'>{{item.created_at}}</view>
-        <view class='delete' 
-              data-objid="{{item.id}}" 
-              wx-if="{{item.can_delete}}"
-              bindtap='delete'>删除</view>
-      </view>-->
       <view class='content-detail'>
         <view class='detail-item detail-item-gender detail-item-gray'>
           <view class='gender-image'><image src='/image/gender.png'></image></view>
@@ -99,6 +92,14 @@
               data-objid="{{item.id}}">
           <view class='comment-icon'><image src='/image/comment.png'></image></view>
           <view class='comment-num'>{{item.comment_number}}</view>
+        </view>
+        <view class='delete-icon'>
+          <view class='delete' 
+              data-objid="{{item.id}}" 
+              wx-if="{{item.can_delete}}"
+              bindtap='delete'>
+                <image src='/image/delete-icon.png'></image>
+              </view>
         </view>
       </view>
     </view>

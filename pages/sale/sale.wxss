@@ -311,13 +311,13 @@ page{
   right:18rpx;
   bottom:5rpx;
   z-index:100;
-  width: 110prx;
-  height: 110prx;
+  width: 120prx;
+  height: 120prx;
 }
 
 .post image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 
 /** 加载更多 **/

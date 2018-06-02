@@ -122,9 +122,12 @@ Page({
     console.log('跳转到私信');
 
     let id = e.currentTarget.dataset.obj;
+    let canChat = e.target.dataset.chat;
+
+    console.log('can_chat:' + e.target.dataset.chat);
 
     wx.navigateTo({
-      url: '/pages/letter/letter?friend_id=' + id
+      url: '/pages/letter/letter?friend_id=' + id + '&can_chat=' + canChat
     })
   },
 
@@ -241,7 +244,19 @@ Page({
       if (res.data.data.length > 0) {
 
         res.data.data.map(item => {
-          matchs.unshift(item);
+          let ifRepeat = false;
+
+          for (let match of matchs) {
+            if (match.id == item.id) {
+              ifRepeat = true;
+            }
+          }
+
+          console.log('是否重复：'+ifRepeat)
+
+          if (!ifRepeat) {
+            matchs.unshift(item);
+          }
         });
 
         _this.setData({

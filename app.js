@@ -6,8 +6,8 @@ App({
 
     //设置基本接口全局变量
 
-    this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
-    //this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
+    //this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
+    this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
   
     //七牛图片外链域名
     this.globalData.imageUrl = 'http://image.kucaroom.com/';

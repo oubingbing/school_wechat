@@ -759,7 +759,7 @@ Page({
     let canChat = e.target.dataset.chat;
 
     wx.navigateTo({
-      url: '/pages/letter/letter?friend_id=' + id
+      url: '/pages/letter/letter?friend_id=' + id + '&can_chat=' + canChat
     })
   },
   /**

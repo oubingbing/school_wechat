@@ -108,7 +108,7 @@
                 style='width:60rpx;height:60rpx'
                 bindtap='letter'
                 data-obj="{{item.poster.id}}"
-                data-chat="{{item.can_chat}}"></image>
+                data-chat="{{item.private}}"></image>
                 <image src='/image/pinglun.png' 
                 bindtap='showCommentInput' 
                 data-objid="{{item.id}}"

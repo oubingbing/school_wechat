@@ -6,7 +6,8 @@ Page({
     user:'',
     newLetterNumber:0,
     showNormal: app.globalData.showNormal,
-    showAudit: app.globalData.showAudit
+    showAudit: app.globalData.showAudit,
+    serviceId:''
   },
   onLoad: function () {
 
@@ -17,9 +18,21 @@ Page({
 
     this.getPersonalInfo();
     this.newLetterCount();
+    this.getService();
   },
   onShow:function(){
     this.newLetterCount();
+  },
+  /**
+   * 获取客服id
+   */
+  getService:function(){
+    app.http('get', `/service`, {}, res => {
+      console.log('客服id:' + res.data.data);
+      this.setData({
+        serviceId:res.data.data
+      });
+    });
   },
   /**
    * 获取个人信息
@@ -68,7 +81,8 @@ Page({
    * 进入建议留言列表
    */
   openSugesstion: function () {
-    let id = 4;
+    let id = this.data.serviceId;
+    console.log('客服id'+id);
     wx.navigateTo({
       url: '/pages/letter/letter?friend_id=' + id
     })

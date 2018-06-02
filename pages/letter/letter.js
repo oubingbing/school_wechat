@@ -16,18 +16,25 @@ Page({
     initPageNumber: 1,
     imageArray: [],
     baseImageUrl: app.globalData.imageUrl,
+    canChat:true
   },
   onLoad: function (option) {
     
+    let cantChat = 0
+
     let friendId = option.friend_id;
+    cantChat = option.can_chat;
+
+    console.log('是否可以聊天：'+cantChat);
 
     this.setData({
-      friendId: friendId
+      friendId: friendId,
+      canChat:cantChat
     });
 
     console.log(friendId);
 
-    this.setTitle(friendId);
+    this.setTitle(friendId,cantChat);
     this.getMessageList(friendId);
 
     let _this = this;
@@ -43,17 +50,22 @@ Page({
   /**
    * 设置title
    */
-  setTitle: function (id){
+  setTitle: function (id,cantChat){
 
     let _this = this;
 
-    app.http('get', `/user/${id}`,
-      {},
-      function (res) {
-        console.log(res.data.data);
-        let name = res.data.data.nickname;
-        wx.setNavigationBarTitle({ title: name });
-      });
+    if (cantChat != 1){
+      app.http('get', `/user/${id}`,
+        {},
+        function (res) {
+          console.log(res.data.data);
+          let name = res.data.data.nickname;
+          wx.setNavigationBarTitle({ title: name });
+        });
+
+    }else{
+      wx.setNavigationBarTitle({ title: '匿名の同学' });
+    }
 
   },
 

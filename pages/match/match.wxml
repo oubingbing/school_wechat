@@ -90,7 +90,7 @@
         <view class='comment'>
           <image bindtap='letter' 
                  data-obj='{{item.owner_id}}'   
-                 data-chat="{{item.can_chat}}"
+                 data-chat="{{item.private}}"
                  src='/image/letter.png'></image>
           
         </view>

@@ -87,12 +87,6 @@
               data-obj='{{item.owner_id}}'>
           <image src='/image/letter.png'></image>
         </view>
-        <view class='comment' 
-              bindtap='comment' 
-              data-objid="{{item.id}}">
-          <view class='comment-icon'><image src='/image/comment.png'></image></view>
-          <view class='comment-num'>{{item.comment_number}}</view>
-        </view>
         <view class='delete-icon'>
           <view class='delete' 
               data-objid="{{item.id}}" 
@@ -100,6 +94,12 @@
               bindtap='delete'>
                 <image src='/image/delete-icon.png'></image>
               </view>
+        </view>
+        <view class='comment' 
+              bindtap='comment' 
+              data-objid="{{item.id}}">
+          <view class='comment-icon'><image src='/image/comment.png'></image></view>
+          <view class='comment-num'>{{item.comment_number}}</view>
         </view>
       </view>
     </view>

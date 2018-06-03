@@ -262,6 +262,7 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-right: -48rpx;
 }
 
 .comment .comment-icon{

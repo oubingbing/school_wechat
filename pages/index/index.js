@@ -298,7 +298,6 @@ Page({
       wx.stopPullDownRefresh();
 
       console.log('返回的贴子数据');
-      console.log(res.data.data);
 
       let posts = _this.data.posts;
       if(res.data.data){

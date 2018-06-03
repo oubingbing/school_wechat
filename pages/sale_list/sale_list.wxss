@@ -9,6 +9,7 @@ page{
 }
 
 .sale-wall{
+  margin-top: 2rpx;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -226,21 +227,26 @@ page{
 }
 
 
-
-
 .comment-container{
-  width: 95%;
   background: whitesmoke;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   height: 80rpx;
   align-items: center;
-  margin-left: 15rpx;
+  justify-content: center;
   border-top-style:solid;
   border-width:1rpx;
   border-top-color: snow;
   margin-top: 10rpx;
+  width: 100%;
+}
+
+.comment-container .comment-wall{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .comment-container .zan{
@@ -262,16 +268,9 @@ page{
 .comment-container .comment{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
 }
-
-.comment-container .comment{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-right: -48rpx;
-}
-
 
 .comment .comment-icon{
   background: white;
@@ -311,11 +310,13 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   font-size: 30rpx;
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
   color: gray;
+  background: white;
 }
 
 .zan image{
@@ -337,13 +338,13 @@ page{
   right:18rpx;
   bottom:5rpx;
   z-index:100;
-  width: 110prx;
-  height: 110prx;
+  width: 120prx;
+  height: 120prx;
 }
 
 .post image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 
 /** 加载更多 **/
@@ -406,6 +407,15 @@ page{
   color: white;
   border-radius: 10rpx;
   font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.tip-content image{
+  width: 35rpx;
+  height: 35rpx;
 }
 
 /** nav-bar **/
@@ -438,4 +448,100 @@ page{
 
 .power_by{
   color: #D3D3D3;
+}
+
+
+/** audit status **/
+.audit-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.audit-container .search-container{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.audit-container .search{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  
+}
+
+.audit-container .search-input{
+  background: #E6E6E6;
+  width:85%;
+  height: 75rpx;
+  font-weight: 200;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius:15rpx 0 0 15rpx;
+}
+
+.audit-container .search-image{
+  width: 15%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 15rpx 15rpx 0;
+}
+
+.audit-container image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.audit-container .audit-item{
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  background: #87CEEB;
+  color: white;
+  border-radius: 5rpx;
+  padding: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.audit-item .poster-name{
+  background: darkgray;
+  padding: 5rpx;
+}
+
+.audit-item .say-name{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20rpx;
+  justify-content: center;
+}
+
+.audit-item .love-object{
+  background: #FF6347;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  border-radius: 10rpx;
+}
+
+.audit-item .post-user{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  padding-bottom: 8rpx;
+}
+
+.audit-item .content{
+  margin-top: 13rpx;
 }

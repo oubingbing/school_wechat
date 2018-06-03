@@ -42,7 +42,7 @@ page{
   width: 80rpx;
   height: 80rpx;
   border-radius: 40rpx;
-  margin-left: 15rpx;
+
 }
 .follow{
   margin-right: 15rpx;
@@ -228,18 +228,25 @@ page{
 
 
 .comment-container{
-  width: 95%;
   background: whitesmoke;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   height: 80rpx;
   align-items: center;
-  margin-left: 15rpx;
+  justify-content: center;
   border-top-style:solid;
   border-width:1rpx;
   border-top-color: snow;
   margin-top: 10rpx;
+  width: 100%;
+}
+
+.comment-container .comment-wall{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .comment-container .zan{
@@ -261,8 +268,8 @@ page{
 .comment-container .comment{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-right: -48rpx;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .comment .comment-icon{
@@ -303,11 +310,13 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   font-size: 30rpx;
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
   color: gray;
+  background: white;
 }
 
 .zan image{

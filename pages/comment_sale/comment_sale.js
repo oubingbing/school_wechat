@@ -181,6 +181,7 @@ Page({
           });
         }else{
 
+          console.log('评论评论');
           let newComments = sale.comments.map(item=>{
             if(item.id == objId){
               item.sub_comments.push(resData);

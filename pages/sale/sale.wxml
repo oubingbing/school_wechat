@@ -82,7 +82,8 @@
       </view>
 
       <view class='comment-container'>
-        <view class='zan' 
+        <view class='comment-wall'>
+          <view class='zan' 
               bindtap='letter' 
               data-obj='{{item.owner_id}}'>
           <image src='/image/letter.png'></image>
@@ -99,9 +100,11 @@
               bindtap='comment' 
               data-objid="{{item.id}}">
           <view class='comment-icon'><image src='/image/comment.png'></image></view>
-          <view class='comment-num'>{{item.comment_number}}</view>
+          <view class='comment-num'><view>{{item.comment_number}}</view></view>
+        </view>
         </view>
       </view>
+
     </view>
   </view>
   </view>

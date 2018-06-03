@@ -33,7 +33,7 @@
         <view class='image-container'>
           <image class='sale-image' 
                 src='{{baseImageUrl+sale.attachments[0]}}' 
-                mode='aspectFill'></image>
+                mode='widthFix'></image>
         </view>
       </view>
     </view>

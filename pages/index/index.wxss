@@ -63,25 +63,36 @@ page{
   margin-top: -5rpx;
 }
 
-.user-name .follow{
-  font-size: 25rpx;
+.user-name .follow-icon{
   color: white;
-  background: #8B8989;
-  border-radius: 10rpx;
-  padding-top: 8rpx;
-  padding-left: 6rpx;
-  padding-right: 6rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.follow-icon .follow-world{
+    background: darkgray;
+    font-size: 25rpx;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    border-radius: 10rpx;
 }
 
 .user-name .had-follow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.had-follow .had-follow-world{
   font-size: 25rpx;
   color: white;
   background: #FF7F00;
-  padding: 5rpx;
   border-radius: 10rpx;
-  padding-top: 8rpx;
-  padding-left: 6rpx;
-  padding-right: 6rpx;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
 }
 
 .for-user{

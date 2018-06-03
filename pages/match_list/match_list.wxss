@@ -44,17 +44,25 @@ page{
 }
 
 .follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
-  color: #BEBEBE;
   margin-right: 15rpx;
+  color: white;
+  background: #8B8989;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  border-radius: 10rpx;
 }
 
 .had-follow{
-  font-size: 30rpx;
+  font-size: 25rpx;
   font-weight: 200;
-  color: red;
   margin-right: 15rpx;
+  color: white;
+  background: #FF7F00;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  border-radius: 10rpx;
 }
 
 .match-container .content{

@@ -56,8 +56,9 @@ page{
   margin-right: 15rpx;
   color: white;
   background: #8B8989;
-  padding: 6rpx;
-  border-radius: 10rpx;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    border-radius: 10rpx;
 }
 
 .had-follow{
@@ -66,7 +67,8 @@ page{
   margin-right: 15rpx;
   color: white;
   background: #FF7F00;
-  padding: 6rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
   border-radius: 10rpx;
 }
 

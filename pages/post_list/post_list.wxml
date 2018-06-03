@@ -23,14 +23,14 @@
             {{item.poster.nickname}}
           </view>
           <view wx:if="{{item.private == 1}}">匿名の同学</view>
-          <view class='follow' 
-                bindtap="follow" 
-                wx:if="{{!item.follow}}"
-                data-obj="{{item.id}}">关注</view>
+          <view class='follow-icon' 
+                wx:if="{{!item.follow}}">
+                  <view class='follow-world' data-obj="{{item.id}}" bindtap="follow">关注</view>
+                </view>
           <view class='had-follow' 
-                wx:if="{{item.follow}}"
-                bindtap="cancelFolllow" 
-                data-obj="{{item.id}}">已关注</view>
+                wx:if="{{item.follow}}">
+                  <view bindtap="cancelFolllow" data-obj="{{item.id}}" class='had-follow-world'>取关注</view>
+                </view>
         </view>
         <view class='for-user' 
               wx:if="{{item.topic != '无'}}">

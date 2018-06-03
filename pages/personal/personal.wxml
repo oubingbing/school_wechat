@@ -45,6 +45,6 @@
 
   <view class='suggestion' bindtap='openSugesstion'>
     <view><image src='/image/suggestion.png' class='item-image'></image></view>
-    <view class='word'>意见反馈</view>
+    <view class='word'>联系客服</view>
   </view>
 </view>

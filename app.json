@@ -19,7 +19,8 @@
     "pages/match_list/match_list",
     "pages/post_detail/post_detail",
     "pages/match_detail/match_detail",
-    "pages/match_result/match_result"
+    "pages/match_result/match_result",
+    "pages/compare_photo/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -44,6 +45,12 @@
           "iconPath": "image/sale.png",
           "selectedIconPath": "image/select-sale.png",
           "text": "卖舍友"
+        },
+        {
+          "pagePath": "pages/compare_photo/index",
+          "iconPath": "image/fall-in-love.png",
+          "selectedIconPath": "image/select-fall-in-love.png",
+          "text": "情侣脸"
         },
         {
           "pagePath": "pages/match/match",

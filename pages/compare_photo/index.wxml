@@ -1,0 +1,13 @@
+<view class='container'>
+
+  <view class='header'>
+    <view class='tips'>试试你跟Ta有没有情侣相吧</view>
+  </view>
+
+</view>
+
+<view class='ding-container'><image src='/image/ding.png'></image></view>
+
+<view class='beging'>
+  <view class='beging-button'>开始</view>
+</view>

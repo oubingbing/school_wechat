@@ -20,12 +20,12 @@
     "pages/post_detail/post_detail",
     "pages/match_detail/match_detail",
     "pages/match_result/match_result",
-    "pages/compare_photo/index"
+    "pages/compare_face/face"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#66CDAA",
-    "navigationBarTitleText": "岭师小情书",
+    "navigationBarTitleText": "小情书",
     "navigationBarTextStyle":"white"
   },
     "tabBar": {
@@ -47,7 +47,7 @@
           "text": "卖舍友"
         },
         {
-          "pagePath": "pages/compare_photo/index",
+          "pagePath": "pages/compare_face/face",
           "iconPath": "image/fall-in-love.png",
           "selectedIconPath": "image/select-fall-in-love.png",
           "text": "情侣脸"

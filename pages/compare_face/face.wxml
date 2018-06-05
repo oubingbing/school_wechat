@@ -1,0 +1,34 @@
+<view class='container'>
+
+  <view class='header'>
+    <view class='tips'>试试你跟Ta有没有情侣相吧</view>
+  </view>
+
+  <view class='image-container' wx-if="{{showSelect}}">
+    <view class='image-left'>
+      <view class='image'><image src='/image/add-photo.png'></image></view>
+    </view>
+    <view class='image-right'>
+      <view class='image'><image src='/image/add-photo.png'></image></view>
+    </view>
+  </view>
+
+</view>
+
+<view class='report' wx-if="{{showSelect}}">
+  <view class='bind-report' wx-if="{{bindReport}}">
+    <image src='/image/bind-face-report.png'></image>
+  </view>
+  <view class='content'></view>
+</view>
+
+<view class='ding-container'><image src='/image/ding.png'></image></view>
+
+<view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
+  <view class='beging-button'>开始</view>
+</view>
+
+<view class='beging' bindtap='cancelSelect' wx-if="{{showCancel}}">
+  <view class='beging-button'>取消</view>
+</view>
+

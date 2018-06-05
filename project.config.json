@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -82,7 +82,7 @@
 				{
 					"id": 8,
 					"name": "私信",
-					"pathName": "pages/letter/letter",
+					"pathName": "pages/compare_face/face",
 					"query": "friend_id=5"
 				},
 				{

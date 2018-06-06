@@ -96,9 +96,18 @@ page{
   justify-content: center;
 }
 
-.image-left image{
+.image .add-button-image{
   width: 90rpx;
   height: 90rpx;
+}
+
+.image .avatar{
+  width: 290rpx;
+  height: 310rpx;
+  padding-top: 10rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-bottom: 10rpx;
 }
 
 .image-container .image-right{
@@ -165,4 +174,69 @@ page{
   height: 80rpx;
   transform:rotate(-7deg);
   -o-transform:rotate(-7deg); 
+}
+
+.report .content{
+  display: flex;
+  flex-direction: column;
+}
+
+.content .report-title{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 17rpx;
+  font-size: 45rpx;
+}
+
+.report .report-main{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+}
+
+.report-main .report-item{
+  padding-left: 20rpx;
+}
+
+.report-main .support{
+  z-index:110;
+  position:absolute;
+  bottom: 10rpx;
+  right: 50rpx;
+  font-size: 25rpx;
+  color: darkgray
+}
+
+.report-main .rate{
+  display: flex;
+  flex-direction: row;
+}
+
+.rate .rate-world{
+  color: red;
+}
+
+.report-main .seal{
+  z-index:115;
+  position:absolute;
+  bottom: 20rpx;
+  right: 60rpx;
+}
+
+.seal image{
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.report-main .seal-world{
+  z-index:120;
+  position:absolute;
+  bottom: 100rpx;
+  right: 100rpx;
+  font-size: 30rpx;
+  color: red;
+    transform:rotate(-14deg);
+  -o-transform:rotate(-14deg); 
 }

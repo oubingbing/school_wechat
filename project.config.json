@@ -74,15 +74,15 @@
 					"query": "id=8"
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "发表暗恋匹配",
-					"pathName": "pages/post_match/post_match",
+					"pathName": "pages/compare_photo/index",
 					"query": "id=8"
 				},
 				{
 					"id": 8,
 					"name": "私信",
-					"pathName": "pages/letter/letter",
+					"pathName": "pages/compare_face/face",
 					"query": "friend_id=5"
 				},
 				{
@@ -137,6 +137,24 @@
 					"id": -1,
 					"name": "测试",
 					"pathName": "pages/logs/logs",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "情侣脸",
+					"pathName": "pages/compare_photo/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "情侣脸",
+					"pathName": "pages/match/match",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "情侣脸",
+					"pathName": "pages/compare_photo/index",
 					"query": ""
 				}
 			]

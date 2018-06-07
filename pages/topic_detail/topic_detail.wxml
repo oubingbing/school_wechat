@@ -1,0 +1,113 @@
+<view class='topic-container'>
+  <view class='topic'>
+    <view class='topic-content'>
+      <view class='title' wx:if="{{title}}">{{title}}</view>
+      <view class='content'>{{topicContent}}</view>
+      <view class='attachments'>
+        <view class="single-image" 
+                wx:if='{{attachments.length==1}}'>
+            <image mode="widthFix" 
+                   class="image-item" 
+                   wx:for="{{attachments}}" 
+                   wx:key="{{attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id=""></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{attachments}}" 
+                   wx:key="{{attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id=""></image>
+          </view>
+      </view>
+    </view>
+  </view>
+
+      <view class='user-comment'>
+
+        <view class='comment-item' 
+              wx:for="{{comments}}" 
+              wx:key="{{comments}}">
+          <view class='left'>
+            <view class='user-image'>
+              <image src='{{item.commenter.avatar}}'></image>
+            </view>
+          </view>
+          <view class='right'>
+            <view 
+              class='comment-name right-item'>
+                {{item.commenter.nickname}}
+            </view>
+            <view class='content right-item'>
+              {{item.content}}
+            </view>
+            <view class='create_at right-item'>
+              <view>{{item.created_at}}</view>
+              <view class='comment-icon'>
+                <image src='/image/comment.png' 
+                  bindtap='showCommentInput' 
+                  data-objid="{{item.id}}"
+                  data-type='4'
+                  data-refid=""></image>
+              </view>
+            </view>
+                <view class='comment-user-wall' 
+                      wx:if='{{item.sub_comments.length > 0}}'>
+                  <view class="qipao"></view>
+                  <view class='comment-user-container' 
+                        wx:for="{{item.sub_comments}}" 
+                        wx:key="{{item.sub_comments}}" 
+                        wx:for-item="sub">
+                      <view class='comment-wall-item' 
+                            wx:if="{{!sub.ref_comment}}" 
+                            data-objid="{{item.id}}"
+                            data-type='4'
+                            data-refid="{{sub.id}}"
+                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
+                            <view class='comment-user-container'>
+                              <view class="comment-user inline-item">
+                                {{sub.commenter.nickname}}：
+                              </view>
+                              <view class='inline-item'>{{sub.content}}</view>
+                            </view>
+                        </view>
+
+                      <view class='comment-ref-user-container' 
+                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}"
+                             data-objid="{{item.id}}"
+                            data-type='4'
+                            data-refid="{{sub.id}}"
+                            wx:if="{{sub.ref_comment}}">
+                          <view class="comment-user inline-item">
+                            {{sub.commenter.nickname}}
+                          </view>
+                          <view class='inline-item'>回复</view>
+                          <view class="comment-user inline-item">
+                            {{sub.ref_comment.refCommenter.nickname}}：
+                          </view>
+                          <view class='inline-item'>{{sub.content}}</view>
+                      </view>
+                  </view>                    
+                </view>
+          </view>
+        </view>
+      </view>
+
+</view>
+
+  <view class='comment-input-container' wx:if="{{showCommentInput}}">
+    <textarea 
+        maxlength="1024"
+        placeholder="评论" 
+        auto-focus 
+        cursor-spacing="15"
+        fixed="true"
+        auto-height 
+        bindinput='getCommentContent'/>
+    <view class='send-button' bindtap='postComment'><view>发送</view></view>
+  </view>

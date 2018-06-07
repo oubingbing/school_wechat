@@ -29,6 +29,7 @@ Page({
         uploadToken: token
       });
     });
+
   },
   showSelect:function(){
     this.setData({
@@ -84,7 +85,7 @@ Page({
           if (_this.postImageLeft != '' && _this.PostImageRight != ''){
             _this.setData({
               showBegin: false,
-              showCancel: false,
+              showCancel: true,
               showSubmit: true,
               tryAgant: false
             });
@@ -128,7 +129,7 @@ Page({
           if (_this.postImageLeft != '' && _this.PostImageRight != '') {
             _this.setData({
               showBegin: false,
-              showCancel: false,
+              showCancel: true,
               showSubmit: true,
               tryAgant: false,
             });
@@ -207,6 +208,10 @@ Page({
       conclusion: '',
       showReport: false,
       bindReport: false,
+      showCancel: true,
+      tryAgant: false,
+      showBegin: false,
+      showSubmit: false,
       postImageLeft: '',
       PostImageRight: '',
       imageLeft: '',

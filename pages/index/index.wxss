@@ -609,3 +609,108 @@ page{
 .audit-item .content{
   margin-top: 13rpx;
 }
+
+/** 话题样式 **/
+
+.topic-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-top-style:solid;
+  border-bottom-style:solid;
+  border-width:30rpx;
+  border-color: #F5F5F5;
+}
+
+.topic{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic .title{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.title .title-world{
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-left: 35rpx;
+  padding-right: 35rpx;
+  margin-top: 20rpx;
+  font-size: 35rpx;
+  background-color: #F5F5F5;
+  color: #7A7A7A;
+  border-radius: 10rpx;
+}
+
+.attachments-single-image image{
+  width: 400rpx;
+}
+
+.attachments .attachments-more-image{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+
+.attachments-more-image image{
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.topic .content{
+  margin-bottom: 15rpx;
+  margin-top: 15rpx;
+}
+
+.topic .footer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  padding-top: 10rpx;
+  font-size: 35rpx;
+  padding-bottom: 10rpx;
+}
+
+.footer .footer-praise{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer .footer-visit{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer .footer-comment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-praise image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.footer-visit image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.footer-comment image{
+  width: 50rpx;
+  height: 50rpx;
+}

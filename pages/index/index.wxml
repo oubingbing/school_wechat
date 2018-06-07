@@ -30,6 +30,45 @@
 
   <view class="container-wall">
 
+    <view class='topic-container' wx:if="{{showTopic}}">
+      <view class='topic'>
+        <view class='title'>
+          <view class='title-world'># 今日话题 #</view>
+        </view>
+        <view class='content'>{{topic.content}}</view>
+      <view class='attachments'>
+        <view class="attachments-single-image" 
+                wx:if='{{topic.attachments.length==1}}'>
+            <image mode="widthFix" 
+                   class="image-item" 
+                   wx:for="{{topic.attachments}}" 
+                   wx:key="{{topic.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id=""></image>
+          </view>
+          <view class='attachments-more-image' 
+                wx:if='{{topic.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{topic.attachments}}" 
+                   wx:key="{{topic.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id=""></image>
+          </view>
+      </view>
+
+      <view class='footer'>
+        <view class='footer-praise'><view><image src='/image/topic_praise.png'></image></view><view>34</view></view>
+        <view class='footer-visit'><view><image src='/image/topic_view.png'></image></view> <view>600</view></view>
+        <view bindtap='openTopic' data-id="{{topic.id}}" class='footer-comment'>
+          <view><image src='/image/topic_comment.png'></image></view> <view>43</view>
+        </view>
+      </view>
+      </view>
+    </view>
+
     <view class="wall-item" wx:for="{{posts}}" wx:key="{{posts}}">
       <view class="item-container">
         <view class="item-image">

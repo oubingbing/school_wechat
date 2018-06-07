@@ -1,0 +1,239 @@
+page{
+  background: #F5F5F5;
+}
+
+.topic-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-container .topic{
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topic .topic-content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-content .title{
+  font-size: 45rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.topic-content .content{
+  color: gray;
+}
+
+.topic-content .attachments{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+}
+
+.single-image image{
+  width: 400rpx;
+}
+
+.more-image{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+
+.more-image image{
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+/** 用户评论内容 **/
+.user-comment{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-comment .comment-item{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: white;
+}
+
+.comment-item .left{
+  width: 15%;
+}
+
+.comment-item .right{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.comment-item .content{
+  font-size: 35rpx;
+}
+
+.user-image image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.right .create_at{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: darkgray;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  align-items: center;
+}
+
+.comment-icon image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+.right .comment-name{
+  color: #0061b2;
+}
+
+.right .right-item{
+  margin-bottom: 10rpx;
+}
+
+.right .reply-comment{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  background: WhiteSmoke;
+  margin-top: 10rpx;
+  padding: 15rpx;
+}
+
+.reply-comment .reply-container{
+  display: inline;
+}
+
+.reply-comment .reply-item{
+  font-size: 35rpx;
+  font-weight: 200;
+  display: flex;
+  flex-direction: row;
+}
+
+.reply-item .reply-user{
+  color: #0061b2;
+}
+
+/** 新的评论css **/
+
+.comment-user-container{
+  font-size: 30rpx;
+  background: WhiteSmoke;
+  padding: 10rpx;
+}
+
+.qipao{
+  width: 0;
+  height: 0;
+  border-right: 20rpx solid white;
+  border-bottom: 20rpx solid WhiteSmoke;
+  border-left: 20rpx solid white;
+  margin-left: 20rpx;
+}
+
+.inline-item{
+  display: inline;
+}
+
+.comment-wall-item .comment-user-container{
+  display: inline;
+}
+
+.comment-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-wall-item .comment-ref-user-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-ref-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-user{
+  color: #0061b2;
+}
+
+/** 评论框 **/
+.comment-input-container{
+  position:fixed;
+  bottom: 0rpx;
+  z-index:100;
+  width: 100%;
+  height: 200prx;
+  background: #DCDCDC;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.comment-input-container textarea{
+  width: 100%;
+  margin-left: 20rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #0aecc3;
+  margin-right: 20rpx;
+  padding-bottom: 15rpx;
+  font: 30rpx;
+  font-weight: 200;
+  margin-bottom: 20rpx;
+  padding-top: 17rpx;
+}
+
+.comment-input-container .send-button{
+  width: 130rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  background: #0aecc3;
+  color: white;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10rpx;
+}

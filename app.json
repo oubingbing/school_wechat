@@ -20,7 +20,9 @@
     "pages/post_detail/post_detail",
     "pages/match_detail/match_detail",
     "pages/match_result/match_result",
-    "pages/compare_face/face"
+    "pages/compare_face/face",
+    "pages/topic_comment/topic_comment",
+    "pages/topic_detail/topic_detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

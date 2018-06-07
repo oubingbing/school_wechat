@@ -38,7 +38,9 @@ Page({
     animationData: {},
     commentValue: '',
     showNormal: app.globalData.showNormal,
-    showAudit: app.globalData.showAudit
+    showAudit: app.globalData.showAudit,
+    topic:'',
+    showTopic:false
   },
 
   onLoad: function (e) {
@@ -84,6 +86,7 @@ Page({
 
     _this.getSchool(_this);
     _this.getPost(this);
+    _this.topic();
 
   },
   
@@ -139,6 +142,7 @@ Page({
     let _this = this;
     app.login(null, null, null, function(){
       _this.getPost(_this);
+      _this.topic();
       console.log('加载信息');
     });
   },
@@ -832,6 +836,27 @@ Page({
       url: '/pages/school/school?type=1'
     })
 
+  },
+  topic:function(){
+    let _this = this;
+    app.http('get', `/topic`, {}, function (res) {
+
+      console.log("话题：" + JSON.stringify(res.data.data));
+
+      let topicShow = res.data.data != '' ?true:false;
+
+      _this.setData({ topic: res.data.data, showTopic: topicShow});
+
+    });
+  },
+  openTopic:function(e){
+
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
+
+    wx.navigateTo({
+      url: '/pages/topic_detail/topic_detail?id=' + id
+    })
   }
 
 })

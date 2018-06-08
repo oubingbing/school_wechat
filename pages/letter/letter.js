@@ -186,6 +186,11 @@ Page({
    * 发送消息
    */
   send:function(){
+
+    wx.showLoading({
+      title: '发送中',
+    });
+
     let friendId = this.data.friendId;
     let content = this.data.content;
     let attachments = this.data.imageArray;
@@ -208,6 +213,9 @@ Page({
        attachments: attachments
      }, 
      function (res) {
+
+       wx.hideLoading();
+
        _this.setData({
          content:''
        })

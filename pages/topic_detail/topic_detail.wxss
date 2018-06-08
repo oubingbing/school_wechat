@@ -56,6 +56,54 @@ page{
   margin-bottom: 10rpx;
 }
 
+.topic .footer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  padding-top: 15rpx;
+  font-size: 30rpx;
+  padding-bottom: 15rpx;
+}
+
+.footer .footer-praise{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer .footer-visit{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .footer-comment{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-praise image{
+  width: 40rpx;
+  height: 40rpx;
+  padding-right: 5rpx;
+}
+
+.footer-visit image{
+  width: 50rpx;
+  height: 50rpx;
+  padding-right: 5rpx;
+}
+
+.footer-comment image{
+  width: 50rpx;
+  height: 50rpx;
+  padding-right: 5rpx;
+}
+
 /** 用户评论内容 **/
 .user-comment{
   width: 100%;
@@ -63,6 +111,8 @@ page{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background: white;
+  margin-top: 20rpx;
 }
 
 .user-comment .comment-item{

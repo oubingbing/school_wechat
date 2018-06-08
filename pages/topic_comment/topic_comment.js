@@ -12,8 +12,13 @@ Page({
     uploadToken: null,
     attachments: [],
     textContent: '',
+    objId:''
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    let id = options.id;
+    this.setData({
+      objId: id
+    });
 
   },
   onShow: function () {
@@ -29,6 +34,9 @@ Page({
   post: function () {
     let content = this.data.textContent;
     let attachments = this.data.attachments;
+    let id = this.data.objId;
+
+    console.log('对象id：'+id);
 
     console.log('图片：' + attachments);
     console.log('评论内容：' + content);
@@ -46,9 +54,11 @@ Page({
     app.http('post', '/comment', {
       content: content,
       attachments: attachments,
-      obj_id:4,
-      type:5
+      type:5,
+      obj_id: id,
     }, res => {
+
+      wx.navigateBack({ comeBack: true });
       console.log(res);
     });
 

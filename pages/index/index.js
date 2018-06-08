@@ -569,6 +569,10 @@ Page({
    */
   sendComment: function (e) {
 
+    wx.showLoading({
+      title: '发送中',
+    });
+
     let _this = this;
 
     let content = this.data.commentContent;
@@ -594,6 +598,8 @@ Page({
       type: type,
       ref_comment_id: refcommentId
     }, function (res) {
+
+      wx.hideLoading();
 
       _this.setData({
         commentContent: '',
@@ -630,7 +636,6 @@ Page({
    * 回复别人
    */
   commentOtherComment: function (e) {
-
     console.log(e.currentTarget.dataset);
     let objId = e.currentTarget.dataset.objid;
     let type = e.currentTarget.dataset.objtype;

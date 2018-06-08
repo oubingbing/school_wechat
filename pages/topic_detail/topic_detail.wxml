@@ -25,6 +25,22 @@
                    id=""></image>
           </view>
       </view>
+
+    <view class='footer'>
+        <view class='footer-praise'>
+          <image src='/image/topic_praise.png'></image>
+          <view> 34</view>
+        </view>
+        <view class='footer-visit'>
+          <image src='/image/topic_view.png'></image>
+          <view> 600</view>
+        </view>
+        <view bindtap='openCommentTopic' data-id="{{objId}}" class='footer-comment'>
+          <image src='/image/topic_comment.png'></image>
+          <view> 43</view>
+        </view>
+      </view>
+
     </view>
   </view>
 

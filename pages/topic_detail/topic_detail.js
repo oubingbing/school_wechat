@@ -43,10 +43,21 @@ Page({
         praiseNumber: topic.praise_number,
         viewNumber: topic.view_number,
         commentNumber: topic.comment_number,
-        comments:topic.comments
+        comments:topic.comments,
+        objId:topic.id
       });
 
     });
+  },
+
+  openCommentTopic:function(e){
+    let id = e.currentTarget.dataset.id;
+    console.log('id是什么：'+id);
+
+    wx.navigateTo({
+      url: '/pages/topic_comment/topic_comment?id=' + id
+    })
+
   },
 
   /**
@@ -156,6 +167,11 @@ Page({
    * 评论
    */
   postComment: function (e) {
+
+    wx.showLoading({
+      title: '发送中',
+    });
+
     let objType = this.data.objType;
     let objId = this.data.objId;
     let content = this.data.content;
@@ -170,6 +186,8 @@ Page({
       type: objType,
       ref_comment_id: refCommentId
     }, function (res) {
+
+      wx.hideLoading();
 
       console.log('返回的评论内容');
       console.log(res);

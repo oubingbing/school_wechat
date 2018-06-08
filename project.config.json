@@ -156,6 +156,18 @@
 					"name": "情侣脸",
 					"pathName": "pages/compare_photo/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "私信",
+					"pathName": "pages/topic_detail/topic_detail",
+					"query": "friend_id=4"
+				},
+				{
+					"id": -1,
+					"name": "话题详情",
+					"pathName": "pages/topic_detail/topic_detail",
+					"query": "friend_id=4"
 				}
 			]
 		}

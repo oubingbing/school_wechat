@@ -621,7 +621,7 @@ page{
 
   border-top-style:solid;
   border-bottom-style:solid;
-  border-width:30rpx;
+  border-width:20rpx;
   border-color: #F5F5F5;
 }
 
@@ -678,7 +678,7 @@ page{
   flex-direction: row;
   justify-content:space-between;
   padding-top: 10rpx;
-  font-size: 35rpx;
+  font-size: 30rpx;
   padding-bottom: 10rpx;
 }
 
@@ -691,26 +691,31 @@ page{
 .footer .footer-visit{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 
 .footer .footer-comment{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 
 .footer-praise image{
   width: 40rpx;
   height: 40rpx;
+  padding-right: 5rpx;
 }
 
 .footer-visit image{
   width: 50rpx;
   height: 50rpx;
+  padding-right: 5rpx;
 }
 
 .footer-comment image{
   width: 50rpx;
   height: 50rpx;
+  padding-right: 5rpx;
 }

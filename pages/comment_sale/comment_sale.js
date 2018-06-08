@@ -144,6 +144,11 @@ Page({
    * 评论
    */
   postComment:function(e){
+
+    wx.showLoading({
+      title: '发送中',
+    });
+
     let objType = this.data.objType;
     let objId = this.data.objId;
     let content = this.data.content;
@@ -158,6 +163,8 @@ Page({
       type: objType,
       ref_comment_id:refCommentId
     }, function (res) {
+
+      wx.hideLoading();
 
       console.log('返回的评论内容');
       console.log(res);

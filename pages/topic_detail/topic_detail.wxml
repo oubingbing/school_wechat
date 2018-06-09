@@ -1,7 +1,6 @@
 <view class='topic-container'>
-  <view class='topic'>
+  <view class='topic' bindtouchmove="hiddenComment">
     <view class='topic-content'>
-      <view class='title' wx:if="{{title}}">{{title}}</view>
       <view class='content'>{{topicContent}}</view>
       <view class='attachments'>
         <view class="single-image" 
@@ -26,25 +25,25 @@
           </view>
       </view>
 
-    <view class='footer'>
-        <view class='footer-praise'>
+    <view class='footer' wx:if="{{showFooter}}">
+        <view class='footer-praise' data-id="{{objId}}" bindtap='praiseTopic'>
           <image src='/image/topic_praise.png'></image>
-          <view> 34</view>
+          <view> {{praiseNumber}}</view>
         </view>
         <view class='footer-visit'>
           <image src='/image/topic_view.png'></image>
-          <view> 600</view>
+          <view> {{viewNumber}}</view>
         </view>
         <view bindtap='openCommentTopic' data-id="{{objId}}" class='footer-comment'>
           <image src='/image/topic_comment.png'></image>
-          <view> 43</view>
+          <view> {{commentNumber}}</view>
         </view>
       </view>
 
     </view>
   </view>
 
-      <view class='user-comment'>
+      <view class='user-comment' bindtouchmove="hiddenComment">
 
         <view class='comment-item' 
               wx:for="{{comments}}" 
@@ -62,8 +61,34 @@
             <view class='content right-item'>
               {{item.content}}
             </view>
+            <view class="single-image" 
+                wx:if='{{item.attachments.length==1}}'>
+            <image mode="widthFix" 
+                   class="image-item" 
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{item.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
             <view class='create_at right-item'>
-              <view>{{item.created_at}}</view>
+              <view class='time-deleted'>
+                <view>{{item.created_at}}</view>
+                <view class='delete-comment' 
+                      wx:if="{{item.can_delete}}" 
+                      data-refid="{{item.id}}"
+                      bindtap="removeComment">删除</view>
+              </view>
               <view class='comment-icon'>
                 <image src='/image/comment.png' 
                   bindtap='showCommentInput' 
@@ -82,7 +107,7 @@
                       <view class='comment-wall-item' 
                             wx:if="{{!sub.ref_comment}}" 
                             data-objid="{{item.id}}"
-                            data-type='4'
+                            data-type='5'
                             data-refid="{{sub.id}}"
                              bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
                             <view class='comment-user-container'>
@@ -96,7 +121,7 @@
                       <view class='comment-ref-user-container' 
                              bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}"
                              data-objid="{{item.id}}"
-                            data-type='4'
+                            data-type='5'
                             data-refid="{{sub.id}}"
                             wx:if="{{sub.ref_comment}}">
                           <view class="comment-user inline-item">
@@ -126,4 +151,11 @@
         auto-height 
         bindinput='getCommentContent'/>
     <view class='send-button' bindtap='postComment'><view>发送</view></view>
+  </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
   </view>

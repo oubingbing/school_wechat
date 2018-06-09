@@ -7,6 +7,8 @@
                 data-parent="{{item.parentObj}}"
                 data-pobj="{{item.parentObj.obj_id}}"
                 data-type="{{item.obj.obj_type}}"
+                data-chat="{{item.obj_type}}"
+                data-uid="{{item.from_id}}"
                 data-id="{{item.obj.obj_id}}">
             <view class='left'>
               <view>
@@ -20,9 +22,13 @@
               <view class='message' 
                     wx:if="{{item.action_type == 1 && item.parentObj != null}}">
                     {{item.obj.content}}</view>
+                    
+              <view class='message' 
+                    wx:if="{{item.obj_type == 6}}">
+                    {{item.content}}</view>
 
               <view class='delete-message' 
-                    wx:if="{{item.parentObj == null}}">
+                    wx:if="{{item.parentObj == null && item.obj_type != 6}}">
                     该消息已被删除
               </view>
                     

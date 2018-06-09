@@ -2,7 +2,7 @@
 
   <view class="bg-container">
       <view class='bg-image'>
-        <image mode="aspectFill" src='http://image.kucaroom.com/timg (1).jfif'></image>
+        <image mode="aspectFill" src='/image/bg.jpg'></image>
       </view>
       <view>
         <image class='user-image' src='{{user.avatar}}'></image>

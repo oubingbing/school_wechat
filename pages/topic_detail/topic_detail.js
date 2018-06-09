@@ -19,6 +19,11 @@ Page({
     objId: '',
     objType: '',
     refCommentId: '',
+    pageSize: 10,
+    pageNumber: 1,
+    initPageNumber: 1,
+    showGeMoreLoadin:false,
+    showFooter:false
   },
 
   /**
@@ -27,9 +32,15 @@ Page({
   onLoad: function (options) {
     let id = options.id;
 
+    this.setData({
+      objId:id
+    });
+
     console.log(options)
 
     this.getTopic(id);
+
+    this.getComments(this);
   },
   getTopic:function(id){
     app.http('get',`/topic/`+id,{},res => {
@@ -44,12 +55,130 @@ Page({
         viewNumber: topic.view_number,
         commentNumber: topic.comment_number,
         comments:topic.comments,
-        objId:topic.id
+        objId:topic.id,
+        showFooter: true
       });
 
     });
   },
 
+  onShow: function (option) {
+    this.getNewComments(this)
+  },
+
+/**
+* 获取话题评论 
+*/
+  getComments: function (_this) {
+
+    wx.showLoading({
+      title: '评论加载中',
+    });
+
+    let id = this.data.objId;
+    let commentsArray = this.data.comments;
+
+    app.http(
+      'get',
+      '/topic/' + id + `/comments?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}`,
+     {}, function (res) {
+
+       wx.hideLoading();
+
+       _this.setData({
+         showGeMoreLoadin: false
+       });
+
+      console.log(res.data.data.page_data);
+
+      if (res.data.data.page_data){
+
+        console.log('commentsArray:' + commentsArray);
+
+        res.data.data.page_data.map(item=>{
+          commentsArray.push(item);
+        })
+
+        _this.setData({
+          comments: commentsArray,
+          pageNumber: _this.data.pageNumber + 1
+        });
+      }
+    });
+  },
+  /**
+  * 获取话题评论 
+  */
+  getNewComments: function (_this) {
+
+    let id = this.data.objId;
+    let commentsArray = this.data.comments;
+
+    app.http(
+      'get',
+      '/topic/' + id + `/new_comments?`,
+      {}, function (res) {
+
+        console.log(res.data.data);
+
+        if (res.data.data) {
+
+          console.log('commentsArray:' + commentsArray);
+
+          res.data.data.map(item => {
+            let ifRepeat = false;
+            for (let comment of commentsArray) {
+              if (comment.id == item.id) {
+                ifRepeat = true;
+              }
+            }
+
+            if (!ifRepeat) {
+              commentsArray.unshift(item);
+            }
+
+          })
+
+          _this.setData({
+            comments: commentsArray
+          });
+        }
+      });
+  },
+  /**
+ * 上拉加载更多
+ */
+  onReachBottom: function () {
+
+    console.log('到底了');
+
+    this.setData({
+      showGeMoreLoadin: true
+    });
+
+    this.getComments(this);
+
+  },
+
+  /**
+* 点赞话题
+*/
+  praiseTopic: function (e) {
+
+    let id = e.currentTarget.dataset.id;
+
+    let _this = this;
+
+    app.http('POST', '/praise/' + id + '/topic', {}, function (res) {
+
+      console.log(res.data.data);
+
+      _this.setData({ praiseNumber: res.data.data.praise_number });
+    });
+  },
+  /**
+   * 进入评论
+   */
   openCommentTopic:function(e){
     let id = e.currentTarget.dataset.id;
     console.log('id是什么：'+id);
@@ -64,6 +193,7 @@ Page({
    * 触摸屏幕后移动触发一些隐藏操作
    */
   hiddenComment: function () {
+    console.log('移动屏幕');
     console.log('inde-hiddenComment：触摸后移动');
     this.setData({
       showCommentInput: false
@@ -89,6 +219,46 @@ Page({
       objType: type,
       refCommentId: refId
     });
+  },
+  removeComment:function(e){
+
+    let commentId = e.currentTarget.dataset.refid;
+    let _this = this;
+    let comments = this.data.comments;
+
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该评论?',
+      success: function (res) {
+        if (res.confirm) {
+
+          console.log('用户点击确定')
+
+          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+
+            if (res.data.data == 1) {
+
+              let newComment = comments.filter(item => {
+                if (item.id != commentId) {
+                  return item;
+                }
+
+              });
+
+              newComment;
+              _this.setData({
+                comments: newComment
+              });
+            }
+
+          });
+
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   },
   /**
    * 删除评论
@@ -178,7 +348,7 @@ Page({
     let refCommentId = this.data.refCommentId;
     let _this = this;
 
-    console.log(refCommentId);
+    console.log('对象类型：' + objType);
 
     app.http('post', '/comment', {
       content: content,

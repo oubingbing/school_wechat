@@ -152,7 +152,7 @@
   z-index:100;
   width: 100%;
   height: 250prx;
-  background: #DCDCDC;
+  background: WhiteSmoke;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -77,13 +77,25 @@ Page({
    * 打开详情
    */
   opendDetail:function(e){
+
+    console.log('打开详情');
+
     let objType = e.currentTarget.dataset.type;
     let id = e.currentTarget.dataset.id;
     let parent = e.currentTarget.dataset.parent;
     let pobj = e.currentTarget.dataset.pobj;
-    console.log(objType);
-    console.log(parent);
-    console.log(pobj);
+
+    let chat = e.currentTarget.dataset.chat;
+    let uid = e.currentTarget.dataset.uid;
+
+    console.log(id+':id');
+    console.log(JSON.stringify(e));
+
+    if (chat == 6) {
+      wx.navigateTo({
+        url: '/pages/letter/letter?friend_id=' + uid
+      })
+    }
 
     if (parent == null){
       return;
@@ -93,25 +105,39 @@ Page({
         wx.navigateTo({
           url: `/pages/post_detail/post_detail?id=${id}`
         })
+
+        return false;
     }
 
     if (objType == 2) {
       wx.navigateTo({
         url: `/pages/comment_sale/comment_sale?id=${id}`
       })
+      return false;
     }
 
     if (objType == 3) {
       wx.navigateTo({
         url: `/pages/match_detail/match_detail?id=${id}`
       })
+      return false;
     }
 
-    if(objType == 4){
+    if (parent.obj_type == 5){
       wx.navigateTo({
-        url: `/pages/comment_sale/comment_sale?id=${pobj}`
+        url: '/pages/topic_detail/topic_detail?id=' + pobj
       })
+      return false;
     }
+    
+    if (objType == 4) {
+      console.log('打开卖舍友');
+        wx.navigateTo({
+          url: `/pages/comment_sale/comment_sale?id=${pobj}`
+        })
+        return false;
+    }
+    
 
   }
 })

@@ -84,8 +84,9 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '把你最可爱的舍友“卖”掉吧',
+      title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
+      imageUrl: '/image/sale_friend_bg.jpg',
       success: function (res) {
         // 转发成功
       },

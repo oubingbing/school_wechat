@@ -217,6 +217,23 @@ Page({
       imageLeft: '',
       imageRight: '',
     });
-  }
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '喜欢ta，那就说出来吧',
+      path: '/pages/index/index',
+      imageUrl: '/image/compare_face.jpg',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 
 })

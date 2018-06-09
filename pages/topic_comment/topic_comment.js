@@ -41,7 +41,7 @@ Page({
     console.log('图片：' + attachments);
     console.log('评论内容：' + content);
 
-    if (content == '' && attachments == '') {
+    if (content == '') {
       wx.showLoading({
         title: '内容不能为空！',
       });

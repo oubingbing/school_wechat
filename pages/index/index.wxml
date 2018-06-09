@@ -60,17 +60,17 @@
       </view>
 
       <view class='footer'>
-        <view class='footer-praise'>
+        <view class='footer-praise' data-id="{{topic.id}}" bindtap='praiseTopic'>
           <image src='/image/topic_praise.png'></image>
-          <view> 34</view>
+          <view> {{topic.praise_number}}</view>
         </view>
         <view class='footer-visit'>
           <image src='/image/topic_view.png'></image>
-          <view> 600</view>
+          <view> {{topic.view_number}}</view>
         </view>
         <view bindtap='openTopic' data-id="{{topic.id}}" class='footer-comment'>
           <image src='/image/topic_comment.png'></image>
-          <view> 43</view>
+          <view> {{topic.comment_number}}</view>
         </view>
       </view>
       
@@ -177,11 +177,9 @@
             <view class="comment-detail">
               <view class="praise-container" 
                     wx:if="{{item.praises.length > 0}}">
-                <view class='praise-icon'>
-                  <image class='praise-user praise-item' 
-                     src='/image/make_praise.png'></image>
-                </view>
                 <view class='praise-content'>
+                <image class='praise-user praise-item' 
+                     src='/image/make_praise.png'></image>
                   <view class='praise-item' 
                   wx:for="{{item.praises}}" 
                   wx:key="{{item.praises}}">

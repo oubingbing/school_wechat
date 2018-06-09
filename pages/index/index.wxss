@@ -212,7 +212,6 @@ page{
 .comment .comment-detail{
   margin: 15rpx 15rpx;
   font-size: 30rpx;
-  font-weight: 200;
   display: flex;
   flex-direction: column;
 }
@@ -222,12 +221,7 @@ page{
   flex-direction: row;
 }
 
-.praise-container .praise-icon{
-  width: 10%;
-}
-
 .praise-container .praise-content{
-  width: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
@@ -382,7 +376,7 @@ page{
   z-index:100;
   width: 100%;
   height: 200prx;
-  background: #DCDCDC;
+  background: WhiteSmoke;
   display: flex;
   flex-direction: row;
   align-items: center;

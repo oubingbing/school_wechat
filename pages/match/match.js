@@ -77,8 +77,9 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '最幸福的事情莫过于你喜欢的人恰好也喜欢着你',
+      title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
+      imageUrl: '/image/match_bg.jpg',
       success: function (res) {
         // 转发成功
       },

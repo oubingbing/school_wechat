@@ -1,4 +1,4 @@
- <view class="sale-container">
+ <view class="sale-container" bindtouchmove="hiddenComment">
 
     <view class='sale-item'>
       <view class='header'>
@@ -45,16 +45,16 @@
             <view class='zan' 
                   bindtap='praise' 
                   data-objid="{{sale.id}}">
-              <view>赞</view>
-              <view>{{sale.praise_number}}</view>
+              <image src='/image/topic_praise.png' style='width:50rpx;height:50rpx;'></image>
+              <view style='padding-left:5rpx;'>{{sale.praise_number}}</view>
             </view>
             <view class='comment' 
                   bindtap='showCommentInput' 
                   data-objid="{{sale.id}}"
                   data-refid=""
                   data-type="2">
-              <view>评论</view>
-              <view>{{sale.comment_number}}</view>
+              <image src='/image/topic_comment.png' style='width:50rpx;height:50rpx;'></image>
+              <view style='padding-left:5rpx;'>{{sale.comment_number}}</view>
             </view>
           </view>
       </view>

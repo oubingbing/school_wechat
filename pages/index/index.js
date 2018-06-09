@@ -131,6 +131,22 @@ Page({
     });
   },
   /**
+ * 点赞话题
+ */
+  praiseTopic: function (e) {
+
+    let id = e.currentTarget.dataset.id;
+
+    let _this = this;
+
+    app.http('POST', '/praise/'+id+'/topic', {}, function (res) {
+
+      console.log(res.data.data);
+
+      _this.setData({topic:res.data.data});
+    });
+  },
+  /**
    * 监听用户点击授权按钮
    */
   getAuthUserInfo:function(data){
@@ -146,14 +162,14 @@ Page({
       console.log('加载信息');
     });
   },
+  /**
+   * 分享
+   */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
-      title: '说出你心中最想对ta说的话吧',
+      title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
+      imageUrl:'/image/share1.jpg',
       success: function (res) {
         // 转发成功
       },
@@ -172,6 +188,17 @@ Page({
     console.log(e.target.dataset.type);
 
     let objType = e.target.dataset.type;
+
+    if (objType == 1){
+      this.setData({
+        showTopic: true
+      });
+    }else{
+      this.setData({
+        showTopic: false
+      });
+    }
+
     this.setData({
       select: objType,
       postType: objType,

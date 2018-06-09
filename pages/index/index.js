@@ -189,7 +189,9 @@ Page({
 
     let objType = e.target.dataset.type;
 
-    if (objType == 1){
+    let thisTopic = this.data.topic;
+
+    if (objType == 1 && thisTopic != null){
       this.setData({
         showTopic: true
       });
@@ -875,7 +877,7 @@ Page({
 
       console.log("话题：" + JSON.stringify(res.data.data));
 
-      let topicShow = res.data.data != '' ?true:false;
+      let topicShow = res.data.data != null ?true:false;
 
       _this.setData({ topic: res.data.data, showTopic: topicShow});
 

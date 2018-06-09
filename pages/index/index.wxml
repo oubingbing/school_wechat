@@ -44,6 +44,7 @@
                    wx:for="{{topic.attachments}}" 
                    wx:key="{{topic.attachments}}"
                    src="{{baseImageUrl+item}}"
+                   id="{{baseImageUrl+item}}" 
                    bindtap='previewImage'
                    id=""></image>
           </view>
@@ -55,7 +56,7 @@
                    wx:key="{{topic.attachments}}"
                    src="{{baseImageUrl+item}}" 
                    bindtap='previewImage'
-                   id=""></image>
+                   id="{{baseImageUrl+item}}"></image>
           </view>
       </view>
 

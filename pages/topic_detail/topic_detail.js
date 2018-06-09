@@ -65,7 +65,20 @@ Page({
   onShow: function (option) {
     this.getNewComments(this)
   },
+  /**
+   * 预览图片
+   */
+  previewImage: function (event) {
 
+    console.log(event.target.id);
+
+    let url = event.target.id;
+
+    wx.previewImage({
+      current: '',
+      urls: [url]
+    })
+  },
 /**
 * 获取话题评论 
 */

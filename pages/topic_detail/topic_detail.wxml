@@ -11,7 +11,7 @@
                    wx:key="{{attachments}}"
                    src="{{baseImageUrl+item}}"
                    bindtap='previewImage'
-                   id=""></image>
+                   id="{{baseImageUrl+item}}"></image>
           </view>
           <view class='more-image' 
                 wx:if='{{attachments.length>1}}'>
@@ -21,7 +21,7 @@
                    wx:key="{{attachments}}"
                    src="{{baseImageUrl+item}}" 
                    bindtap='previewImage'
-                   id=""></image>
+                   id="{{baseImageUrl+item}}"></image>
           </view>
       </view>
 

@@ -39,7 +39,7 @@
       <view class='attachments'>
         <view class="attachments-single-image" 
                 wx:if='{{topic.attachments.length==1}}'>
-            <image mode="widthFix" 
+            <image mode="aspectFill" 
                    class="image-item" 
                    wx:for="{{topic.attachments}}" 
                    wx:key="{{topic.attachments}}"

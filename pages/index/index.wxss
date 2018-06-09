@@ -619,6 +619,11 @@ page{
   border-color: #F5F5F5;
 }
 
+.topic-single-image image{
+  width: 180rpx;
+  height: 180rpx;
+}
+
 .topic{
   width: 95%;
   display: flex;
@@ -645,7 +650,8 @@ page{
 }
 
 .attachments-single-image image{
-  width: 400rpx;
+  width: 300rpx;
+  height: 200rpx;
 }
 
 .attachments .attachments-more-image{

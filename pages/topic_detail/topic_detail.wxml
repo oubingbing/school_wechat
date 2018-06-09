@@ -3,10 +3,11 @@
     <view class='topic-content'>
       <view class='content'>{{topicContent}}</view>
       <view class='attachments'>
-        <view class="single-image" 
+        <view class="single-image topic-single-image" 
                 wx:if='{{attachments.length==1}}'>
-            <image mode="widthFix" 
+            <image mode="aspectFill" 
                    class="image-item" 
+                   style='width:300rpxk;height:200rpx;'
                    wx:for="{{attachments}}" 
                    wx:key="{{attachments}}"
                    src="{{baseImageUrl+item}}"

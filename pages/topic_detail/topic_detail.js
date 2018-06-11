@@ -1,4 +1,5 @@
 const app = getApp();
+const util = require("../../utils/util.js");
 
 Page({
 
@@ -23,13 +24,20 @@ Page({
     pageNumber: 1,
     initPageNumber: 1,
     showGeMoreLoadin:false,
-    showFooter:false
+    showFooter:false,
+    currentTime:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    //设置当前时间
+    this.setData({
+      currentTime: util.formatTime(new Date())
+    });
+
     let id = options.id;
 
     this.setData({
@@ -129,7 +137,7 @@ Page({
 
     app.http(
       'get',
-      '/topic/' + id + `/new_comments?`,
+      '/topic/' + id + `/new_comments?time=` + this.data.currentTime,
       {}, function (res) {
 
         console.log(res.data.data);

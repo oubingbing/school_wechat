@@ -2,6 +2,8 @@
 App({
   onLaunch: function () {
 
+    wx.hideTabBar();
+
     this.globalData.appKey = '04rNbDIGuBoYcsQn';
 
     //设置基本接口全局变量
@@ -132,15 +134,19 @@ App({
 
     this.http('GET', '/upload_token', {}, function (res) {
 
-      var token = res.data.data.uptoken;
+      console.log('150行：'+res.data);
 
-      if(call){
-        call(token);
+      if(res.data.data != null){
+        var token = res.data.data.uptoken;
+
+        if (call) {
+          call(token);
+        }
+
+        console.log('设置七牛upload token' + token);
+
+        wx.setStorageSync('uploadToken', token);
       }
-
-      console.log('设置七牛upload token' + token);
-
-      wx.setStorageSync('uploadToken', token);
 
     });
 
@@ -183,6 +189,10 @@ App({
 
         console.log(res.data);
         var config = res.data.data
+
+        if(config != 3){
+          wx.showTabBar();
+        }
 
         callback(config);
       },

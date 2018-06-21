@@ -305,5 +305,7 @@
     <view class='post-user'>投稿人#{{item.poster.nickname}}#</view>
     <view class='content'>表白@ {{item.content}}</view>
   </view>
+
+  
 </view>
 

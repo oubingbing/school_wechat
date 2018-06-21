@@ -1,0 +1,163 @@
+page{
+  background: #F5F5F5;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content .content-item{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  margin-top: 20rpx;
+}
+
+.content-item .header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F5F5F5;
+  align-items: center;
+}
+
+.header .header-content{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+.header .avatar{
+  width: 13%;
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.header .nickname{
+  display: flex;
+  flex-direction: column;
+}
+
+.nickname .name{
+  color: #1874CD;
+}
+
+.nickname .time{
+  font-size: 30rpx;
+  color: gray;
+}
+
+.order-button .order-item{
+    position: absolute;
+    z-index: 100;
+    right: 20rpx;
+}
+
+.order-item image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+.content-item .content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content .title{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 15rpx;
+}
+
+.title .label{
+  padding-bottom: 10rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-top: 10rpx;
+  background-color: #F5F5F5;
+  color: #7A7A7A;
+  border-radius: 10rpx;
+}
+
+.content .salary{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.content .mission{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mission .description{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content .salary{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.salary .container{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+}
+
+.salary .money{
+  color: red;
+}
+
+.content .footer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.footer-container{
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #FF8C00;
+  color: white;
+  font-size: 35rpx;
+}

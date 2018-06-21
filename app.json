@@ -22,7 +22,8 @@
     "pages/match_result/match_result",
     "pages/compare_face/face",
     "pages/topic_comment/topic_comment",
-    "pages/topic_detail/topic_detail"
+    "pages/topic_detail/topic_detail",
+    "pages/help/help"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -55,10 +56,10 @@
           "text": "情侣脸"
         },
         {
-          "pagePath": "pages/match/match",
-          "iconPath": "image/pipei.png",
-          "selectedIconPath": "image/select-pipei.png",
-          "text": "暗恋匹配"
+          "pagePath": "pages/help/help",
+          "iconPath": "image/help.png",
+          "selectedIconPath": "image/select-help.png",
+          "text": "悬赏令"
         },
         {
           "pagePath": "pages/personal/personal",

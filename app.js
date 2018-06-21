@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
 
-    this.globalData.appKey = 'uNy6iug7SmrN3uCY';
+    this.globalData.appKey = '04rNbDIGuBoYcsQn';
 
     //设置基本接口全局变量
 

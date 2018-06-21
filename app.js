@@ -4,7 +4,7 @@ App({
 
     wx.hideTabBar();
 
-    this.globalData.appKey = '04rNbDIGuBoYcsQn';
+    this.globalData.appKey = '你的aliiance_key';
 
     //设置基本接口全局变量
 

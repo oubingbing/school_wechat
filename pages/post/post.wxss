@@ -21,7 +21,8 @@ page{
 }
 
 .textarea-content{
-  padding: 15rpx;
+  padding-top: 15rpx;
+  width: 100%;
 }
 
 .form .input{

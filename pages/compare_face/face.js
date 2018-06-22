@@ -54,6 +54,9 @@ Page({
     });
   },
   selectLeft:function(){
+
+    this.setData({ showReport: false })
+
     let _this = this;
     wx.chooseImage({
       count: 1, 
@@ -97,6 +100,9 @@ Page({
     })
   },
   selectRight:function(){
+
+    this.setData({ showReport: false})
+
     let _this = this;
     wx.chooseImage({
       count: 1,
@@ -193,9 +199,9 @@ Page({
             conclusion: response.data.message,
             showReport: true,
             bindReport: true,
-            postImageLeft: '',
-            PostImageRight: '',
-            tryAgant:true
+            //postImageLeft: '',
+            //PostImageRight: '',
+            //tryAgant:true
           });
 
       });
@@ -226,7 +232,7 @@ Page({
     return {
       title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
-      imageUrl: '/image/compare_face.jpg',
+      imageUrl: 'http://image.kucaroom.com/compare_face.jpg',
       success: function (res) {
         // 转发成功
       },

@@ -79,7 +79,7 @@ Page({
     return {
       title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
-      imageUrl: '/image/match_bg.jpg',
+      imageUrl: 'http://image.kucaroom.com/match_bg.jpg',
       success: function (res) {
         // 转发成功
       },

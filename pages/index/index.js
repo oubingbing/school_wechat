@@ -62,6 +62,9 @@ Page({
   },
 
   onLoad: function (e) {
+
+    wx.hideTabBar();
+
     wx.showLoading({
       title: '加载中',
     });
@@ -80,9 +83,11 @@ Page({
       if (config == 3) {
         app.globalData.showNormal = false;
         app.globalData.showAudit = true;
+        wx.hideTabBar();
       } else {
         app.globalData.showNormal = true;
         app.globalData.showAudit = false;
+        wx.showTabBar();
       }
 
       this.setData({
@@ -118,6 +123,13 @@ Page({
   },
   
   onShow: function (option) {
+
+    if (app.globalData.showNormal){
+      wx.showTabBar();
+    }else{
+      wx.hideTabBar();
+    }
+
 
     console.log('学校是否变了:' + app.globalData.changeSchool);
 
@@ -196,7 +208,7 @@ Page({
     return {
       title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
-      imageUrl:'/image/share1.jpg',
+      imageUrl:'http://image.kucaroom.com/share1.jpg',
       success: function (res) {
         // 转发成功
       },

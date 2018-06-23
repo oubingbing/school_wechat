@@ -149,4 +149,19 @@ page{
   margin-top: 15rpx;
 }
 
+.update-info{
+  position: fixed;
+  z-index: 200;
+  top: 20rpx;
+  left: 20rpx;
+  font-size: 25rpx;
+  padding-bottom: 20rpx;
+  border-style:solid;
+  border-width:1rpx;
+  border-color: #66CDAA;
+  color: #66CDAA;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+
 

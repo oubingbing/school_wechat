@@ -1,3 +1,6 @@
+
+//post
+
 const app = getApp();
 const qiniuUploader = require("../../utils/qiniuUploader");
 const uploader = require("../../utils/uploadImage");
@@ -35,15 +38,15 @@ Page({
     let privateValue = this.data.private;
     let username = this.data.name;
 
-    console.log('发送的图片是什么：'+attachments);
+    console.log('发送的图片是什么：' + attachments);
 
-    if(content == '' && attachments == ''){
+    if (content == '' && attachments == '') {
       wx.showLoading({
         title: '内容不能为空！',
       });
-      setTimeout(function(){
+      setTimeout(function () {
         wx.hideLoading();
-      },1500)
+      }, 1500)
       return false;
     }
 
@@ -83,7 +86,7 @@ Page({
         let temArray = _this.data.imageArray;
         let temUrlArray = _this.data.attachments;
 
-        console.log('图片：'+res.tempFilePaths);
+        console.log('图片：' + res.tempFilePaths);
 
         var filePaths = res.tempFilePaths;
 

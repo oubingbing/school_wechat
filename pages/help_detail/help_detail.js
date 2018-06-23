@@ -23,11 +23,12 @@ Page({
   selected(e) {
 
   },
-  detail: function () {
-    console.log('Post');
+  callPhone:function(e){
 
-    wx.navigateTo({
-      url: '/pages/help_detail/help_detail'
+    let phone = e.currentTarget.dataset.phone;
+
+    wx.makePhoneCall({
+      phoneNumber: phone 
     })
-  },
+  }
 });

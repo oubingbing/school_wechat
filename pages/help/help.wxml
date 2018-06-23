@@ -1,5 +1,26 @@
 <view class="container">
-  <view class='content'>
+
+  <view class='nav-bar-container'>
+    <view class='nav-bar'>
+      <view class='all {{select==1?"selected":""}}' 
+            bindtap="selected" 
+            data-type="1">全部</view>
+      <view class='follow {{select==2?"selected":""}}' 
+            bindtap="selected" 
+            data-type='2'>悬赏中</view>
+      <view class='new {{select==3?"selected":""}}' 
+            bindtap="selected" 
+            data-type='3'>任务中</view>
+      <view class='hot {{select==4?"selected":""}}' 
+            bindtap="selected" 
+            data-type='4'>已结束</view>
+      <view class='hot {{select==4?"selected":""}}' 
+            bindtap="selected" 
+            data-type='4'>我的</view>
+    </view>
+  </view>
+
+  <view class='content content-container'>
 
     <view class='content-item'>
       <view class='header'>
@@ -10,9 +31,6 @@
          <view class='nickname'>
           <view class='name'>叶子</view>
           <view class='time'>2018-6-18 23:10:12</view>
-         </view>
-         <view class='order-button'>
-          <view class='order-item'><image src='/image/letter.png'></image></view>
          </view>
         </view>
       </view>
@@ -34,8 +52,53 @@
         </view>
       </view>
       <view class='footer'>
-        <view class='footer-container'>
-          <view>+接单</view>
+        <view class='order' bindtap='detail'>
+          <image src='/image/take-order.png'></image>
+          <view>接单</view>
+        </view>
+        <view class='contact'>
+          <image src='/image/contact.png'></image>
+          <view>联系</view>
+        </view>
+      </view>
+    </view>
+    <view class='content-item'>
+      <view class='header'>
+        <view class='header-content'>
+          <view class='avatar'>
+          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
+        </view>
+         <view class='nickname'>
+          <view class='name'>叶子</view>
+          <view class='time'>2018-6-18 23:10:12</view>
+         </view>
+        </view>
+      </view>
+
+      <view class='content'>
+        <view class='title'>
+          <view class='label'>代课</view>
+        </view>
+        <view class="mission">
+          <view class='description'>
+            后天我有事，但是又请不到假，所以想找个同学帮忙去代课，很简单的，只要老师点名的时候喊个到就行了，哈哈。
+          </view>
+        </view>
+        <view class='salary'>
+          <view class='container'>
+            <view class='label'>酬劳：</view>
+            <view class='money'>50元</view>
+          </view>
+        </view>
+      </view>
+      <view class='footer'>
+        <view class='order'>
+          <image src='/image/take-order.png'></image>
+          <view>接单</view>
+        </view>
+        <view class='contact'>
+          <image src='/image/contact.png'></image>
+          <view>联系</view>
         </view>
       </view>
     </view>
@@ -50,9 +113,6 @@
           <view class='name'>叶子</view>
           <view class='time'>2018-6-18 23:10:12</view>
          </view>
-         <view class='order-button'>
-          <view class='order-item'><image src='/image/letter.png'></image></view>
-         </view>
         </view>
       </view>
 
@@ -73,11 +133,22 @@
         </view>
       </view>
       <view class='footer'>
-        <view class='footer-container'>
-          <view>+接单</view>
+        <view class='order'>
+          <image src='/image/take-order.png'></image>
+          <view>接单</view>
+        </view>
+        <view class='contact'>
+          <image src='/image/contact.png'></image>
+          <view>联系</view>
         </view>
       </view>
     </view>
 
+  </view>
+</view>
+
+<view class='post-container'>
+  <view class='post'>
+    <image src='/image/post.png' bindtap='post'></image>
   </view>
 </view>

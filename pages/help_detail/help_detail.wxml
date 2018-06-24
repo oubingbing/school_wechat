@@ -5,27 +5,27 @@
       <view class='header'>
         <view class='header-content'>
           <view class='avatar'>
-          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
+          <image src='{{job.user.avatar}}'></image>
         </view>
          <view class='nickname'>
-          <view class='name'>叶子</view>
-          <view class='time'>2018-6-18 23:10:12</view>
+          <view class='name'>{{job.user.nickname}}</view>
+          <view class='time'>{{job.created_at}}</view>
          </view>
         </view>
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>代课</view>
+          <view class='label'>{{job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>
-            后天我有事，但是又请不到假，所以想找个同学帮忙去代课，很简单的，只要老师点名的时候喊个到就行了，哈哈。
+            {{job.content}}
           </view>
         </view>
         <view class='salary'>
           <view class='container'>
             <view class='label'>酬劳：</view>
-            <view class='money'>50元</view>
+            <view class='money'>{{job.salary}}元</view>
           </view>
         </view>
       </view>
@@ -44,31 +44,31 @@
     <view class='user-info'>
       <view class='info-container'>
         <view class='user-title'>
-          <view class='title-label'>悬赏人信息</view>
+          <view class='title-label'>{{profileTitle}}</view>
         </view>
         <view class='name user-item'>
           <view>姓名：</view>
-          <view class='item-content'>区志彬</view>
+          <view class='item-content'>{{roleProfile.name}}</view>
         </view>
         <view class='number user-item'>
           <view>学号：</view>
-          <view class='item-content'>2013254113</view>
+          <view class='item-content'>{{roleProfile.student_number}}</view>
         </view>
         <view class='grade user-item'>
           <view>年级：</view>
-          <view class='item-content'>大一</view>
+          <view class='item-content'>{{grade[roleProfile.grade]}}</view>
         </view>
         <view class='major user-item'>
           <view>专业：</view>
-          <view class='item-content'>软件工程</view>
+          <view class='item-content'>{{roleProfile.major}}</view>
         </view>
         <view class='college user-item'>
           <view>学院：</view>
-          <view class='item-content'>计算机学院</view>
+          <view class='item-content'>{{roleProfile.college}}</view>
         </view>
         <view class='phone user-item'>
           <view>联系电话：</view>
-          <view class='item-content'>13425144866</view>
+          <view class='item-content'>{{roleProfile.phone}}</view>
           <view class='call-phone' bindtap='callPhone' data-phone='13425144866'>拨号</view>
         </view>
       </view>

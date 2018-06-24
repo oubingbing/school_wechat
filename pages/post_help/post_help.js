@@ -14,7 +14,9 @@ Page({
     private: false,
     textContent: '',
     name: '',
-    profile:null
+    profile:null,
+    title:'',
+    salary:0
   },
   onLoad: function () {
     
@@ -55,47 +57,48 @@ Page({
   },
 
   /** 提交 */
-  post: function () {
+  submit: function () {
 
-    console.log('post');
     console.log(this.data.attachments);
 
     let content = this.data.textContent;
     let attachments = this.data.attachments;
-    let privateValue = this.data.private;
-    let username = this.data.name;
+    let title = this.data.title;
+    let salary = this.data.salary;
 
     console.log('发送的图片是什么：' + attachments);
 
-    if (content == '' && attachments == '') {
-      wx.showLoading({
-        title: '内容不能为空！',
-      });
-      setTimeout(function () {
-        wx.hideLoading();
-      }, 1500)
-      return false;
-    }
 
-    app.http('post', '/post', {
+    app.http('POST', '/post_help', {
       content: content,
       attachments: attachments,
-      private: privateValue,
-      username: username
+      title: title,
+      salary: salary
     }, res => {
-      wx.navigateBack({ comeBack: true });
       console.log(res);
+
+      let data = res.data;
+      if(data.error_code != 500){
+        app.globalData.postHelp = true;
+        wx.showLoading({
+          title: '发布成功！',
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+          wx.navigateBack({ comeBack: true });
+        }, 1500);
+      }else{
+        wx.showLoading({
+          title: '发布失败！',
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500);
+      }
+
     });
 
   },
-  getName: function (event) {
-    let value = event.detail.value;
-    this.setData({
-      name: value
-    });
-
-  },
-
   /**
    * 选择图片并且上传到七牛
    */
@@ -204,19 +207,6 @@ Page({
   },
 
   /**
-   * 设置是否匿
-   */
-  setPrivate: function (event) {
-    console.log(event.detail.value);
-
-    this.setData({
-      private: event.detail.value
-    });
-
-    console.log(this.data.private);
-  },
-
-  /**
    * 获取输入内容
    */
   getTextContent: function (event) {
@@ -224,7 +214,25 @@ Page({
     this.setData({
       textContent: value
     });
-  }
+  },
+  /**
+ * 获取输入内容
+ */
+  getTitle: function (event) {
+    let value = event.detail.value;
+    this.setData({
+      title: value
+    });
+  },
+  /**
+  * 获取输入内容
+  */
+    getSalary: function (event) {
+      let value = event.detail.value;
+      this.setData({
+        salary: value
+      });
+    }
 
 
 })

@@ -181,6 +181,6 @@ button{
 .tips .warming{
   color: darkgray;
   width: 95%;
-  font-size: 35rpx;
+  font-size: 30rpx;
 }
 

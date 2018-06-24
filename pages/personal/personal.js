@@ -56,9 +56,11 @@ Page({
 
     app.http('get', `/new_messages`, {}, res => {
       console.log(res.data.data);
-      _this.setData({
-        newLetterNumber: res.data.data
-      })
+      if(res.data.data != null){
+        _this.setData({
+          newLetterNumber: res.data.data
+        })
+      }
     });
   },
   /**

@@ -7,6 +7,8 @@ Page({
   onLoad: function () {
 
   },
+  onShow:function(){
+  },
   /** 
  * 进入发表页面
  */
@@ -23,11 +25,11 @@ Page({
   selected(e) {
 
   },
-  detail: function () {
+  order: function () {
     console.log('Post');
 
     wx.navigateTo({
       url: '/pages/help_detail/help_detail'
     })
-  },
+  }
 });

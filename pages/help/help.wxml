@@ -52,7 +52,7 @@
         </view>
       </view>
       <view class='footer'>
-        <view class='order' bindtap='detail'>
+        <view class='order' bindtap='order'>
           <image src='/image/take-order.png'></image>
           <view>接单</view>
         </view>

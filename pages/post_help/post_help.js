@@ -13,17 +13,44 @@ Page({
     attachments: [],
     private: false,
     textContent: '',
-    name: ''
+    name: '',
+    profile:null
   },
   onLoad: function () {
-
-  },
+    
+  },  
   onShow: function () {
     //设置七牛上传token
     app.getUploadToken(token => {
       this.setData({
         uploadToken: token
       });
+    });
+    this.getProfile();
+  },
+  getProfile: function () {
+    let _this = this;
+
+    app.http('GET', '/profile', {}, res => {
+      wx.hideLoading();
+      console.log(res.data);
+      if (res.data.error_code != 500) {
+        let profile = res.data.data;
+
+        _this.setData({profile:profile})
+
+        if(profile == null){
+          wx.showLoading({
+            title: '请先完善资料！',
+          });
+          setTimeout(function () {
+            wx.hideLoading();
+            wx.navigateTo({
+              url: '/pages/set_profile/set_profile'
+            })
+          }, 2000);
+        }
+      }
     });
   },
 

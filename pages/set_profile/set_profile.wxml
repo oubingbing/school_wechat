@@ -7,49 +7,54 @@
       <view class='label'>昵称</view>
       <input type='text' 
                class='input' 
-               value='叶子'         
+               value='{{profile.name}}'         
                bindinput='getNickname'/>
     </view>
     <view class='username item'>
       <view class='label'>姓名</view>
       <input type='text' 
                class='input' 
-               value='叶子'         
+               value='{{userName}}'         
                bindinput='getName'/>
     </view>
     <view class='number item'>
       <view class='label'>学号</view>
       <input type='text' 
                class='input' 
-               value='2013254113'         
+               value='{{cardNo}}'         
                bindinput='getNumber'/>
     </view>
     <view class='grade item'>
       <view class='label'>年级</view>
-      <input type='text' 
-               class='input' 
-               value='大一'         
-               bindinput='getGrade'/>
+      <picker bindchange="bindPickerChange" 
+              class='input'
+              value="{{grade}}" 
+              range="{{array}}">
+        <input type='text' 
+                
+                value='{{grade}}'         
+                bindinput='getGrade'/>
+        </picker>
     </view>
         <view class='major item'>
       <view class='label'>专业</view>
       <input type='text' 
                class='input' 
-               value='计算机'         
+               value='{{major}}'         
                bindinput='getMajor'/>
     </view>
         <view class='college item'>
       <view class='label'>学院</view>
       <input type='text' 
                class='input' 
-               value='计算机学院'         
+               value='{{college}}'         
                bindinput='getCollege'/>
     </view>
     <view class='phone item'>
       <view class='phone-label'>手机</view>
       <input type='text' 
                class='phone-input' 
-               value='15768121060'         
+               value='{{phone}}'         
                bindinput='getPhone'/>
     </view>
     <view class='phone item'>

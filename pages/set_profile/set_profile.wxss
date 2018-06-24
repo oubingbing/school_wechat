@@ -153,3 +153,7 @@ button{
   width: 95%;
   font-size: 35rpx;
 }
+
+.picker{
+  width: 100%;
+}

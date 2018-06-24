@@ -1,4 +1,5 @@
 const app = getApp();
+let gradeArray = ['大一', '大二', '大三', '大四','其他'];
 
 Page({
   data: {
@@ -16,13 +17,53 @@ Page({
     college:'',
     phone:'',
     code:'',
+    array: gradeArray,
+    gradeValue:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    this.getProfile();
   
+  },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      grade: gradeArray[e.detail.value],
+      gradeValue: e.detail.value
+    })
+  },
+  getProfile:function(){
+    let _this = this;
+
+    app.http('GET', '/profile', {}, res => {
+      wx.hideLoading();
+      console.log(res.data);
+      if (res.data.error_code != 500) {
+        let profile = res.data.data;
+        _this.setData({
+          userName: profile.name,
+          cardNo: profile.student_number,
+          gradeValue: profile.grade,
+          grade: gradeArray[profile.grade],
+          major: profile.major,
+          college: profile.college,
+          phone: profile.phone
+        })
+      }else{
+        wx.showLoading({
+          title: '网络出错！',
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500);
+      }
+    });
+
+
   },
   /**
  * 获取验证码
@@ -90,6 +131,9 @@ Page({
     });
 
   },
+  /**
+   * 提交资料
+   */
   submit: function () {
     let code = this.data.code;
 
@@ -109,7 +153,7 @@ Page({
 
     app.http('POST', '/profile', {
       student_number: this.data.cardNo,
-      grade: this.data.grade,
+      grade: this.data.gradeValue,
       major: this.data.major,
       college: this.data.college,
       mobile: this.data.phone,
@@ -130,6 +174,7 @@ Page({
           title: '提交成功！',
         });
         setTimeout(function () {
+          wx.navigateBack({ comeBack: true });
           wx.hideLoading();
         }, 1500);
       }

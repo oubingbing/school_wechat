@@ -1,5 +1,7 @@
 
-const uploader = require("../../utils/util.js");
+const util = require("../../utils/util.js");
+const qiniuUploader = require("../../utils/qiniuUploader");
+const uploader = require("../../utils/uploadImage");
 
 const app = getApp()
 
@@ -40,12 +42,40 @@ Page({
     showNormal: app.globalData.showNormal,
     showAudit: app.globalData.showAudit,
     topic:'',
-    showTopic:false
+    showTopic:false,
+
+
+    showSelect: false,
+    showBegin: true,
+    showCancel: false,
+    showReport: false,
+    bindReport: false,
+    showSubmit: false,
+    tryAgant: false,
+    imageLeft: '',
+    imageRight: '',
+    postImageLeft: '',
+    PostImageRight: '',
+    rate: 0,
+    face: '',
+    conclusion: ''
   },
 
   onLoad: function (e) {
+
+    wx.hideTabBar();
+
     wx.showLoading({
       title: '加载中',
+    });
+
+    this.hiddenSelect();
+
+    //设置七牛上传token
+    app.getUploadToken(token => {
+      this.setData({
+        uploadToken: token
+      });
     });
 
     app.getConfig(config=>{
@@ -53,9 +83,11 @@ Page({
       if (config == 3) {
         app.globalData.showNormal = false;
         app.globalData.showAudit = true;
+        wx.hideTabBar();
       } else {
         app.globalData.showNormal = true;
         app.globalData.showAudit = false;
+        wx.showTabBar();
       }
 
       this.setData({
@@ -77,7 +109,7 @@ Page({
 
     //设置当前时间
     this.setData({
-      currentTime: uploader.formatTime(new Date())
+      currentTime: util.formatTime(new Date())
     });
 
     let _this = this;
@@ -91,6 +123,13 @@ Page({
   },
   
   onShow: function (option) {
+
+    if (app.globalData.showNormal){
+      wx.showTabBar();
+    }else{
+      wx.hideTabBar();
+    }
+
 
     console.log('学校是否变了:' + app.globalData.changeSchool);
 
@@ -106,7 +145,7 @@ Page({
       _this.getPost(this);
       //设置当前时间
       this.setData({
-        currentTime: uploader.formatTime(new Date())
+        currentTime: util.formatTime(new Date())
       });
     } else {
       _this.getMostNewPost();
@@ -169,7 +208,7 @@ Page({
     return {
       title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
-      imageUrl:'/image/share1.jpg',
+      imageUrl:'http://image.kucaroom.com/share1.jpg',
       success: function (res) {
         // 转发成功
       },
@@ -325,7 +364,7 @@ Page({
     }, res => {
 
       _this.setData({
-        currentTime: uploader.formatTime(new Date())
+        currentTime: util.formatTime(new Date())
       });
 
       wx.stopPullDownRefresh();
@@ -469,6 +508,30 @@ Page({
     wx.previewImage({
       current: '',
       urls: [url]
+    })
+  },
+
+  /**
+ * 预览图片
+ */
+  previewMoreImage: function (event) {
+
+    console.log(event.target.id);
+    console.log(event.currentTarget.dataset.obj);
+
+    let _this = this;
+
+    let images = event.currentTarget.dataset.obj.map(item=>{
+      return _this.data.baseImageUrl+item;
+    });
+
+    console.log(images);
+
+    let url = event.target.id;
+
+    wx.previewImage({
+      current: url,
+      urls: images
     })
   },
 
@@ -891,6 +954,196 @@ Page({
     wx.navigateTo({
       url: '/pages/topic_detail/topic_detail?id=' + id
     })
+  },
+
+  //情侣脸
+
+  showSelect: function () {
+    this.setData({
+      showSelect: true,
+      showBegin: false,
+      showCancel: true
+    });
+  },
+  hiddenSelect: function () {
+    this.setData({
+      showSelect: false,
+      showReport: false,
+      bindReport: false
+    });
+  },
+  cancelSelect: function () {
+    this.setData({
+      showSelect: false,
+      showBegin: true,
+      showCancel: false,
+      bindReport: false
+    });
+  },
+  selectLeft: function () {
+    let _this = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+
+        console.log('图片：' + res.tempFilePaths);
+
+        var tempFilePaths = res.tempFilePaths;
+
+        _this.setData({
+          imageLeft: tempFilePaths[0]
+        });
+
+        wx.showLoading({
+          title: '加载中',
+        });
+
+        uploader.upload(tempFilePaths[0], key => {
+
+          wx.hideLoading();
+
+          console.log(key);
+          _this.setData({
+            postImageLeft: app.globalData.imageUrl + key
+          });
+
+          if (_this.postImageLeft != '' && _this.PostImageRight != '') {
+            _this.setData({
+              showBegin: false,
+              showCancel: true,
+              showSubmit: true,
+              tryAgant: false
+            });
+          }
+
+        })
+
+      }
+    })
+  },
+  selectRight: function () {
+    let _this = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+
+        console.log('图片：' + res.tempFilePaths);
+
+        var tempFilePaths = res.tempFilePaths;
+
+        _this.setData({
+          imageRight: tempFilePaths[0]
+        });
+
+        wx.showLoading({
+          title: '加载中',
+        });
+
+        uploader.upload(tempFilePaths[0], key => {
+
+          wx.hideLoading();
+
+          console.log(key);
+          _this.setData({
+            PostImageRight: app.globalData.imageUrl + key
+          });
+
+
+          if (_this.postImageLeft != '' && _this.PostImageRight != '') {
+            _this.setData({
+              showBegin: false,
+              showCancel: true,
+              showSubmit: true,
+              tryAgant: false,
+            });
+          }
+        })
+
+      }
+    })
+  },
+  submit: function () {
+    console.log(this.data.PostImageRight);
+    console.log(this.data.postImageLeft);
+
+    if (this.data.postImageLeft == '') {
+      wx.showLoading({
+        title: '左图上传失败，请重试',
+      });
+      setTimeout(function () {
+        wx.hideLoading();
+      }, 1500);
+      return false;
+    }
+
+    if (this.data.PostImageRight == '') {
+      wx.showLoading({
+        title: '右图上传失败，请重试',
+      });
+      setTimeout(function () {
+        wx.hideLoading();
+      }, 1500);
+      return false;
+    }
+
+    wx.showLoading({
+      title: '检测中',
+    });
+
+    app.http('post', `/compare_face`, { your_face: this.data.postImageLeft, his_face: this.data.PostImageRight }, res => {
+
+      wx.hideLoading();
+
+      console.log('数据：' + JSON.stringify(res.data));
+
+      if (res.data.error_code) {
+        wx.showLoading({
+          title: res.data.error_message,
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 2000);
+
+        return false;
+      }
+
+
+      let response = res.data;
+
+      this.setData({
+        rate: response.data.confidence,
+        face: response.data.key_world,
+        conclusion: response.data.message,
+        showReport: true,
+        bindReport: true,
+        postImageLeft: '',
+        PostImageRight: '',
+        tryAgant: true
+      });
+
+    });
+
+  },
+  tryAgant: function () {
+    this.setData({
+      rate: 0,
+      face: '',
+      conclusion: '',
+      showReport: false,
+      bindReport: false,
+      showCancel: true,
+      tryAgant: false,
+      showBegin: false,
+      showSubmit: false,
+      postImageLeft: '',
+      PostImageRight: '',
+      imageLeft: '',
+      imageRight: '',
+    });
   }
 
 })

@@ -169,3 +169,18 @@ button{
   width: 95%;
 }
 
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.tips .warming{
+  color: darkgray;
+  width: 95%;
+  font-size: 35rpx;
+}
+

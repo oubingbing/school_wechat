@@ -1,0 +1,84 @@
+<view class="container">
+  <view class='content'>
+    <view class='avatar' wx:if="{{showAvatar}}">
+      <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
+    </view>
+    <view class='nickname item' wx:if="{{showNickname}}">
+      <view class='label'>昵称</view>
+      <input type='text' 
+               class='input' 
+               value='{{profile.name}}'         
+               bindinput='getNickname'/>
+    </view>
+    <view class='username item'>
+      <view class='label'>姓名</view>
+      <input type='text' 
+               class='input' 
+               value='{{userName}}'         
+               bindinput='getName'/>
+    </view>
+    <view class='number item'>
+      <view class='label'>学号</view>
+      <input type='text' 
+               class='input' 
+               value='{{cardNo}}'         
+               bindinput='getNumber'/>
+    </view>
+    <view class='grade item'>
+      <view class='label'>年级</view>
+      <picker bindchange="bindPickerChange" 
+              class='input'
+              value="{{grade}}" 
+              range="{{array}}">
+        <input type='text' 
+                
+                value='{{grade}}'         
+                bindinput='getGrade'/>
+        </picker>
+    </view>
+        <view class='major item'>
+      <view class='label'>专业</view>
+      <input type='text' 
+               class='input' 
+               value='{{major}}'         
+               bindinput='getMajor'/>
+    </view>
+        <view class='college item'>
+      <view class='label'>学院</view>
+      <input type='text' 
+               class='input' 
+               value='{{college}}'         
+               bindinput='getCollege'/>
+    </view>
+    <view class='phone item'>
+      <view class='phone-label'>手机</view>
+      <input type='text' 
+               class='phone-input' 
+               value='{{phone}}'         
+               bindinput='getPhone'/>
+    </view>
+    <view class='phone item'>
+      <view class='code-label'>验证码</view>
+      <input type='text' 
+               class='code-input'        
+               bindinput='getCode'/>
+      <view class='code' bindtap='sendMessage' wx:if="{{showGetCode}}">
+        <view class='code-button'>获取验证码</view>
+      </view>
+      <view class='code' wx:if="{{againt}}">
+        <view class='code-button againt-button' style='background: gray;'><view>重新发送</view><view wx:if="{{showTime}}">{{time}}</view></view>
+      </view>
+      <view class='code' bindtap='sendMessage' wx:if="{{sendAgaint}}">
+        <view class='code-button'>重新发送</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='button-container'>
+  <button bindtap='submit'> 提交 </button>
+</view>
+
+  <view class='tips'>
+    <view class='warming'>温馨提示：悬赏人和赏金猎人会根据您的信息决定是否跟您合作，为了保证悬赏人和悬赏猎人的相关权益，请您填写真实的个人信息，除头像和昵称外，您的个人信息只会显示给悬赏人或者赏金猎人，其他无关的人是看不到您的个人资料的。</view>
+  </view>

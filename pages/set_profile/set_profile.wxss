@@ -1,0 +1,159 @@
+page{
+  background: #F5F5F5;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: white;
+}
+
+.container .content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+}
+
+.content .avatar{
+  width: 100%;
+}
+
+.avatar image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #F5F5F5;
+}
+
+.againt-button{
+  display: flex;
+  flex-direction: row;
+  background: gray;
+}
+
+.input{
+  background: WhiteSmoke;
+  width: 87%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 10rpx;
+  font-size: 35rpx;
+  border-radius: 10rpx;
+  color: gray;
+}
+
+.label{
+  width: 13%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.phone-input{
+  background: WhiteSmoke;
+  width: 87%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 10rpx;
+  font-size: 35rpx;
+  border-radius: 10rpx;
+  color: gray;
+}
+
+.phone-label{
+  width: 13%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.code-input{
+  background: WhiteSmoke;
+  width: 52%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 10rpx;
+  font-size: 35rpx;
+  border-radius: 10rpx;
+  color: gray;
+}
+
+.code-label{
+  width: 18%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.code{
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 35rpx;
+  padding-left: 20rpx;
+}
+
+.code-button{
+  background: #66CDAA;
+  color: white;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+
+.button-container{
+  display: flex;
+  flex-direction: column;
+  bottom: 0rxp;
+}
+
+.button-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50rpx;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container .button{
+  background: white;
+  width: 95%;
+  padding: 10rpx 10rpx;
+}
+button{
+  background: #66CDAA;
+  color: white;
+  width: 95%;
+}
+
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.tips .warming{
+  color: darkgray;
+  width: 95%;
+  font-size: 30rpx;
+}
+
+.picker{
+  width: 100%;
+}

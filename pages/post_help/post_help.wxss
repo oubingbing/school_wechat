@@ -1,0 +1,186 @@
+page{
+  background-color: #F5F5F5;
+}
+
+.post-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.post-container .form{
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rpx;
+}
+
+.textarea-content{
+  padding: 15rpx;
+}
+
+.form .input{
+  width: 95%;
+  font-weight: 200;
+  font-size: 30rpx;
+}
+
+
+.image-form{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-form .select-image{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40rpx;
+  flex-wrap:wrap;
+}
+
+.select-image .upload-image{
+  width: 130rpx;
+  height: 130rpx;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+.select-image .image-item{
+  position: relative;
+}
+
+.remove-image{
+  width: 35rpx;
+  height: 35rpx;
+  position:absolute;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 10;
+  
+}
+
+.middle{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rpx;
+  background: white;
+}
+
+.middle .location{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+  font-weight: 200;
+  font-size: 35rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  align-items: center;
+}
+
+.like-word{
+  width: 13%;
+}
+
+.like-content{
+  width: 87%;
+  background: #E6E6E6;
+  height: 75rpx;
+  font-weight: 200;
+  font-size: 30rpx;
+  border-radius:15rpx;
+  padding-left: 15rpx;
+}
+
+.salary{
+  width: 13%;
+}
+
+.salary-content{
+  width: 77%;
+  background: #E6E6E6;
+  height: 75rpx;
+  font-weight: 200;
+  font-size: 30rpx;
+  border-radius:15rpx;
+  padding-left: 15rpx;
+}
+
+.salary-unit{
+  width: 10%;
+  padding-left: 10rpx;
+}
+
+
+.middle .private{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15rpx;
+  font-weight: 200;
+  font-size: 35rpx;
+  align-items: center;
+}
+
+.item{
+  margin-left: 15rpx;
+}
+
+
+.location-image image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 5rpx;
+}
+
+
+.button-container{
+  display: flex;
+  flex-direction: column;
+  bottom: 0rxp;
+}
+
+.button-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container .button{
+  background: white;
+  width: 95%;
+  padding: 10rpx 10rpx;
+}
+button{
+  background: #66CDAA;
+  color: white;
+  width: 95%;
+}
+
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.tips .warming{
+  color: darkgray;
+  width: 95%;
+  font-size: 30rpx;
+}
+

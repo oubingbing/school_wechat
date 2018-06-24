@@ -1,0 +1,114 @@
+<view class="container">
+
+  <view class='nav-bar-container'>
+    <view class='nav-bar'>
+      <view class='all {{select==0?"selected":""}}' 
+            bindtap="selected" 
+            data-type="0">全部</view>
+      <view class='follow {{select==1?"selected":""}}' 
+            bindtap="selected" 
+            data-type='1'>悬赏中</view>
+      <view class='new {{select==2?"selected":""}}' 
+            bindtap="selected" 
+            data-type='2'>任务中</view>
+      <view class='hot {{select==3?"selected":""}}' 
+            bindtap="selected" 
+            data-type='3'>已结束</view>
+      <view class='hot {{select==5?"selected":""}}' 
+            bindtap="selected" 
+            data-type='5'>已完成</view>
+      <view class='hot {{select==6?"selected":""}}' 
+            bindtap="selected" 
+            data-type='6'>我的</view>
+    </view>
+  </view>
+
+  <view class='content content-container'>
+
+    <view class='content-item' wx:for="{{jobs}}" wx:key="{{jobs}}">
+      <view class='header'>
+        <view class='header-content'>
+          <view class='avatar'>
+          <image src='{{item.user.avatar}}'></image>
+        </view>
+         <view class='nickname'>
+          <view class='name'>{{item.user.nickname}}</view>
+          <view class='time'>{{item.created_at}}</view>
+         </view>
+        </view>
+      </view>
+
+      <view class='content'>
+        <view class='title'>
+          <view class='label'>{{item.title}}</view>
+        </view>
+        <view class="mission">
+          <view class='description'>
+            {{item.content}}
+          </view>
+          <view class='image-container'>
+            <view class="single-image" 
+                wx:if='{{item.attachments.length==1}}'>
+            <image mode="widthFix" 
+                   class="image-item" 
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{item.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          </view>
+        </view>
+        <view class='salary'>
+          <view class='container'>
+            <view class='label'>酬劳：</view>
+            <view class='money'>{{item.salary}}元</view>
+          </view>
+        </view>
+      </view>
+      <view class='footer'>
+        <view class='order' bindtap='order' data-obj="{{item.id}}" wx:if="{{item.status == 1}}">
+          <image src='/image/take-order.png'></image>
+          <view>接单</view>
+        </view>
+        <view class='order' 
+              bindtap='detail' 
+              data-obj="{{item.id}}"
+              data-role='{{item.role}}' 
+              data-entry='{{item.can_entry}}' 
+              wx:if="{{item.status == 2}}">
+          <image src='/image/take-order.png'></image>
+          <view>任务中</view>
+        </view>
+        <view class='contact'>
+          <image src='/image/contact.png'></image>
+          <view>联系</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+<view class='post-container'>
+  <view class='post'>
+    <image src='/image/post.png' bindtap='post'></image>
+  </view>
+</view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>

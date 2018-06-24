@@ -110,5 +110,10 @@ Page({
     wx.navigateTo({
       url: '/pages/match_list/match_list'
     })
+  },
+  updateInfo:function(){
+    wx.navigateTo({
+      url: '/pages/set_profile/set_profile'
+    })
   }
 })

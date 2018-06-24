@@ -168,6 +168,42 @@
 					"name": "话题详情",
 					"pathName": "pages/topic_detail/topic_detail",
 					"query": "friend_id=4"
+				},
+				{
+					"id": -1,
+					"name": "悬赏令",
+					"pathName": "pages/help/help",
+					"query": "id=8"
+				},
+				{
+					"id": -1,
+					"name": "悬赏令",
+					"pathName": "pages/help/help",
+					"query": "id=8"
+				},
+				{
+					"id": -1,
+					"name": "悬赏令",
+					"pathName": "pages/help/help",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "悬赏详情",
+					"pathName": "pages/help_detail/help_detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "悬赏详情",
+					"pathName": "pages/help/help",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "修改个人资料",
+					"pathName": "pages/set_profile/set_profile",
+					"query": ""
 				}
 			]
 		}

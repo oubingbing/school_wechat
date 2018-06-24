@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/post/post",
@@ -22,50 +22,54 @@
     "pages/match_result/match_result",
     "pages/compare_face/face",
     "pages/topic_comment/topic_comment",
-    "pages/topic_detail/topic_detail"
+    "pages/topic_detail/topic_detail",
+    "pages/help/help",
+    "pages/post_help/post_help",
+    "pages/help_detail/help_detail",
+    "pages/set_profile/set_profile"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#66CDAA",
     "navigationBarTitleText": "小情书",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
-    "tabBar": {
-      "color": "#515151",
-      "selectedColor": "#66CDAA",
-      "borderStyle": "black",
-      "backgroundColor": "#ffffff",
-      "list": [
-        {
-          "pagePath": "pages/index/index",
-          "iconPath": "image/saylove.png",
-          "selectedIconPath": "image/select-saylove.png",
-          "text": "表白墙"
-        },
-        {
-          "pagePath": "pages/sale/sale",
-          "iconPath": "image/sale.png",
-          "selectedIconPath": "image/select-sale.png",
-          "text": "卖舍友"
-        },
-        {
-          "pagePath": "pages/compare_face/face",
-          "iconPath": "image/fall-in-love.png",
-          "selectedIconPath": "image/select-fall-in-love.png",
-          "text": "情侣脸"
-        },
-        {
-          "pagePath": "pages/match/match",
-          "iconPath": "image/pipei.png",
-          "selectedIconPath": "image/select-pipei.png",
-          "text": "暗恋匹配"
-        },
-        {
-          "pagePath": "pages/personal/personal",
-          "iconPath": "image/iam.png",
-          "selectedIconPath": "image/select-iam.png",
-          "text": "我的"
-        }
-      ]
-    }
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#66CDAA",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/saylove.png",
+        "selectedIconPath": "image/select-saylove.png",
+        "text": "表白墙"
+      },
+      {
+        "pagePath": "pages/sale/sale",
+        "iconPath": "image/sale.png",
+        "selectedIconPath": "image/select-sale.png",
+        "text": "卖舍友"
+      },
+      {
+        "pagePath": "pages/compare_face/face",
+        "iconPath": "image/fall-in-love.png",
+        "selectedIconPath": "image/select-fall-in-love.png",
+        "text": "情侣脸"
+      },
+      {
+        "pagePath": "pages/match/match",
+        "iconPath": "image/pipei.png",
+        "selectedIconPath": "image/select-pipei.png",
+        "text": "暗恋匹配"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "image/iam.png",
+        "selectedIconPath": "image/select-iam.png",
+        "text": "我的"
+      }
+    ]
+  }
 }

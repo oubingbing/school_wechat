@@ -1,0 +1,62 @@
+<view class='post-container container'>
+  <view class='form'>
+
+    <view class='input'>
+      <textarea 
+        maxlength="1024"
+        class='textarea-content'
+        placeholder="今天有急事，想找人帮忙代我上高数课..."    
+        bindinput="getTextContent"/>
+    </view>
+    <view class='image-form'>
+      <view class='select-image'>
+        <view class='image-item' 
+              wx:for="{{imageArray}}" 
+              wx:key='{{imageArray}}'>
+            <image class='upload-image' 
+            bindtap='previewImage' 
+            id='{{item}}' 
+            mode='aspectFill' 
+            src='{{item}}'></image>
+            <image src='/image/delete.png' 
+                   id='{{index}}' 
+                   wx:key='{{imageArray}}' 
+                   bindtap='removeImage' 
+                   class='remove-image'></image>
+        </view>
+        <view>
+          <image class='upload-image' 
+                 bindtap='selectImage' 
+                 src='/image/select-image.png'></image>
+        </view>
+      </view>
+    </view>  
+  </view>
+
+<view class='middle'>
+
+  <view class='location'>
+  <view class='like-word'>悬赏</view>
+    <input class='like-content' 
+           placeholder="代课" 
+           bindinput="getTitle"/>
+  </view>
+
+  <view class='location'>
+  <view class='salary'>赏金</view>
+    <input class='salary-content' 
+           placeholder="100" 
+           bindinput="getSalary"/>
+    <view class='salary-unit'>元</view>
+  </view>
+</view>
+
+<view class='button-container'>
+  <button bindtap='submit'> 发布 </button>
+</view>
+
+</view>
+
+<view class='tips'>
+  <view class='warming'>温馨提示：为了防止您的生活被打扰，请勿在悬赏内容中公布您的联系方式，赏金猎人接单后我们会将您的联系方式公布给对方，与之无关的人是看不到您的个人资料的！</view>
+</view>

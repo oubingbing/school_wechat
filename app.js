@@ -2,14 +2,16 @@
 App({
   onLaunch: function () {
 
-    this.globalData.appKey = '04rNbDIGuBoYcsQn';
+    wx.hideTabBar();
+
+    this.globalData.appKey = '';
 
     //设置基本接口全局变量
 
     this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
     //this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
   
-    //七牛图片外链域名
+    //七牛图片外链域名0
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
     this.globalData.bgIimage = this.globalData.imageUrl+'30269a739a66831daa31ec93d28318af.jpg';
 
@@ -132,15 +134,19 @@ App({
 
     this.http('GET', '/upload_token', {}, function (res) {
 
-      var token = res.data.data.uptoken;
+      console.log('150行：'+res.data);
 
-      if(call){
-        call(token);
+      if(res.data.data != null){
+        var token = res.data.data.uptoken;
+
+        if (call) {
+          call(token);
+        }
+
+        console.log('设置七牛upload token' + token);
+
+        wx.setStorageSync('uploadToken', token);
       }
-
-      console.log('设置七牛upload token' + token);
-
-      wx.setStorageSync('uploadToken', token);
 
     });
 
@@ -183,6 +189,10 @@ App({
 
         console.log(res.data);
         var config = res.data.data
+
+        if(config != 3){
+          wx.showTabBar();
+        }
 
         callback(config);
       },

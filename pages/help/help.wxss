@@ -293,3 +293,21 @@ page{
   text-align: center;
   color: darkgray;
 }
+
+.form-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-item .button{
+  background: none !important;
+  color: #66CDAA;
+  padding-left: 0rpx;
+  font-size: 35rpx;
+}
+.button::after{
+  border: none;
+}

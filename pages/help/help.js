@@ -200,7 +200,10 @@ Page({
   /**
    * 接单
    */
-  order: function (e) {
+  formSubmit: function (e) {
+
+    console.log(e);
+
     if(this.data.profile == null){
       if (profile == null) {
         wx.showLoading({
@@ -217,7 +220,10 @@ Page({
       return false;
     }
 
-    let id = e.currentTarget.dataset.obj
+    return false;
+
+    let id = e.currentTarget.dataset.obj;
+    let formId = e.detail.formId
 
     app.http('POST', '/receipt_order', {
       id: id

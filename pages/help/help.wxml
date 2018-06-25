@@ -77,10 +77,15 @@
         </view>
       </view>
       <view class='footer'>
-        <view class='order' bindtap='order' data-obj="{{item.id}}" wx:if="{{item.status == 1}}">
-          <image src='/image/take-order.png'></image>
-          <view>接单</view>
-        </view>
+        <form class='order form' bindsubmit='formSubmit' data-obj="{{item.id}}" wx:if="{{item.status == 1}}" report-submit="true">
+         
+            <view class='form-item'>
+              <image src='/image/take-order.png'></image>
+              <button class='button' formType="submit" style='border: none;'>接单</button>
+              <!--<view>接单</view>-->
+            </view>
+         
+        </form>
         <view class='order' 
               bindtap='detail' 
               data-obj="{{item.id}}"

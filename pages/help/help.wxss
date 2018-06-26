@@ -305,7 +305,10 @@ page{
 .form-item .button{
   background: none !important;
   color: #66CDAA;
-  padding-left: 0rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-size: 35rpx;
 }
 .button::after{

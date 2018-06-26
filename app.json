@@ -59,10 +59,10 @@
         "text": "情侣脸"
       },
       {
-        "pagePath": "pages/match/match",
-        "iconPath": "image/pipei.png",
-        "selectedIconPath": "image/select-pipei.png",
-        "text": "暗恋匹配"
+        "pagePath": "pages/help/help",
+        "iconPath": "image/help.png",
+        "selectedIconPath": "image/select-help.png",
+        "text": "悬赏令"
       },
       {
         "pagePath": "pages/personal/personal",

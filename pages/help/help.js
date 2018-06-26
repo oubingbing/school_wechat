@@ -200,7 +200,7 @@ Page({
   /**
    * 接单
    */
-  formSubmit: function (e) {
+  order: function (e) {
 
     console.log(e);
 
@@ -220,13 +220,12 @@ Page({
       return false;
     }
 
-    return false;
-
     let id = e.currentTarget.dataset.obj;
     let formId = e.detail.formId
 
     app.http('POST', '/receipt_order', {
-      id: id
+      id: id,
+      form_id: formId
     }, res => {
       console.log(res);
       if(res.data.error_code != 500){

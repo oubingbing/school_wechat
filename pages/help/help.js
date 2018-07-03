@@ -40,6 +40,9 @@ Page({
     }
     this.getProfile();
   },
+  /**
+   * 详情
+   */
   detail:function(e){
     let id = e.currentTarget.dataset.obj;
     let entry = e.currentTarget.dataset.entry;

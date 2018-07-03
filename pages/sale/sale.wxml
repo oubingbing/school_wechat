@@ -1,4 +1,4 @@
-<view class="sale-container" wx:if="{{showNormal}}">
+<view class="sale-container">
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
@@ -125,32 +125,8 @@
 
 </view>
 
-<view class='post-container' wx:if="{{showNormal}}">
+<view class='post-container'>
   <view class='post'>
     <image src='/image/post.png' bindtap='post'></image>
-  </view>
-</view>
-
-<view class='audit-container' wx:if="{{showAudit}}">
-
-  <view class='search-container'>
-      <view class='search' bindtap='searchAudit'>
-        <input type='text' 
-               class='search-input' 
-               placeholder="搜索名字"         
-               bindinput='getCollegeName'/>
-        <view class='search-image' bindtap='searchCollege'>
-            <image mode="" src='/image/search.png'></image>
-        </view>
-      </view>
-  </view>
-
-  <view class='audit-item' wx:for="{{sales}}" wx:key="{{sales}}">
-    <view class='say-name'><view class='love-object'>舍友# {{item.name}} #</view></view>
-    <view class='post-user'>编号：{{item.id}}</view>
-    <view class='post-user'>投稿人 {{item.poster.nickname}}</view>
-    <view class='post-user'>性别 {{item.gender}}</view>
-    <view class='post-user'>专业 {{item.major}}</view>
-    <view class='content' style='float:left'>自我介绍 {{item.introduce}}</view>
   </view>
 </view>

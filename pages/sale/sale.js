@@ -14,19 +14,12 @@ Page({
     notDataTips: false,
     newMessage: false,
     newMessageNumber: 0,
-    select: 1,
-    showNormal: app.globalData.showNormal,
-    showAudit: app.globalData.showAudit
+    select: 1
   },
   onLoad: function () {
 
     wx.showLoading({
       title: '加载中',
-    });
-
-    this.setData({
-      showNormal: app.globalData.showNormal,
-      showAudit: app.globalData.showAudit
     });
 
     this.getList();

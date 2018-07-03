@@ -30,11 +30,23 @@
         </view>
       </view>
       <view class='footer'>
-        <view class='order'>
+        <view class='order' wx:if="{{job.can_restart}}">
           <image src='/image/take-order.png'></image>
-          <view>接单</view>
+          <view>重新发布</view>
         </view>
-        <view class='contact'>
+        <view class='order' wx:if="{{job.can_comfirm}}" bindtap='confirmOrder'>
+          <image src='/image/take-order.png'></image>
+          <view>确认完成</view>
+        </view>
+        <view class='order' wx:if="{{job.can_show_tip}}">
+          <image src='/image/take-order.png'></image>
+          <view>{{job.show_employee_tip}}</view>
+        </view>
+        <view class='order' wx:if="{{job.give_up}}">
+          <image src='/image/take-order.png'></image>
+          <view>放弃任务</view>
+        </view>
+        <view class='contact' wx:if="{{job.show_contact}}">
           <image src='/image/contact.png'></image>
           <view>联系</view>
         </view>

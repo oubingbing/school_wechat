@@ -1,4 +1,4 @@
-<view class="match-container" wx:if="{{showNormal}}">
+<view class="match-container">
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
@@ -118,17 +118,6 @@
 
   <view class='no-more-data' wx-if="{{notDataTips && matchs.length != 0}}">
     <view>我是一只有底线的神~_~</view>
-  </view>
-
-</view>
-
-<view class='audit-container' wx:if="{{showAudit}}">
-
-  <view class='audit-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
-    <view class='post-user'>投稿 {{item.user.nickname}}</view>
-    <view class='post-user'>编号：{{item.id}}</view>
-    <view class='post-user'>匹配人# {{item.user_name}} #</view>
-    <view class='post-user'>被匹配人# {{item.match_name}} #</view>
   </view>
 
 </view>

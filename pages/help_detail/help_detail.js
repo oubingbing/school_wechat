@@ -37,10 +37,41 @@ Page({
   onShow:function(){
     this.getProfile();
   },
-  partTimeJob:function(){
+  /**
+   * 确认完成任务
+   */
+  confirmOrder:function(){
 
+    let job = this.data.job;
     let _this = this;
 
+    app.http('post', `/finish/${job.id}/job`, {}, res => {
+      wx.hideLoading();
+      console.log(res.data);
+      if (res.data.error_code != 500) {
+        let job = res.data.data;
+        let role = _this.data.role;
+
+        let roleProfile = '';
+        if (role == 'boss') {
+          roleProfile = job.employee_profile;
+        } else {
+          roleProfile = job.boss_profile;
+        }
+
+        _this.setData({
+          job: job,
+          roleProfile: roleProfile
+        })
+
+      }
+    });
+  },
+  /**
+   * 获取兼职详情
+   */
+  partTimeJob:function(){
+    let _this = this;
     app.http('GET', '/job_detail/'+this.data.id, {}, res => {
       wx.hideLoading();
       console.log(res.data);
@@ -50,9 +81,9 @@ Page({
     
         let roleProfile = '';
         if (role == 'boss') {
-          roleProfile = job.boss_profile;
-        } else {
           roleProfile = job.employee_profile;
+        } else {
+          roleProfile = job.boss_profile;
         }
 
         _this.setData({

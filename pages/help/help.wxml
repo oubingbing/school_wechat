@@ -96,6 +96,24 @@
           <image src='/image/take-order.png'></image>
           <view>任务中</view>
         </view>
+        <view class='order' 
+              bindtap='detail' 
+              data-obj="{{item.id}}"
+              data-role='{{item.role}}' 
+              data-entry='{{item.can_entry}}' 
+              wx:if="{{item.status == 3}}">
+          <image src='/image/take-order.png'></image>
+          <view>任务终止</view>
+        </view>
+        <view class='order' 
+              bindtap='detail' 
+              data-obj="{{item.id}}"
+              data-role='{{item.role}}' 
+              data-entry='{{item.can_entry}}' 
+              wx:if="{{item.status == 4}}">
+          <image src='/image/take-order.png'></image>
+          <view>任务完成</view>
+        </view>
         <view class='contact'>
           <image src='/image/contact.png'></image>
           <view>联系</view>

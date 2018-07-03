@@ -5,17 +5,15 @@ Page({
   data: {
     user: '',
     newLetterNumber: 0,
-    showNormal: app.globalData.showNormal,
-    showAudit: app.globalData.showAudit,
     serviceId: ''
   },
   onLoad: function () {
-
-    this.setData({
-      showNormal: app.globalData.showNormal,
-      showAudit: app.globalData.showAudit
-    });
-
+    let userStorage = wx.getStorageSync('user');
+    if (userStorage){
+      this.setData({
+        user: userStorage
+      })
+    }
     this.getPersonalInfo();
     this.newLetterCount();
     this.getService();
@@ -46,6 +44,7 @@ Page({
       _this.setData({
         user: res.data.data
       })
+      wx.setStorageSync('user', res.data.data);
     });
   },
   /**

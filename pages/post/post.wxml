@@ -43,7 +43,7 @@
   <view class='location'>
     <view class='like-word'>手机</view>
     <input class='like-content' 
-           placeholder="Ta的手机号码" 
+           placeholder="Ta的手机号码（选填）" 
            bindinput="getPhone"/>
   </view>
 
@@ -51,12 +51,14 @@
     <view class='item'>匿名</view>
     <switch bindchange="setPrivate" color='#0aecc3'/>
   </view>
-  
 </view>
-
 
   <view class='button-container'>
     <button bindtap='post'> 发表 </button>
   </view>
 
+</view>
+
+<view class='tips'>
+    <view class='warming'>短信表白墙：你可以填上自己暗恋对象的手机号码，在你提交信息后系统会往该手机发送一条短信，通知Ta登录小程序查看你对Ta的表白，Ta只需要在表白墙搜索自己的手机号码即可查看表白信息。每天只能发送三条短信表白墙。</view>
 </view>

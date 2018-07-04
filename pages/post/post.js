@@ -10,7 +10,8 @@ Page({
     attachments: [],
     private: false,
     textContent: '',
-    name: ''
+    name: '',
+    phone:''
   },
   onLoad: function () {
 
@@ -34,8 +35,7 @@ Page({
     let attachments = this.data.attachments;
     let privateValue = this.data.private;
     let username = this.data.name;
-
-    console.log('发送的图片是什么：'+attachments);
+    let mobile = this.data.phone;
 
     if(content == '' && attachments == ''){
       wx.showLoading({
@@ -46,15 +46,29 @@ Page({
       },1500)
       return false;
     }
+    wx.showLoading({
+      title: '发送中..'
+    });
 
     app.http('post', '/post', {
       content: content,
       attachments: attachments,
       private: privateValue,
-      username: username
+      username: username,
+      mobile:mobile
     }, res => {
-      wx.navigateBack({ comeBack: true });
+      wx.hideLoading();
       console.log(res);
+      if(res.data.error_code == 0){
+        wx.navigateBack({ comeBack: true });
+      }else{
+        wx.showLoading({
+          title: res.data.error_message,
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500)
+      }
     });
 
   },
@@ -63,9 +77,13 @@ Page({
     this.setData({
       name: value
     });
-
   },
-
+  getPhone: function (event){
+    let value = event.detail.value;
+    this.setData({
+      phone: value
+    });
+  },
   /**
    * 选择图片并且上传到七牛
    */

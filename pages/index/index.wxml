@@ -10,12 +10,12 @@
       <view class='follow {{select==2?"selected":""}}' 
             bindtap="selected" 
             data-type='2'>关注</view>
-      <view class='new {{select==3?"selected":""}}' 
-            bindtap="selected" 
-            data-type='3'>最新</view>
       <view class='hot {{select==4?"selected":""}}' 
             bindtap="selected" 
             data-type='4'>最热</view>
+      <view class='new {{select==5?"selected":""}}' 
+            bindtap="selected" 
+            data-type='5'>搜索</view>
     </view>
   </view>
 
@@ -29,6 +29,19 @@
   </view>
 
   <view class="container-wall">
+
+    <view class='search-container' wx:if="{{showSearch}}">
+        <view class='search'>
+          <input type='text' 
+                class='search-input' 
+                placeholder="手机 | 名字 | 昵称 | 内容"         
+                bindinput='getFilter'
+                auto-focus/>
+          <view class='search-image' bindtap='search'>
+              <image mode="" src='/image/search.png'></image>
+          </view>
+        </view>
+    </view>
 
     <view class='topic-container' wx:if="{{showTopic}}">
       <view class='topic'>
@@ -59,7 +72,6 @@
                    id="{{baseImageUrl+item}}"></image>
           </view>
       </view>
-
       <view class='footer'>
         <view class='footer-praise' data-id="{{topic.id}}" bindtap='praiseTopic'>
           <image src='/image/topic_praise.png'></image>
@@ -74,7 +86,6 @@
           <view> {{topic.comment_number}}</view>
         </view>
       </view>
-      
       </view>
     </view>
 

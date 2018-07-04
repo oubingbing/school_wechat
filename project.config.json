@@ -204,6 +204,24 @@
 					"name": "修改个人资料",
 					"pathName": "pages/set_profile/set_profile",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/comment_mission/comment_mission",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/help/help",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/comment_mission/comment_mission",
+					"query": ""
 				}
 			]
 		}

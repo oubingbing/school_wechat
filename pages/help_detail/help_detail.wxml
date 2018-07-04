@@ -46,7 +46,11 @@
           <image src='/image/take-order.png'></image>
           <view>放弃任务</view>
         </view>
-        <view class='contact' wx:if="{{job.show_contact}}">
+        <view class='order' wx:if="{{job.can_comment}}" bindtap='comment'>
+          <image src='/image/take-order.png'></image>
+          <view>评论</view>
+        </view>
+        <view class='contact'>
           <image src='/image/contact.png'></image>
           <view>联系</view>
         </view>

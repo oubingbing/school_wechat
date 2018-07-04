@@ -26,7 +26,8 @@
     "pages/help/help",
     "pages/post_help/post_help",
     "pages/help_detail/help_detail",
-    "pages/set_profile/set_profile"
+    "pages/set_profile/set_profile",
+    "pages/comment_mission/comment_mission"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -59,7 +60,7 @@
         "text": "情侣脸"
       },
       {
-        "pagePath": "pages/match/match",
+        "pagePath": "pages/help/help",
         "iconPath": "image/pipei.png",
         "selectedIconPath": "image/select-pipei.png",
         "text": "暗恋匹配"

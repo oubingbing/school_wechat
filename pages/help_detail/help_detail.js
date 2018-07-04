@@ -31,11 +31,11 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-
     this.partTimeJob();
   },
   onShow:function(){
     this.getProfile();
+    this.partTimeJob();
   },
   /**
    * 确认完成任务
@@ -64,8 +64,23 @@ Page({
           roleProfile: roleProfile
         })
 
+        wx.showLoading({
+          title: '确认成功！',
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+          wx.navigateTo({
+            url: '/pages/comment_mission/comment_mission?id=' + _this.data.id
+          })
+        }, 1000);
+
       }
     });
+  },
+  comment:function(){
+    wx.navigateTo({
+      url: '/pages/comment_mission/comment_mission?id=' + this.data.id
+    })
   },
   /**
    * 获取兼职详情

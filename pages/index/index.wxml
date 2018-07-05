@@ -120,7 +120,7 @@
         </view>
         <view class='for-user' 
               wx:if="{{item.topic != '无'}}">
-                @#{{item.topic}}#
+                表白@{{item.topic}}
           </view>
           <view class="content" wx:if="{{item.content}}">{{item.content}}</view>
           <view class="single-image" 

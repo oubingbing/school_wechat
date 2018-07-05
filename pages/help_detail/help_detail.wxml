@@ -98,47 +98,90 @@
         <view class='count-history'>
           <view class='count-item'>
             <view>好评</view>
-            <view>10</view>
+            <view>{{job.job_status.score.good}}</view>
           </view>
           <view class='count-item'>
-            <view>好评</view>
-            <view>10</view>
+            <view>中评</view>
+            <view>{{job.job_status.score.middle}}</view>
           </view>
           <view class='count-item'>
-            <view>好评</view>
-            <view>10</view>
+            <view>差评</view>
+            <view>{{job.job_status.score.bad}}</view>
           </view>
         </view>
       </view>
     </view>
 
-    <view class='content-item history-content'>
+    <view class='content-item history-content' wx:for="{{employeeJobs}}" wx:key="{{employeeJobs}}">
       <view class='header'>
         <view class='header-content'>
           <view class='avatar'>
-          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
+          <image src='{{item.job.user.avatar}}'></image>
         </view>
          <view class='nickname'>
-          <view class='name'>叶子</view>
-          <view class='time'>2018-6-18 23:10:12</view>
+          <view class='name'>{{item.job.user.nickanme}}</view>
+          <view class='time'>{{item.job.created_at}}</view>
          </view>
         </view>
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>代课</view>
+          <view class='label'>{{item.job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>
-            后天我有事，但是又请不到假，所以想找个同学帮忙去代课，很简单的，只要老师点名的时候喊个到就行了，哈哈。
+            {{item.job.content}}
+          </view>
+          <view class='image-container'>
+            <view class="single-image" 
+                wx:if='{{item.job.attachments.length==1}}'>
+            <image mode="widthFix" 
+                   class="image-item" 
+                   wx:for="{{item.job.attachments}}" 
+                   wx:key="{{item.job.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{item.job.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.job.attachments}}" 
+                   wx:key="{{item.job.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
           </view>
         </view>
       </view>
       <view class='comment-footer'>
         <view class='comment-container'>
           <view class='comment-title'>评价:</view>
-          <view class='content'>任务完成的挺好的，希望下次再合作，哈哈</view>
-          <view class='attachments'></view>
+          <view class='content'>{{item.job.comment.content}}</view>
+          <view class='image-container'>
+            <view class="single-job-image" 
+                wx:if='{{item.job.comment.attachments.length==1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.job.comment.attachments}}" 
+                   wx:key="{{item.job.comment.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{item.job.comment.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.job.comment.attachments}}" 
+                   wx:key="{{item.job.comment.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          </view>
         </view>  
       
       </view>
@@ -146,3 +189,10 @@
 
   </view>
 </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>

@@ -14,6 +14,7 @@ Page({
     currentTime: '',
     profile:null
   },
+  
   onLoad: function () {
     wx.showLoading({
       title: '加载中...',
@@ -26,6 +27,7 @@ Page({
       currentTime: util.formatTime(new Date())
     });
   },
+
   onShow:function(){
     if (app.globalData.postHelp){
       this.setData({
@@ -40,6 +42,7 @@ Page({
     }
     this.getProfile();
   },
+
   /**
    * 详情
    */
@@ -53,6 +56,7 @@ Page({
       })
     }
   },
+
   /**
    * 获取个人资料
    */
@@ -69,6 +73,7 @@ Page({
       }
     });
   },
+
   /**
    * 获取帖子
    */
@@ -98,6 +103,10 @@ Page({
       })
     });
   },
+
+  /**
+   * 最新帖子
+   */
   newHelps:function(){
 
     let objType = this.data.select;
@@ -136,9 +145,10 @@ Page({
 
       });
   },
+
   /**
- * 上拉加载更多
- */
+  * 上拉加载更多
+  */
   onReachBottom: function () {
 
     console.log('到底了');
@@ -152,9 +162,10 @@ Page({
     this.helps();
 
   },
+
   /** 
- * 进入发表页面
- */
+  * 进入发表页面
+  */
   post: function () {
     console.log('Post');
 
@@ -178,9 +189,10 @@ Page({
       url: '/pages/post_help/post_help'
     })
   },
+
   /**
- * 获取具体类型的贴子
- */
+  * 获取具体类型的贴子
+  */
   selected(e) {
     let objType = e.target.dataset.type;
 
@@ -200,6 +212,7 @@ Page({
     _this.helps();
 
   },
+
   /**
    * 接单
    */
@@ -252,9 +265,10 @@ Page({
     });
 
   },
+
   /**
- * 预览图片
- */
+  * 预览图片
+  */
   previewImage: function (event) {
 
     console.log(event.target.id);
@@ -268,8 +282,8 @@ Page({
   },
 
   /**
- * 预览图片
- */
+  * 预览图片
+  */
   previewMoreImage: function (event) {
 
     console.log(event.target.id);

@@ -9,8 +9,15 @@ Page({
     id:'',
     roleProfile:null,
     profileTitle:'',
-    grade: gradeArray
+    grade: gradeArray,
+    pageSize: 10,
+    pageNumber: 1,
+    initPageNumber: 1,
+    employeeJobs:[],
+    baseImageUrl: app.globalData.imageUrl,
+    showGeMoreLoadin:false
   },
+
   onLoad: function (option) {
     this.setData({
       role: option.role,
@@ -33,10 +40,13 @@ Page({
     });
     this.partTimeJob();
   },
+
   onShow:function(){
     this.getProfile();
     this.partTimeJob();
+    this.employeeMissionRecord();
   },
+
   /**
    * 确认完成任务
    */
@@ -82,6 +92,7 @@ Page({
       url: '/pages/comment_mission/comment_mission?id=' + this.data.id
     })
   },
+
   /**
    * 获取兼职详情
    */
@@ -109,6 +120,7 @@ Page({
       }
     });
   },
+
   /**
    * 获取个人资料
    */
@@ -138,9 +150,55 @@ Page({
       }
     });
   },
+
+  /**
+   * 获取猎人悬赏记录
+   */
+  employeeMissionRecord:function(){
+    let _this = this;
+
+    app.http('GET', `/job/${_this.data.id}/mission_record?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber }`, {}, res => {
+      console.log(res.data);
+      let data = res.data;
+      if(data.error_code == 0){
+        let pageData = data.data.page_data;
+        let jobs = _this.data.employeeJobs;
+        pageData.map(item=>{
+          jobs.push(item)
+        });
+        _this.setData({
+           employeeJobs:jobs,
+           pageNumber: _this.data.pageNumber + 1,
+        })
+      }
+
+      _this.setData({
+        showGeMoreLoadin: false
+      })
+      
+    });
+  },
+
+  /**
+  * 上拉加载更多
+  */
+  onReachBottom: function () {
+
+    console.log('到底了');
+
+    let _this = this;
+
+    this.setData({
+      showGeMoreLoadin: true
+    });
+
+    this.employeeMissionRecord();
+
+  },
+
   /** 
- * 进入发表页面
- */
+  * 进入发表页面
+  */
   post: function () {
     console.log('Post');
 
@@ -148,12 +206,14 @@ Page({
       url: '/pages/post_help/post_help'
     })
   },
+
   /**
- * 获取具体类型的贴子
- */
+  * 获取具体类型的贴子
+  */
   selected(e) {
 
   },
+  
   callPhone:function(e){
 
     let phone = e.currentTarget.dataset.phone;
@@ -161,5 +221,44 @@ Page({
     wx.makePhoneCall({
       phoneNumber: phone 
     })
-  }
+  },
+
+  /**
+  * 预览图片
+  */
+  previewImage: function (event) {
+
+    console.log(event.target.id);
+
+    let url = event.target.id;
+
+    wx.previewImage({
+      current: '',
+      urls: [url]
+    })
+  },
+
+  /**
+  * 预览图片
+  */
+  previewMoreImage: function (event) {
+
+    console.log(event.target.id);
+    console.log(event.currentTarget.dataset.obj);
+
+    let _this = this;
+
+    let images = event.currentTarget.dataset.obj.map(item => {
+      return _this.data.baseImageUrl + item;
+    });
+
+    console.log(images);
+
+    let url = event.target.id;
+
+    wx.previewImage({
+      current: url,
+      urls: images
+    })
+  },
 });

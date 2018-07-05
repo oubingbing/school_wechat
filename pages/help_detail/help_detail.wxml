@@ -85,7 +85,7 @@
         <view class='phone user-item'>
           <view>联系电话：</view>
           <view class='item-content'>{{roleProfile.phone}}</view>
-          <view class='call-phone' bindtap='callPhone' data-phone='13425144866'>拨号</view>
+          <view class='call-phone' bindtap='callPhone' data-phone='{{roleProfile.phone}}'>拨号</view>
         </view>
       </view>
     </view>

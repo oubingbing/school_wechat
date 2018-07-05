@@ -60,7 +60,7 @@
         "text": "情侣脸"
       },
       {
-        "pagePath": "pages/help/help",
+        "pagePath": "pages/match/match",
         "iconPath": "image/pipei.png",
         "selectedIconPath": "image/select-pipei.png",
         "text": "暗恋匹配"

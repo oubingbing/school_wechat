@@ -99,10 +99,6 @@
             </view>
         </form>
         <view class='order' 
-              bindtap='detail' 
-              data-obj="{{item.id}}"
-              data-role='{{item.role}}' 
-              data-entry='{{item.can_entry}}' 
               wx:if="{{item.status == 1 && item.role == 'boss'}}">
           <image src='/image/take-order.png'></image>
           <view>悬赏中</view>

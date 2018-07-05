@@ -389,3 +389,25 @@ page{
   text-align: center;
   color: darkgray;
 }
+
+/** 模板消息样式 **/
+.form-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-item .button{
+  background: none !important;
+  color: #66CDAA;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 35rpx;
+}
+.button::after{
+  border: none;
+}

@@ -30,27 +30,41 @@
         </view>
       </view>
       <view class='footer'>
-        <view class='order' wx:if="{{job.can_restart}}">
-          <image src='/image/take-order.png'></image>
-          <view>重新发布</view>
-        </view>
-        <view class='order' wx:if="{{job.can_comfirm}}" bindtap='confirmOrder'>
-          <image src='/image/take-order.png'></image>
-          <view>确认完成</view>
-        </view>
+        <form class='order form'  data-obj="{{item.id}}" 
+              wx:if="{{job.can_restart}}" 
+              bindtap='restart'
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/take-order.png'></image>
+                <view >重新发布</view>
+              </button>
+            </view>
+        </form>
+        <form class='order form'  data-obj="{{item.id}}" 
+              wx:if="{{job.can_comfirm}}" 
+              bindtap='confirmOrder'
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/take-order.png'></image>
+                <view >确认完成</view>
+              </button>
+            </view>
+        </form>
         <view class='order' wx:if="{{job.can_show_tip}}">
           <image src='/image/take-order.png'></image>
           <view>{{job.show_employee_tip}}</view>
-        </view>
-        <view class='order' wx:if="{{job.give_up}}">
-          <image src='/image/take-order.png'></image>
-          <view>放弃任务</view>
         </view>
         <view class='order' wx:if="{{job.can_comment}}" bindtap='comment'>
           <image src='/image/take-order.png'></image>
           <view>评论</view>
         </view>
-        <view class='contact'>
+        <view class='order' wx:if="{{!job.can_comment && job.status == 4}}">
+          <image src='/image/take-order.png'></image>
+          <view>已评论</view>
+        </view>
+        <view class='contact' wx:if="{{job.can_contact}}">
           <image src='/image/contact.png'></image>
           <view>联系</view>
         </view>
@@ -119,7 +133,7 @@
           <image src='{{item.job.user.avatar}}'></image>
         </view>
          <view class='nickname'>
-          <view class='name'>{{item.job.user.nickanme}}</view>
+          <view class='name'>{{item.job.user.nickname}}</view>
           <view class='time'>{{item.job.created_at}}</view>
          </view>
         </view>

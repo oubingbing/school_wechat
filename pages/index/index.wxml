@@ -105,10 +105,10 @@
       </view>
       <view class="item-content">
         <view class="user-name">
-          <view wx:if="{{item.private == 0}}">
+          <view wx:if="{{item.private == 0}}" style='color: #1874CD'>
             {{item.poster.nickname}}
           </view>
-          <view wx:if="{{item.private == 1}}">匿名の同学</view>
+          <view wx:if="{{item.private == 1}}" style='color: #1874CD'>匿名の同学</view>
           <view class='follow-icon' 
                 wx:if="{{!item.follow}}">
                  <view class='follow-world' data-obj="{{item.id}}" bindtap="follow">关注</view>

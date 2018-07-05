@@ -89,7 +89,7 @@ Page({
         }, 1500);
       }else{
         wx.showLoading({
-          title: '发布失败！',
+          title: data.error_message,
         });
         setTimeout(function () {
           wx.hideLoading();

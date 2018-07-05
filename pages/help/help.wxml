@@ -4,7 +4,7 @@
     <view class='nav-bar'>
       <view class='all {{select==0?"selected":""}}' 
             bindtap="selected" 
-            data-type="0">全部</view>
+            data-type="0">搜索</view>
       <view class='follow {{select==1?"selected":""}}' 
             bindtap="selected" 
             data-type='1'>悬赏中</view>
@@ -13,10 +13,10 @@
             data-type='2'>任务中</view>
       <view class='hot {{select==3?"selected":""}}' 
             bindtap="selected" 
-            data-type='3'>已结束</view>
-      <view class='hot {{select==5?"selected":""}}' 
+            data-type='3'>已终止</view>
+      <view class='hot {{select==4?"selected":""}}' 
             bindtap="selected" 
-            data-type='5'>已完成</view>
+            data-type='4'>已完成</view>
       <view class='hot {{select==6?"selected":""}}' 
             bindtap="selected" 
             data-type='6'>我的</view>
@@ -24,6 +24,18 @@
   </view>
 
   <view class='content content-container'>
+
+    <view class='search-container' wx:if="{{showSearch}}">
+        <view class='search'>
+          <input type='text' 
+                class='search-input' 
+                placeholder="标题 | 内容 | 酬劳"         
+                bindinput='getFilter'/>
+          <view class='search-image' bindtap='search'>
+              <image mode="" src='/image/search.png'></image>
+          </view>
+        </view>
+    </view>
 
     <view class='content-item' wx:for="{{jobs}}" wx:key="{{jobs}}">
       <view class='header'>
@@ -77,15 +89,31 @@
         </view>
       </view>
       <view class='footer'>
-        <form class='order form' bindsubmit='order' data-obj="{{item.id}}" wx:if="{{item.status == 1}}" report-submit="true">
-         
+        <form class='order form' bindsubmit='order' data-obj="{{item.id}}" 
+              wx:if="{{item.status == 1 && item.role != 'boss'}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
                 <image src='/image/take-order.png'></image>
-                <view>接单</view>
+                <view >接令</view>
               </button>
             </view>
-         
+        </form>
+        <view class='order' 
+              bindtap='detail' 
+              data-obj="{{item.id}}"
+              data-role='{{item.role}}' 
+              data-entry='{{item.can_entry}}' 
+              wx:if="{{item.status == 1 && item.role == 'boss'}}">
+          <image src='/image/take-order.png'></image>
+          <view>悬赏中</view>
+        </view>
+        <form class='order form' bindsubmit='stop' data-obj="{{item.id}}" wx:if="{{item.can_stop}}" report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/take-order.png'></image>
+                <view>终止</view>
+              </button>
+            </view>
         </form>
         <view class='order' 
               bindtap='detail' 
@@ -97,13 +125,9 @@
           <view>任务中</view>
         </view>
         <view class='order' 
-              bindtap='detail' 
-              data-obj="{{item.id}}"
-              data-role='{{item.role}}' 
-              data-entry='{{item.can_entry}}' 
               wx:if="{{item.status == 3}}">
           <image src='/image/take-order.png'></image>
-          <view>任务终止</view>
+          <view>已终止</view>
         </view>
         <view class='order' 
               bindtap='detail' 
@@ -112,7 +136,7 @@
               data-entry='{{item.can_entry}}' 
               wx:if="{{item.status == 4}}">
           <image src='/image/take-order.png'></image>
-          <view>任务完成</view>
+          <view>已完成</view>
         </view>
         <view class='contact'>
           <image src='/image/contact.png'></image>

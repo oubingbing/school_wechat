@@ -57,7 +57,6 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-weight: 300;
   font-size: 35rpx;
   margin-bottom: 8rpx;
   margin-top: -5rpx;
@@ -96,12 +95,11 @@ page{
 }
 
 .for-user{
+  color: #1874CD;
   font-size: 35rpx;
-  color: #5CACEE;
 }
 
 .item-content .content{
-  font-weight: 200;
   font-size: 35rpx;
   margin-bottom: 10rpx;
   margin-top: 1rpx;

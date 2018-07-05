@@ -50,12 +50,15 @@ Page({
   /**
    * 确认完成任务
    */
-  confirmOrder:function(){
+  confirmOrder:function(e){
 
     let job = this.data.job;
     let _this = this;
+    let formId = e.detail.formId
 
-    app.http('post', `/finish/${job.id}/job`, {}, res => {
+    app.http('post', `/finish/${job.id}/job`, {
+      form_id: formId
+    }, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -87,6 +90,45 @@ Page({
       }
     });
   },
+
+  /**
+  * 重新发布任务
+  */
+  restart: function (e) {
+
+    let job = this.data.job;
+    let _this = this;
+    let formId = e.detail.formId
+
+    app.http('PUT', `/restart/${job.id}/job`,
+     {
+       form_id:formId
+     },
+     res => {
+      
+      if (res.data.error_code != 500) {
+        wx.showLoading({
+          title: '操作成功！',
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+          wx.navigateBack({ comeBack: true });
+        }, 1000)
+      }else{
+        wx.showLoading({
+          title:res.data.error_message,
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1000)
+      }
+      
+    });
+  },
+
+  /**
+   * 进入评论页面
+   */
   comment:function(){
     wx.navigateTo({
       url: '/pages/comment_mission/comment_mission?id=' + this.data.id
@@ -208,12 +250,8 @@ Page({
   },
 
   /**
-  * 获取具体类型的贴子
+  * 拨打电话 
   */
-  selected(e) {
-
-  },
-  
   callPhone:function(e){
 
     let phone = e.currentTarget.dataset.phone;

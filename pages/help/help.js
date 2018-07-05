@@ -12,9 +12,11 @@ Page({
     newMessageNumber: 0,
     select: 0,
     currentTime: '',
-    profile:null
+    profile:null,
+    showSearch:true,
+    filter:''
   },
-  
+
   onLoad: function () {
     wx.showLoading({
       title: '加载中...',
@@ -82,10 +84,11 @@ Page({
     let order_by = 'created_at';
     let sort_by = 'desc';
     let objType = this.data.select;
+    let filter = this.data.filter;
 
     let _this = this;
     app.http('GET',
-     `/helps?page_size=${_this.data.pageSize } & page_number=${_this.data.pageNumber } & order_by=${order_by } & sort_by=${sort_by } & type=${objType}`, {}, res => {
+      `/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
       wx.hideLoading();
       console.log(res);
 
@@ -102,6 +105,37 @@ Page({
         showGeMoreLoadin: false
       })
     });
+  },
+
+  /**
+   * 搜索
+   */
+  search:function(){
+    this.setData({
+      select: 0,
+      jobs: []
+    })
+
+    this.setData({
+      pageNumber: this.data.initPageNumber
+    });
+
+    let _this = this;
+
+    wx.showLoading({
+      title: '搜索中...',
+    });
+
+    _this.helps();
+  },
+  /**
+   * 获取搜索框的内容
+   */
+  getFilter: function (event) {
+    let content = event.detail.value;
+    this.setData({
+      filter: content
+    })
   },
 
   /**
@@ -196,15 +230,21 @@ Page({
   selected(e) {
     let objType = e.target.dataset.type;
 
-    console.log(objType);
+    if(objType == 0){
+      this.setData({
+        showSearch:true
+      })
+    }else{
+      this.setData({
+        showSearch: false
+      })
+    }
 
     this.setData({
+      pageNumber: this.data.initPageNumber,
       select: objType,
-      jobs: []
-    })
-
-    this.setData({
-      pageNumber: this.data.initPageNumber
+      jobs: [],
+      filter: ''
     });
 
     let _this = this;
@@ -261,6 +301,37 @@ Page({
         setTimeout(function () {
           wx.hideLoading();
         }, 2000);
+      }
+    });
+
+  },
+
+  /**
+  * 终止悬赏
+  */
+  stop: function (e) {
+
+    let id = e.currentTarget.dataset.obj;
+    let formId = e.detail.formId
+
+    app.http('PUT', `/stop/${id}/job`, {
+      form_id: formId
+    }, res => {
+      console.log(res);
+      if (res.data.error_code != 500) {
+        wx.showLoading({
+          title: '操作成功！',
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500);
+      } else {
+        wx.showLoading({
+          title: res.data.error_message,
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500);
       }
     });
 

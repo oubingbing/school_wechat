@@ -32,11 +32,12 @@ Page({
   },
 
   /** 提交 */
-  post: function () {
+  post: function (e) {
     let content = this.data.textContent;
     let attachments = this.data.attachments;
     let id = this.data.objId;
     let score = this.data.score;
+    let formId = e.detail.formId;
 
     console.log('对象id：' + id);
 
@@ -57,7 +58,8 @@ Page({
       content: content,
       attachments: attachments,
       type: 6,
-      score:score
+      score:score,
+      form_id:formId
     }, res => {
       console.log(res);
       if(res.data.error_code != 500){

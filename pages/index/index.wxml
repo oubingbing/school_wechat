@@ -106,7 +106,7 @@
       <view class="item-content">
         <view class="user-name">
           <view wx:if="{{item.private == 0}}" style='color: #1874CD'>
-            {{item.poster.nickname}}
+            <view>{{item.poster.nickname}}</view>
           </view>
           <view wx:if="{{item.private == 1}}" style='color: #1874CD'>匿名の同学</view>
           <view class='follow-icon' 
@@ -120,7 +120,7 @@
         </view>
         <view class='for-user' 
               wx:if="{{item.topic != '无'}}">
-                表白@{{item.topic}}
+                <view>表白@{{item.topic}}</view>
           </view>
           <view class="content" wx:if="{{item.content}}">{{item.content}}</view>
           <view class="single-image" 

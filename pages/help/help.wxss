@@ -79,21 +79,17 @@ page{
 .content .title{
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 20rpx;
-  margin-bottom: 15rpx;
 }
 
 .title .label{
-  padding-bottom: 10rpx;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
-  padding-top: 10rpx;
-  background-color: #F5F5F5;
-  color: #7A7A7A;
-  border-radius: 10rpx;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .content .salary{
@@ -106,6 +102,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -113,6 +110,7 @@ page{
   width: 95%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .content .salary{
@@ -120,13 +118,13 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #7A7A7A;
 }
 
 .salary .container{
   width: 95%;
   display: flex;
   flex-direction: row;
-  margin-top: 10rpx;
 }
 
 .salary .money{

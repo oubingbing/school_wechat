@@ -19,6 +19,9 @@ page{
   display: flex;
   flex-direction: column;
   background: white;
+  border-bottom-style:solid;
+  border-width:15rpx;
+  border-color: #F5F5F5;
 }
 
 .content-item .header{
@@ -74,20 +77,17 @@ page{
 .content .title{
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 20rpx;
   margin-bottom: 15rpx;
 }
 
 .title .label{
+  width: 95%;
   padding-bottom: 10rpx;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
   padding-top: 10rpx;
-  background-color: #F5F5F5;
-  color: #7A7A7A;
   border-radius: 10rpx;
 }
 
@@ -95,6 +95,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: row;
+  color: #7A7A7A;
 }
 
 .content .mission{
@@ -108,6 +109,7 @@ page{
   width: 95%;
   display: flex;
   flex-direction: column;
+  color: #7A7A7A;
 }
 
 .content .salary{

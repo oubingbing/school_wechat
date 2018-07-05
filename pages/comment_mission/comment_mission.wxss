@@ -77,31 +77,29 @@ page{
   margin-top: 5rpx;
 }
 
-
-.button-container{
-  display: flex;
-  flex-direction: column;
-  bottom: 0rxp;
-}
-
 .button-container{
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 80rpx;
+  margin-top: 50rpx;
   align-items: center;
   text-align: center;
+  bottom: 0rxp;
 }
 
 .button-container .button{
+  display: flex;
+  flex-direction: row;
   background: white;
-  width: 95%;
+  width: 700rpx;
   padding: 10rpx 10rpx;
-}
-button{
   background: #66CDAA;
   color: white;
-  width: 95%;
+  justify-content: center;
+}
+
+.button::after{
+  border: none;
 }
 
 /** 加载更多 **/

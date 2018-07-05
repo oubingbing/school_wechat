@@ -15,24 +15,24 @@
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>{{job.title}}</view>
+          <view class='label'>悬赏：{{job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>
-            {{job.content}}
+            <view>{{job.content}}</view>
           </view>
         </view>
         <view class='salary'>
           <view class='container'>
-            <view class='label'>酬劳：</view>
+            <view class='label'>赏金：</view>
             <view class='money'>{{job.salary}}元</view>
           </view>
         </view>
       </view>
       <view class='footer'>
-        <form class='order form'  data-obj="{{item.id}}" 
+        <form class='order form'
               wx:if="{{job.can_restart}}" 
-              bindtap='restart'
+              bindsubmit='restart'
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -41,9 +41,9 @@
               </button>
             </view>
         </form>
-        <form class='order form'  data-obj="{{item.id}}" 
+        <form class='order form'
               wx:if="{{job.can_comfirm}}" 
-              bindtap='confirmOrder'
+              bindsubmit='confirmOrder'
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -140,11 +140,11 @@
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>{{item.job.title}}</view>
+          <view class='label'>悬赏：{{item.job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>
-            {{item.job.content}}
+            <view>{{item.job.content}}</view>
           </view>
           <view class='image-container'>
             <view class="single-image" 

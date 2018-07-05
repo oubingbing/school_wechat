@@ -52,11 +52,11 @@
 
       <view class='content'>
         <view class='title'>
-          <view class='label'>{{item.title}}</view>
+          <view class='label'>悬赏：{{item.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>
-            {{item.content}}
+            <view>{{item.content}}</view>
           </view>
           <view class='image-container'>
             <view class="single-image" 
@@ -83,7 +83,7 @@
         </view>
         <view class='salary'>
           <view class='container'>
-            <view class='label'>酬劳：</view>
+            <view class='label'>赏金：</view>
             <view class='money'>{{item.salary}}元</view>
           </view>
         </view>
@@ -94,7 +94,7 @@
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
                 <image src='/image/take-order.png'></image>
-                <view >接令</view>
+                <view>接令</view>
               </button>
             </view>
         </form>

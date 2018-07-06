@@ -375,4 +375,46 @@ Page({
       urls: images
     })
   },
+
+  deleteHelp:function(e){
+    let objId = e.currentTarget.dataset.objid;
+    let _this = this;
+
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗?',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+
+          app.http('delete', `/delete/${objId}/job`, {}, res => {
+
+            console.log(res.data);
+            let result = res.data.data;
+
+            if (result == 1) {
+              console.log('删除成功');
+
+              let newJobs = _this.data.jobs.filter((item, index) => {
+                if (item.id != objId) {
+                  return item;
+                }
+              });
+
+              _this.setData({
+                jobs: newJobs
+              });
+
+            } else {
+              console.log('删除失败');
+            }
+
+          });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  }
 });

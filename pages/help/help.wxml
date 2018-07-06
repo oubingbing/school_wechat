@@ -45,7 +45,10 @@
         </view>
          <view class='nickname'>
           <view class='name'>{{item.user.nickname}}</view>
-          <view class='time'><view>{{item.created_at}} </view><view class='delete'>删除</view></view>
+          <view class='time'>
+            <view>{{item.created_at}} </view>
+            <view class='delete' bindtap='deleteHelp' wx:if="{{item.can_delete}}" data-objid="{{item.id}}">删除</view>
+          </view>
          </view>
         </view>
       </view>

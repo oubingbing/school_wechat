@@ -66,8 +66,15 @@ page{
 }
 
 .nickname .time{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   font-size: 30rpx;
   color: gray;
+}
+
+.delete{
+  margin-left: 20rpx;
 }
 
 .content-item .content{
@@ -79,17 +86,34 @@ page{
 .content .title{
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 20rpx;
+  margin-bottom: 10rpx;
 }
 
-.title .label{
+.title-container{
   width: 95%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+}
+
+.title .label{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.label .label-item{
+  background: #F5F5F5;
+  color: gray;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  border-radius: 10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
 }
 
 .content .salary{
@@ -118,7 +142,7 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #7A7A7A;
+  font-size: 32rpx;
 }
 
 .salary .container{
@@ -128,7 +152,7 @@ page{
 }
 
 .salary .money{
-  color: red;
+  color: #FF4500;
 }
 
 .content .footer{
@@ -143,6 +167,7 @@ page{
   padding-top: 15rpx;
   padding-bottom: 15rpx;
   font-size: 35rpx;
+  color: #1874CD;
 }
 
 .footer .order{
@@ -155,7 +180,6 @@ page{
   justify-content: center;
   align-items: center;
   height: 50rpx;
-  color: #66CDAA;
 }
 
 .order image{
@@ -169,7 +193,7 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: #1296db;
+  color: #1874CD;
 }
 
 .contact image{
@@ -234,7 +258,8 @@ page{
 }
 
 .single-image image{
-  width: 500rpx;
+  width: 200rpx;
+  height: 200rpx;
 }
 
 .more-image{
@@ -303,12 +328,12 @@ page{
 
 .form-item .button{
   background: none !important;
-  color: #66CDAA;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 35rpx;
+  color: #1874CD;
 }
 .button::after{
   border: none;

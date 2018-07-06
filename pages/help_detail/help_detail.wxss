@@ -77,17 +77,21 @@ page{
 .content .title{
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 20rpx;
-  margin-bottom: 15rpx;
+  margin-bottom: 10rpx;
 }
 
 .title .label{
-  width: 95%;
-  padding-bottom: 10rpx;
-  padding-top: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10rpx;
+  background: #F5F5F5;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
   border-radius: 10rpx;
 }
 

@@ -29,7 +29,7 @@
         <view class='search'>
           <input type='text' 
                 class='search-input' 
-                placeholder="标题 | 内容 | 酬劳"         
+                placeholder="标题 | 内容 | 赏金"         
                 bindinput='getFilter'/>
           <view class='search-image' bindtap='search'>
               <image mode="" src='/image/search.png'></image>
@@ -45,14 +45,16 @@
         </view>
          <view class='nickname'>
           <view class='name'>{{item.user.nickname}}</view>
-          <view class='time'>{{item.created_at}}</view>
+          <view class='time'><view>{{item.created_at}} </view><view class='delete'>删除</view></view>
          </view>
         </view>
       </view>
 
       <view class='content'>
         <view class='title'>
-          <view class='label'>悬赏：{{item.title}}</view>
+          <view class='title-container'>
+            <view class='label'><view class='label-item'>{{item.title}}</view></view>
+          </view>
         </view>
         <view class="mission">
           <view class='description'>
@@ -61,7 +63,7 @@
           <view class='image-container'>
             <view class="single-image" 
                 wx:if='{{item.attachments.length==1}}'>
-            <image mode="widthFix" 
+            <image mode="aspectFill" 
                    class="image-item" 
                    wx:for="{{item.attachments}}" 
                    wx:key="{{item.attachments}}"

@@ -15,7 +15,7 @@
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>悬赏：{{job.title}}</view>
+          <view class='label'>{{job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>

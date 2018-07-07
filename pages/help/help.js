@@ -316,7 +316,6 @@ Page({
     console.log(e);
 
     if(this.data.profile == null){
-      if (profile == null) {
         wx.showLoading({
           title: '请先完善资料！',
         });
@@ -326,7 +325,6 @@ Page({
             url: '/pages/set_profile/set_profile'
           })
         }, 1500);
-      }
 
       return false;
     }

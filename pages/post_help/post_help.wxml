@@ -5,7 +5,7 @@
       <textarea 
         maxlength="1024"
         class='textarea-content'
-        placeholder="今天有急事，想找人帮忙代我上高数课..."    
+        placeholder="谁在外面，可以帮我拿个快递..."    
         bindinput="getTextContent"/>
     </view>
     <view class='image-form'>
@@ -38,7 +38,7 @@
   <view class='location'>
   <view class='like-word'>悬赏</view>
     <input class='like-content' 
-           placeholder="代课" 
+           placeholder="拿快递" 
            bindinput="getTitle"/>
   </view>
 

@@ -157,7 +157,6 @@ page{
   flex-direction: row;
   background: white;
   width: 700rpx;
-  padding: 10rpx 10rpx;
   background: #66CDAA;
   color: white;
   justify-content: center;

@@ -81,6 +81,7 @@ Page({
     console.log('打开详情');
 
     let objType = e.currentTarget.dataset.type;
+    let objid = e.currentTarget.dataset.objid;
     let id = e.currentTarget.dataset.id;
     let parent = e.currentTarget.dataset.parent;
     let pobj = e.currentTarget.dataset.pobj;
@@ -88,8 +89,9 @@ Page({
     let chat = e.currentTarget.dataset.chat;
     let uid = e.currentTarget.dataset.uid;
 
+    console.log(e);
     console.log(id+':id');
-    console.log(JSON.stringify(e));
+    console.log('objType:' + objType);
 
     if (chat == 6) {
       wx.navigateTo({
@@ -101,11 +103,17 @@ Page({
       return;
     }
 
+    if (chat == 7) {
+      wx.navigateTo({
+        url: `/pages/help_single/help_single?id=${objid}`
+      })
+      return false;
+    }
+
     if (objType == 1){
         wx.navigateTo({
           url: `/pages/post_detail/post_detail?id=${id}`
         })
-
         return false;
     }
 

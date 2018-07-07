@@ -8,10 +8,6 @@ page{
   flex-direction: column;
 }
 
-.content-container{
-  margin-top: 70rpx;
-}
-
 .container .content{
   width: 100%;
   display: flex;
@@ -23,7 +19,6 @@ page{
   display: flex;
   flex-direction: column;
   background: white;
-  margin-top: 20rpx;
 }
 
 .content-item .header{
@@ -336,80 +331,4 @@ page{
 }
 .button::after{
   border: none;
-}
-
-/** 搜索样式 **/
-.search-container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border-top-style:solid;
-  border-bottom-style:solid;
-  border-width:20rpx;
-  border-color: #F5F5F5;
-  margin-top: 10rpx;
-  margin-bottom: -10rpx;
-}
-
-.search-container .search{
-  width: 95%;
-  display: flex;
-  flex-direction: row;
-}
-
-.search .search-input{
-  background: #E6E6E6;
-  width:85%;
-  height: 75rpx;
-  font-weight: 200;
-  font-size: 30rpx;
-  text-align: center;
-  border-radius:15rpx 0 0 15rpx;
-}
-
-.search-image{
-  width: 15%;
-  background: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 0 15rpx 15rpx 0;
-}
-
-.search-image image{
-  width: 40rpx;
-  height: 40rpx;
-}
-
-/** 消息盒子样式 **/
-.message-tip{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 100rpx;
-  align-items: center;
-  background: white;
-  margin-top: 72rpx;
-  margin-bottom: -67rpx;
-}
-
-.message-tip .tip-content{
-  padding: 20rpx;
-  background: #575757;
-  color: white;
-  border-radius: 10rpx;
-  font-size: 30rpx;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-}
-
-.tip-content image{
-  width: 35rpx;
-  height: 35rpx;
 }

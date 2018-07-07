@@ -8,8 +8,8 @@ App({
 
     //设置基本接口全局变量
 
-    //this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
-    this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
+    this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
+    //this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
   
     //七牛图片外链域名0
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
@@ -25,11 +25,11 @@ App({
     } else {
       console.log('token=' + token);
     }
-
   },
+
   /**
-     * 登录获取token
-     */
+  * 登录获取token
+  */
   login: function (_method = null, _url = null, _data = null, callback = null) {
     wx.login({
       success: res => {
@@ -81,7 +81,6 @@ App({
                   }
                 }
               })
-
             }
           })
         } else {
@@ -167,11 +166,7 @@ App({
   getNewInbox:function(type,callback){
 
     this.http('GET', `/new/${type}/inbox`, {}, function (res) {
-
-      console.log(res);
-
       callback(res);
-
     });
 
   },

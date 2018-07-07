@@ -9,6 +9,7 @@
                 data-type="{{item.obj.obj_type}}"
                 data-chat="{{item.obj_type}}"
                 data-uid="{{item.from_id}}"
+                data-objid="{{item.obj_id}}"
                 data-id="{{item.obj.obj_id}}">
             <view class='left'>
               <view>
@@ -25,6 +26,10 @@
                     
               <view class='message' 
                     wx:if="{{item.obj_type == 6}}">
+                    {{item.content}}</view>
+
+              <view class='message' 
+                    wx:if="{{item.obj_type == 7}}">
                     {{item.content}}</view>
 
               <view class='delete-message' 

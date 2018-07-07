@@ -14,7 +14,9 @@ Page({
     currentTime: '',
     profile:null,
     showSearch:true,
-    filter:''
+    filter:'',
+    newMessage: false,
+    newMessageNumber: 0,
   },
 
   onLoad: function () {
@@ -43,6 +45,23 @@ Page({
       this.newHelps();
     }
     this.getProfile();
+
+    let _this = this;
+    let type = 0;
+    app.getNewInbox(type, function (res) {
+      console.log("新消息数量：" + res.data.data);
+      if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
+        _this.setData({
+          newMessage: true,
+          newMessageNumber: res.data.data
+        });
+      } else {
+        _this.setData({
+          newMessage: false,
+          newMessageNumber: 0
+        });
+      }
+    });
   },
 
   /**
@@ -135,6 +154,15 @@ Page({
         showGeMoreLoadin: false
       })
     });
+  },
+
+  /**
+   * 进入新消息列表
+   */
+  openMessage: function () {
+    wx.navigateTo({
+      url: '/pages/message/message?type=0&new_message=1'
+    })
   },
 
   /**

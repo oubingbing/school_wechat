@@ -27,7 +27,8 @@
     "pages/post_help/post_help",
     "pages/help_detail/help_detail",
     "pages/set_profile/set_profile",
-    "pages/comment_mission/comment_mission"
+    "pages/comment_mission/comment_mission",
+    "pages/help_single/help_single"
   ],
   "window": {
     "backgroundTextStyle": "light",

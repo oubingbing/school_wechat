@@ -34,6 +34,7 @@ page{
   border-width:1rpx;
   border-color: #F5F5F5;
   align-items: center;
+  position:relative;
 }
 
 .header .header-content{
@@ -99,7 +100,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: row;
-  color: #7A7A7A;
+  font-size: 32rpx;
 }
 
 .content .mission{
@@ -113,7 +114,6 @@ page{
   width: 95%;
   display: flex;
   flex-direction: column;
-  color: #7A7A7A;
 }
 
 .content .salary{
@@ -172,7 +172,7 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: #1296db;
+  color: #66CDAA;
 }
 
 .contact image{
@@ -324,6 +324,9 @@ page{
   padding-bottom: 20rpx;
 }
 
+.history-content .content{
+  position: relative;
+}
 
 .image-container{
   width: 95%;
@@ -416,4 +419,47 @@ page{
 }
 .button::after{
   border: none;
+}
+
+/** 印章样式 **/
+.score-icon{
+  z-index:115;
+  position:absolute;
+  bottom: -80rpx;
+  right: 20rpx;
+}
+.score-icon image{
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.seal-world{
+  z-index:120;
+  position:absolute;
+  bottom: 88rpx;
+  right: 65rpx;
+  font-size: 40rpx;
+  color: red;
+  transform:rotate(-14deg);
+  -o-transform:rotate(-14deg); 
+}
+.seal-world2{
+  z-index:120;
+  position:absolute;
+  bottom: 88rpx;
+  right: 65rpx;
+  font-size: 40rpx;
+  color: #d56271;
+  transform:rotate(-14deg);
+  -o-transform:rotate(-14deg); 
+}
+.seal-world3{
+  z-index:120;
+  position:absolute;
+  bottom: 88rpx;
+  right: 65rpx;
+  font-size: 40rpx;
+  color: gray;
+  transform:rotate(-14deg);
+  -o-transform:rotate(-14deg); 
 }

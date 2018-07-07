@@ -57,7 +57,7 @@ Page({
   },
 
   /** 提交 */
-  submit: function () {
+  submit: function (e) {
 
     console.log(this.data.attachments);
 
@@ -67,6 +67,9 @@ Page({
     let salary = this.data.salary;
 
     console.log('发送的图片是什么：' + attachments);
+
+    let formId = e.detail.formId;
+    app.collectFormId(formId);
 
 
     app.http('POST', '/post_help', {
@@ -93,7 +96,7 @@ Page({
         });
         setTimeout(function () {
           wx.hideLoading();
-        }, 1500);
+        }, 1000);
       }
 
     });

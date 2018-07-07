@@ -24,7 +24,7 @@
         </view>
         <view class='salary'>
           <view class='container'>
-            <view class='label'>赏金：</view>
+            <view>赏金：</view>
             <view class='money'>{{job.salary}}元</view>
           </view>
         </view>
@@ -36,7 +36,7 @@
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
-                <image src='/image/take-order.png'></image>
+                <image src='/image/restart.png'></image>
                 <view >重新发布</view>
               </button>
             </view>
@@ -47,25 +47,25 @@
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
-                <image src='/image/take-order.png'></image>
+                <image src='/image/confirm.png'></image>
                 <view >确认完成</view>
               </button>
             </view>
         </form>
         <view class='order' wx:if="{{job.can_show_tip}}">
-          <image src='/image/take-order.png'></image>
+          <image src='/image/working.png'></image>
           <view>{{job.show_employee_tip}}</view>
         </view>
         <view class='order' wx:if="{{job.can_comment}}" bindtap='comment'>
-          <image src='/image/take-order.png'></image>
+          <image src='/image/help-comment.png'></image>
           <view>评论</view>
         </view>
         <view class='order' wx:if="{{!job.can_comment && job.status == 4}}">
-          <image src='/image/take-order.png'></image>
+          <image src='/image/help-comment.png'></image>
           <view>已评论</view>
         </view>
-        <view class='contact' wx:if="{{job.can_contact}}">
-          <image src='/image/contact.png'></image>
+        <view class='contact' wx:if="{{job.can_contact}}"  bindtap='letter' data-obj='{{job.user_id}}'>
+          <image src='/image/xw.png'></image>
           <view>联系</view>
         </view>
       </view>
@@ -110,15 +110,15 @@
           <view class='title-label'>悬赏记录</view>
         </view>
         <view class='count-history'>
-          <view class='count-item'>
+          <view class='count-item' bindtap='selectMssionType' data-obj='1'>
             <view>好评</view>
             <view>{{job.job_status.score.good}}</view>
           </view>
-          <view class='count-item'>
+          <view class='count-item' bindtap='selectMssionType' data-obj='2'>
             <view>中评</view>
             <view>{{job.job_status.score.middle}}</view>
           </view>
-          <view class='count-item'>
+          <view class='count-item' bindtap='selectMssionType' data-obj='3'>
             <view>差评</view>
             <view>{{job.job_status.score.bad}}</view>
           </view>
@@ -136,11 +136,19 @@
           <view class='name'>{{item.job.user.nickname}}</view>
           <view class='time'>{{item.job.created_at}}</view>
          </view>
+         <view class='score-icon' wx:if="{{item.score != 0}}">
+          <view class='seal-world' wx:if="{{item.score == 1}}">好评</view>
+          <view class='seal-world2' wx:if="{{item.score == 2}}">中评</view>
+          <view class='seal-world3' wx:if="{{item.score == 3}}">差评</view>
+          <image src='/image/seal.png' wx:if="{{item.score == 1}}"></image>
+          <image src='/image/middle.png' wx:if="{{item.score == 2}}"></image>
+          <image src='/image/bad.png' wx:if="{{item.score == 3}}"></image>
+         </view>
         </view>
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>悬赏：{{item.job.title}}</view>
+          <view class='label'>{{item.job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>

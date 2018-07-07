@@ -8,8 +8,8 @@ App({
 
     //设置基本接口全局变量
 
-    this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
-    //this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
+    //this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
+    this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
   
     //七牛图片外链域名0
     this.globalData.imageUrl = 'http://image.kucaroom.com/';
@@ -175,6 +175,10 @@ App({
     });
 
   },
+
+  /**
+   * 获取小程序配置
+   */
   getConfig:function(callback){
     wx.request({
       url: this.globalData.apiUrl + '/config?',
@@ -200,7 +204,17 @@ App({
         console.log(res);
       }
     })
+  },
 
+  /**
+   * 收集form id
+   */
+  collectFormId:function(formId){
+    this.http('POST', `/save_form_id`, {
+      form_id:formId
+    }, function (res) {
+      console.log(res);
+    });
   },
 
   globalData: {

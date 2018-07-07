@@ -51,9 +51,11 @@
   </view>
 </view>
 
-<view class='button-container'>
-  <button bindtap='submit'> 发布 </button>
-</view>
+  <view class='button-container'>
+    <form class='button-container' bindsubmit='submit' report-submit="true">
+      <button formType="submit" class='button'> 发布 </button>
+    </form>
+  </view>
 
 </view>
 

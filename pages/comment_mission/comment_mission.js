@@ -38,6 +38,7 @@ Page({
     let id = this.data.objId;
     let score = this.data.score;
     let formId = e.detail.formId;
+    app.collectFormId(formId);
 
     console.log('对象id：' + id);
 
@@ -58,8 +59,7 @@ Page({
       content: content,
       attachments: attachments,
       type: 6,
-      score:score,
-      form_id:formId
+      score:score
     }, res => {
       console.log(res);
       if(res.data.error_code != 500){

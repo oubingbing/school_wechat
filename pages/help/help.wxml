@@ -105,44 +105,77 @@
         </form>
         <view class='order' 
               wx:if="{{item.status == 1 && item.role == 'boss'}}">
-          <image src='/image/take-order.png'></image>
+          <image src='/image/shang.png'></image>
           <view>悬赏中</view>
         </view>
         <form class='order form' bindsubmit='stop' data-obj="{{item.id}}" wx:if="{{item.can_stop}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
-                <image src='/image/take-order.png'></image>
+                <image src='/image/stop.png'></image>
                 <view>终止</view>
               </button>
             </view>
         </form>
-        <view class='order' 
-              bindtap='detail' 
+
+        <form class='order form' 
+              bindsubmit='detail' 
               data-obj="{{item.id}}"
               data-role='{{item.role}}' 
               data-entry='{{item.can_entry}}' 
-              wx:if="{{item.status == 2}}">
-          <image src='/image/take-order.png'></image>
-          <view>任务中</view>
-        </view>
+              wx:if="{{item.status == 2}}" report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/working.png'></image>
+                <view>任务中</view>
+              </button>
+            </view>
+        </form>
+
         <view class='order' 
               wx:if="{{item.status == 3}}">
-          <image src='/image/take-order.png'></image>
+          <image src='/image/had-stop.png'></image>
           <view>已终止</view>
         </view>
-        <view class='order' 
-              bindtap='detail' 
+
+        <form class='order form' 
+              bindsubmit='hadStop' 
+              wx:if="{{item.status == 3}}"
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/had-stop.png'></image>
+                <view>已终止</view>
+              </button>
+            </view>
+        </form>
+
+        <form class='order form' 
+              bindsubmit='detail' 
               data-obj="{{item.id}}"
               data-role='{{item.role}}' 
               data-entry='{{item.can_entry}}' 
-              wx:if="{{item.status == 4}}">
-          <image src='/image/take-order.png'></image>
-          <view>已完成</view>
-        </view>
-        <view class='contact'>
-          <image src='/image/contact.png'></image>
-          <view>联系</view>
-        </view>
+              wx:if="{{item.status == 4}}"
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/done.png'></image>
+                <view>已完成</view>
+              </button>
+            </view>
+        </form>
+
+        <form class='order form' 
+              bindsubmit='letter' 
+              data-obj='{{item.user_id}}'
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/xw.png'></image>
+                <view>联系</view>
+              </button>
+            </view>
+        </form>
+
       </view>
     </view>
 

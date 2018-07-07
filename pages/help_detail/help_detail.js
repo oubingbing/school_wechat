@@ -15,7 +15,9 @@ Page({
     initPageNumber: 1,
     employeeJobs:[],
     baseImageUrl: app.globalData.imageUrl,
-    showGeMoreLoadin:false
+    showGeMoreLoadin:false,
+    missionStatus:'',
+    test:0
   },
 
   onLoad: function (option) {
@@ -44,7 +46,25 @@ Page({
   onShow:function(){
     this.getProfile();
     this.partTimeJob();
+
+    this.setData({
+      missionStatus: '',
+      pageNumber: 1,
+      initPageNumber: 1,
+      employeeJobs: []
+    })
+
     this.employeeMissionRecord();
+  },
+
+  /**
+  * 跳转到私信
+  */
+  letter: function (e) {
+    let id = e.currentTarget.dataset.obj;
+    wx.navigateTo({
+      url: '/pages/letter/letter?friend_id=' + id + '&can_chat=0'
+    })
   },
 
   /**
@@ -55,6 +75,8 @@ Page({
     let job = this.data.job;
     let _this = this;
     let formId = e.detail.formId
+
+    app.collectFormId(formId);
 
     app.http('post', `/finish/${job.id}/job`, {
       form_id: formId
@@ -80,6 +102,7 @@ Page({
         wx.showLoading({
           title: '确认成功！',
         });
+        app.globalData.postHelp = true;
         setTimeout(function () {
           wx.hideLoading();
           wx.navigateTo({
@@ -98,7 +121,9 @@ Page({
 
     let job = this.data.job;
     let _this = this;
-    let formId = e.detail.formId
+    let formId = e.detail.formId;
+
+    app.collectFormId(formId);
 
     app.http('PUT', `/restart/${job.id}/job`,
      {
@@ -110,6 +135,7 @@ Page({
         wx.showLoading({
           title: '操作成功！',
         });
+        app.globalData.postHelp = true;
         setTimeout(function () {
           wx.hideLoading();
           wx.navigateBack({ comeBack: true });
@@ -186,10 +212,24 @@ Page({
             wx.navigateTo({
               url: '/pages/set_profile/set_profile'
             })
-          }, 2000);
+          }, 1500);
 
         }
       }
+    });
+  },
+
+  selectMssionType:function(e){
+
+    let status = e.currentTarget.dataset.obj;
+    this.setData({
+      missionStatus:status,
+      pageNumber: 1,
+      initPageNumber: 1,
+      employeeJobs: []
+    })
+    wx.showLoading({
+      title: '加载中...',
     });
   },
 
@@ -199,7 +239,10 @@ Page({
   employeeMissionRecord:function(){
     let _this = this;
 
-    app.http('GET', `/job/${_this.data.id}/mission_record?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber }`, {}, res => {
+    console.log('employee');
+
+    app.http('GET', `/job/${_this.data.id}/mission_record?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&status=${_this.data.missionStatus}`, {}, res => {
+      wx.hideLoading();
       console.log(res.data);
       let data = res.data;
       if(data.error_code == 0){

@@ -44,15 +44,17 @@ Page({
       console.log(res.data);
       if (res.data.error_code != 500) {
         let profile = res.data.data;
-        _this.setData({
-          userName: profile.name,
-          cardNo: profile.student_number,
-          gradeValue: profile.grade,
-          grade: gradeArray[profile.grade],
-          major: profile.major,
-          college: profile.college,
-          phone: profile.phone
-        })
+        if (profile){
+          _this.setData({
+            userName: profile.name,
+            cardNo: profile.student_number,
+            gradeValue: profile.grade,
+            grade: gradeArray[profile.grade],
+            major: profile.major,
+            college: profile.college,
+            phone: profile.phone
+          })
+        }
       }else{
         wx.showLoading({
           title: '网络出错！',

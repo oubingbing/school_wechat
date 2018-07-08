@@ -39,8 +39,8 @@
       <view class='word'>卖舍友</view>
     </view>
     <view class='content-item hide-love' bindtap="openMatchList">
-      <view><image src='/image/color-pipei.png' class='item-image'></image></view>
-      <view class='word'>暗恋匹配</view>
+      <view><image src='/image/shang-icon.png' class='item-image'></image></view>
+      <view class='word'>悬赏令</view>
     </view>
   </view>
 

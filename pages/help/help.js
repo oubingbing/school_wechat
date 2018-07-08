@@ -304,6 +304,10 @@ Page({
       })
     }
 
+    wx.showLoading({
+      title: '加载中',
+    });
+
     this.setData({
       pageNumber: this.data.initPageNumber,
       select: objType,

@@ -109,7 +109,7 @@ Page({
    */
   openMatchList: function () {
     wx.navigateTo({
-      url: '/pages/match_list/match_list'
+      url: '/pages/help_single/help_single'
     })
   },
   updateInfo: function () {

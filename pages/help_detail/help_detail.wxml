@@ -64,7 +64,7 @@
           <image src='/image/help-comment.png'></image>
           <view>已评论</view>
         </view>
-        <view class='contact' wx:if="{{job.can_contact}}"  bindtap='letter' data-obj='{{job.user_id}}'>
+        <view class='contact' wx:if="{{job.can_contact}}"  bindtap='letter' data-obj='{{job.contact_id}}'>
           <image src='/image/xw.png'></image>
           <view>联系</view>
         </view>

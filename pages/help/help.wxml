@@ -172,7 +172,7 @@
 
         <form class='order form' 
               bindsubmit='letter' 
-              data-obj='{{item.user_id}}'
+              data-obj='{{item.contact_id}}'
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>

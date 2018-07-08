@@ -137,7 +137,7 @@
 
         <form class='order form' 
               bindsubmit='letter' 
-              data-obj='{{job.user_id}}'
+              data-obj='{{job.contact_id}}'
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>

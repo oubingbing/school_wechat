@@ -32,15 +32,15 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#66CDAA",
+    "navigationBarBackgroundColor": "#ff87a2",
     "navigationBarTitleText": "小情书",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "color": "#515151",
-    "selectedColor": "#66CDAA",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+      "color": "#ff87a2",
+      "selectedColor": "#ff87a2",
+      "borderStyle": "black",
+      "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",

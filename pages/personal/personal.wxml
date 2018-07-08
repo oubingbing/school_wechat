@@ -12,7 +12,7 @@
           <view class='user-name'>{{user.nickname}}</view>
           <view class='article'>
             <view class="letter" bindtap="openLetter">
-              <image src="/image/message.png"></image>
+              <image src="/image/message1.png"></image>
               <view class="letter-item">私信</view>
               <view class='new-letter' wx:if="{{newLetterNumber != 0}}">
                 ({{newLetterNumber}})

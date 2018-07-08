@@ -157,7 +157,7 @@ page{
   flex-direction: row;
   background: white;
   width: 700rpx;
-  background: #66CDAA;
+  background: #ff87a2;
   color: white;
   justify-content: center;
 }

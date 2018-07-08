@@ -93,7 +93,7 @@ page{
   background: white;
   width: 700rpx;
   padding: 10rpx 10rpx;
-  background: #66CDAA;
+  background: #ff87a2;
   color: white;
   justify-content: center;
 }

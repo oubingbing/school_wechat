@@ -22,10 +22,11 @@ page{
 .bg-container .user-info{
   width: 100%;
   height: 150rpx;
-  background: #FFE7BA;
+  background: #FFB6C1;
   margin-top: -10rpx;
   display: flex;
   flex-direction: row;
+  color: white;
 }
 
 .article{

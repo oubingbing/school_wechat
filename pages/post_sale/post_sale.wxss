@@ -103,7 +103,7 @@ input{
   padding: 10rpx 10rpx;
 }
 button{
-  background: #66CDAA;
+  background: #ff87a2;
   color: white;
   width: 95%;
 }

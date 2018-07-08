@@ -112,11 +112,14 @@
               </button>
             </view>
         </form>
-        <view class='order' 
-              wx:if="{{item.status == 1 && item.role == 'boss'}}">
-          <image src='/image/shang.png'></image>
-          <view>悬赏中</view>
-        </view>
+        <form class='order form' bindsubmit='hadStop' wx:if="{{item.status == 1 && item.role == 'boss'}}" report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/shang.png'></image>
+                <view>悬赏中</view>
+              </button>
+            </view>
+        </form>
         <form class='order form' bindsubmit='stop' data-obj="{{item.id}}" wx:if="{{item.can_stop}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>

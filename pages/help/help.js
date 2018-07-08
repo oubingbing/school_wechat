@@ -65,6 +65,16 @@ Page({
   },
 
   /**
+  * 下拉刷新，获取最新的贴子
+  */
+  onPullDownRefresh: function () {
+
+    console.log('当前时间：' + this.data.currentTime);
+
+    this.newHelps();
+  },
+
+  /**
   * 跳转到私信
   */
   letter: function (e) {
@@ -207,9 +217,8 @@ Page({
     let _this = this;
     app.http('GET',
       `/new_helps?type=${objType}&time=${time}`, {}, res => {
-        
         let jobs = _this.data.jobs;
-
+        wx.stopPullDownRefresh();
 
         if (res.data.data) {
           if (res.data.data.length > 0) {

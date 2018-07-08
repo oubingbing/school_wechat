@@ -59,6 +59,10 @@ Page({
   /** 提交 */
   submit: function (e) {
 
+    wx.showLoading({
+      title: '发布中...',
+    });
+
     console.log(this.data.attachments);
 
     let content = this.data.textContent;
@@ -79,7 +83,7 @@ Page({
       salary: salary
     }, res => {
       console.log(res);
-
+      wx.hideLoading();
       let data = res.data;
       if(data.error_code != 500){
         app.globalData.postHelp = true;
@@ -89,7 +93,7 @@ Page({
         setTimeout(function () {
           wx.hideLoading();
           wx.navigateBack({ comeBack: true });
-        }, 1500);
+        }, 1000);
       }else{
         wx.showLoading({
           title: data.error_message,

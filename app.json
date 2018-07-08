@@ -55,16 +55,16 @@
         "text": "卖舍友"
       },
       {
-        "pagePath": "pages/compare_face/face",
-        "iconPath": "image/fall-in-love.png",
-        "selectedIconPath": "image/select-fall-in-love.png",
-        "text": "情侣脸"
-      },
-      {
         "pagePath": "pages/help/help",
         "iconPath": "image/help.png",
         "selectedIconPath": "image/select-help.png",
         "text": "悬赏令"
+      },
+      {
+        "pagePath": "pages/compare_face/face",
+        "iconPath": "image/fall-in-love.png",
+        "selectedIconPath": "image/select-fall-in-love.png",
+        "text": "情侣脸"
       },
       {
         "pagePath": "pages/personal/personal",

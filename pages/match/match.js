@@ -70,7 +70,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '喜欢ta，那就说出来吧',
+      title: 'hi，同学，你被舍友卖掉了',
       path: '/pages/index/index',
       imageUrl: 'http://image.kucaroom.com/match_bg.jpg',
       success: function (res) {

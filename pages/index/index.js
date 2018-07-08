@@ -207,7 +207,7 @@ Page({
    */
   onShareAppMessage: function (res) {
     return {
-      title: '喜欢ta，那就说出来吧',
+      title: 'hi，同学，有人跟你表白了',
       path: '/pages/index/index',
       imageUrl:'http://image.kucaroom.com/share1.jpg',
       success: function (res) {

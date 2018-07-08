@@ -492,5 +492,20 @@ Page({
         }
       }
     })
-  }
+  },
+  /**
+ * 分享
+ */
+  onShareAppMessage: function (res) {
+    return {
+      title: '悬赏天下英豪',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 });

@@ -172,7 +172,7 @@ App({
   },
 
   /**
-   * 获取小程序配置
+   * 获取用户最新信息
    */
   getConfig:function(callback){
     wx.request({

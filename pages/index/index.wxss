@@ -480,10 +480,17 @@ page{
   height: 35rpx;
 }
 
+/** 授权按钮 **/
 .auth-container{
   position: fixed;
   z-index: 100;
   width: 100%;
+  height: 100%;
+  background: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:rgba(2,2,2,0.8);
 }
 
 .auth-button{
@@ -494,7 +501,6 @@ page{
   background: #66CDAA;
   width: 50%;
   color: white;
-  margin-top: 300rpx;
   font-size: 35rpx;
 }
 

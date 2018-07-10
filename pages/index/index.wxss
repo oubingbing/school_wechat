@@ -679,7 +679,7 @@ page{
   width: 100%;
   position:fixed;
   bottom:40rpx;
-  z-index:100;
+  z-index:99;
   height: 120prx;
   display: flex;
   flex-direction: row;

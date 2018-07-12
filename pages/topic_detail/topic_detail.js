@@ -25,7 +25,8 @@ Page({
     initPageNumber: 1,
     showGeMoreLoadin:false,
     showFooter:false,
-    currentTime:''
+    currentTime:'',
+    showNormal: false
   },
 
   /**
@@ -36,6 +37,9 @@ Page({
     //设置当前时间
     this.setData({
       currentTime: util.formatTime(new Date())
+    });
+    this.setData({
+      showNormal: app.globalData.showNormal
     });
 
     let id = options.id;

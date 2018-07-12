@@ -63,9 +63,6 @@ Page({
   },
 
   onLoad: function (e) {
-
-    wx.hideTabBar();
-
     wx.showLoading({
       title: '加载中',
     });
@@ -76,24 +73,6 @@ Page({
     app.getUploadToken(token => {
       this.setData({
         uploadToken: token
-      });
-    });
-
-    app.getConfig(config=>{
-
-      if (config == 3) {
-        app.globalData.showNormal = false;
-        app.globalData.showAudit = true;
-        wx.hideTabBar();
-      } else {
-        app.globalData.showNormal = true;
-        app.globalData.showAudit = false;
-        wx.showTabBar();
-      }
-
-      this.setData({
-        showNormal: app.globalData.showNormal,
-        showAudit: app.globalData.showAudit
       });
     });
 
@@ -122,15 +101,33 @@ Page({
     _this.topic();
 
   },
+
+  onReady:function(){
+    wx.hideTabBar();
+    app.getConfig(config => {
+      if (config == 3) {
+        app.globalData.showNormal = false;
+        app.globalData.showAudit = true;
+        wx.hideTabBar();
+      } else {
+        app.globalData.showNormal = true;
+        app.globalData.showAudit = false;
+        wx.showTabBar();
+      }
+
+      this.setData({
+        showNormal: app.globalData.showNormal,
+        showAudit: app.globalData.showAudit
+      });
+    });
+  },
   
   onShow: function (option) {
-
     if (app.globalData.showNormal){
       wx.showTabBar();
     }else{
       wx.hideTabBar();
     }
-
 
     console.log('学校是否变了:' + app.globalData.changeSchool);
 
@@ -170,9 +167,10 @@ Page({
       }
     });
   },
+
   /**
- * 点赞话题
- */
+   * 点赞话题
+   */
   praiseTopic: function (e) {
 
     let id = e.currentTarget.dataset.id;
@@ -186,6 +184,7 @@ Page({
       _this.setData({topic:res.data.data});
     });
   },
+
   /**
    * 监听用户点击授权按钮
    */
@@ -202,6 +201,7 @@ Page({
       console.log('加载信息');
     });
   },
+
   /**
    * 分享
    */
@@ -271,6 +271,7 @@ Page({
     }
 
   },
+
   /**
    * 搜索
    */
@@ -292,6 +293,7 @@ Page({
 
     _this.getPost(this);
   },
+
   /**
    * 进入新消息列表
    */
@@ -652,9 +654,7 @@ Page({
         _this.setData({
           posts: newPostList
         });
-
       });
-
   },
 
   /**

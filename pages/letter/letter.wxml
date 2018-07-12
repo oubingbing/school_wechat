@@ -1,4 +1,4 @@
-<view class="letter-container">
+<view class="letter-container" wx:if="{{showNormal}}">
 
   <scroll-view scroll-y 
               bindscrolltoupper="upper" 

@@ -5,21 +5,33 @@ Page({
   data: {
     user: '',
     newLetterNumber: 0,
-    serviceId: ''
+    serviceId: '',
+    showNormal:false
   },
   onLoad: function () {
+    wx.hideTabBar();
     let userStorage = wx.getStorageSync('user');
     if (userStorage){
       this.setData({
         user: userStorage
       })
     }
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
     this.getPersonalInfo();
     this.newLetterCount();
     this.getService();
   },
   onShow: function () {
     this.newLetterCount();
+  },
+  onReady: function () {
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
   },
   /**
    * 获取客服id

@@ -17,11 +17,16 @@ Page({
     filter:'',
     newMessage: false,
     newMessageNumber: 0,
+    showNormal: false
   },
 
   onLoad: function () {
     wx.showLoading({
       title: '加载中...',
+    });
+    wx.hideTabBar();
+    this.setData({
+      showNormal: app.globalData.showNormal
     });
     this.helps();
     this.getProfile();
@@ -30,6 +35,14 @@ Page({
     this.setData({
       currentTime: util.formatTime(new Date())
     });
+  },
+
+  onReady: function () {
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
   },
 
   onShow:function(){

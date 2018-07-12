@@ -16,10 +16,13 @@ Page({
     name: '',
     profile:null,
     title:'',
-    salary:0
+    salary:0,
+    showNormal: false
   },
   onLoad: function () {
-    
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
   },  
   onShow: function () {
     //设置七牛上传token

@@ -3,7 +3,6 @@ App({
   onLaunch: function () {
 
     wx.hideTabBar();
-
     this.globalData.appKey = '04rNbDIGuBoYcsQn';
 
     //设置基本接口全局变量
@@ -172,7 +171,7 @@ App({
   },
 
   /**
-   * 获取小程序配置
+   * 获取用户最新信息
    */
   getConfig:function(callback){
     wx.request({

@@ -16,11 +16,30 @@ Page({
     initPageNumber: 1,
     imageArray: [],
     baseImageUrl: app.globalData.imageUrl,
-    canChat:true
+    canChat:true,
+    showNormal: false
+  },
+  onShow:function(){
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
+  },
+  onReady: function () {
+    wx.hideTabBar();
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
   },
   onLoad: function (option) {
-    
+    wx.hideTabBar();
     let cantChat = 0
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
 
     let friendId = option.friend_id;
     cantChat = option.can_chat;

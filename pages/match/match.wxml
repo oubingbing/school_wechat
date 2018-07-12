@@ -1,4 +1,4 @@
-<view class="match-container">
+<view class="match-container" wx:if="{{showNormal}}">
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>

@@ -11,10 +11,13 @@ Page({
     private: false,
     textContent: '',
     name: '',
-    phone:''
+    phone:'',
+    showNormal: false
   },
   onLoad: function () {
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
   },
   onShow: function () {
     //设置七牛上传token

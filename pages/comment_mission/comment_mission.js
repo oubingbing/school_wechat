@@ -13,12 +13,16 @@ Page({
     attachments: [],
     textContent: '',
     objId: '',
-    score:1
+    score:1,
+    showNormal: false
   },
   onLoad: function (options) {
     let id = options.id;
     this.setData({
       objId: id
+    });
+    this.setData({
+      showNormal: app.globalData.showNormal
     });
 
   },

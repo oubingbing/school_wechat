@@ -3,7 +3,6 @@ App({
   onLaunch: function () {
 
     wx.hideTabBar();
-
     this.globalData.appKey = '04rNbDIGuBoYcsQn';
 
     //设置基本接口全局变量

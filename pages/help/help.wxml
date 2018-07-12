@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" wx:if="{{showNormal}}">
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
@@ -188,7 +188,7 @@
   </view>
 </view>
 
-<view class='post-container'>
+<view class='post-container' wx:if="{{showNormal}}">
   <view class='post'>
     <image src='/image/post.png' bindtap='post'></image>
   </view>

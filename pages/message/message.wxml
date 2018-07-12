@@ -1,4 +1,4 @@
-<view class="message-container">
+<view class="message-container" wx:if="{{showNormal}}">
   <view class='message-content'>
 
         <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">

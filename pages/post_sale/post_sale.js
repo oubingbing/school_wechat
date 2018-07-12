@@ -15,10 +15,13 @@ Page({
     expectation: '',
     introduce: false,
     attachments: [],
-    uploadToken: ''
+    uploadToken: '',
+    showNormal: false
   },
   onLoad: function () {
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
   },
   onShow:function(){
 

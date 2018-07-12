@@ -7,10 +7,13 @@ Page({
     me: '',
     ta: '',
     content:'',
-    privation:false
+    privation:false,
+    showNormal:false
   },
   onLoad: function () {
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
   },
   getMe: function (event) {
     let value = event.detail.value;

@@ -1,4 +1,4 @@
-<view class="friend-container">
+<view class="friend-container" wx:if="{{showNormal}}">
 
   <view class="container-content">
 

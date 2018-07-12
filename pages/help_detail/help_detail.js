@@ -17,7 +17,8 @@ Page({
     baseImageUrl: app.globalData.imageUrl,
     showGeMoreLoadin:false,
     missionStatus:'',
-    test:0
+    test:0,
+    showNormal: false
   },
 
   onLoad: function (option) {
@@ -26,6 +27,9 @@ Page({
       id: option.id,
       job:''
     })
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
 
     if(option.role == 'boss'){
       this.setData({

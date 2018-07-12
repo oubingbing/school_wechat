@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container" bindtouchmove="hiddenComment">
+<view class="container" bindtouchmove="hiddenComment" wx:if="{{showNormal}}">
 
   <view class="container-wall">
 

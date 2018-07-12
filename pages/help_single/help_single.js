@@ -17,11 +17,15 @@ Page({
     pageSize: 10,
     pageNumber: 1,
     initPageNumber: 1,
+    showNormal: false
   },
 
   onLoad: function (option) {
     wx.showLoading({
       title: '加载中...',
+    });
+    this.setData({
+      showNormal: app.globalData.showNormal
     });
 
     if (option.id){

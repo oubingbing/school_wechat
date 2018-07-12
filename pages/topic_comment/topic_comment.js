@@ -12,14 +12,17 @@ Page({
     uploadToken: null,
     attachments: [],
     textContent: '',
-    objId:''
+    objId:'',
+    showNormal: false
   },
   onLoad: function (options) {
     let id = options.id;
     this.setData({
       objId: id
     });
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
   },
   onShow: function () {
     //设置七牛上传token

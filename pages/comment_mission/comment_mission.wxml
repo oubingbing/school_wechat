@@ -1,4 +1,4 @@
-<view class='post-container container'>
+<view class='post-container container' wx:if="{{showNormal}}">
   <view class='form'>
 
     <view class='input'>

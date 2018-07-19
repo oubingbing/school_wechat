@@ -14,12 +14,17 @@ Page({
     notDataTips: false,
     newMessage: false,
     newMessageNumber: 0,
-    select: 1
+    select: 1,
+    showNormal:false
   },
   onLoad: function () {
-
+    wx.hideTabBar();
     wx.showLoading({
       title: '加载中',
+    });
+
+    this.setData({
+      showNormal: app.globalData.showNormal
     });
 
     this.getList();
@@ -31,6 +36,13 @@ Page({
     console.log('当前时间：' + this.data.currentTime);
 
 
+  },
+  onReady:function(){
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
   },
   onShow:function(){
 

@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" wx:if="{{showNormal}}">
   <view class='content'>
     <view class='avatar' wx:if="{{showAvatar}}">
       <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
@@ -75,10 +75,10 @@
   </view>
 </view>
 
-<view class='button-container'>
+<view class='button-container' wx:if="{{showNormal}}">
   <button bindtap='submit'> 提交 </button>
 </view>
 
-  <view class='tips'>
+  <view class='tips' wx:if="{{showNormal}}">
     <view class='warming'>温馨提示：悬赏人和赏金猎人会根据您的信息决定是否跟您合作，为了保证悬赏人和悬赏猎人的相关权益，请您填写真实的个人信息，除头像和昵称外，您的个人信息只会显示给悬赏人或者赏金猎人，其他无关的人是看不到您的个人资料的。</view>
   </view>

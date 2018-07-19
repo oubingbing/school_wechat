@@ -4,12 +4,15 @@ const app = getApp();
 Page({
   data: {
     matchs: [],
-    id:''
+    id:'',
+    showNormal: false
   },
   onLoad: function (option) {
 
     let objId = option.id;
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
     this.setData({
       id:objId
     })

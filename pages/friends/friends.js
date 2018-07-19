@@ -5,12 +5,24 @@ Page({
   data: {
     friendId: '',
     friends: [],
+    showNormal: false
   },
   onLoad: function (option) {
     this.friends();
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
   },
   onShow(){
     this.friends();
+  },
+  onReady: function () {
+    wx.hideTabBar();
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
   },
   /**
    * 好友列表

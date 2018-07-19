@@ -12,14 +12,17 @@ Page({
     objId:'',
     objType:'',
     refCommentId:'',
-    attachments:''
+    attachments:'',
+    showNormal: false
   },
   onLoad: function (option) {
 
     console.log(option);
 
     let objId = option.id;
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
     app.http('get', `/sale_friend/${objId}`, {}, res => {
       
       console.log(res);

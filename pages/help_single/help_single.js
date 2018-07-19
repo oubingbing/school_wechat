@@ -6,31 +6,91 @@ Page({
     pageSize: 10,
     pageNumber: 1,
     initPageNumber: 1,
-    job: '',
+    jobs: [],
     id:'',
     baseImageUrl: app.globalData.imageUrl,
     showGeMoreLoadin: false,
     newMessageNumber: 0,
     currentTime: '',
     profile: null,
-    filter: ''
+    filter: '',
+    pageSize: 10,
+    pageNumber: 1,
+    initPageNumber: 1,
+    showNormal: false
   },
 
   onLoad: function (option) {
     wx.showLoading({
       title: '加载中...',
     });
-
     this.setData({
-      id: option.id
+      showNormal: app.globalData.showNormal
     });
 
-    this.partTimeJob();
+    if (option.id){
+      this.setData({
+        id: option.id
+      });
+      this.partTimeJob();
+    }else{
+      this.helps();
+    }
+
     this.getProfile();
   },
 
   onShow: function () {
     this.getProfile();
+  },
+
+  /**
+  * 上拉加载更多
+  */
+  onReachBottom: function () {
+    let _this = this;
+    this.setData({
+      showGeMoreLoadin: true
+    });
+    this.helps();
+  },
+
+
+  /**
+   * 获取帖子
+   */
+  helps: function () {
+
+    let order_by = 'updated_at';
+    let sort_by = 'desc';
+    let objType = 6;
+    let filter = '';
+
+    if (objType == 0 || objType == 1) {
+      order_by = 'created_at';
+    } else {
+      order_by = 'updated_at';
+    }
+
+    let _this = this;
+    app.http('GET',
+      `/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
+        wx.hideLoading();
+        console.log(res);
+
+        let jobs = _this.data.jobs;
+
+        let data = res.data.data.page_data;
+        data.map(item => {
+          jobs.push(item);
+        })
+
+        _this.setData({
+          jobs: jobs,
+          pageNumber: _this.data.pageNumber + 1,
+          showGeMoreLoadin: false
+        })
+      });
   },
 
   /**
@@ -45,13 +105,24 @@ Page({
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
-        let job = res.data.data;
+        let jobs = _this.data.jobs;
+        jobs.push(res.data.data);
         _this.setData({
-          job: job
+          jobs: jobs
         })
 
       }
     });
+  },
+
+  /**
+  * 下拉刷新，获取最新的贴子
+  */
+  onPullDownRefresh: function () {
+
+    console.log('当前时间：' + this.data.currentTime);
+
+    this.newHelps();
   },
 
   /**

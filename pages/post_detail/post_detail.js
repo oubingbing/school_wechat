@@ -29,13 +29,16 @@ Page({
     newMessage: false,
     newMessageNumber: 0,
     select: 1,
-    id:''
+    id:'',
+    showNormal: false
   },
 
   onLoad: function (option) {
 
     wx.showLoading()
-
+    this.setData({
+      showNormal: app.globalData.showNormal
+    });
     let objId = option.id;
 
     this.setData({

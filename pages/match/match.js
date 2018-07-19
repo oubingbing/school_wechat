@@ -11,7 +11,8 @@ Page({
     pageNumber: 1,
     initPageNumber: 1,
     showGeMoreLoadin:false,
-    currentTime:''
+    currentTime:'',
+    showNormal:false
   },
   onLoad: function () {
 
@@ -26,6 +27,14 @@ Page({
     });
 
     this.getList();
+  },
+  onReady: function () {
+    wx.hideTabBar();
+    if (this.data.showNormal) {
+      wx.showTabBar();
+    } else {
+      wx.hideTabBar();
+    }
   },
   onShow(){
 

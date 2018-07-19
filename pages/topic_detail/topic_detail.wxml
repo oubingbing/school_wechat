@@ -1,4 +1,4 @@
-<view class='topic-container'>
+<view class='topic-container' wx:if="{{showNormal}}">
   <view class='topic' bindtouchmove="hiddenComment">
     <view class='topic-content'>
       <view class='content'>{{topicContent}}</view>

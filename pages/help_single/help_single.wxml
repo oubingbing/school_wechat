@@ -1,30 +1,18 @@
-<view class="container">
+<view class="container" wx:if="{{showNormal}}">
 
   <view class='content content-container'>
 
-    <view class='search-container' wx:if="{{showSearch}}">
-        <view class='search'>
-          <input type='text' 
-                class='search-input' 
-                placeholder="标题 | 内容 | 赏金"         
-                bindinput='getFilter'/>
-          <view class='search-image' bindtap='search'>
-              <image mode="" src='/image/search.png'></image>
-          </view>
-        </view>
-    </view>
-
-    <view class='content-item'>
+    <view class='content-item' wx:for="{{jobs}}" wx:key="{{jobs}}">
       <view class='header'>
         <view class='header-content'>
           <view class='avatar'>
-          <image src='{{job.user.avatar}}'></image>
+          <image src='{{item.user.avatar}}'></image>
         </view>
          <view class='nickname'>
-          <view class='name'>{{job.user.nickname}}</view>
+          <view class='name'>{{item.user.nickname}}</view>
           <view class='time'>
-            <view>{{job.created_at}} </view>
-            <view class='delete' bindtap='deleteHelp' wx:if="{{job.can_delete}}" data-objid="{{job.id}}">删除</view>
+            <view>{{item.created_at}} </view>
+            <view class='delete' bindtap='deleteHelp' wx:if="{{item.can_delete}}" data-objid="{{item.id}}">删除</view>
           </view>
          </view>
         </view>
@@ -33,30 +21,30 @@
       <view class='content'>
         <view class='title'>
           <view class='title-container'>
-            <view class='label'><view class='label-item'>{{job.title}}</view></view>
+            <view class='label'><view class='label-item'>{{item.title}}</view></view>
           </view>
         </view>
         <view class="mission">
           <view class='description'>
-            <view>{{job.content}}</view>
+            <view>{{item.content}}</view>
           </view>
           <view class='image-container'>
             <view class="single-image" 
-                wx:if='{{job.attachments.length==1}}'>
+                wx:if='{{item.attachments.length==1}}'>
             <image mode="aspectFill" 
                    class="image-item" 
-                   wx:for="{{job.attachments}}" 
-                   wx:key="{{job.attachments}}"
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
                    src="{{baseImageUrl+item}}"
                    bindtap='previewImage'
                    id="{{baseImageUrl+item}}"></image>
           </view>
           <view class='more-image' 
-                wx:if='{{job.attachments.length>1}}'>
+                wx:if='{{item.attachments.length>1}}'>
             <image mode="aspectFill" 
                    class="image-item" 
-                   wx:for="{{job.attachments}}" 
-                   wx:key="{{job.attachments}}"
+                   wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
                    src="{{baseImageUrl+item}}" 
                    bindtap='previewImage'
                    id="{{baseImageUrl+item}}"></image>
@@ -66,12 +54,12 @@
         <view class='salary'>
           <view class='container'>
             <view class='label'>赏金：</view>
-            <view class='money'>{{job.salary}}元</view>
+            <view class='money'>{{item.salary}}元</view>
           </view>
         </view>
       </view>
       <view class='footer'>
-        <form class='order form' bindsubmit='order' data-obj="{{job.id}}" 
+        <form class='order form' bindsubmit='order' data-obj="{{item.id}}" 
               wx:if="{{item.status == 1 && item.role != 'boss'}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -81,11 +69,11 @@
             </view>
         </form>
         <view class='order' 
-              wx:if="{{job.status == 1 && job.role == 'boss'}}">
+              wx:if="{{item.status == 1 && item.role == 'boss'}}">
           <image src='/image/shang.png'></image>
           <view>悬赏中</view>
         </view>
-        <form class='order form' bindsubmit='stop' data-obj="{{job.id}}" wx:if="{{job.can_stop}}" report-submit="true">
+        <form class='order form' bindsubmit='stop' data-obj="{{item.id}}" wx:if="{{item.can_stop}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
                 <image src='/image/stop.png'></image>
@@ -96,10 +84,10 @@
 
         <form class='order form' 
               bindsubmit='detail' 
-              data-obj="{{job.id}}"
-              data-role='{{job.role}}' 
-              data-entry='{{job.can_entry}}' 
-              wx:if="{{job.status == 2}}" report-submit="true">
+              data-obj="{{item.id}}"
+              data-role='{{item.role}}' 
+              data-entry='{{item.can_entry}}' 
+              wx:if="{{item.status == 2}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
                 <image src='/image/working.png'></image>
@@ -110,7 +98,7 @@
 
         <form class='order form' 
               bindsubmit='hadStop' 
-              wx:if="{{job.status == 3}}"
+              wx:if="{{item.status == 3}}"
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -122,10 +110,10 @@
 
         <form class='order form' 
               bindsubmit='detail' 
-              data-obj="{{job.id}}"
-              data-role='{{job.role}}' 
-              data-entry='{{job.can_entry}}' 
-              wx:if="{{job.status == 4}}"
+              data-obj="{{item.id}}"
+              data-role='{{item.role}}' 
+              data-entry='{{item.can_entry}}' 
+              wx:if="{{item.status == 4}}"
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -137,7 +125,7 @@
 
         <form class='order form' 
               bindsubmit='letter' 
-              data-obj='{{job.contact_id}}'
+              data-obj='{{item.contact_id}}'
               report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -152,3 +140,10 @@
 
   </view>
 </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>

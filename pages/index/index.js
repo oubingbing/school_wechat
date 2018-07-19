@@ -983,8 +983,6 @@ Page({
     let _this = this;
     app.http('get', `/topic`, {}, function (res) {
 
-      console.log("话题：" + JSON.stringify(res.data.data));
-
       let topicShow = res.data.data != null ?true:false;
 
       _this.setData({ topic: res.data.data, showTopic: topicShow});

@@ -197,18 +197,6 @@
 
 <view class='audit-container' wx:if="{{showAudit}}">
 
-  <view class='search-container'>
-      <view class='search' bindtap='searchAudit'>
-        <input type='text' 
-               class='search-input' 
-               placeholder="搜索名字"         
-               bindinput='getCollegeName'/>
-        <view class='search-image' bindtap='searchCollege'>
-            <image mode="" src='/image/search.png'></image>
-        </view>
-      </view>
-  </view>
-
   <view class='audit-item' wx:for="{{jobs}}" wx:key="{{jobs}}">
     <view class='say-name'><view class='love-object'>{{item.title}}</view></view>
     <view class='post-user'>悬赏人#{{item.user.nickname}}#</view>

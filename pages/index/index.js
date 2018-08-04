@@ -40,8 +40,8 @@ Page({
     select: 1,
     animationData: {},
     commentValue: '',
-    showNormal: app.globalData.showNormal,
-    showAudit: app.globalData.showAudit,
+    showNormal: false,
+    showAudit: false,
     topic:'',
     showTopic:false,
 
@@ -87,6 +87,24 @@ Page({
       }
     })
 
+    app.getConfig(function (res) {
+      if(res == 2){
+        that.setData({
+          showNormal: true,
+          showAudit: false,
+        })
+        app.globalData.showNormal = true;
+        app.globalData.showAudit = false;
+      }else{
+        that.setData({
+          showNormal: false,
+          showAudit: true,
+        })
+        app.globalData.showNormal = false;
+        app.globalData.showAudit = true;
+      }
+    })
+
     //设置当前时间
     this.setData({
       currentTime: util.formatTime(new Date())
@@ -103,35 +121,25 @@ Page({
   },
 
   onReady:function(){
-    wx.hideTabBar();
-    app.getConfig(config => {
-      if (config == 3) {
-        app.globalData.showNormal = false;
-        app.globalData.showAudit = true;
-        wx.hideTabBar();
-      } else {
-        app.globalData.showNormal = true;
-        app.globalData.showAudit = false;
-        wx.showTabBar();
-      }
 
-      this.setData({
-        showNormal: app.globalData.showNormal,
-        showAudit: app.globalData.showAudit
-      });
-    });
   },
   
   onShow: function (option) {
-    if (app.globalData.showNormal){
-      wx.showTabBar();
-    }else{
-      wx.hideTabBar();
-    }
-
-    console.log('学校是否变了:' + app.globalData.changeSchool);
-
     let _this = this;
+
+    app.getConfig(function (res) {
+      if (res == 2) {
+        _this.setData({
+          showNormal: true,
+          showAudit: false,
+        })
+      } else {
+        _this.setData({
+          showNormal: false,
+          showAudit: true,
+        })
+      }
+    })
 
     if (app.globalData.changeSchoolPost) {
       //切换了学校

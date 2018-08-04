@@ -2,7 +2,6 @@
 App({
   onLaunch: function () {
 
-    wx.hideTabBar();
     this.globalData.appKey = '04rNbDIGuBoYcsQn';
 
     //设置基本接口全局变量
@@ -15,7 +14,7 @@ App({
     this.globalData.bgIimage = this.globalData.imageUrl+'30269a739a66831daa31ec93d28318af.jpg';
 
     this.globalData.showNormal=false;
-    this.globalData.showAudit=false;
+    this.globalData.showAudit=true;
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -185,12 +184,7 @@ App({
       },
       success: function (res) {
 
-        console.log(res.data);
         var config = res.data.data
-
-        if(config != 3){
-          wx.showTabBar();
-        }
 
         callback(config);
       },

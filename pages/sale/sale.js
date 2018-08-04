@@ -15,18 +15,28 @@ Page({
     newMessage: false,
     newMessageNumber: 0,
     select: 1,
-    showNormal:false
+    showNormal: false,
+    showAudit: false
   },
   onLoad: function () {
-    wx.hideTabBar();
     wx.showLoading({
       title: '加载中',
     });
 
-    this.setData({
-      showNormal: app.globalData.showNormal
-    });
-
+    let that = this;
+    app.getConfig(function (res) {
+      if (res == 2) {
+        that.setData({
+          showNormal: true,
+          showAudit: false,
+        })
+      } else {
+        that.setData({
+          showNormal: false,
+          showAudit: true,
+        })
+      }
+    })
     this.getList();
 
     //设置当前时间
@@ -38,13 +48,24 @@ Page({
 
   },
   onReady:function(){
-    if (this.data.showNormal) {
-      wx.showTabBar();
-    } else {
-      wx.hideTabBar();
-    }
+
   },
   onShow:function(){
+
+    let that = this;
+    app.getConfig(function (res) {
+      if (res == 2) {
+        that.setData({
+          showNormal: true,
+          showAudit: false,
+        })
+      } else {
+        that.setData({
+          showNormal: false,
+          showAudit: true,
+        })
+      }
+    })
 
     console.log('当前时间：' + this.data.currentTime);
 

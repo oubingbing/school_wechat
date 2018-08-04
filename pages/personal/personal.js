@@ -6,32 +6,52 @@ Page({
     user: '',
     newLetterNumber: 0,
     serviceId: '',
-    showNormal:false
+    showNormal: false,
+    showAudit: false
   },
   onLoad: function () {
-    wx.hideTabBar();
     let userStorage = wx.getStorageSync('user');
     if (userStorage){
       this.setData({
         user: userStorage
       })
     }
-    this.setData({
-      showNormal: app.globalData.showNormal
-    });
+    let that = this;
+    app.getConfig(function (res) {
+      if (res == 2) {
+        that.setData({
+          showNormal: true,
+          showAudit: false,
+        })
+      } else {
+        that.setData({
+          showNormal: false,
+          showAudit: true,
+        })
+      }
+    })
     this.getPersonalInfo();
     this.newLetterCount();
     this.getService();
   },
   onShow: function () {
+    let that = this;
+    app.getConfig(function (res) {
+      if (res == 2) {
+        that.setData({
+          showNormal: true,
+          showAudit: false,
+        })
+      } else {
+        that.setData({
+          showNormal: false,
+          showAudit: true,
+        })
+      }
+    })
     this.newLetterCount();
   },
   onReady: function () {
-    if (this.data.showNormal) {
-      wx.showTabBar();
-    } else {
-      wx.hideTabBar();
-    }
   },
   /**
    * 获取客服id

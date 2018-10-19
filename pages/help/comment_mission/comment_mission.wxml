@@ -1,0 +1,50 @@
+<view class='post-container container'>
+  <view class='form'>
+
+    <view class='input'>
+      <textarea 
+        maxlength="1024"
+        class='textarea-content'
+        placeholder="任务完成的十分出色..."    
+        bindinput="getTextContent"/>
+    </view>
+    <view class='image-form'>
+      <view class='select-image'>
+        <view class='image-item' 
+              wx:for="{{imageArray}}" 
+              wx:key='{{imageArray}}'>
+            <image class='upload-image' 
+            bindtap='previewImage' 
+            id='{{item}}' 
+            mode='aspectFill' 
+            src='{{item}}'></image>
+            <image src='/image/delete.png' 
+                   id='{{index}}' 
+                   wx:key='{{imageArray}}' 
+                   bindtap='removeImage' 
+                   class='remove-image'></image>
+        </view>
+        <view>
+          <image class='upload-image' 
+                 bindtap='selectImage' 
+                 src='/image/select-image.png'></image>
+        </view>
+      </view>
+    </view>  
+  </view>
+
+  <view class='score-container'>
+    <view class='score'>
+      <view class='{{score==1?"score-item-color":"score-item"}}' bindtap='score' data-score='1'>好评</view>
+      <view class='{{score==2?"score-item-color":"score-item"}}' bindtap='score' data-score='2'>中评</view>
+      <view class='{{score==3?"score-item-color":"score-item"}}' bindtap='score' data-score='3'>差评</view>
+    </view>
+  </view>
+
+  <view class='button-container'>
+    <form class='button-container' bindsubmit='post' report-submit="true">
+      <button formType="submit" class='button'> 评论 </button>
+    </form>
+  </view>
+
+</view>

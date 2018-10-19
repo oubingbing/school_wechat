@@ -1,0 +1,56 @@
+<view class="match-container">
+
+  <view class='match-item' wx:for="{{matchs}}" wx:key="{{matchs}}">
+      <view class='header'>
+        <view class="header-left">
+          <image src='{{item.user.avatar}}' wx:if="{{item.private == 0}}"></image>
+          <image src="/image/boy.png"
+                   wx:if="{{item.private == 1}}"></image>
+          <view>
+            <view wx:if="{{item.private == 0}}">{{item.user.nickname}}</view>
+            <view wx:if="{{item.private == 1}}">匿名の同学</view>
+            <view class="created-at">
+              <view>{{item.created_at}}</view>
+              <view class="delete" bindtap='delete' data-obj="{{item.id}}">删除</view>
+            </view>
+          </view>
+          </view>
+           <view class='follow' 
+                bindtap="follow" 
+                wx:if="{{!item.follow}}"
+                data-obj="{{item.id}}">关注</view>
+          <view class='had-follow' 
+                wx:if="{{item.follow}}"
+                bindtap="cancelFolllow" 
+                data-obj="{{item.id}}">已关注</view>
+      </view>
+      <view class='content'>
+        <view class='content-left content-item'>
+          <image src='/image/shoot.png'></image>
+          <view>{{item.user_name}}</view>
+        </view>
+        <view class='content-middle content-item'>
+          <image src='/image/mylove.png'></image>
+          <view>暗恋</view>
+        </view>
+        <view class='content-right content-item'>
+          <image src='/image/givelove.png'></image>
+          <view>{{item.match_name}}</view>
+        </view>
+      </view>
+      <view class='comment-container'>
+        <view class='zan' bindtap='praise' data-obj="{{item.id}}">
+          <image src='/image/make_praise.png'></image>
+          <view>{{item.praise_number}}</view>
+        </view>
+        <view class='comment'>
+          <image src='/image/letter.png'></image>
+        </view>
+      </view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{notDataTips}}">
+    <view>我是一只有底线的神~_~</view>
+  </view>
+
+</view>

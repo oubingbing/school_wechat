@@ -5,9 +5,7 @@ Page({
   data: {
     user: '',
     newLetterNumber: 0,
-    serviceId: '',
-    showNormal: false,
-    showAudit: false
+    serviceId: ''
   },
   onLoad: function () {
     let userStorage = wx.getStorageSync('user');
@@ -16,39 +14,11 @@ Page({
         user: userStorage
       })
     }
-    let that = this;
-    app.getConfig(function (res) {
-      if (res == 2) {
-        that.setData({
-          showNormal: true,
-          showAudit: false,
-        })
-      } else {
-        that.setData({
-          showNormal: false,
-          showAudit: true,
-        })
-      }
-    })
     this.getPersonalInfo();
     this.newLetterCount();
     this.getService();
   },
   onShow: function () {
-    let that = this;
-    app.getConfig(function (res) {
-      if (res == 2) {
-        that.setData({
-          showNormal: true,
-          showAudit: false,
-        })
-      } else {
-        that.setData({
-          showNormal: false,
-          showAudit: true,
-        })
-      }
-    })
     this.newLetterCount();
   },
   onReady: function () {
@@ -68,12 +38,9 @@ Page({
    * 获取个人信息
    */
   getPersonalInfo() {
-
-    let _this = this;
-
     app.http('get', `/personal_info`, {}, res => {
       console.log(res.data.data);
-      _this.setData({
+      this.setData({
         user: res.data.data
       })
       wx.setStorageSync('user', res.data.data);
@@ -83,12 +50,10 @@ Page({
    * 获取未读私信数量
    */
   newLetterCount: function () {
-    let _this = this;
-
     app.http('get', `/new_messages`, {}, res => {
       console.log(res.data.data);
       if (res.data.data != null) {
-        _this.setData({
+        this.setData({
           newLetterNumber: res.data.data
         })
       }
@@ -99,7 +64,7 @@ Page({
    */
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/message/message?type=0&new_message=0'
+      url: '/pages/personal/message/message?type=0&new_message=0'
     })
   },
   /**
@@ -107,7 +72,7 @@ Page({
    */
   openLetter: function () {
     wx.navigateTo({
-      url: '/pages/friends/friends'
+      url: '/pages/personal/friends/friends'
     })
   },
   /**
@@ -117,7 +82,7 @@ Page({
     let id = this.data.serviceId;
     console.log('客服id' + id);
     wx.navigateTo({
-      url: '/pages/letter/letter?friend_id=' + id
+      url: '/pages/personal/letter/letter?friend_id=' + id
     })
   },
   /**
@@ -125,7 +90,7 @@ Page({
    */
   opendPostList: function () {
     wx.navigateTo({
-      url: '/pages/post_list/post_list'
+      url: '/pages/personal/post_list/post_list'
     })
   },
   /**
@@ -133,7 +98,7 @@ Page({
    */
   openSaleList: function () {
     wx.navigateTo({
-      url: '/pages/sale_list/sale_list'
+      url: '/pages/personal/sale_list/sale_list'
     })
   },
   /**
@@ -141,12 +106,12 @@ Page({
    */
   openMatchList: function () {
     wx.navigateTo({
-      url: '/pages/help_single/help_single'
+      url: '/pages/help/help_single/help_single'
     })
   },
   updateInfo: function () {
     wx.navigateTo({
-      url: '/pages/set_profile/set_profile'
+      url: '/pages/personal/set_profile/set_profile'
     })
   }
 })

@@ -1,0 +1,19 @@
+<view class="friend-container">
+
+  <view class="container-content">
+
+    <view class="content-item" 
+          wx:for="{{friends}}" 
+          wx:key="{{friends}}"
+          data-obj="{{item.friend_id}}"
+          bindtap='letter'>
+      <view class="user-info">
+          <image src="{{item.friend.avatar}}"></image>
+        <view class="user-name">{{item.friend.nickname}}</view>
+      </view>
+      <view class="message" wx:if="{{item.newMessageNumber > 0}}">{{item.newMessageNumber}}</view>
+    </view> 
+
+  </view>
+
+</view>

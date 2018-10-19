@@ -1,0 +1,74 @@
+<view class="message-container">
+  <view class='message-content'>
+
+        <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
+          <view class='item' 
+                bindtap="opendDetail" 
+                data-parent="{{item.parentObj}}"
+                data-pobj="{{item.parentObj.obj_id}}"
+                data-type="{{item.obj.obj_type}}"
+                data-chat="{{item.obj_type}}"
+                data-uid="{{item.from_id}}"
+                data-objid="{{item.obj_id}}"
+                data-id="{{item.obj.obj_id}}">
+            <view class='left'>
+              <view>
+                <image src='{{item.from_user.avatar}}'></image>
+                </view>
+            </view>
+            <view class='content'>
+              <view class='username'>
+                {{item.from_user.nickname}}
+              </view>
+              <view class='message' 
+                    wx:if="{{item.action_type == 1 && item.parentObj != null}}">
+                    {{item.obj.content}}</view>
+                    
+              <view class='message' 
+                    wx:if="{{item.obj_type == 6}}">
+                    {{item.content}}</view>
+
+              <view class='message' 
+                    wx:if="{{item.obj_type == 7}}">
+                    {{item.content}}</view>
+
+              <view class='delete-message' 
+                    wx:if="{{item.parentObj == null && item.obj_type != 6}}">
+                    该消息已被删除
+              </view>
+                    
+              <view class='praise' 
+              wx:if="{{item.action_type == 2 && item.parentObj != null}}">
+                <image src='/image/make_praise.png'></image>
+              </view>
+              <view class='created_at'>{{item.created_at}}</view>
+            </view>
+            <view class='right'>
+              <view class='image' 
+                    wx:if="{{item.parentObj.attachments.length != 0}}">
+                    <image mode='aspectFill' 
+                    src='{{baseImageUrl+item.parentObj.attachments[0]}}'></image>
+                    </view>
+              <view class='content' 
+                    wx:if="{{item.parentObj.attachments.length == 0}}">
+                      {{item.parentObj.content}} 
+                    </view>
+                  
+            </view>
+          </view>
+      </view>
+
+  </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>
+
+  <view class='no-more-data' wx-if="{{notDataTips}}">
+    <view>我是一只有底线的神~_~</view>
+  </view>
+
+</view>

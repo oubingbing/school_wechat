@@ -1,0 +1,66 @@
+<view class="post-sale-container">
+  <view class='post-container'>
+    <view class='post-header'>
+    <view class='left'>
+      <view>
+        <image src='/image/select-image.png' 
+                wx:if="{{!hiddenSelectImage}}"
+                bindtap='selectImage'></image>
+        <image src="{{userImage}}" 
+               wx:if="{{hiddenSelectImage}}" 
+               mode='aspectFill'
+               bindtap='previewImage' 
+               id='{{userImage}}'></image>
+        <image src='/image/delete.png' 
+              bindtap='removeImage' 
+              class='remove-image' 
+              wx:if="{{hiddenSelectImage}}"></image>
+      </view>
+    </view>
+    <view class='right'>
+      <view class='user-name'>
+        <input placeholder="名字" 
+               bindinput='getName' 
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
+      </view>
+      <view class='user-name right-item'>
+        <picker bindchange="bindPickerChange" 
+                value="{{gender}}" 
+                range="{{array}}">
+                <view>
+                  <input placeholder="性别" 
+                          class='right-item' 
+                          value="{{gender}}"
+                          placeholder-style="color:darkgray"/>  
+                </view>
+        </picker>
+      </view>
+      <view class='user-name'>
+        <input placeholder="专业" 
+               bindinput='getMajor'
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
+      </view>
+    </view>
+  </view>
+  <view class='post-content'>
+    <view><input placeholder="喜欢怎样的ta呢..." class='like' bindinput="getLike"/></view>
+    <view>
+      <textarea placeholder="介绍一下舍友吧" 
+                class='introduce'
+                maxlength="1024" 
+                bindinput='getContent'/>
+    </view>
+  </view>
+  </view>
+
+</view>
+
+  <view class='button-container' wx:if="{{showNormal}}">
+    <button bindtap='post'> 发表 </button>
+  </view>
+
+  <view class='tips' wx:if="{{showNormal}}">
+    <view class='warming'>温馨提示：出售您亲爱的舍友前请征得本人同意，否则后果自负。</view>
+  </view>

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='all-container' wx:if="{{showNormal}}">
+<view class='all-container'>
   <view class="container" bindtouchmove="hiddenComment">
 
   <view class='nav-bar-container'>
@@ -270,7 +270,7 @@
 
 </view>
 
-<view class='post-container' wx:if="{{showNormal}}">
+<view class='post-container'>
   <view class='post'>
     <image src='/image/post.png' bindtap='post'></image>
   </view>
@@ -288,41 +288,19 @@
 </view>
 </view>
 
-    <view wx:if="{{show_auth}}" class='auth-container'>
-      <view class='auth-wall'>
-        <view class='auth-tips'>
-          <image src='/image/wechat-logo.png'></image>
-          <view>授权您的公开信息(昵称和头像)</view>
-        </view>
-        <button open-type="getUserInfo" 
+<view wx:if="{{show_auth}}" class='auth-container'>
+  <view class='auth-wall'>
+    <view class='auth-tips'>
+      <image src='/image/wechat-logo.png'></image>
+      <view>授权您的公开信息(昵称和头像)</view>
+    </view>
+    <button open-type="getUserInfo" 
             bindgetuserinfo="getAuthUserInfo" 
             class='auth-button'>
-          <view>授权登录</view>
-        </button>
-      </view>
-    </view>
-
-
-
-<view class='audit-container' wx:if="{{showAudit}}">
-
-  <view class='search-container'>
-      <view class='search' bindtap='searchAudit'>
-        <input type='text' 
-               class='search-input' 
-               placeholder="搜索名字"         
-               bindinput='getCollegeName'/>
-        <view class='search-image' bindtap='searchCollege'>
-            <image mode="" src='/image/search.png'></image>
-        </view>
-      </view>
-  </view>
-
-  <view class='audit-item' wx:for="{{posts}}" wx:key="{{posts}}">
-    <view class='say-name'><view class='love-object'>{{item.topic == '无'? 'ta':item.topic}}</view></view>
-    <view class='post-user'>投稿人#{{item.poster.nickname}}#</view>
-    <view class='content'>表白@ {{item.content}}</view>
+      <view>授权登录</view>
+    </button>
   </view>
 </view>
+
 
 

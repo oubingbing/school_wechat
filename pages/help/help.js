@@ -16,33 +16,13 @@ Page({
     showSearch:true,
     filter:'',
     newMessage: false,
-    newMessageNumber: 0,
-    showNormal: false,
-    showAudit: false
+    newMessageNumber: 0
   },
 
   onLoad: function () {
     wx.showLoading({
       title: '加载中...',
     });
-    this.setData({
-      showNormal: app.globalData.showNormal
-    });
-
-    let that = this;
-    app.getConfig(function (res) {
-      if (res == 2) {
-        that.setData({
-          showNormal: true,
-          showAudit: false,
-        })
-      } else {
-        that.setData({
-          showNormal: false,
-          showAudit: true,
-        })
-      }
-    })
 
     this.helps();
     this.getProfile();
@@ -92,9 +72,6 @@ Page({
   * 下拉刷新，获取最新的贴子
   */
   onPullDownRefresh: function () {
-
-    console.log('当前时间：' + this.data.currentTime);
-
     this.newHelps();
   },
 
@@ -102,13 +79,11 @@ Page({
   * 跳转到私信
   */
   letter: function (e) {
-
     let formId = e.detail.formId;
     app.collectFormId(formId);
-
     let id = e.currentTarget.dataset.obj;
     wx.navigateTo({
-      url: '/pages/letter/letter?friend_id=' + id + '&can_chat=0'
+      url: '/pages/personal/letter/letter?friend_id=' + id + '&can_chat=0'
     })
   },
 
@@ -116,17 +91,15 @@ Page({
    * 详情
    */
   detail:function(e){
-
     let id = e.currentTarget.dataset.obj;
     let entry = e.currentTarget.dataset.entry;
     let role = e.currentTarget.dataset.role;
-
     let formId = e.detail.formId;
     app.collectFormId(formId);
 
     if(entry){
       wx.navigateTo({
-        url: '/pages/help_detail/help_detail?id='+id+'&role='+role
+        url: '/pages/help/help_detail/help_detail?id='+id+'&role='+role
       })
     }
   },
@@ -141,13 +114,11 @@ Page({
    */
   getProfile: function () {
     let _this = this;
-
     app.http('GET', '/profile', {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
         let profile = res.data.data;
-
         _this.setData({ profile: profile })
       }
     });
@@ -157,12 +128,10 @@ Page({
    * 获取帖子
    */
   helps:function(){
-
     let order_by = 'created_at';
     let sort_by = 'desc';
     let objType = this.data.select;
     let filter = this.data.filter;
-
     if(objType == 0 || objType == 1){
       order_by = 'created_at';
     }else{
@@ -173,10 +142,7 @@ Page({
     app.http('GET',
       `/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
       wx.hideLoading();
-      console.log(res);
-
       let jobs = _this.data.jobs;
-
       let data = res.data.data.page_data;
       data.map(item=>{
         jobs.push(item);
@@ -195,7 +161,7 @@ Page({
    */
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/message/message?type=0&new_message=1'
+      url: '/pages/personal/message/message?type=0&new_message=1'
     })
   },
 
@@ -211,9 +177,7 @@ Page({
     this.setData({
       pageNumber: this.data.initPageNumber
     });
-
     let _this = this;
-
     wx.showLoading({
       title: '搜索中...',
     });
@@ -234,21 +198,17 @@ Page({
    * 最新帖子
    */
   newHelps:function(){
-
     let objType = this.data.select;
     let time = this.data.currentTime;
-
     let _this = this;
     app.http('GET',
       `/new_helps?type=${objType}&time=${time}`, {}, res => {
         let jobs = _this.data.jobs;
         wx.stopPullDownRefresh();
-
         if (res.data.data) {
           if (res.data.data.length > 0) {
             res.data.data.map(item => {
               let ifRepeat = false;
-
               for (let job of jobs) {
                 if (job.id == item.id) {
                   ifRepeat = true;
@@ -263,11 +223,8 @@ Page({
             _this.setData({
               jobs: jobs
             });
-
           }
         }
-        
-
       });
   },
 
@@ -275,25 +232,17 @@ Page({
   * 上拉加载更多
   */
   onReachBottom: function () {
-
-    console.log('到底了');
-
     let _this = this;
-
     this.setData({
       showGeMoreLoadin: true
     });
-
     this.helps();
-
   },
 
   /** 
   * 进入发表页面
   */
   post: function () {
-    console.log('Post');
-
     if (this.data.profile == null) {
         wx.showLoading({
           title: '请先完善资料！',
@@ -301,14 +250,14 @@ Page({
         setTimeout(function () {
           wx.hideLoading();
           wx.navigateTo({
-            url: '/pages/set_profile/set_profile'
+            url: '/pages/personal/set_profile/set_profile'
           })
         }, 1500);
       return false;
     }
 
     wx.navigateTo({
-      url: '/pages/post_help/post_help'
+      url: '/pages/help/post_help/post_help'
     })
   },
 
@@ -317,7 +266,6 @@ Page({
   */
   selected(e) {
     let objType = e.target.dataset.type;
-
     if(objType == 0){
       this.setData({
         showSearch:true
@@ -339,19 +287,13 @@ Page({
       filter: ''
     });
 
-    let _this = this;
-
-    _this.helps();
-
+    this.helps();
   },
 
   /**
    * 接单
    */
   order: function (e) {
-
-    console.log(e);
-
     if(this.data.profile == null){
         wx.showLoading({
           title: '请先完善资料！',
@@ -359,7 +301,7 @@ Page({
         setTimeout(function () {
           wx.hideLoading();
           wx.navigateTo({
-            url: '/pages/set_profile/set_profile'
+            url: '/pages/personal/set_profile/set_profile'
           })
         }, 1500);
 
@@ -369,7 +311,6 @@ Page({
     let id = e.currentTarget.dataset.obj;
     let formId = e.detail.formId;
     app.collectFormId(formId);
-
     app.http('POST', '/receipt_order', {
       id: id
     }, res => {
@@ -382,7 +323,7 @@ Page({
           wx.hideLoading();
           app.globalData.postHelp = true;
           wx.navigateTo({
-            url: '/pages/help_detail/help_detail?id='+id
+            url: '/pages/help/help_detail/help_detail?id='+id
           })
         }, 1500);
       }else{
@@ -394,20 +335,16 @@ Page({
         }, 1500);
       }
     });
-
   },
 
   /**
   * 终止悬赏
   */
   stop: function (e) {
-
     let id = e.currentTarget.dataset.obj;
     let formId = e.detail.formId;
     let _this = this;
-
     app.collectFormId(formId);
-
     app.http('PUT', `/stop/${id}/job`, {
       form_id: formId
     }, res => {
@@ -435,18 +372,13 @@ Page({
         }, 1500);
       }
     });
-
   },
 
   /**
   * 预览图片
   */
   previewImage: function (event) {
-
-    console.log(event.target.id);
-
     let url = event.target.id;
-
     wx.previewImage({
       current: '',
       urls: [url]
@@ -457,20 +389,12 @@ Page({
   * 预览图片
   */
   previewMoreImage: function (event) {
-
-    console.log(event.target.id);
-    console.log(event.currentTarget.dataset.obj);
-
     let _this = this;
-
     let images = event.currentTarget.dataset.obj.map(item => {
       return _this.data.baseImageUrl + item;
     });
 
-    console.log(images);
-
     let url = event.target.id;
-
     wx.previewImage({
       current: url,
       urls: images
@@ -489,32 +413,21 @@ Page({
       content: '确定删除吗?',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定');
-
           app.http('delete', `/delete/${objId}/job`, {}, res => {
-
-            console.log(res.data);
             let result = res.data.data;
-
             if (result == 1) {
-              console.log('删除成功');
-
               let newJobs = _this.data.jobs.filter((item, index) => {
                 if (item.id != objId) {
                   return item;
                 }
               });
-
               _this.setData({
                 jobs: newJobs
               });
-
             } else {
               console.log('删除失败');
             }
-
           });
-
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

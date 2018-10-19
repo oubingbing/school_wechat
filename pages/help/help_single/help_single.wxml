@@ -1,50 +1,6 @@
 <view class="container">
 
-  <view class='nav-bar-container'>
-    <view class='nav-bar'>
-      <view class='all {{select==0?"selected":""}}' 
-            bindtap="selected" 
-            data-type="0">搜索</view>
-      <view class='follow {{select==1?"selected":""}}' 
-            bindtap="selected" 
-            data-type='1'>悬赏中</view>
-      <view class='new {{select==2?"selected":""}}' 
-            bindtap="selected" 
-            data-type='2'>任务中</view>
-      <view class='hot {{select==3?"selected":""}}' 
-            bindtap="selected" 
-            data-type='3'>已终止</view>
-      <view class='hot {{select==4?"selected":""}}' 
-            bindtap="selected" 
-            data-type='4'>已完成</view>
-      <view class='hot {{select==6?"selected":""}}' 
-            bindtap="selected" 
-            data-type='6'>我的</view>
-    </view>
-  </view>
-
-    <view class='message-tip' 
-          wx:if="{{newMessage}}" 
-          bindtap='openMessage'>
-      <view class='tip-content'>
-        <view>远方飘来{{newMessageNumber}}条新消息</view>
-        <view><image src='/image/qiqiu.png'></image></view>
-      </view>
-    </view>
-
   <view class='content content-container'>
-
-    <view class='search-container' wx:if="{{showSearch}}">
-        <view class='search'>
-          <input type='text' 
-                class='search-input' 
-                placeholder="标题 | 内容 | 赏金"         
-                bindinput='getFilter'/>
-          <view class='search-image' bindtap='search'>
-              <image mode="" src='/image/search.png'></image>
-          </view>
-        </view>
-    </view>
 
     <view class='content-item' wx:for="{{jobs}}" wx:key="{{jobs}}">
       <view class='header'>
@@ -112,14 +68,11 @@
               </button>
             </view>
         </form>
-        <form class='order form' bindsubmit='hadStop' wx:if="{{item.status == 1 && item.role == 'boss'}}" report-submit="true">
-            <view class='form-item'>
-              <button class='button' formType="submit" style='border: none;'>
-                <image src='/image/shang.png'></image>
-                <view>悬赏中</view>
-              </button>
-            </view>
-        </form>
+        <view class='order' 
+              wx:if="{{item.status == 1 && item.role == 'boss'}}">
+          <image src='/image/shang.png'></image>
+          <view>悬赏中</view>
+        </view>
         <form class='order form' bindsubmit='stop' data-obj="{{item.id}}" wx:if="{{item.can_stop}}" report-submit="true">
             <view class='form-item'>
               <button class='button' formType="submit" style='border: none;'>
@@ -188,10 +141,9 @@
   </view>
 </view>
 
-<view class='post-container'>
-  <view class='post'>
-    <image src='/image/post.png' bindtap='post'></image>
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
   </view>
-</view>
-
-

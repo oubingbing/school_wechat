@@ -1,0 +1,39 @@
+<view class="post-container">
+  <view class='post-main'>
+    <view class='content'>
+      <view class='input-group'>
+        <input placeholder="我" bindinput="getMe"/>
+      </view>
+      <view class='input-group'>
+        <view class='love-icon'>
+          <image src='/image/ilove.png'></image>
+        </view>
+      </view>
+      <view class='input-group'>
+        <input placeholder="ta" bindinput="getTa"/>
+      </view>
+    </view>
+    <view class='text'>
+      <textarea 
+        maxlength="1024" 
+        placeholder="我想对你说..." 
+        bindinput="getContent"/>
+    </view>
+
+
+    <view class='private'>
+      <view class='item'>匿名</view>
+      <view><switch bindchange="setPrivate" color='#0aecc3'/></view>
+    </view>
+
+    <view class='button-container'>
+      <button bindtap='post'> 发表 </button>
+    </view>
+
+    <view class='tips'>
+      <view class='warming'>
+        温馨提示：要是你喜欢的人恰好也喜欢你，那是多美幸福的事情呀...如果有一天你的ta也在这里写下了ta和你的名字，匹配成功后系统会及时通知你们，ta会看见你想对ta说的话。
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,145 @@
+ <view class="sale-container" bindtouchmove="hiddenComment">
+
+    <view class='sale-item'>
+      <view class='header'>
+        <view class='user-avatar'>
+          <image src='{{sale.poster.avatar}}' mode='widthFix'></image>
+        </view>
+        <view class='user-name'>
+          <view class='user-name-nickname'>{{sale.poster.nickname}}</view>
+          <view class='user-name-created'>{{sale.created_at}}</view>
+        </view>
+      </view>
+      <view class='content'>
+       <view class='craete_at' wx:if="{{sale.show_college}}">{{sale.college}}</view>
+      <view class='content-detail'>
+        <view class='detail-item detail-item-gender detail-item-gray'>
+          <view class='gender-image'><image src='/image/gender.png'></image></view>
+          <view class='gender-world'>{{sale.gender}}</view>
+        </view>
+        <view class='detail-item detail-item-gender'>
+          <view class='gender-image'><image src='/image/major.png'></image></view>
+          <view class='gender-world'>{{sale.major}}</view>
+        </view>
+        <view class='detail-item detail-item-gender detail-item-gray'>
+          <view class='gender-image'><image src='/image/ilike.png'></image></view>
+          <view class='gender-world'>{{sale.expectation}}</view>
+        </view>
+        <view class='detail-item detail-item-gender'>
+          <view class='gender-image'><image src='/image/show-self.png'></image></view>
+          <view class='gender-world'>{{sale.introduce}}</view>
+        </view>
+      </view>
+        <view class='image-container'>
+          <image class='sale-image' 
+                src='{{baseImageUrl+sale.attachments[0]}}' 
+                mode='widthFix'></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='comment-container'>
+    
+      <view class='comment-wall'>
+          <view class='comment-header'>
+            <view class='zan' 
+                  bindtap='praise' 
+                  data-objid="{{sale.id}}">
+              <image src='/image/topic_praise.png' style='width:50rpx;height:50rpx;'></image>
+              <view style='padding-left:5rpx;'>{{sale.praise_number}}</view>
+            </view>
+            <view class='comment' 
+                  bindtap='showCommentInput' 
+                  data-objid="{{sale.id}}"
+                  data-refid=""
+                  data-type="2">
+              <image src='/image/topic_comment.png' style='width:50rpx;height:50rpx;'></image>
+              <view style='padding-left:5rpx;'>{{sale.comment_number}}</view>
+            </view>
+          </view>
+      </view>
+
+      <view class='user-comment'>
+
+        <view class='comment-item' 
+              wx:for="{{sale.comments}}" 
+              wx:key="{{sale.comments}}">
+          <view class='left'>
+            <view class='user-image'>
+              <image src='{{item.commenter.avatar}}'></image>
+            </view>
+          </view>
+          <view class='right'>
+            <view 
+              class='comment-name right-item'>
+                {{item.commenter.nickname}}
+            </view>
+            <view class='content right-item'>
+              {{item.content}}
+            </view>
+            <view class='create_at right-item'>
+              <view>{{item.created_at}}</view>
+              <view class='comment-icon'>
+                <image src='/image/comment.png' 
+                  bindtap='showCommentInput' 
+                  data-objid="{{item.id}}"
+                  data-type='4'
+                  data-refid=""></image>
+              </view>
+            </view>
+                <view class='comment-user-wall' 
+                      wx:if='{{item.sub_comments.length > 0}}'>
+                  <view class="qipao"></view>
+                  <view class='comment-user-container' 
+                        wx:for="{{item.sub_comments}}" 
+                        wx:key="{{item.sub_comments}}" 
+                        wx:for-item="sub">
+                      <view class='comment-wall-item' 
+                            wx:if="{{!sub.ref_comment}}" 
+                            data-objid="{{item.id}}"
+                            data-type='4'
+                            data-refid="{{sub.id}}"
+                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
+                            <view class='comment-user-container'>
+                              <view class="comment-user inline-item">
+                                {{sub.commenter.nickname}}：
+                              </view>
+                              <view class='inline-item'>{{sub.content}}</view>
+                            </view>
+                        </view>
+
+                      <view class='comment-ref-user-container' 
+                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}"
+                             data-objid="{{item.id}}"
+                            data-type='4'
+                            data-refid="{{sub.id}}"
+                            wx:if="{{sub.ref_comment}}">
+                          <view class="comment-user inline-item">
+                            {{sub.commenter.nickname}}
+                          </view>
+                          <view class='inline-item'>回复</view>
+                          <view class="comment-user inline-item">
+                            {{sub.ref_comment.refCommenter.nickname}}：
+                          </view>
+                          <view class='inline-item'>{{sub.content}}</view>
+                      </view>
+                  </view>                    
+                </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='comment-input-container' wx:if="{{showCommentInput}}">
+    <textarea 
+        maxlength="1024"
+        placeholder="评论" 
+        auto-focus 
+        cursor-spacing="15"
+        fixed="true"
+        auto-height 
+        bindinput='getCommentContent'/>
+    <view class='send-button' bindtap='postComment'><view>发送</view></view>
+  </view>

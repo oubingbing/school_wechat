@@ -1,0 +1,41 @@
+<view class='post-container container'>
+  <view class='form'>
+
+    <view class='input'>
+      <textarea 
+        maxlength="1024"
+        class='textarea-content'
+        placeholder="你的看法"    
+        bindinput="getTextContent"/>
+    </view>
+    <view class='image-form'>
+      <view class='select-image'>
+        <view class='image-item' 
+              wx:for="{{imageArray}}" 
+              wx:key='{{imageArray}}'>
+            <image class='upload-image' 
+            bindtap='previewImage' 
+            id='{{item}}' 
+            mode='aspectFill' 
+            src='{{item}}'></image>
+            <image src='/image/delete.png' 
+                   id='{{index}}' 
+                   wx:key='{{imageArray}}' 
+                   bindtap='removeImage' 
+                   class='remove-image'></image>
+        </view>
+        <view>
+          <image class='upload-image' 
+                 bindtap='selectImage' 
+                 src='/image/select-image.png'></image>
+        </view>
+      </view>
+    </view>  
+  </view>
+
+
+  <view class='button-container'>
+    <button bindtap='post'> 评论 </button>
+  </view>
+
+</view>

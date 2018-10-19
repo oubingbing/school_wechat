@@ -1,5 +1,7 @@
 
 const app = getApp();
+const http = require("./../../../utils/http.js");
+
 let genderArray = ['男', '女', '人妖', '未知生物'];
 
 Page({
@@ -16,7 +18,7 @@ Page({
   },
   onLoad: function (option) {
     let objId = option.id;
-    app.http('get', `/sale_friend/${objId}`, {}, res => {
+    http.get(`/sale_friend/${objId}`, {}, res => {
       let data = res.data.data;
       data.comments = data.comments.reverse();
       this.setData({
@@ -59,7 +61,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+          http.delete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let sale = _this.data.sale;
               let comments = sale.comments;
@@ -114,7 +116,7 @@ Page({
     let refCommentId = this.data.refCommentId;
     let _this = this;
 
-    app.http('post', '/comment', {
+    http.post('/comment', {
       content: content,
       obj_id: objId,
       type: objType,
@@ -165,9 +167,7 @@ Page({
       showCommentInput: false
     });
     let _this = this;
-    app.http(
-      'post', 
-      `/praise`,
+    http.post(`/praise`,
       { obj_id: objId, obj_type: objType },
       res => {
       if (!res.data.data.error_code){

@@ -1,5 +1,6 @@
 
 const app = getApp();
+const http = require("./../../utils/http.js");
 
 Page({
   data: {
@@ -27,7 +28,7 @@ Page({
    * 获取客服id
    */
   getService: function () {
-    app.http('get', `/service`, {}, res => {
+    http.get(`/service`, {}, res => {
       console.log('客服id:' + res.data.data);
       this.setData({
         serviceId: res.data.data
@@ -38,7 +39,7 @@ Page({
    * 获取个人信息
    */
   getPersonalInfo() {
-    app.http('get', `/personal_info`, {}, res => {
+    http.get(`/personal_info`, {}, res => {
       console.log(res.data.data);
       this.setData({
         user: res.data.data
@@ -50,7 +51,7 @@ Page({
    * 获取未读私信数量
    */
   newLetterCount: function () {
-    app.http('get', `/new_messages`, {}, res => {
+    http.get(`/new_messages`, {}, res => {
       console.log(res.data.data);
       if (res.data.data != null) {
         this.setData({

@@ -1,4 +1,5 @@
 const util = require('./../../../utils/util.js');
+const http = require("./../../../utils/http.js");
 const app = getApp();
 
 Page({
@@ -72,7 +73,7 @@ Page({
       title: '发送中',
     })
 
-    app.http('post', '/match_love', {
+    http.post('/match_love', {
       match_name: ta,
       username:me,
       content:content,

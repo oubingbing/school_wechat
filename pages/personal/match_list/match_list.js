@@ -1,4 +1,5 @@
 const uploader = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 const app = getApp();
 
 Page({
@@ -93,14 +94,10 @@ Page({
       });
     }
 
-    app.http(
-      'get', 
-      `/match_loves?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}&just=1`,
-       {},
-        res => {
+    http.get(`/match_loves?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}&just=1`,{},res => {
         wx.hideLoading();
-      console.log(res);
-      _this.setData({
+        console.log(res);
+        _this.setData({
         showGeMoreLoadin: false
       })
       let matchs = _this.data.matchs;
@@ -133,7 +130,7 @@ Page({
   follow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('post', '/follow', {
+    http.post('/follow', {
       obj_id: objId,
       obj_type: 3
     }, function (res) {
@@ -156,7 +153,7 @@ Page({
   cancelFolllow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('put', `/cancel/${objId}/follow/3`, {}, function (res) {
+    http.put(`/cancel/${objId}/follow/3`, {}, function (res) {
       let follow = res.data.data;
       let matchs = _this.data.matchs;
       let newMatchs = matchs.map(item => {
@@ -183,7 +180,7 @@ Page({
       content: '确认删除该匹配？',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/match_love`, {}, res => {
+          http.delete(`/delete/${objId}/match_love`, {}, res => {
             if (res.data.data == 1) {
               let newMatchs = _this.data.matchs.filter((item, index) => {
                 if (item.id != objId) {
@@ -210,7 +207,7 @@ Page({
     let objId = event.currentTarget.dataset.obj;
     let objType = 3;
     let _this = this;
-    app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
+    http.post(`/praise`, { obj_id: objId, obj_type: objType }, res => {
       if (res.data.data.length != 0) {
         let matchList = _this.data.matchs;
         let newMatchs = matchList.map(item => {

@@ -1,5 +1,6 @@
 
 const uploader = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 const app = getApp()
 
 Page({
@@ -85,9 +86,7 @@ Page({
     this.setData({
       notDataTips: false
     });
-    app.http('get',
-      `/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&just=1`, {
-    }, res => {
+    http.get(`/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&just=1`, {}, res => {
       wx.hideLoading();
       this.setData({
         showGeMoreLoadin: false
@@ -168,7 +167,7 @@ Page({
       showCommentInput: false
     });
     let _this = this;
-    app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
+    http.post(`/praise`, { obj_id: objId, obj_type: objType }, res => {
       let postList = _this.data.posts;
       let newPostList = postList.map(item => {
         if (objId == item.id) {
@@ -225,7 +224,7 @@ Page({
     if (content == '') {
       return;
     }
-    app.http('post', '/comment', {
+    http.post('/comment', {
       content: content,
       obj_id: objId,
       type: type,
@@ -283,7 +282,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+          http.delete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let newPostList = _this.data.posts.map(item => {
                 if (objId == item.id) {
@@ -319,7 +318,7 @@ Page({
       content: '确定删除吗?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/post`, {}, res => {
+          http.delete(`/delete/${objId}/post`, {}, res => {
             let result = res.data.data;
             if (result == 1) {
               let newPosts = _this.data.posts.filter((item, index) => {
@@ -355,7 +354,7 @@ Page({
   follow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('post', '/follow', {
+    http.post('/follow', {
       obj_id: objId,
       obj_type: 1
     }, function (res) {
@@ -379,7 +378,7 @@ Page({
   cancelFolllow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('put', `/cancel/${objId}/follow/1`, {}, function (res) {
+    http.put(`/cancel/${objId}/follow/1`, {}, function (res) {
       let follow = res.data.data;
       let post = _this.data.posts;
       let newPost = post.map(item => {

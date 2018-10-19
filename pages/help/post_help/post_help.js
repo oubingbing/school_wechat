@@ -1,5 +1,6 @@
 
 const app = getApp();
+const http = require("./../../../utils/http.js");
 const qiniuUploader = require("./../../../utils/qiniuUploader");
 const uploader = require("./../../../utils/uploadImage");
 
@@ -30,7 +31,7 @@ Page({
   getProfile: function () {
     let _this = this;
 
-    app.http('GET', '/profile', {}, res => {
+    http.get('/profile', {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -63,7 +64,7 @@ Page({
     let formId = e.detail.formId;
     app.collectFormId(formId);
 
-    app.http('POST', '/post_help', {
+    http.post('/post_help', {
       content: content,
       attachments: attachments,
       title: title,

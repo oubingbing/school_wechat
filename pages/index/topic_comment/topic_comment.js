@@ -2,6 +2,7 @@
 const app = getApp();
 const qiniuUploader = require("./../../../utils/qiniuUploader");
 const uploader = require("./../../../utils/uploadImage");
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {
@@ -42,7 +43,7 @@ Page({
       }, 1500)
       return false;
     }
-    app.http('post', '/comment', {
+    http.post('/comment', {
       content: content,
       attachments: attachments,
       type:5,

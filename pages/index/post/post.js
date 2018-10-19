@@ -1,4 +1,5 @@
 const app = getApp();
+const http = require("./../../../utils/http.js");
 const qiniuUploader = require("./../../../utils/qiniuUploader");
 const uploader = require("./../../../utils/uploadImage");
 
@@ -47,7 +48,7 @@ Page({
       title: '发送中..'
     });
 
-    app.http('post', '/post', {
+    http.post('/post', {
       content: content,
       attachments: attachments,
       private: privateValue,

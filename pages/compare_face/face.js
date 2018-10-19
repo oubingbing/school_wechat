@@ -1,5 +1,6 @@
 const qiniuUploader = require("./../../utils/qiniuUploader");
 const uploader = require("./../../utils/uploadImage");
+const http = require("./../../utils/http.js");
 const app = getApp()
 
 Page({
@@ -145,7 +146,7 @@ Page({
       title: '检测中',
     });
 
-    app.http('post', `/compare_face`, { your_face: this.data.postImageLeft, his_face: this.data.PostImageRight }, res => {
+    http.post(`/compare_face`, { your_face: this.data.postImageLeft, his_face: this.data.PostImageRight }, res => {
       wx.hideLoading();
       if (res.data.error_code){
         wx.showLoading({

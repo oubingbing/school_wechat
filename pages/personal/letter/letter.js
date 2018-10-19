@@ -1,6 +1,7 @@
 const util = require('./../../../utils/util.js')
 const qiniuUploader = require("./../../../utils/qiniuUploader");
 const uploader = require("./../../../utils/uploadImage");
+const http = require("./../../../utils/http.js");
 const app = getApp();
 
 Page({
@@ -44,7 +45,7 @@ Page({
   setTitle: function (id,cantChat){
     let _this = this;
     if (cantChat != 1){
-      app.http('get', `/user/${id}`,
+      http.get(`/user/${id}`,
         {},
         function (res) {
           console.log(res.data.data);
@@ -63,7 +64,7 @@ Page({
     let _this = this;
     let pageSize = _this.data.pageSize;
     let pageNumber = _this.data.pageNumber;
-    app.http('get', `/message/${id}/list?page_size=${pageSize}&page_number=${pageNumber}`,
+    http.get(`/message/${id}/list?page_size=${pageSize}&page_number=${pageNumber}`,
       {},
       function (res) {
         wx.stopPullDownRefresh();
@@ -113,7 +114,7 @@ Page({
       content: '确定撤回该消息吗',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/chat_message`,
+          http.delete(`/delete/${objId}/chat_message`,
             {},
             function (res) {
               let list = _this.data.list;
@@ -160,7 +161,7 @@ Page({
       return;
     }
 
-    app.http('post', `/send/${friendId}/message`,
+    http.post(`/send/${friendId}/message`,
      {
        content:content,
        attachments: attachments
@@ -190,7 +191,7 @@ Page({
   polling:function(_this){
     let friendId = _this.data.friendId;
     setTimeout(function () {//setInterval
-      app.http('get', `/new/${friendId}/messages`,
+      http.get(`/new/${friendId}/messages`,
         {},
         function (res) {
           let newMessages = res.data.data;

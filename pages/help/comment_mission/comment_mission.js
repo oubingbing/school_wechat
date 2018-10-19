@@ -1,7 +1,7 @@
-
 const app = getApp();
 const qiniuUploader = require("./../../../utils/qiniuUploader");
 const uploader = require("./../../../utils/uploadImage");
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {
@@ -48,7 +48,7 @@ Page({
       return false;
     }
 
-    app.http('post', `/comment/${id}/job`, {
+    http.post(`/comment/${id}/job`, {
       content: content,
       attachments: attachments,
       type: 6,

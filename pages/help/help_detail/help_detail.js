@@ -1,3 +1,4 @@
+const http = require("./../../../utils/http.js");
 const app = getApp();
 let gradeArray = ['大一', '大二', '大三', '大四', '其他'];
 
@@ -74,7 +75,7 @@ Page({
     let formId = e.detail.formId
     app.collectFormId(formId);
 
-    app.http('post', `/finish/${job.id}/job`, {
+    http.post(`/finish/${job.id}/job`, {
       form_id: formId
     }, res => {
       wx.hideLoading();
@@ -118,7 +119,7 @@ Page({
     let _this = this;
     let formId = e.detail.formId;
     app.collectFormId(formId);
-    app.http('PUT', `/restart/${job.id}/job`,
+    http.put(`/restart/${job.id}/job`,
      {
        form_id:formId
      },
@@ -157,7 +158,7 @@ Page({
    */
   partTimeJob:function(){
     let _this = this;
-    app.http('GET', '/job_detail/'+this.data.id, {}, res => {
+    http.get('/job_detail/'+this.data.id, {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -182,7 +183,7 @@ Page({
    */
   getProfile: function () {
     let _this = this;
-    app.http('GET', '/profile', {}, res => {
+    http.get('/profile', {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -221,7 +222,7 @@ Page({
    */
   employeeMissionRecord:function(){
     let _this = this;
-    app.http('GET', `/job/${_this.data.id}/mission_record?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&status=${_this.data.missionStatus}`, {}, res => {
+    http.get(`/job/${_this.data.id}/mission_record?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&status=${_this.data.missionStatus}`, {}, res => {
       wx.hideLoading();
       console.log(res.data);
       let data = res.data;

@@ -1,5 +1,6 @@
 const app = getApp();
 const util = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {
@@ -38,7 +39,7 @@ Page({
     this.getComments();
   },
   getTopic:function(id){
-    app.http('get',`/topic/`+id,{},res => {
+    http.get(`/topic/`+id,{},res => {
       let topic = res.data.data;
       this.setData({
         title: topic.title,
@@ -78,10 +79,7 @@ Page({
     let _this = this;
 
     let id = this.data.objId;
-    app.http(
-      'get',
-      '/topic/' + id + `/comments?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}`,
-     {}, res=> {
+    http.get('/topic/' + id + `/comments?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}`,{}, res=> {
        let commentsArray = _this.data.comments;
        wx.hideLoading();
        _this.setData({
@@ -106,9 +104,7 @@ Page({
   getNewComments: function () {
     let id = this.data.objId;
     let commentsArray = this.data.comments;
-    app.http(
-      'get',
-      '/topic/' + id + `/new_comments?time=` + this.data.currentTime,
+    http.get('/topic/' + id + `/new_comments?time=` + this.data.currentTime,
       {}, res=> {
         if (res.data.data) {
           res.data.data.map(item => {
@@ -144,7 +140,7 @@ Page({
 */
   praiseTopic: function (e) {
     let id = e.currentTarget.dataset.id;
-    app.http('POST', '/praise/' + id + '/topic', {}, res=> {
+    http.post('/praise/' + id + '/topic', {}, res=> {
       this.setData({ praiseNumber: res.data.data.praise_number });
     });
   },
@@ -192,7 +188,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+          http.delete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let newComment = comments.filter(item => {
                 if (item.id != commentId) {
@@ -223,7 +219,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+          http.delete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let comments = _this.data.comments;
               let newComment = comments.map(comment => {
@@ -274,7 +270,7 @@ Page({
     let content = this.data.content;
     let refCommentId = this.data.refCommentId;
     let _this = this;
-    app.http('post', '/comment', {
+    http.post('/comment', {
       content: content,
       obj_id: objId,
       type: objType,
@@ -328,9 +324,7 @@ Page({
       showCommentInput: false
     });
     let _this = this;
-    app.http(
-      'post',
-      `/praise`,
+    http.post(`/praise`,
       { obj_id: objId, obj_type: objType },
       res => {
         if (!res.data.data.error_code) {

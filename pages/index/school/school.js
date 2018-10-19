@@ -1,5 +1,6 @@
 
 const app = getApp()
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {
@@ -62,7 +63,7 @@ Page({
     let objName = this.data.collegeName;
     let _this = this;
 
-    app.http('GET', `/search`, {
+    http.get(`/search`, {
       'content': objName,
       'obj_type': this.data.objectType
     }, function (res) {

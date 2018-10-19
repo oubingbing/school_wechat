@@ -1,16 +1,13 @@
+const config = require("./config.js");
+const http = require("./utils/http.js");
 
 App({
   onLaunch: function () {
 
-    this.globalData.appKey = '04rNbDIGuBoYcsQn';
-
-    //设置基本接口全局变量
-    this.globalData.apiUrl = 'https://lianyan.kucaroom.com/api/wechat';
-    //this.globalData.apiUrl = 'http://localhost:8000/api/wechat';
-  
-    //七牛图片外链域名0
-    this.globalData.imageUrl = 'http://image.kucaroom.com/';
-    this.globalData.bgIimage = this.globalData.imageUrl+'30269a739a66831daa31ec93d28318af.jpg';
+    this.globalData.apiUrl = config.domain;
+    this.globalData.appKey = config.alianceKey;
+    this.globalData.imageUrl = config.qiniuDomain;
+    this.globalData.bgIimage = config.bgImage;
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -48,29 +45,22 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              wx.request({
-                url: this.globalData.apiUrl + '/auth/login?type=weChat',
-                header: {
-                  'content-type': 'application/json'
-                },
-                method: 'POST',
-                data: {
-                  user_info: res.userInfo,
-                  code: code,
-                  app_id: this.globalData.appKey
-                },
-                success: function (res) {
-                  wx.setStorageSync('token', res.data.data);
-                  console.log('token:' + res.data.data);
-                  if (_method) {
-                    that.http(_method, _url, _data, callback);
-                  }
 
-                  if(callback){
-                    callback();
-                  }
+              http.post("/auth/login?type=weChat", {
+                user_info: res.userInfo,
+                code: code,
+                app_id: this.globalData.appKey
+              }, function (res) {
+                wx.setStorageSync('token', res.data.data);
+                console.log('token:' + res.data.data);
+                if (_method) {
+                  that.http(_method, _url, _data, callback);
                 }
-              })
+                if (callback) {
+                  callback();
+                }
+              });
+
             }
           })
         } else {
@@ -81,43 +71,12 @@ App({
   },
 
   /** 
-  * 封装微信http请求
-  */
-  http: function (_method, _url, _data, callback) {
-    let token = wx.getStorageSync('token');
-    let _this = this;
-    wx.request({
-      url: this.globalData.apiUrl + _url,
-      header: {
-        'content-type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      method: _method,
-      data: _data,
-      success: function (res) {
-
-        if (res.data.error_code == '4001' || res.data.error_code == '4000') {
-          console.log('token过期了');
-          _this.login(_method, _url, _data, callback);
-        } else {
-          callback(res);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        console.log('出错了');
-      }
-    })
-  },
-
-  /** 
    * 获取七牛上传token
    */
   setUploadToken: function (call) {
-    this.http('GET', '/upload_token', {}, function (res) {
+    http.get('/upload_token', {}, function (res) {
       if(res.data.data != null){
         var token = res.data.data.uptoken;
-
         if (call) {
           call(token);
         }
@@ -137,39 +96,16 @@ App({
    * 获取新的消息盒子
    */
   getNewInbox:function(type,callback){
-    this.http('GET', `/new/${type}/inbox`, {}, function (res) {
+    http.get( `/new/${type}/inbox`, {}, function (res) {
       callback(res);
     });
-  },
-
-  /**
-   * 获取用户最新信息
-   */
-  getConfig:function(callback){
-    wx.request({
-      url: this.globalData.apiUrl + '/config?',
-      header: {
-        'content-type': 'application/json'
-      },
-      method: 'GET',
-      data: {
-        app_id: this.globalData.appKey
-      },
-      success: function (res) {
-        var config = res.data.data
-        callback(config);
-      },
-      fail: function (res) {
-        console.log(res);
-      }
-    })
   },
 
   /**
    * 收集form id
    */
   collectFormId:function(formId){
-    this.http('POST', `/save_form_id`, {
+    http.post( `/save_form_id`, {
       form_id:formId
     }, function (res) {
       console.log(res);

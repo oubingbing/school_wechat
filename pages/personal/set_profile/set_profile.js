@@ -1,4 +1,6 @@
 const app = getApp();
+const http = require("./../../../utils/http.js");
+
 let gradeArray = ['大一', '大二', '大三', '大四','其他'];
 
 Page({
@@ -37,7 +39,7 @@ Page({
   },
   getProfile:function(){
     let _this = this;
-    app.http('GET', '/profile', {}, res => {
+    http.get('/profile', {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -83,7 +85,7 @@ Page({
     });
 
     let _this = this;
-    app.http('GET', '/get_message_code?phone=' + phone, {}, res => {
+    http.get('/get_message_code?phone=' + phone, {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code == 500){
@@ -140,7 +142,7 @@ Page({
     wx.showLoading({
       title: '提交中...',
     });
-    app.http('POST', '/profile', {
+    http.post('/profile', {
       student_number: this.data.cardNo,
       grade: this.data.gradeValue,
       major: this.data.major,

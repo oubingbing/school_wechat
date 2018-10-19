@@ -1,9 +1,10 @@
 const util = require("./../../utils/util.js");
-
+const http = require("./../../utils/http.js");
 const app = getApp()
 
 Page({
   data: {
+    show_auth:false,
     userInfo: {},
     hasUserInfo: false,
     school: '',
@@ -59,6 +60,7 @@ Page({
       title: '加载中',
     });
 
+
     //设置七牛上传token
     app.getUploadToken(token => {
       this.setData({
@@ -70,6 +72,9 @@ Page({
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']) {
+          that.setData({
+            show_auth: true
+          });
         }
       }
     })
@@ -82,11 +87,6 @@ Page({
     this.getPost(this);
     this.topic();
   },
-
-  onReady:function(){
-
-  },
-  
   onShow: function (option) {
     let _this = this;
     this.getMostNewPost();
@@ -113,7 +113,7 @@ Page({
   praiseTopic: function (e) {
     let id = e.currentTarget.dataset.id;
     let _this = this;
-    app.http('POST', '/praise/'+id+'/topic', {}, function (res) {
+    http.post('/praise/'+id+'/topic', {}, function (res) {
       _this.setData({topic:res.data.data});
     });
   },
@@ -122,11 +122,12 @@ Page({
    * 监听用户点击授权按钮
    */
   getAuthUserInfo:function(data){
-    let _this = this;
-    app.login(null, null, null, function(){
-      _this.getPost(_this);
-      _this.topic();
-      console.log('加载信息');
+    this.setData({
+      show_auth: false
+    });
+    app.login(null, null, null, res=>{
+      this.getPost(this);
+      this.topic();
     });
   },
 
@@ -265,7 +266,7 @@ Page({
    */
   getMostNewPost: function () {
     let _this = this;
-    app.http('get', '/most_new_post', {
+    http.get('/most_new_post', {
       date_time: this.data.currentTime
     }, res => {
 
@@ -303,7 +304,7 @@ Page({
    */
   getNewPost: function () {
     //获取新的贴子
-    app.http('get', '/post', {
+    http.post('/post', {
       page_size: 10,
       page_number: 1
     }, res => {
@@ -338,8 +339,7 @@ Page({
       notDataTips: false
     });
 
-    app.http('get',
-      `/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${_this.data.filter}`,
+    http.get(`/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${_this.data.filter}`,
       {},
       res => {
         wx.hideLoading();
@@ -438,10 +438,7 @@ Page({
       showCommentInput: false
     });
     let _this = this;
-    app.http(
-      'post',
-      `/praise`,
-      { obj_id: objId, obj_type: objType }, res => {
+    http.post(`/praise`,{ obj_id: objId, obj_type: objType }, res => {
         let postList = _this.data.posts;
         let newPostList = postList.map(item => {
           if (objId == item.id) {
@@ -510,7 +507,7 @@ Page({
       return;
     }
 
-    app.http('post', '/comment', {
+    http.post('/comment', {
       content: content,
       obj_id: objId,
       type: type,
@@ -570,7 +567,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${commentId}/comment`, {}, res => {
+          http.delete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let newPostList = _this.data.posts.map(item => {
                 if (objId == item.id) {
@@ -608,7 +605,7 @@ Page({
       content: '确定删除吗?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/post`, {}, res => {
+          http.delete(`/delete/${objId}/post`, {}, res => {
             let result = res.data.data;
             if (result == 1) {
               let newPosts = _this.data.posts.filter((item, index) => {
@@ -645,7 +642,7 @@ Page({
   follow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('post', '/follow', {
+    http.post('/follow', {
       obj_id: objId,
       obj_type: 1
     }, function (res) {
@@ -670,7 +667,7 @@ Page({
   cancelFolllow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('put', `/cancel/${objId}/follow/1`, {}, function (res) {
+    http.put(`/cancel/${objId}/follow/1`, {}, function (res) {
       let follow = res.data.data;
       let post = _this.data.posts;
       let newPost = post.map(item => {
@@ -688,7 +685,7 @@ Page({
 
   topic:function(){
     let _this = this;
-    app.http('get', `/topic`, {}, function (res) {
+    http.get(`/topic`, {}, function (res) {
       let topicShow = res.data.data != null ?true:false;
       _this.setData({ topic: res.data.data, showTopic: topicShow});
 

@@ -1,4 +1,5 @@
 const util = require('./../../../utils/util.js');
+const http = require("./../../../utils/http.js");
 const app = getApp();
 
 Page({
@@ -23,9 +24,7 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
   getInboxList: function (type, messageType){
     let _this = this;
     let message_type = messageType;
-    app.http('GET', 
-    `/user/${type}/inbox/${message_type}?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}`,
-     {}, function (res) {
+    http.get(`/user/${type}/inbox/${message_type}?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}`,{}, function (res){
        _this.setData({
          showGeMoreLoadin: false
        });

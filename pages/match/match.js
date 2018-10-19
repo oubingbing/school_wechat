@@ -1,4 +1,5 @@
 const uploader = require("../../utils/util.js");
+const http = require("./../../utils/http.js");
 const app = getApp();
 
 Page({
@@ -151,7 +152,7 @@ Page({
         pageNumber: this.data.initPageNumber
       });
     }
-    app.http('get', `/match_loves?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`, {}, res => {
+    http.get(`/match_loves?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`, {}, res => {
       wx.hideLoading();
       _this.setData({
         showGeMoreLoadin: false
@@ -181,7 +182,7 @@ Page({
   getMostNewMatch: function () {
     let _this = this;
     //获取新的贴子
-    app.http('get', `/most_new_match_loves?date_time=${this.data.currentTime}`,
+    http.get(`/most_new_match_loves?date_time=${this.data.currentTime}`,
      {},
       res => {
       this.setData({
@@ -224,7 +225,7 @@ Page({
   follow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('post', '/follow', {
+    http.post('/follow', {
       obj_id: objId,
       obj_type: 3
     }, function (res) {
@@ -248,7 +249,7 @@ Page({
   cancelFolllow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('put', `/cancel/${objId}/follow/3`, {}, function (res) {
+    http.put(`/cancel/${objId}/follow/3`, {}, function (res) {
       let follow = res.data.data;
       let matchs = _this.data.matchs;
       let newMatchs = matchs.map(item => {
@@ -276,7 +277,7 @@ Page({
       content: '确认删除该匹配？',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/match_love`, {}, res => {
+          http.delete(`/delete/${objId}/match_love`, {}, res => {
             if (res.data.data == 1) {
               let newMatchs = _this.data.matchs.filter((item, index) => {
                 if (item.id != objId) {
@@ -302,7 +303,7 @@ Page({
     let objId = event.currentTarget.dataset.obj;
     let objType = 3;
     let _this = this;
-    app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
+    http.post(`/praise`, { obj_id: objId, obj_type: objType }, res => {
       console.log('点赞成功' + res);
         if(res.data.data.length != 0){
           let matchList = _this.data.matchs;

@@ -1,5 +1,6 @@
 const app = getApp();
 const util = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {
@@ -67,8 +68,7 @@ Page({
     }
 
     let _this = this;
-    app.http('GET',
-      `/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
+    http.get(`/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
         wx.hideLoading();
         let jobs = _this.data.jobs;
         let data = res.data.data.page_data;
@@ -88,7 +88,7 @@ Page({
  */
   partTimeJob: function () {
     let _this = this;
-    app.http('GET', '/job_detail/' + _this.data.id, {}, res => {
+    http.get('/job_detail/' + _this.data.id, {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -148,7 +148,7 @@ Page({
    */
   getProfile: function () {
     let _this = this;
-    app.http('GET', '/profile', {}, res => {
+    http.get('/profile', {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -174,8 +174,7 @@ Page({
     }
 
     let _this = this;
-    app.http('GET',
-      `/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
+    http.get(`/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
         wx.hideLoading();
         let jobs = _this.data.jobs;
         let data = res.data.data.page_data;
@@ -215,7 +214,7 @@ Page({
     let formId = e.detail.formId;
     app.collectFormId(formId);
 
-    app.http('POST', '/receipt_order', {
+    http.post('/receipt_order', {
       id: id
     }, res => {
       console.log(res);
@@ -251,7 +250,7 @@ Page({
     let _this = this;
     app.collectFormId(formId);
 
-    app.http('PUT', `/stop/${id}/job`, {
+    http.put(`/stop/${id}/job`, {
       form_id: formId
     }, res => {
       console.log(res);

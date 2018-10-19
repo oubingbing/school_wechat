@@ -1,4 +1,6 @@
 const util = require("../../utils/util.js");
+const http = require("../../utils/http.js");
+
 const app = getApp();
 let genderArray = ['男', '女', '人妖', '未知生物'];
 
@@ -145,10 +147,7 @@ Page({
         pageNumber: this.data.initPageNumber
       });
     }
-    app.http('get',
-      `/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,
-     {},
-      res => {
+    http.get(`/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,{},res => {
       wx.hideLoading();
       this.setData({
         showGeMoreLoadin: false
@@ -201,8 +200,7 @@ Page({
   getMostNewData:function(){
     let _this = this;
     let time = this.data.currentTime;
-    app.http('get',
-     '/most_new_sale_friend?time='+time, {}, res => {
+    http.get('/most_new_sale_friend?time='+time, {}, res => {
       let sales = _this.data.sales;
       let data = res.data.data.map(item => {
         let ifRepeat = false;
@@ -238,7 +236,7 @@ Page({
       content: '确认删除?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${id}/sale_friend`, {}, res => {
+          http.delete(`/delete/${id}/sale_friend`, {}, res => {
             if (res.data.data) {
               let oldSales = _this.data.sales;
               let sales = oldSales.filter(item => {
@@ -273,7 +271,7 @@ Page({
       showCommentInput: false
     });
     let _this = this;
-    app.http('post', `/praise`, {
+    http.post(`/praise`, {
        obj_id: objId, 
        obj_type: objType 
        }, res => {
@@ -299,7 +297,7 @@ Page({
   follow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('post', '/follow', {
+    http.post('/follow', {
       obj_id: objId,
       obj_type: 2
     }, function (res) {
@@ -322,7 +320,7 @@ Page({
   cancelFolllow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('patch', `/cancel/${objId}/follow/2`, {}, function (res) {
+    http.patch(`/cancel/${objId}/follow/2`, {}, function (res) {
       let follow = res.data.data;
       let sales = _this.data.sales;
       let newSale = sales.map(item => {

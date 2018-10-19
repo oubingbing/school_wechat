@@ -1,5 +1,7 @@
 const app = getApp();
 const util = require("../../utils/util.js");
+const http = require("./../../utils/http.js");
+
 
 Page({
   data: {
@@ -114,7 +116,7 @@ Page({
    */
   getProfile: function () {
     let _this = this;
-    app.http('GET', '/profile', {}, res => {
+    http.get('/profile', {}, res => {
       wx.hideLoading();
       console.log(res.data);
       if (res.data.error_code != 500) {
@@ -139,8 +141,7 @@ Page({
     }
 
     let _this = this;
-    app.http('GET',
-      `/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
+    http.get(`/helps?page_size=${_this.data.pageSize} & page_number=${_this.data.pageNumber} & order_by=${order_by} & sort_by=${sort_by} & type=${objType} & filter=${filter}`, {}, res => {
       wx.hideLoading();
       let jobs = _this.data.jobs;
       let data = res.data.data.page_data;
@@ -201,8 +202,7 @@ Page({
     let objType = this.data.select;
     let time = this.data.currentTime;
     let _this = this;
-    app.http('GET',
-      `/new_helps?type=${objType}&time=${time}`, {}, res => {
+    http.get(`/new_helps?type=${objType}&time=${time}`, {}, res => {
         let jobs = _this.data.jobs;
         wx.stopPullDownRefresh();
         if (res.data.data) {
@@ -311,7 +311,7 @@ Page({
     let id = e.currentTarget.dataset.obj;
     let formId = e.detail.formId;
     app.collectFormId(formId);
-    app.http('POST', '/receipt_order', {
+    http.post('/receipt_order', {
       id: id
     }, res => {
       console.log(res);
@@ -345,7 +345,7 @@ Page({
     let formId = e.detail.formId;
     let _this = this;
     app.collectFormId(formId);
-    app.http('PUT', `/stop/${id}/job`, {
+    http.put(`/stop/${id}/job`, {
       form_id: formId
     }, res => {
       console.log(res);
@@ -413,7 +413,7 @@ Page({
       content: '确定删除吗?',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/job`, {}, res => {
+          http.delete(`/delete/${objId}/job`, {}, res => {
             let result = res.data.data;
             if (result == 1) {
               let newJobs = _this.data.jobs.filter((item, index) => {

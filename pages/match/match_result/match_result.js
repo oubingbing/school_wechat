@@ -1,5 +1,6 @@
 
 const app = getApp();
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {
@@ -14,7 +15,7 @@ Page({
    */
   getResult:function(id){
     let _this = this;
-    app.http('get', `/match/${id}/result`, {}, res => {
+    http.get(`/match/${id}/result`, {}, res => {
       wx.hideLoading();
       console.log(res);
       _this.setData({

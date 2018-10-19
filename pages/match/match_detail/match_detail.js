@@ -1,4 +1,5 @@
 const uploader = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 const app = getApp();
 
 Page({
@@ -23,7 +24,7 @@ Page({
   getList: function () {
     let _this = this;
     let id = this.data.id;
-    app.http('get', `/match_love/${id}`, {}, res => {
+    http.get(`/match_love/${id}`, {}, res => {
       let matchs = _this.data.matchs;
       matchs.push(res.data.data);
       _this.setData({
@@ -37,7 +38,7 @@ Page({
   follow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('post', '/follow', {
+    http.post('/follow', {
       obj_id: objId,
       obj_type: 3
     }, function (res) {
@@ -61,7 +62,7 @@ Page({
   cancelFolllow: function (e) {
     let _this = this;
     let objId = e.target.dataset.obj;
-    app.http('put', `/cancel/${objId}/follow/3`, {}, function (res) {
+    http.put(`/cancel/${objId}/follow/3`, {}, function (res) {
       let follow = res.data.data;
       let matchs = _this.data.matchs;
       let newMatchs = matchs.map(item => {
@@ -88,7 +89,7 @@ Page({
       content: '确认删除该匹配？',
       success: function (res) {
         if (res.confirm) {
-          app.http('delete', `/delete/${objId}/match_love`, {}, res => {
+          http.delete(`/delete/${objId}/match_love`, {}, res => {
             if (res.data.data == 1) {
               let newMatchs = _this.data.matchs.filter((item, index) => {
                 if (item.id != objId) {
@@ -113,7 +114,7 @@ Page({
     let objId = event.currentTarget.dataset.obj;
     let objType = 3;
     let _this = this;
-    app.http('post', `/praise`, { obj_id: objId, obj_type: objType }, res => {
+    http.post(`/praise`, { obj_id: objId, obj_type: objType }, res => {
       let matchList = _this.data.matchs;
       let newMatchs = matchList.map(item => {
         if (objId == item.id) {

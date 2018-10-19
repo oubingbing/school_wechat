@@ -1,5 +1,6 @@
 const qiniuUploader = require("./../../../utils/qiniuUploader");
 const uploader = require("./../../../utils/uploadImage");
+const http = require("./../../../utils/http.js");
 
 const app = getApp();
 let genderArray = ['男', '女', '人妖', '未知生物'];
@@ -202,7 +203,7 @@ Page({
     wx.showLoading({
       title: '发送中',
     })
-    app.http('post', '/sale_friend', {
+    http.post('/sale_friend', {
       attachments: attachments, 
       name: name, 
       gender: gender, 

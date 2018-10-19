@@ -1,4 +1,5 @@
 const util = require('./../../../utils/util.js')
+const http = require("./../../../utils/http.js");
 const app = getApp()
 
 Page({
@@ -17,7 +18,7 @@ Page({
    */
   friends:function(){
     let _this = this;
-    app.http('get', `/friends`,
+    http.get(`/friends`,
       {},
       function (res) {
         _this.setData({

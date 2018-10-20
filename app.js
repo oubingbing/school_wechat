@@ -31,8 +31,8 @@ App({
   },
 
   /**
-   * 获取用户信息 
-   */
+  * 获取用户信息 
+  */
   getUserInfo: function (code, _method = null, _url = null, _data = null, callback = null) {
     console.log('get user info');
     let that = this;
@@ -45,10 +45,10 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
-              http.post("/auth/login?type=weChat", {
-                user_info: res.userInfo,
+              http.post("/auth/login_v2?type=weChat", {
+                encrypted_data: res.encryptedData,
                 code: code,
+                iv: res.iv,
                 app_id: this.globalData.appKey
               }, function (res) {
                 wx.setStorageSync('token', res.data.data);
@@ -57,6 +57,7 @@ App({
                   that.http(_method, _url, _data, callback);
                 }
                 if (callback) {
+                  //回调函数
                   callback();
                 }
               });

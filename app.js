@@ -44,11 +44,14 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              this.globalData.userInfo = res.userInfo;
 
-              http.post("/auth/login?type=weChat", {
-                user_info: res.userInfo,
+              console.log("数据" + JSON.stringify(res))
+
+              http.post("/auth/login_v2?type=weChat", {
+                encrypted_data: res.encryptedData,
                 code: code,
+                iv: res.iv,
                 app_id: this.globalData.appKey
               }, function (res) {
                 wx.setStorageSync('token', res.data.data);

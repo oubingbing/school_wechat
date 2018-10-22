@@ -3,4 +3,4 @@
 
 #### 要是觉得对你有用的话可以赞助一下作者
 
-<p align="center"><img src="http://article.qiuhuiyi.cn/donation.jpg"></p>
+<p align="center"><img src="http://article.qiuhuiyi.cn/donation.jpg" style="width: 100px;height: 100px"></p>

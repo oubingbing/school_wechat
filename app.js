@@ -44,14 +44,7 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-<<<<<<< HEAD
-              this.globalData.userInfo = res.userInfo;
-
-              console.log("数据" + JSON.stringify(res))
-
-=======
               this.globalData.userInfo = res.userInfo
->>>>>>> 86b4fccd908d5c14e6e9800ad9c0366381149927
               http.post("/auth/login_v2?type=weChat", {
                 encrypted_data: res.encryptedData,
                 code: code,

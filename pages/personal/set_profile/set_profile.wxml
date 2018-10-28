@@ -75,7 +75,7 @@
   </view>
 </view>
 
-<view class='button-container' wx:if="{{showNormal}}">
+<view class='button-container'>
   <button bindtap='submit'> 提交 </button>
 </view>
 

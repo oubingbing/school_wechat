@@ -57,10 +57,10 @@
 
 </view>
 
-  <view class='button-container' wx:if="{{showNormal}}">
+  <view class='button-container'>
     <button bindtap='post'> 发表 </button>
   </view>
 
-  <view class='tips' wx:if="{{showNormal}}">
+  <view class='tips'>
     <view class='warming'>温馨提示：出售您亲爱的舍友前请征得本人同意，否则后果自负。</view>
   </view>

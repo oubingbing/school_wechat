@@ -19,6 +19,7 @@ const httpDelete = function (_url, _data, callback) {
 const patch = function (_url, _data, callback) {
   httpRequest("PATCH", _url, _data, callback);
 }
+
 /** 
 * 封装微信http请求
 */

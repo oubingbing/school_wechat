@@ -32,7 +32,7 @@ Page({
   letter: function (e) {
     let id = e.currentTarget.dataset.obj;
     wx.navigateTo({
-      url: '/pages/letter/letter?friend_id=' + id
+      url: '/pages/personal/letter/letter?friend_id=' + id
     })
   }
   

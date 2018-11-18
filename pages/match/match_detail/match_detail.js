@@ -89,7 +89,7 @@ Page({
       content: '确认删除该匹配？',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${objId}/match_love`, {}, res => {
+          http.httpDelete(`/delete/${objId}/match_love`, {}, res => {
             if (res.data.data == 1) {
               let newMatchs = _this.data.matchs.filter((item, index) => {
                 if (item.id != objId) {

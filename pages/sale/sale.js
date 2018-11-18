@@ -236,7 +236,7 @@ Page({
       content: '确认删除?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${id}/sale_friend`, {}, res => {
+          http.httpDelete(`/delete/${id}/sale_friend`, {}, res => {
             if (res.data.data) {
               let oldSales = _this.data.sales;
               let sales = oldSales.filter(item => {

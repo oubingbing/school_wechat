@@ -61,7 +61,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${commentId}/comment`, {}, res => {
+          http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let sale = _this.data.sale;
               let comments = sale.comments;

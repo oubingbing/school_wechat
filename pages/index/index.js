@@ -567,7 +567,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${commentId}/comment`, {}, res => {
+          http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let newPostList = _this.data.posts.map(item => {
                 if (objId == item.id) {
@@ -605,7 +605,7 @@ Page({
       content: '确定删除吗?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${objId}/post`, {}, res => {
+          http.httpDelete(`/delete/${objId}/post`, {}, res => {
             let result = res.data.data;
             if (result == 1) {
               let newPosts = _this.data.posts.filter((item, index) => {

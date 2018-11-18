@@ -413,7 +413,7 @@ Page({
       content: '确定删除吗?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${objId}/job`, {}, res => {
+          http.httpDelete(`/delete/${objId}/job`, {}, res => {
             let result = res.data.data;
             if (result == 1) {
               let newJobs = _this.data.jobs.filter((item, index) => {

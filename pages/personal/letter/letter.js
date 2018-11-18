@@ -114,7 +114,7 @@ Page({
       content: '确定撤回该消息吗',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${objId}/chat_message`,
+          http.httpDelete(`/delete/${objId}/chat_message`,
             {},
             function (res) {
               let list = _this.data.list;

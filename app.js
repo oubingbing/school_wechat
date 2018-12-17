@@ -70,29 +70,6 @@ App({
       }
     })
   },
-
-  /** 
-   * 获取七牛上传token
-   */
-  setUploadToken: function (call) {
-    http.get('/upload_token', {}, function (res) {
-      if(res.data.data != null){
-        var token = res.data.data.uptoken;
-        if (call) {
-          call(token);
-        }
-        wx.setStorageSync('uploadToken', token);
-      }
-    });
-  },
-
-  /** 
-   * 获取七牛上传token
-   */
-  getUploadToken: function (callback) {
-    this.setUploadToken(callback);
-  },
-
   /**
    * 获取新的消息盒子
    */

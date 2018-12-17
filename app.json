@@ -26,14 +26,19 @@
     "pages/help/comment_mission/comment_mission",
     "pages/help/help_single/help_single",
     "pages/help/post_help/post_help",
-    "pages/help/help_detail/help_detail",
-    "pages/compare_face/face"
+    "pages/help/help_detail/help_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#66CDAA",
     "navigationBarTitleText": "校园小情书",
     "navigationBarTextStyle": "white"
+  },
+  "plugins": {
+    "uploadPlugins": {
+      "version": "1.1.0",
+      "provider": "wx00caa212d6710dcb"
+    }
   },
   "tabBar": {
     "color": "#515151",
@@ -58,12 +63,6 @@
         "iconPath": "image/help.png",
         "selectedIconPath": "image/select-help.png",
         "text": "悬赏令"
-      },
-      {
-        "pagePath": "pages/compare_face/face",
-        "iconPath": "image/fall-in-love.png",
-        "selectedIconPath": "image/select-fall-in-love.png",
-        "text": "情侣脸"
       },
       {
         "pagePath": "pages/personal/personal",

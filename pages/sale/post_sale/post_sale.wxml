@@ -2,20 +2,11 @@
   <view class='post-container'>
     <view class='post-header'>
     <view class='left'>
-      <view>
-        <image src='/image/select-image.png' 
-                wx:if="{{!hiddenSelectImage}}"
-                bindtap='selectImage'></image>
-        <image src="{{userImage}}" 
-               wx:if="{{hiddenSelectImage}}" 
-               mode='aspectFill'
-               bindtap='previewImage' 
-               id='{{userImage}}'></image>
-        <image src='/image/delete.png' 
-              bindtap='removeImage' 
-              class='remove-image' 
-              wx:if="{{hiddenSelectImage}}"></image>
-      </view>
+      <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              bind:success="uploadSuccess" 
+              bind:delete="deleteSuccess"
+              bind:error="uploadError"/>
     </view>
     <view class='right'>
       <view class='user-name'>

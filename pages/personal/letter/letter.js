@@ -1,6 +1,4 @@
 const util = require('./../../../utils/util.js')
-const qiniuUploader = require("./../../../utils/qiniuUploader");
-const uploader = require("./../../../utils/uploadImage");
 const http = require("./../../../utils/http.js");
 const app = getApp();
 

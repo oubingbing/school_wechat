@@ -37,11 +37,6 @@ page{
   align-items: center;
 }
 
-.left image{
-  width: 250rpx;
-  height: 250rpx;
-}
-
 .left .remove-image{
   width: 50rpx;
   height: 50rpx;

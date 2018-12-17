@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "我要卖舍友"
+  "navigationBarTitleText": "我要卖舍友",
+  "usingComponents": {
+    "upload": "plugin://uploadPlugins/upload"
+  }
 }

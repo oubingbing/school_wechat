@@ -60,14 +60,6 @@ Page({
       title: '加载中',
     });
 
-
-    //设置七牛上传token
-    app.getUploadToken(token => {
-      this.setData({
-        uploadToken: token
-      });
-    });
-
     let that = this;
     wx.getSetting({
       success(res) {

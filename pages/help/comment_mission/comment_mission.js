@@ -1,6 +1,4 @@
 const app = getApp();
-const qiniuUploader = require("./../../../utils/qiniuUploader");
-const uploader = require("./../../../utils/uploadImage");
 const http = require("./../../../utils/http.js");
 
 Page({

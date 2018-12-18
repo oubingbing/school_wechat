@@ -1,0 +1,54 @@
+<view class='container'>
+
+  <view class='switch-container'>
+    <view bindtap="selected" data-type="1">
+      <view>旅行</view>
+      <view class='line {{select==1?"selected":""}}'></view>
+    </view>
+    <view bindtap="selected" data-type="2">
+      <view>步数</view>
+      <view class='line {{select==2?"selected":""}}'></view>
+    </view>
+    <view bindtap="selected" data-type="3">
+      <view>校排行榜</view>
+      <view class='line {{select==3?"selected":""}}'></view>
+    </view>
+  </view>
+
+  <!-- 头部 -->
+  <view class='header'>
+    <view class='header-content'>
+      <view class='step-content'>
+        <view class='today-step'>
+          <view class='label'>今天</view>
+          <view class='step'>{{todayStep}}</view>
+        </view>
+        <view class='total-step'>
+          <view class='label'>累计</view>
+          <view class='step'>{{totalStep}}万</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 具体步数内容 -->
+  <view class='content-container'>
+    <view class='content'>
+      <view class='item' wx:for="{{steps}}" wx:key="{{steps}}">
+          <view class='left'>
+            <view class='date'>{{item.run_at}}</view>
+          </view>
+          <view class='right'>
+            <view class='step-number'>{{item.step}}</view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>
+</view>

@@ -1,6 +1,10 @@
 const util = require('./../../../utils/util.js')
 const http = require("./../../../utils/http.js");
+const qiniuUtil = require("./../../../utils/qiniuToken.js");
+const config = require("./../../../config.js");
 const app = getApp();
+
+const icon = 'http://image.kucaroom.com//tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.ATIzBaoptXWG8c3ea5b7fe584cf68b45959a9f934eee.png';
 
 Page({
   data: {
@@ -15,7 +19,20 @@ Page({
     initPageNumber: 1,
     imageArray: [],
     baseImageUrl: app.globalData.imageUrl,
-    canChat:true
+    canChat:true,
+
+    icon: {
+      width: "75rpx",
+      height: "75rpx",
+      path: icon,
+      showImage: false
+    },
+    qiniu: {
+      uploadNumber: 9,
+      region: "SCN",
+      token: '',
+      domain: config.qiniuDomain
+    }
   },
   onLoad: function (option) {
     wx.hideTabBar();
@@ -36,7 +53,45 @@ Page({
         scrollTop: _this.data.scrollTop
       })
     }, 500); 
+
+    this.getQiNiuToken();
   },
+
+  /**
+   * 获取七牛token
+   */
+  getQiNiuToken: function () {
+    qiniuUtil.getQiniuToken(res => {
+      let qiniu = this.data.qiniu;
+      qiniu.token = res;
+      this.setData({ qiniu: qiniu })
+    })
+  },
+
+  /**
+   * 获取上传的图片
+   */
+  uploadSuccess: function (uploadData) {
+    console.log(uploadData)
+
+    let attachments = [];
+    uploadData.detail.map(item => {
+      attachments.push(item.uploadResult.key)
+    })
+
+    this.setData({
+      imageArray: attachments
+    })
+    this.send();
+  },
+
+  /**
+   * 获取删除后的图片
+   */
+  deleteSuccess: function (uploadData) {
+    this.setData({ imageArray: uploadData.detail })
+  },
+
   /**
    * 设置title
    */
@@ -183,75 +238,7 @@ Page({
       }, 500); 
     });
   },
-  /**
-   * 轮询
-   */
-  polling:function(_this){
-    let friendId = _this.data.friendId;
-    setTimeout(function () {//setInterval
-      http.get(`/new/${friendId}/messages`,
-        {},
-        function (res) {
-          let newMessages = res.data.data;
-          if(newMessages.length > 0){
-            let list = _this.data.list;
 
-            newMessages.map(item => {
-              if(item.from_user_id != item.to_user_id){
-                list.push(item);
-              }
-            });
-
-            _this.setData({
-              list: list
-            })
-
-            setTimeout(function () {
-              wx.pageScrollTo({
-                scrollTop: _this.data.scrollTop += 700
-              })
-            }, 500); 
-          }
-        });
-    }, 1000);
-  },
-  /**
-   * 发图片
-   */
-  sendImage:function(){
-      let _this = this;
-      wx.chooseImage({
-        count: 9, // 默认9
-        sizeType: ['original', 'compressed'],
-        sourceType: ['album', 'camera'],
-        success: function (res) {
-          var filePaths = res.tempFilePaths;
-          let position = res.tempFilePaths.length - 1;
-          wx.showLoading({
-            title: '发送中',
-          })
-          filePaths.map((item, index) => {
-            uploader.upload(item, key => {
-              console.log('上传图片成功的回调');
-              console.log(position);
-              if (position == index) {
-                wx.hideLoading();
-              }
-
-              if (key != '' || key != null) {
-                //提交到服务器
-                let tempImageArray = _this.data.imageArray;
-                tempImageArray.push(key)
-                _this.setData({
-                  imageArray: tempImageArray
-                })
-                _this.send();
-              }
-            })
-          });
-        }
-      })
-  },
   /**
    * 预览图片
    */

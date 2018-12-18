@@ -26,7 +26,8 @@
     "pages/help/comment_mission/comment_mission",
     "pages/help/help_single/help_single",
     "pages/help/post_help/post_help",
-    "pages/help/help_detail/help_detail"
+    "pages/help/help_detail/help_detail",
+    "pages/travel/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,7 +37,7 @@
   },
   "plugins": {
     "uploadPlugins": {
-      "version": "1.1.0",
+      "version": "1.2.0",
       "provider": "wx00caa212d6710dcb"
     }
   },
@@ -57,6 +58,12 @@
         "iconPath": "image/sale.png",
         "selectedIconPath": "image/select-sale.png",
         "text": "卖舍友"
+      },
+      {
+        "pagePath": "pages/travel/index/index",
+        "iconPath": "image/run.png",
+        "selectedIconPath": "image/select-run.png",
+        "text": "步数旅行"
       },
       {
         "pagePath": "pages/help/help",

@@ -1,6 +1,8 @@
 
 const app = getApp();
 const http = require("./../../../utils/http.js");
+const qiniuUtil = require("./../../../utils/qiniuToken.js");
+const config = require("./../../../config.js");
 
 Page({
   data: {
@@ -9,8 +11,21 @@ Page({
     uploadToken: null,
     attachments: [],
     textContent: '',
-    objId:''
+    objId:'',
+    icon: {
+      width: "100rpx",
+      height: "100rpx",
+      path: "",
+      showImage: true
+    },
+    qiniu: {
+      uploadNumber: 9,
+      region: "SCN",
+      token: '',
+      domain: config.qiniuDomain
+    }
   },
+
   onLoad: function (options) {
     let id = options.id;
     this.setData({
@@ -18,13 +33,35 @@ Page({
     });
 
   },
+
   onShow: function () {
-    //设置七牛上传token
-    app.getUploadToken(token => {
-      this.setData({
-        uploadToken: token
-      });
-    });
+    this.getQiNiuToken();
+  },
+
+  /**
+ * 获取上传的图片
+ */
+  uploadSuccess: function (uploadData) {
+    console.log(uploadData)
+    this.setData({ imageArray: uploadData.detail })
+  },
+
+  /**
+   * 获取删除后的图片
+   */
+  deleteSuccess: function (uploadData) {
+    this.setData({ imageArray: uploadData.detail })
+  },
+
+  /**
+   * 获取七牛token
+   */
+  getQiNiuToken: function () {
+    qiniuUtil.getQiniuToken(res => {
+      let qiniu = this.data.qiniu;
+      qiniu.token = res;
+      this.setData({ qiniu: qiniu })
+    })
   },
 
   /** 提交 */
@@ -41,6 +78,12 @@ Page({
       }, 1500)
       return false;
     }
+
+    //获取图片
+    this.data.imageArray.map(item => {
+      attachments.push(item.uploadResult.key)
+    })
+
     http.post('/comment', {
       content: content,
       attachments: attachments,
@@ -54,50 +97,6 @@ Page({
   },
 
   /**
-   * 选择图片并且上传到七牛
-   */
-  selectImage: function () {
-    let _this = this;
-    wx.chooseImage({
-      count: 9, // 默认9
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        let temArray = _this.data.imageArray;
-        let temUrlArray = _this.data.attachments;
-        var filePaths = res.tempFilePaths;
-        let position = res.tempFilePaths.length - 1;
-        wx.showLoading({
-          title: '加载中',
-        })
-
-        filePaths.map((item, index) => {
-          temArray.push(item);
-          uploader.upload(item, key => {
-            console.log(index);
-            console.log(position);
-            if (position == index) {
-              wx.hideLoading();
-            }
-            let temAttachments = _this.data.attachments;
-            if (key != '' || key != null) {
-              temAttachments.push(key);
-              _this.setData({
-                attachments: temAttachments
-              });
-            }
-            console.log(key);
-          })
-        });
-        _this.setData({
-          imageArray: temArray
-        });
-
-      }
-    })
-  },
-
-  /**
    * 预览图片
    */
   previewImage: function (event) {
@@ -106,29 +105,6 @@ Page({
       current: '',
       urls: [url]
     })
-  },
-
-  /**
-   * 移除图片
-   */
-  removeImage: function (event) {
-    let id = event.target.id;
-    let arr = this.data.imageArray;
-    let newAttachments = this.data.attachments;
-    let newArray = arr.filter((item, index) => {
-      if (index != id) {
-        return item;
-      }
-    });
-    newAttachments = newAttachments.filter((item, index) => {
-      if (index != id) {
-        return item;
-      }
-    });
-    this.setData({
-      imageArray: newArray,
-      attachments: newAttachments
-    });
   },
 
   /**

@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "发布悬赏令"
+  "navigationBarTitleText": "发布悬赏令",
+  "usingComponents": {
+    "upload": "plugin://uploadPlugins/upload"
+  }
 }

@@ -63,7 +63,6 @@ page{
 }
 
 .user-name .follow-icon{
-  color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -71,11 +70,8 @@ page{
 }
 
 .follow-icon .follow-world{
-    background: darkgray;
-    font-size: 25rpx;
-    padding-left: 10rpx;
-    padding-right: 10rpx;
-    border-radius: 10rpx;
+  font-size: 25rpx;
+  color: darkgray;
 }
 
 .user-name .had-follow{
@@ -87,11 +83,7 @@ page{
 
 .had-follow .had-follow-world{
   font-size: 25rpx;
-  color: white;
-  background: #FF7F00;
-  border-radius: 10rpx;
-  padding-left: 5rpx;
-  padding-right: 5rpx;
+  color: #FF7F00;
 }
 
 .for-user{
@@ -326,15 +318,18 @@ page{
 .post-container{
   position:fixed;
   right:18rpx;
-  bottom:5rpx;
+  bottom:20rpx;
   z-index:100;
   width: 120prx;
   height: 120prx;
+  border-radius: 70rpx;
 }
 
 .post image{
   width: 120rpx;
   height: 120rpx;
+  background: white;
+  border-radius: 60rpx;
 }
 
 /** nav-bar **/

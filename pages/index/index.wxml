@@ -9,7 +9,7 @@
             data-type="1">全部</view>
       <view class='follow {{select==2?"selected":""}}' 
             bindtap="selected" 
-            data-type='2'>关注</view>
+            data-type='2'>收藏</view>
       <view class='hot {{select==4?"selected":""}}' 
             bindtap="selected" 
             data-type='4'>最热</view>
@@ -111,11 +111,11 @@
           <view wx:if="{{item.private == 1}}">匿名の同学</view>
           <view class='follow-icon' 
                 wx:if="{{!item.follow}}">
-                 <view class='follow-world' data-obj="{{item.id}}" bindtap="follow">关注</view>
+                 <view class='follow-world' data-obj="{{item.id}}" bindtap="follow">收藏</view>
                 </view>
           <view class='had-follow' 
                 wx:if="{{item.follow}}">
-                  <view bindtap="cancelFolllow" data-obj="{{item.id}}" class='had-follow-world'>取关注</view>
+                  <view bindtap="cancelFolllow" data-obj="{{item.id}}" class='had-follow-world'>取收藏</view>
                 </view>
         </view>
         <view class='for-user' 

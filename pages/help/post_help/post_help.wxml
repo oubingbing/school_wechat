@@ -9,27 +9,11 @@
         bindinput="getTextContent"/>
     </view>
     <view class='image-form'>
-      <view class='select-image'>
-        <view class='image-item' 
-              wx:for="{{imageArray}}" 
-              wx:key='{{imageArray}}'>
-            <image class='upload-image' 
-            bindtap='previewImage' 
-            id='{{item}}' 
-            mode='aspectFill' 
-            src='{{item}}'></image>
-            <image src='/image/delete.png' 
-                   id='{{index}}' 
-                   wx:key='{{imageArray}}' 
-                   bindtap='removeImage' 
-                   class='remove-image'></image>
-        </view>
-        <view>
-          <image class='upload-image' 
-                 bindtap='selectImage' 
-                 src='/image/select-image.png'></image>
-        </view>
-      </view>
+        <upload icon-info="{{icon}}" 
+                qiniu-info="{{qiniu}}"  
+                bind:success="uploadSuccess" 
+                bind:delete="deleteSuccess"
+                bind:error="uploadError"/>
     </view>  
   </view>
 

@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -59,6 +59,18 @@
 					"id": -1,
 					"name": "个人中心",
 					"pathName": "pages/personal/personal",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "悬赏令",
+					"pathName": "pages/help/help",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "步数旅行",
+					"pathName": "pages/travel/index/index",
 					"query": ""
 				}
 			]

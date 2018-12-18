@@ -14,9 +14,10 @@ Page({
     phone:'',
 
     icon: {
-      "width": "100rpx",
-      "height": "100rpx",
-      "path": ""
+      width: "100rpx",
+      height: "100rpx",
+      path: "",
+      showImage:true
     },
     qiniu: {
       uploadNumber: 9,

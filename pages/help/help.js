@@ -2,7 +2,6 @@ const app = getApp();
 const util = require("../../utils/util.js");
 const http = require("./../../utils/http.js");
 
-
 Page({
   data: {
     pageSize: 10,

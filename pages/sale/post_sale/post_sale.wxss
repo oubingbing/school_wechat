@@ -26,6 +26,14 @@ page{
   display: flex;
   flex-direction: row;
   width: 100%;
+  justify-content: center;
+}
+
+.image-form{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
 }
 
 .post-header .left{
@@ -48,7 +56,7 @@ page{
 .post-header .right{
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 95%;
 }
 
 input{

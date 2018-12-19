@@ -19,12 +19,12 @@ Page({
     imageArray: [],
 
     icon: {
-      "width": "250rpx",
-      "height": "250rpx",
+      "width": "100rpx",
+      "height": "100rpx",
       "path": ""
     },
     qiniu: {
-      uploadNumber: 1,
+      uploadNumber: 9,
       region: "SCN",
       token: '',
       domain: config.qiniuDomain

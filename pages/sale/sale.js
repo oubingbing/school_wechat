@@ -6,7 +6,6 @@ let genderArray = ['男', '女', '人妖', '未知生物'];
 
 Page({
   data: {
-    sales:[],
     baseImageUrl: app.globalData.imageUrl,
     currentTime:'',
     pageSize: 10,
@@ -16,7 +15,12 @@ Page({
     notDataTips: false,
     newMessage: false,
     newMessageNumber: 0,
-    select: 1
+    select: 1,
+
+    leftList: [],
+    rightList: [],
+    leftHeight: 0,
+    rightHeigt: 1,
   },
   onLoad: function () {
     wx.showLoading({
@@ -67,6 +71,7 @@ Page({
       }
     }
   },
+
   /** 
    * 预览图片
    */
@@ -77,6 +82,7 @@ Page({
       urls: [url]
     })
   },
+
   /**
   * 跳转到私信
   */
@@ -86,6 +92,7 @@ Page({
       url: '/pages/letter/letter?friend_id=' + id
     })
   },
+
   /**
    * 获取具体类型的贴子
    */
@@ -101,6 +108,7 @@ Page({
     });
     this.getList();
   },
+
   /**
    * 进入发表页面
    */
@@ -133,41 +141,57 @@ Page({
    * 获取贴子列表
    */
   getList:function(){
-    let _this = this;
+
     let objType = this.data.select;
     var order_by = 'created_at';
     var sort_by = 'desc';
     if (objType == 4) {
       order_by = 'praise_number';
       sort_by = 'desc';
-      console.log('最新');
     }
     if (this.data.postType == 3) {
       this.setData({
         pageNumber: this.data.initPageNumber
       });
     }
-    http.get(`/sale_friends?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,{},res => {
+    http.get(`/sale_friends_v2?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&type=${objType}&order_by=${order_by}&sort_by=${sort_by}`,{},res => {
       wx.hideLoading();
       this.setData({
         showGeMoreLoadin: false
       });
       let data = res.data.data.page_data;
-      let sales = _this.data.sales;
+      if(data){
+        let leftList = this.data.leftList;
+        let rightList = this.data.rightList;
+        let leftHeight = this.data.leftHeight;
+        let rightHeigt = this.data.rightHeigt;
 
-      if (data.length > 0) {
-        data.map(item => {
-          sales.push(item);
-        });
+        if (data.length > 0) {
+          data.map(item => {
 
-        this.setData({
-          sales: sales,
-          pageNumber: this.data.pageNumber + 1
-        });
-      } else {
-        this.setData({
-          notDataTips: true
-        });
+            if (leftHeight <= rightHeigt) {
+              leftList.push(item);
+              leftHeight += item.attachments[0]['height'];
+            } else {
+              rightList.push(item)
+              rightHeigt += item.attachments[0]['height'];
+            }
+            this.setData({
+              leftList: leftList,
+              rightList: rightList,
+              leftHeight: leftHeight,
+              rightHeigt: rightHeigt,
+            })
+          });
+
+          this.setData({
+            pageNumber: this.data.pageNumber + 1
+          });
+        } else {
+          this.setData({
+            notDataTips: true
+          });
+        }
       }
     });
   },

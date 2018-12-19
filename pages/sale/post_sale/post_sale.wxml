@@ -1,13 +1,7 @@
 <view class="post-sale-container">
   <view class='post-container'>
     <view class='post-header'>
-    <view class='left'>
-      <upload icon-info="{{icon}}" 
-              qiniu-info="{{qiniu}}"  
-              bind:success="uploadSuccess" 
-              bind:delete="deleteSuccess"
-              bind:error="uploadError"/>
-    </view>
+
     <view class='right'>
       <view class='user-name'>
         <input placeholder="名字" 
@@ -44,6 +38,13 @@
                 bindinput='getContent'/>
     </view>
   </view>
+  <view class='image-form'>
+      <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              bind:success="uploadSuccess" 
+              bind:delete="deleteSuccess"
+              bind:error="uploadError"/>
+    </view>  
   </view>
 
 </view>

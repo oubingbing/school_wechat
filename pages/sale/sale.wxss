@@ -8,328 +8,89 @@ page{
   flex-direction: column;
 }
 
-.sale-wall{
-  margin-top: 72rpx;
+/** 瀑布流图片 **/
+
+.container{
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80rpx;
 }
 
-.sale-item{
-  margin-bottom: 5rpx;
-  width: 100%;
+.container .content{
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.content .content-left{
+  width: 50%;
   display: flex;
   flex-direction: column;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-color: #F5F5F5;
-}
-
-.sale-item .header{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  
-}
-
-.user-avatar{
-  display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.user-avatar image{
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
-
-}
-.follow{
-  margin-right: 15rpx;
-  font-size: 35rpx;
+.content .content-right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.follow-label{
-  background: #FF8C00;
-  margin-top: 30rpx;
+.content .item{
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25rpx;
+  box-shadow: 0rpx 0rpx 20rpx 8rpx gainsboro;
+  border-radius: 12rpx;
+}
+
+.item .main-pic{
+  width: 100%;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.content .footer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-top: 15rpx;
-  padding-bottom: 15rpx;
-  padding-left: 70rpx;
-  padding-right: 80rpx;
-  border-radius: 80rpx;
-  color: white;
-}
-
-.user-name{
-  font-size: 30rpx;
-  margin-top: 10rpx;
-  color: darkgray;
-}
-
-.content{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 30rpx;
-}
-
-.image-container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  background: #F5F5F5;
-  margin-top: -2rpx;
-}
-
-.praise-image{
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30rpx;
-}
-
-.praise-number{
-  font-size: 30rpx;
-  color: darkgray;
+  padding-bottom: 10rpx;
   background: white;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  border-radius: 20rpx;
-  margin-top: 15rpx;
+  border-bottom-left-radius: 12rpx;
+  border-bottom-right-radius: 12rpx;
 }
 
-.praise-container{
-  width: 80rpx;
-  height: 80rpx;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 40rpx;
-}
-
-.praise-image image{
-  width: 50rpx;
-  height: 50rpx;
-  margin-top: 20rpx;
-}
-
-.slae-person-container{
-  width: 80%;
-  background: red;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-  padding-bottom:30rpx; 
-  padding-top: 30rpx;
-}
-
-.content .sale-image{
-  width: 300rpx;
-  height: 300rpx;
-  border-radius: 150rpx;
-  border-style:solid;
-  border-width:8rpx;
-  border-color: #FFEFD5;
-}
-
-.sale-image image{
-  height: 500rpx;
-}
-
-.other-info{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
- .craete_at{
-  color: darkgray;
-  font-size: 25rpx;
-  margin-left: 18rpx;
-  margin-top: 20rpx;
-}
-
-.delete{
-  color: darkgray;
-  font-size: 25rpx;
-  margin-left: 18rpx;
-  margin-top: 20rpx;
-}
-
-.content .content-detail{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.content-detail .detail-item{
-  padding: 5rpx;
-  border-radius: 10rpx;
-  font-size: 30rpx;
-}
-
-.detail-item{
-  color: gray;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.detail-item-user{
-  width: 100%;
-  text-align: center;
-  color: black;
-}
-
-.detail-item-gender{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.detail-item-gray{
-  background: #DCDCDC;
-  background:rgba(0,0,0,0.02);
-}
-
-.detail-item-gender .gender-image{
-  width: 20%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.detail-item-gender image{
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.detail-item-gender .gender-world{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 10rpx;
-}
-
-.show-self{
-  display: flex;
-  flex-direction: row;
-  margin-left: 15rpx;
-  margin-right: 15rpx;
-  margin-top: 20rpx;
-  margin-bottom: 30rpx;
-}
-
-
-.comment-container{
-  background: whitesmoke;
-  display: flex;
-  flex-direction: row;
-  height: 80rpx;
-  align-items: center;
-  justify-content: center;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-top-color: snow;
-  margin-top: 10rpx;
-  width: 100%;
-}
-
-.comment-container .comment-wall{
-  display: flex;
-  flex-direction: row;
+.footer .footer-item{
   width: 95%;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.comment-container .zan{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  font-size: 30rpx;
-  justify-content: center;
-  background: white;
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
-  text-align: center;
-}
-.zan image{
-  margin-left: 11rpx;
-}
-
-.comment-container .comment{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  font-size: 25rpx;
+  color: gray;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.comment .comment-icon{
-  background: white;
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  
+.footer .avatar{
+  margin-right: 10rpx;
 }
 
-.delete-icon image{
-  width: 50rpx;
-  height: 50rpx;
-}
-
-.delete-icon .delete{
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
-  background: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: -5rpx;
-}
-
-.comment-icon image{
-  margin-left: 12rpx;
-}
-
-.comment .comment-num{
-  margin-left: 10rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 30rpx;
+.footer .icon{
   width: 40rpx;
   height: 40rpx;
   border-radius: 20rpx;
-  color: gray;
-  background: white;
 }
 
-.zan image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
-}
-
-.comment image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
-}
 
 /**post css**/
 
@@ -338,8 +99,10 @@ page{
   right:18rpx;
   bottom:5rpx;
   z-index:100;
-  width: 120prx;
-  height: 120prx;
+  width: 90prx;
+  height: 90prx;
+  background: white;
+  border-radius: 100rpx;
 }
 
 .post image{

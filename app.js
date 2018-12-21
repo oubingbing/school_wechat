@@ -8,6 +8,8 @@ App({
     this.globalData.appKey = config.alianceKey;
     this.globalData.imageUrl = config.qiniuDomain;
     this.globalData.bgIimage = config.bgImage;
+    
+    this.globalData.reloadSale = false;
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -100,6 +102,7 @@ App({
     changeSchoolPost:false,
     changeSchoolSale: false,
     changeSchoolMatch: false,
-    postHelp:false
+    postHelp:false,
+    reloadSale:false
   }
 })

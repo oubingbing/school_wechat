@@ -28,18 +28,24 @@
 <view class='container'>
   <view class='content'>
     <view class='content-left'>
-      <view class='item' wx:for="{{leftList}}" wx:key="{{leftList}}">
+      <view class='item'  
+            wx:for="{{leftList}}" 
+            catchtap='comment'
+            data-objid='{{item.id}}'
+            wx:key="{{leftList}}">
         <image class='main-pic' 
                mode='widthFix' 
-               src='{{baseImageUrl+item.attachments[0]["url"]}}' 
-               id="{{baseImageUrl+item.attachments[0]['url']}}" 
-               data-imageId="{{item.id}}"
-              bindtap='previewImage'></image>
+               src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
         <view class='footer'>
           <view class='footer-item'>
-            <image class='icon avatar' src='{{item.poster.avatar}}'></image>
-            <view>{{item.poster.nickname}}</view>
+            <view class='user-info'>
+              <image class='icon avatar' src='{{item.poster.avatar}}'></image>
+              <view>{{item.poster.nickname}}</view>
             </view>
+            <view class='share-icon'>
+              <image src='/image/share.png'></image>
+            </view>
+          </view>
         </view>
       </view>
 
@@ -49,15 +55,19 @@
 
       <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}">
         <image class='main-pic' 
-               mode='widthFix' 
-               src='{{baseImageUrl+item.attachments[0]["url"]}}'
-               id="{{baseImageUrl+item.attachments[0]['url']}}" 
-               data-imageId="{{item.id}}"
-               bindtap='previewImage'></image>
+               mode='widthFix'
+               catchtap='comment'
+               data-objid='{{item.id}}' 
+               src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
         <view class='footer'>
           <view class='footer-item'>
-            <image class='icon avatar' src='{{item.poster.avatar}}'></image>
-            <view>{{item.poster.nickname}}</view>
+            <view class='user-info'>
+              <image class='icon avatar' src='{{item.poster.avatar}}'></image>
+              <view>{{item.poster.nickname}}</view>
+            </view>
+            <view class='share-icon'>
+              <image src='/image/share.png'></image>
+            </view>
           </view>
         </view>
       </view>
@@ -84,7 +94,8 @@
 </view>
 
 <view class='post-container'>
+  <view class='wall'></view>
   <view class='post'>
-    <image src='/image/post.png' bindtap='post'></image>
+    <image src='/image/new-post.png' bindtap='post'></image>
   </view>
 </view>

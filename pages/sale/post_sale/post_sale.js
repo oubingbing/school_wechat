@@ -43,6 +43,8 @@ Page({
    * 获取上传的图片
    */
   uploadSuccess: function (uploadData) {
+    console.log("图片上传：")
+    console.log(uploadData)
     this.setData({ imageArray: uploadData.detail })
   },
 
@@ -116,6 +118,30 @@ Page({
       attachments.push(item.uploadResult.key)
     })
 
+    if (!name) {
+      wx.showToast({
+        title: '名字不能为空',
+        icon: 'none'
+      })
+      return false;
+    }
+
+    if (!gender) {
+      wx.showToast({
+        title: '性别不能为空',
+        icon: 'none'
+      })
+      return false;
+    }
+
+    if(attachments.length<=0){
+      wx.showToast({
+        title: '图片不能为空',
+        icon: 'none'
+      })
+      return false;
+    }
+
     wx.showLoading({
       title: '发送中',
     })
@@ -128,14 +154,15 @@ Page({
       introduce: introduce
     }, res => {
       wx.hideLoading();
-      if(res.data.data.error_code){
+      if(res.data.error_code != 0){
         wx.showLoading({
-          title: res.data.data.error_message,
+          title: res.data.error_message,
         })
         setTimeout(res => {
           wx.hideLoading();
         }, 2000);
       }else{
+        app.globalData.reloadSale = true;
         wx.navigateBack({ comeBack: true });
       }
     });

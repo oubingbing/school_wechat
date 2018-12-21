@@ -4,6 +4,8 @@ page{
   flex-direction: column;
 }
 
+/**FF7256**/
+
 .container{
   width: 100%;
   display: flex;
@@ -322,14 +324,24 @@ page{
   z-index:100;
   width: 120prx;
   height: 120prx;
-  border-radius: 70rpx;
+}
+
+.post-container .wall{
+  position: absolute;
+  z-index: 105;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background: white;
+  right: 10rpx;
+  bottom: 30rpx;
 }
 
 .post image{
   width: 120rpx;
   height: 120rpx;
-  background: white;
-  border-radius: 60rpx;
+  position: relative;
+  z-index: 110;
 }
 
 /** nav-bar **/

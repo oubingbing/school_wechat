@@ -1,45 +1,37 @@
  <view class="sale-container" bindtouchmove="hiddenComment">
 
-    <view class='sale-item'>
-      <view class='header'>
-        <view class='user-avatar'>
-          <image src='{{sale.poster.avatar}}' mode='widthFix'></image>
-        </view>
-        <view class='user-name'>
-          <view class='user-name-nickname'>{{sale.poster.nickname}}</view>
-          <view class='user-name-created'>{{sale.created_at}}</view>
-        </view>
+    <view class='detail-container'>
+      <view class='header-container'>
+        <view class='header-bg'></view>
+          <swiper class='image-container' indicator-dots="true" indicator-color="#ffffff" indicator-active-color="#66CDAA">
+            <block wx:for="{{sale.attachments}}" wx:key="{{item}}">
+              <swiper-item class='image-item'>
+                <image mode='aspectFill' 
+                       src="{{baseImageUrl+item}}" 
+                       bindtap='previewImage'
+                       id="{{baseImageUrl+item}}" 
+                       class="sale-image"/>
+              </swiper-item>
+            </block>
+          </swiper>
       </view>
-      <view class='content'>
-       <view class='craete_at' wx:if="{{sale.show_college}}">{{sale.college}}</view>
-      <view class='content-detail'>
-        <view class='detail-item detail-item-gender detail-item-gray'>
-          <view class='gender-image'><image src='/image/gender.png'></image></view>
-          <view class='gender-world'>{{sale.gender}}</view>
-        </view>
-        <view class='detail-item detail-item-gender'>
-          <view class='gender-image'><image src='/image/major.png'></image></view>
-          <view class='gender-world'>{{sale.major}}</view>
-        </view>
-        <view class='detail-item detail-item-gender detail-item-gray'>
-          <view class='gender-image'><image src='/image/ilike.png'></image></view>
-          <view class='gender-world'>{{sale.expectation}}</view>
-        </view>
-        <view class='detail-item detail-item-gender'>
-          <view class='gender-image'><image src='/image/show-self.png'></image></view>
-          <view class='gender-world'>{{sale.introduce}}</view>
-        </view>
+      <view class='friend-info-container'>
+        <view class='friend-name'>{{sale.name}}</view>
+        <view class='gender'>{{sale.gender}}</view>
+        <view class='major'>{{sale.major}}</view>
+        <view class='major'>喜欢TA：{{sale.expectation}}</view>
+        <view class='major'>舍友简介：{{sale.introduce}}</view>
       </view>
-        <view class='image-container'>
-          <image class='sale-image' 
-                src='{{baseImageUrl+sale.attachments[0]}}' 
-                mode='widthFix'></image>
-        </view>
+
+    <view class='operate'>
+      <view class='share-button'>
+        <button class='button' open-type="share" style='border: none;'>分享</button>
+      </view>
+      <view class='collect'>喜欢</view>
       </view>
     </view>
 
     <view class='comment-container'>
-    
       <view class='comment-wall'>
           <view class='comment-header'>
             <view class='zan' 
@@ -47,6 +39,12 @@
                   data-objid="{{sale.id}}">
               <image src='/image/topic_praise.png' style='width:50rpx;height:50rpx;'></image>
               <view style='padding-left:5rpx;'>{{sale.praise_number}}</view>
+            </view>
+            <view class='zan'
+                  wx:if="{{sale.can_delete}}" 
+                  bindtap='deleteSale'>
+              <image src='/image/topic_praise.png' style='width:50rpx;height:50rpx;'></image>
+              <view style='padding-left:5rpx;'>删除</view>
             </view>
             <view class='comment' 
                   bindtap='showCommentInput' 

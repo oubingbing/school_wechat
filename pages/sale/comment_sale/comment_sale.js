@@ -26,6 +26,43 @@ Page({
       });
     });
   },
+
+  /**
+ * 删除帖子
+ */
+  deleteSale: function (e) {
+    let id = this.data.sale.id;
+    wx.showModal({
+      title: '提示',
+      content: '确认删除?',
+      success: function (res) {
+        if (res.confirm) {
+          http.httpDelete(`/delete/${id}/sale_friend`, {}, res => {
+            console.log(res.data)
+            if (res.data.error_code == 0) {
+              app.globalData.reloadSale = true;
+              wx.navigateBack({ comeBack: true });
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+
+  /** 
+   * 预览图片
+   */
+  previewImage: function (event) {
+    let url = event.target.id;
+    wx.previewImage({
+      current: '',
+      urls: [url]
+    })
+  },
+
   /**
    * 触摸屏幕后移动触发一些隐藏操作
    */

@@ -10,7 +10,7 @@
       <view class='line {{select==2?"selected":""}}'></view>
     </view>
     <view bindtap="selected" data-type="3">
-      <view>校排行榜</view>
+      <view>校园榜</view>
       <view class='line {{select==3?"selected":""}}'></view>
     </view>
   </view>

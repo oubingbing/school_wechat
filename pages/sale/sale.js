@@ -36,22 +36,32 @@ Page({
   },
 
   onShow:function(){
-    let _this = this;
     let type = 0;
-    app.getNewInbox(type, function (res) {
-      console.log("新消息数量：" + res.data.data);
+    app.getNewInbox(type,res=> {
       if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
-        _this.setData({
+        this.setData({
           newMessage: true,
           newMessageNumber: res.data.data
         });
       } else {
-        _this.setData({
+        this.setData({
           newMessage: false,
           newMessageNumber: 0
         });
       }
     });
+
+    if (app.globalData.reloadSale == true){
+      app.globalData.reloadSale = false;
+      this.setData({
+        leftList: [],
+        rightList: [],
+        leftHeight: 0,
+        rightHeigt: 1,
+        pageNumber:1
+      })
+      this.getList();
+    }
 
   },
   onShareAppMessage: function (res) {
@@ -70,27 +80,6 @@ Page({
         // 转发失败
       }
     }
-  },
-
-  /** 
-   * 预览图片
-   */
-  previewImage: function (event) {
-    let url = event.target.id;
-    wx.previewImage({
-      current: '',
-      urls: [url]
-    })
-  },
-
-  /**
-  * 跳转到私信
-  */
-  letter: function (e) {
-    let id = e.currentTarget.dataset.obj;
-    wx.navigateTo({
-      url: '/pages/letter/letter?friend_id=' + id
-    })
   },
 
   /**
@@ -119,7 +108,7 @@ Page({
   },
 
   /**
-   * 进入品论页面
+   * 进入详情页面
    */
   comment:function(e){
     let id = e.currentTarget.dataset.objid;
@@ -168,20 +157,21 @@ Page({
 
         if (data.length > 0) {
           data.map(item => {
-
-            if (leftHeight <= rightHeigt) {
-              leftList.push(item);
-              leftHeight += item.attachments[0]['height'];
-            } else {
-              rightList.push(item)
-              rightHeigt += item.attachments[0]['height'];
+            if(item.attachments.length>=1){
+              if (leftHeight <= rightHeigt) {
+                leftList.push(item);
+                leftHeight += item.attachments[0]['height'];
+              } else {
+                rightList.push(item)
+                rightHeigt += item.attachments[0]['height'];
+              }
+              this.setData({
+                leftList: leftList,
+                rightList: rightList,
+                leftHeight: leftHeight,
+                rightHeigt: rightHeigt,
+              })
             }
-            this.setData({
-              leftList: leftList,
-              rightList: rightList,
-              leftHeight: leftHeight,
-              rightHeigt: rightHeigt,
-            })
           });
 
           this.setData({
@@ -249,41 +239,6 @@ Page({
   },
 
   /**
-   * 删除帖子
-   */
-  delete:function(e){
-    let id = e.currentTarget.dataset.objid;
-    let _this = this;
-
-    wx.showModal({
-      title: '提示',
-      content: '确认删除?',
-      success: function (res) {
-        if (res.confirm) {
-          http.httpDelete(`/delete/${id}/sale_friend`, {}, res => {
-            if (res.data.data) {
-              let oldSales = _this.data.sales;
-              let sales = oldSales.filter(item => {
-                if (item.id != id) {
-                  return item;
-                }
-
-              });
-
-              _this.setData({
-                sales: sales
-              });
-            }
-          });
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
-  
-  },
-
-  /**
    * 点赞
    */
   praise:function(e){
@@ -338,6 +293,7 @@ Page({
       });
     });
   },
+
   /**
    * 取消关注
    */

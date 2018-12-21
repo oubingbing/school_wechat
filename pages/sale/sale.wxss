@@ -16,7 +16,7 @@ page{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 80rpx;
+  margin-top: 70rpx;
 }
 
 .container .content{
@@ -48,7 +48,7 @@ page{
   display: flex;
   flex-direction: column;
   margin-top: 25rpx;
-  box-shadow: 0rpx 0rpx 20rpx 8rpx gainsboro;
+  box-shadow: 0rpx 0rpx 20rpx 10rpx gainsboro;
   border-radius: 12rpx;
 }
 
@@ -77,8 +77,30 @@ page{
   flex-direction: row;
   font-size: 25rpx;
   color: gray;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+}
+
+.footer-item .user-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-item .share-icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.share-icon .delete-icon{
+  font-size: 20rpx;
+}
+
+.share-icon image{
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .footer .avatar{
@@ -91,25 +113,44 @@ page{
   border-radius: 20rpx;
 }
 
+.footer .major{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 25rpx;
+  color: gray;
+  padding-top: 5rpx;
+}
+
 
 /**post css**/
 
 .post-container{
   position:fixed;
   right:18rpx;
-  bottom:5rpx;
+  bottom:20rpx;
   z-index:100;
-  width: 90prx;
-  height: 90prx;
+  width: 120prx;
+  height: 120prx;
+}
+
+.post-container .wall{
+  position: absolute;
+  z-index: 105;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
   background: white;
-  border-radius: 100rpx;
+  right: 13rpx;
+  bottom: 30rpx;
 }
 
 .post image{
   width: 120rpx;
   height: 120rpx;
+  position: relative;
+  z-index: 110;
 }
-
 /** 加载更多 **/
 
 .get-more{

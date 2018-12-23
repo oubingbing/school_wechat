@@ -107,7 +107,7 @@ Page({
    * 提交数据
   */
   post: function () {
-    let attachments = this.data.attachments;
+    let attachments = [];
     let name = this.data.name;
     let gender = this.data.genderValue;
     let major = this.data.major;

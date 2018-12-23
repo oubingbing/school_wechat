@@ -1,6 +1,6 @@
  <view class="sale-container" bindtouchmove="hiddenComment">
 
-    <view class='detail-container'>
+    <view class='detail-container' wx:if="{{sale}}">
       <view class='header-container'>
         <view class='header-bg'></view>
           <swiper class='image-container' indicator-dots="true" indicator-color="#ffffff" indicator-active-color="#66CDAA">
@@ -18,41 +18,38 @@
       <view class='friend-info-container'>
         <view class='friend-name'>{{sale.name}}</view>
         <view class='gender'>{{sale.gender}}</view>
-        <view class='major'>{{sale.major}}</view>
+        <view class='major'>专业：{{sale.major}}</view>
         <view class='major'>喜欢TA：{{sale.expectation}}</view>
         <view class='major'>舍友简介：{{sale.introduce}}</view>
       </view>
 
     <view class='operate'>
       <view class='share-button'>
-        <button class='button' open-type="share" style='border: none;'>分享</button>
+        <button   class='button' 
+                  style='border: none;'  
+                  bindtap='showCommentInput' 
+                  data-objid="{{sale.id}}"
+                  data-refid=""
+                  data-type="2">撩一下</button>
       </view>
-      <view class='collect'>喜欢</view>
+      <view class='collect' bindtap='cancelFolllow' wx:if="{{sale.follow==true}}">喜欢</view>
+      <view class='collect' bindtap='follow' wx:else>已喜欢</view>
       </view>
     </view>
 
-    <view class='comment-container'>
+    <view class='comment-container' wx:if='{{sale}}'>
       <view class='comment-wall'>
           <view class='comment-header'>
-            <view class='zan' 
-                  bindtap='praise' 
-                  data-objid="{{sale.id}}">
-              <image src='/image/topic_praise.png' style='width:50rpx;height:50rpx;'></image>
-              <view style='padding-left:5rpx;'>{{sale.praise_number}}</view>
+            <view class='zan'>
+              {{sale.follow_number}}喜欢
             </view>
             <view class='zan'
                   wx:if="{{sale.can_delete}}" 
                   bindtap='deleteSale'>
-              <image src='/image/topic_praise.png' style='width:50rpx;height:50rpx;'></image>
               <view style='padding-left:5rpx;'>删除</view>
             </view>
-            <view class='comment' 
-                  bindtap='showCommentInput' 
-                  data-objid="{{sale.id}}"
-                  data-refid=""
-                  data-type="2">
-              <image src='/image/topic_comment.png' style='width:50rpx;height:50rpx;'></image>
-              <view style='padding-left:5rpx;'>{{sale.comment_number}}</view>
+            <view class='comment'>
+              <view style='padding-left:5rpx;'>{{sale.comment_number}}评论</view>
             </view>
           </view>
       </view>

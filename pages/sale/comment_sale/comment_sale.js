@@ -52,6 +52,35 @@ Page({
 
   },
 
+  /**
+ * 关注
+ */
+  follow: function (e) {
+    let objId = this.data.sale.id;
+    http.post('/follow', {
+      obj_id: objId,
+      obj_type: 2
+    }, res=> {
+      let sale = this.data.sale;
+      sale.follow = true;
+      sale.follow_number += 1
+      this.setData({sale: sale});
+    });
+  },
+
+  /**
+ * 取消关注
+ */
+  cancelFolllow: function (e) {
+    let objId = this.data.sale.id;
+    http.put(`/cancel/${objId}/follow/2`, {}, res=> {
+      let sale = this.data.sale;
+      sale.follow = false;
+      sale.follow_number -= 1
+      this.setData({ sale: sale });
+    })
+  },
+
   /** 
    * 预览图片
    */

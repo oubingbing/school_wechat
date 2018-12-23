@@ -4,7 +4,6 @@
       <view class='bg-image'>
         <image mode="aspectFill" src='/image/bg.jpg'></image>
       </view>
-      <view class='update-info' bindtap='updateInfo'>完善资料</view>
       <view>
         <image class='user-image' src='{{user.avatar}}'></image>
       </view>

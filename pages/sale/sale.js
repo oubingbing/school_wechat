@@ -93,7 +93,11 @@ Page({
     })
 
     this.setData({
-      pageNumber: this.data.initPageNumber
+      pageNumber: this.data.initPageNumber,
+      leftList: [],
+      rightList: [],
+      leftHeight: 0,
+      rightHeigt: 1
     });
     this.getList();
   },
@@ -269,50 +273,5 @@ Page({
           });
         }
     });
-  },
-  /**
-   * 关注
-   */
-  follow: function (e) {
-    let _this = this;
-    let objId = e.target.dataset.obj;
-    http.post('/follow', {
-      obj_id: objId,
-      obj_type: 2
-    }, function (res) {
-      let follow = res.data.data;
-      let sales = _this.data.sales;
-      let newSale = sales.map(item => {
-        if (item.id == follow.obj_id) {
-          item.follow = true;
-        }
-        return item;
-      });
-      _this.setData({
-        sales: newSale
-      });
-    });
-  },
-
-  /**
-   * 取消关注
-   */
-  cancelFolllow: function (e) {
-    let _this = this;
-    let objId = e.target.dataset.obj;
-    http.patch(`/cancel/${objId}/follow/2`, {}, function (res) {
-      let follow = res.data.data;
-      let sales = _this.data.sales;
-      let newSale = sales.map(item => {
-        if (item.id == objId) {
-          item.follow = false;
-        }
-        return item;
-      });
-      _this.setData({
-        sales: newSale
-      });
-    });
-
   },
 })

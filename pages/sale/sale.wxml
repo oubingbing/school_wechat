@@ -6,7 +6,7 @@
             data-type="1">全部</view>
       <view class='follow {{select==2?"selected":""}}'               
             bindtap="selected" 
-            data-type="2">关注</view>
+            data-type="2">喜欢</view>
       <view class='new {{select==3?"selected":""}}'                  
             bindtap="selected" 
             data-type="3">最新</view>
@@ -43,7 +43,7 @@
               <view>{{item.poster.nickname}}</view>
             </view>
             <view class='share-icon'>
-              <image src='/image/share.png'></image>
+              {{item.comment_number}}评论
             </view>
           </view>
         </view>
@@ -66,7 +66,7 @@
               <view>{{item.poster.nickname}}</view>
             </view>
             <view class='share-icon'>
-              <image src='/image/share.png'></image>
+              {{item.comment_number}}评论
             </view>
           </view>
         </view>

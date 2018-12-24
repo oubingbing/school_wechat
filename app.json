@@ -38,7 +38,7 @@
   },
   "plugins": {
     "uploadPlugins": {
-      "version": "1.2.2",
+      "version": "1.2.3",
       "provider": "wx00caa212d6710dcb"
     }
   },

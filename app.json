@@ -27,7 +27,8 @@
     "pages/help/help_single/help_single",
     "pages/help/post_help/post_help",
     "pages/help/help_detail/help_detail",
-    "pages/travel/index/index"
+    "pages/travel/index/index",
+    "pages/travel/create_travel/create_travel"
   ],
   "window": {
     "backgroundTextStyle": "light",

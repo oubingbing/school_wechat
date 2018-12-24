@@ -15,33 +15,202 @@
     </view>
   </view>
 
-  <!-- 头部 -->
-  <view class='header'>
-    <view class='header-content'>
-      <view class='step-content'>
-        <view class='today-step'>
-          <view class='label'>今天</view>
-          <view class='step'>{{todayStep}}</view>
+<view class="page-body" wx:if="{{select==1}}">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      class='{{mapView==1?"harf-View":"full-View"}}'
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      polyline="{{polyline}}"
+      include-points="{{includePoints}}"
+      show-location
+      wx:if="{{showMap}}"
+    ></map>
+  </view>
+
+    <view class='icon-container' wx:if="{{!showPostPlan}}">
+      <view class='icon'>
+        <image src='/image/restart.png' bindtap='createTravel'></image>
+        <image src='/image/show-label.png' bindtap='ifShowTravelLabel'></image>
+        <image src='/image/report.png' bindtap='getReport'></image>
+        <image src='/image/not-location.png' bindtap='ifShowTravelLocation'></image>
+        <image src='/image/all-view.png' bindtap='changeView'></image>
+        <image src='/image/help-me.png' bindtap='helpMe'></image>
+      </view>
+    </view>
+
+    <!-- 具体步数内容 -->
+  <view wx:if="{{showMap}}" class='content-container'>
+    <view class='content'>
+    <view class='post-container' bindtap='createTravel' wx:if="{{showPostPlan}}">
+      <view class='post'>
+        <view>制定旅行线路</view>
+      </view>
+    </view>
+
+      <view class='item' wx:for="{{logs}}" wx:key="{{logs}}">
+          <view class='left'>
+            <view class='date'>{{item.run_at}}</view>
+          </view>
+          <view class='right'>
+            <view class='travel-log'>
+              <view class='travel-point'>
+                <view class='left-item'>
+                  <view>东经:{{item.format_latitude}}</view>
+                </view>
+                <view class='rightitem'>
+                  <view>北纬:{{item.format_longitude}}</view>
+                </view>
+              </view>
+
+              <view class='step-number'>
+                <view class='travel-label'>行程:</view>
+                <view class='travel-number'>{{item.distance}}公里</view>
+              </view>
+
+              <view class='address' wx:if="{{item.city != ''}}">
+                <view class='address-label'>城市:</view>
+                <view class='address-content'>{{item.city}}</view>
+              </view>
+
+              <view class='address'>
+                <view class='address-label'>地点:</view>
+                <view class='address-content'>{{item.name}}</view>
+              </view>
+
+              <view class='my-log'>
+                <view class='my-log-label'>日记:</view>
+                <view class='my-log-content'>
+                  今天走了{{item.distance}}公里，我来到了{{item.name}}，这是一个美丽的地方。
+                  <view class='hotel' wx:if="{{item.hotel != null}}">
+                    我住在{{item.hotel}}
+                  </view>
+                  <view class='foods' wx:if="{{item.foods != ''}}">
+                    <view>我吃了好多好吃的，这些店里的美食我统统都吃了个遍</view>
+                    <view class='food-wall'>
+                      <view wx:for="{{item.foods}}" 
+                            wx:key="{{item.foods}}" 
+                            wx:for-item="food">
+                        {{food.title}}
+                      </view>
+                    </view>
+                  </view>
+                  <view class='views' wx:if="{{item.views != ''}}">
+                    <view>我去了下面这几个景点，感觉很美，希望下次还能来，哈哈</view>
+                    <view class='views-wall'>
+                      <view wx:for="{{item.views}}" 
+                            wx:key="{{item.views}}" 
+                            wx:for-item="food">
+                            {{food.title}}
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='canvas-container' wx:if="{{showReport}}">
+    <canvas class='convas' 
+            canvas-id="myCanvas" 
+            bindlongtap='saveReport' 
+            bindtap='hideReport' 
+            style="border:none" 
+            wx:if="{{showReport}}"/>
+    <view class='long-tap-tip'>长按图片保存</view>
+  </view>
+
+  <view class='finish-travel' wx:if="{{showFinish}}">
+    <image src='/image/finish.png'></image>
+  </view>
+
+  <!--<view class='tips-container' wx:if="{{showTips}}" bindtap='hideTips'>
+    <view class='tips'>
+      <image src='/image/close.png'></image>
+      <view class='title'>规则</view>
+      <view class='item-rule tips-teim'>
+        <view> 用您的</view>
+        <view class='travel-world'>微信步数</view>
+        <view>来一次</view>
+        <view class='travel-world'>虚拟旅行</view>
+        <view>吧</view>
+      </view>
+      <view class='item-a tips-teim'>1.制定旅行线路后会根据您每天的微信运动步数进行旅行行走。</view>
+      <view class='item-b tips-teim'>2.首次旅行系统会使用您最近三十天的步数进行旅行，步数使用后将不能被再次使用。</view>
+      <view class='item-b tips-teim'>3.每当旅行到一个地方，您的步数会把它住的酒店、吃的美食和游玩的景点以日记的形式记录下来。</view>
+    </view>
+  </view>-->
+
+</view>
+
+  <view class='step-number-container' wx:if="{{select==2}}">
+    <!-- 头部 -->
+    <view class='header'>
+      <view class='header-content'>
+        <view class='step-content'>
+          <view class='today-step'>
+            <view class='label'>今天</view>
+            <view class='step'>{{todayStep}}</view>
+          </view>
+          <view class='total-step'>
+            <view class='label'>累计</view>
+            <view class='step'>{{totalStep}}万</view>
+          </view>
         </view>
-        <view class='total-step'>
-          <view class='label'>累计</view>
-          <view class='step'>{{totalStep}}万</view>
+      </view>
+    </view>
+
+    <!-- 具体步数内容 -->
+    <view class='content-container'>
+      <view class='content'>
+        <view class='item' wx:for="{{steps}}" wx:key="{{steps}}">
+            <view class='step-left'>
+              <view class='date'>{{item.run_at}}</view>
+            </view>
+            <view class='step-right'>
+              <view class='step-number'>{{item.step}}</view>
+            </view>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- 具体步数内容 -->
-  <view class='content-container'>
-    <view class='content'>
-      <view class='item' wx:for="{{steps}}" wx:key="{{steps}}">
-          <view class='left'>
-            <view class='date'>{{item.run_at}}</view>
+
+  <view class='rand-container' wx:if="{{select==3}}">
+    <view class='rand-content'>
+
+      <view class='rand-item'>
+        <view class='rand'>
+          <view class='rand-left'>
+            <view class='rand-index'>1</view>
+            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132' class='rand-avatar rand-left-item'></image>
+            <view class='nickname rand-left-item'>叶子</view>
           </view>
-          <view class='right'>
-            <view class='step-number'>{{item.step}}</view>
+          <view class='rand-right'>
+            <view class='rand-step'>10000</view>
           </view>
+        </view>
       </view>
+
+      <view class='rand-item'>
+        <view class='rand'>
+          <view class='rand-left'>
+            <view class='rand-index'>1</view>
+            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132' class='rand-avatar rand-left-item'></image>
+            <view class='nickname rand-left-item'>叶子</view>
+          </view>
+          <view class='rand-right'>
+            <view class='rand-step'>10000</view>
+          </view>
+        </view>
+      </view>
+
     </view>
   </view>
 

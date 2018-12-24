@@ -18,7 +18,8 @@ const domain = config.prod.domain;
 const qiniuDomain = config.prod.qiniuDomain;
 const bgImage = config.prod.qiniuDomain;
 const alianceKey = config.alianceKey;
+const TX_MAP_KEY = 'XCDBZ-EG7C6-2OIS6-MSJDG-OQ2FT-2EBED';
 
 module.exports = {
-  domain, qiniuDomain, bgImage, alianceKey
+  domain, qiniuDomain, bgImage, alianceKey, TX_MAP_KEY
 }

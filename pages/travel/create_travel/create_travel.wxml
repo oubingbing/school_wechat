@@ -1,0 +1,49 @@
+
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      style="width: 100%; height: 550rpx;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      include-points="{{includePoints}}"
+      polyline="{{polyline}}"
+      show-location
+    ></map>
+  </view>
+
+    <!-- 具体步数内容 -->
+  <view class='content-container'>
+    <view class='content'>
+    <view class='post-container'>
+      <view class='post' bindtap='postData' wx:if="{{plans.length > 0}}">
+        <view>提交旅行线路</view>
+      </view>
+      <view class='post' bindtap='clear' wx:if="{{plans.length > 0}}">
+        <view>重新添加</view>
+      </view>
+      <view class='post' bindtap='chooseLocation'>
+        <view>添加旅行站点</view>
+      </view>
+    </view>
+
+      <view class='item' wx:for="{{plans}}" wx:key="{{plans}}">
+          <view class='left'>
+            <view class='date travel-start' wx:if="{{item.id == 0}}">出发点</view>
+            <view class='date' wx:if="{{item.id > 0}}">第{{item.id}}站</view>
+          </view>
+          <view class='right'>
+            <view class='travel-log'>
+              <view class='address'>
+                <view class='address-content'>{{item.name}}</view>
+                <view class='address-label'>地址：{{item.address}}</view>
+              </view>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+

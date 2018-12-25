@@ -52,7 +52,10 @@ Page({
     harfView: 'harf-view',
     showFinish: false,
     showGeMoreLoadin: false,
-    showTips: false
+    showTips: false,
+    randList:[],
+    rankPageSize: 10,
+    rankPageNumber: 1,
     
   },
 
@@ -85,6 +88,7 @@ Page({
   onReady: function (e) {
     this.travelLogs();
     this.getPersonalInfo();
+    this.getRandList()
   },
 
   onShow: function () {
@@ -127,12 +131,28 @@ Page({
     }
   },
 
+  getRandList:function(){
+    http.get(`/rand_list?page_size=${this.data.rankPageSize}&page_number=${this.data.rankPageNumber}`, {}, res => {
+      let resData = res.data;
+      if (resData.error_code == 0){
+        let temList = this.data.randList;
+        resData.data.page_data.map(item=>{
+          temList.push(item)
+        })
+        this.setData({
+          randList:temList,
+          pageNumber: this.data.rankPageNumber + 1,
+        })
+      }
+    });
+  },
+
   /**
  * 获取具体类型的贴子
  */
   selected(e) {
     let objType = e.currentTarget.dataset.type;
-    this.setData({ select:objType})
+    this.setData({ select: objType, pageNumber:1})
   },
 
   /**
@@ -261,7 +281,17 @@ Page({
     this.setData({
       showGeMoreLoadin: true
     })
-    this.steps();
+    switch(this.data.select){
+      case '1':
+      this.steps();
+        break;
+      case '2':
+        this.travelLogs();
+        break;
+      case '3':
+        this.getRandList();
+        break;
+    }
   },
 
   /**

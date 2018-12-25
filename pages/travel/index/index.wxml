@@ -185,28 +185,15 @@
   <view class='rand-container' wx:if="{{select==3}}">
     <view class='rand-content'>
 
-      <view class='rand-item'>
+      <view class='rand-item' wx:for="{{randList}}" wx:key="{{item.id}}">
         <view class='rand'>
           <view class='rand-left'>
-            <view class='rand-index'>1</view>
-            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132' class='rand-avatar rand-left-item'></image>
-            <view class='nickname rand-left-item'>叶子</view>
+            <view class='rand-index'>{{index+1}}</view>
+            <image class='rank-avatar' src='{{item.user.avatar}}'></image>
+            <view class='nickname rand-left-item'>{{item.user.nickname}}</view>
           </view>
           <view class='rand-right'>
-            <view class='rand-step'>10000</view>
-          </view>
-        </view>
-      </view>
-
-      <view class='rand-item'>
-        <view class='rand'>
-          <view class='rand-left'>
-            <view class='rand-index'>1</view>
-            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132' class='rand-avatar rand-left-item'></image>
-            <view class='nickname rand-left-item'>叶子</view>
-          </view>
-          <view class='rand-right'>
-            <view class='rand-step'>10000</view>
+            <view class='rand-step'>{{item.step}}</view>
           </view>
         </view>
       </view>

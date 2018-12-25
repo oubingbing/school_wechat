@@ -631,3 +631,10 @@ page{
   font-size: 50rpx;
   color: #FBAD67;
 }
+
+.rank-avatar{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  margin-left: 20rpx;
+}

@@ -167,7 +167,6 @@ page{
 
 .comment-container .comment-icon{
   height: 75rpx;
-  width: 350rpx;
   background: #424242;
   display: flex;
   flex-direction: row;
@@ -183,6 +182,7 @@ page{
 .comment-icon image{
   width: 50rpx;
   height: 50rpx;
+  padding: 15rpx 23rpx;
 }
 
 .item-content .comment{
@@ -646,4 +646,34 @@ page{
 .search-image image{
   width: 40rpx;
   height: 40rpx;
+}
+
+/** 消息盒子样式 **/
+.message-tip{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100rpx;
+  align-items: center;
+  background: white;
+  margin-top: 72rpx;
+  margin-bottom: -67rpx;
+}
+
+.message-tip .tip-content{
+  padding: 20rpx;
+  background: #575757;
+  color: white;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.tip-content image{
+  width: 35rpx;
+  height: 35rpx;
 }

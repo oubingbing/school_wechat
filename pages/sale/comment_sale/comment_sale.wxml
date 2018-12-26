@@ -48,6 +48,11 @@
                   bindtap='deleteSale'>
               <view style='padding-left:5rpx;'>删除</view>
             </view>
+            <view class='zan share-user-button'>
+              <button class='button' open-type="share" style='border: none;'>
+                分享
+              </button>
+            </view>
             <view class='comment'>
               <view style='padding-left:5rpx;'>{{sale.comment_number}}评论</view>
             </view>

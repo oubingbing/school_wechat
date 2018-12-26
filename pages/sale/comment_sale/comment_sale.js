@@ -244,5 +244,22 @@ Page({
         });
       }
     });
-  }
+  },
+
+  /**
+   * 分享
+   */
+  onShareAppMessage: function (res) {
+    return {
+      title: "卖舍友啦，便宜又好看，五毛钱一个清仓大甩卖...",
+      path: '/pages/home/index/index?type=sale_friend&id=' + this.data.sale.id,
+      imageUrl: this.data.baseImageUrl+this.data.sale.attachments[0],
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })

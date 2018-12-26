@@ -53,10 +53,18 @@ Page({
     rate: 0,
     face: '',
     conclusion: '',
-    canComment:true
+    canComment:true,
+    sharecomeIn:false,
+    shareId:'',
+    shareType:''
   },
 
   onLoad: function (e) {
+
+    if (e.id != undefined) {
+      this.setData({ sharecomeIn: true, shareId: e.id, shareType: e.type })
+    }
+
     wx.showLoading({
       title: '加载中',
     });
@@ -68,6 +76,15 @@ Page({
           that.setData({
             show_auth: true
           });
+        } else {
+          if (that.data.shareId != undefined) {
+            that.setData({ sharecomeIn: false })
+            if (that.data.shareType == 'sale_friend') {
+              wx.navigateTo({
+                url: '/pages/sale/comment_sale/comment_sale?id=' + that.data.shareId
+              })
+            }
+          }
         }
       }
     })
@@ -124,6 +141,14 @@ Page({
     app.login(null, null, null, res=>{
       this.getPost();
       this.topic();
+      if (this.data.shareId != undefined) {
+        this.setData({ sharecomeIn: false })
+        if (this.data.shareType == 'sale_friend') {
+          wx.navigateTo({
+            url: '/pages/sale/comment_sale/comment_sale?id=' + this.data.shareId
+          })
+        }
+      }
     });
   },
 

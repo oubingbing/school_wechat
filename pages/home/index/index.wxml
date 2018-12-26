@@ -159,22 +159,22 @@
             <view class='comment-container'>
               <view
                class='comment-icon' 
-              wx:if="{{item.id==show}}">
-                <image src='/image/zan.png' 
-                style='width:60rpx;height:60rpx'
-                data-obj="{{item.id}}"
-                bindtap='praise'></image>
-                <image  
-                src='/image/letter1.png'
-                wx:if="{{item.private != 1}}" 
-                style='width:60rpx;height:60rpx'
-                bindtap='letter'
-                data-obj="{{item.poster.id}}"
-                data-chat="{{item.private}}"></image>
-                <image src='/image/pinglun.png' 
-                bindtap='showCommentInput' 
-                data-objid="{{item.id}}"
-                data-objtype='1'></image>
+                wx:if="{{item.id==show}}">
+                      <image src='/image/zan.png' 
+                      style='width:60rpx;height:60rpx'
+                      data-obj="{{item.id}}"
+                      bindtap='praise'></image>
+                      <image  
+                      src='/image/letter1.png'
+                      wx:if="{{item.private != 1}}" 
+                      style='width:60rpx;height:60rpx'
+                      bindtap='letter'
+                      data-obj="{{item.poster.id}}"
+                      data-chat="{{item.private}}"></image>
+                      <image src='/image/pinglun.png' 
+                      bindtap='showCommentInput' 
+                      data-objid="{{item.id}}"
+                      data-objtype='1'></image>
               </view>
               <view class='comment-icon-container'>
                 <image style='width:45rpx;height:45rpx'

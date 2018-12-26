@@ -393,6 +393,16 @@ page{
   color: #0061b2;
 }
 
-.user-comment .content{
 
+.share-user-button .button{
+  background: none !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 25rpx;
+}
+
+.button::after{
+  border: none;
 }

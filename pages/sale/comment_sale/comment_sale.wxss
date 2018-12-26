@@ -400,7 +400,8 @@ page{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 25rpx;
+  font-size: 30rpx;
+  color: #FF7F00;
 }
 
 .button::after{

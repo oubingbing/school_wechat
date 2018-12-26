@@ -121,7 +121,6 @@ Page({
   deleteComment: function (e) {
     let objId = e.currentTarget.dataset.objid;
     let commentId = e.currentTarget.dataset.refid;
-    let _this = this;
     wx.showModal({
       title: '提示',
       content: '确认删除该评论?',
@@ -129,7 +128,7 @@ Page({
         if (res.confirm) {
           http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
-              let sale = _this.data.sale;
+              let sale = this.data.sale;
               let comments = sale.comments;
               let newComment = comments.map(comment=>{
                 let sub_comments = comment.sub_comments;
@@ -145,7 +144,7 @@ Page({
                 return comment;
               })
               sale.comments = newComment;
-              _this.setData({
+              this.setData({
                 sale: sale
               });
             }
@@ -180,23 +179,22 @@ Page({
     let objId = this.data.objId;
     let content = this.data.content;
     let refCommentId = this.data.refCommentId;
-    let _this = this;
 
     http.post('/comment', {
       content: content,
       obj_id: objId,
       type: objType,
       ref_comment_id:refCommentId
-    }, function (res) {
+    }, res=> {
       wx.hideLoading();
       let resData = res.data.data;
       if (!resData.error_code){
-        let sale = _this.data.sale;
+        let sale = this.data.sale;
         if (resData.obj_type == 2){
           let data = resData;
           sale.comments.unshift(data);
           sale.comment_number += 1;
-          _this.setData({
+          this.setData({
             sale: sale
           });
         }else{
@@ -207,11 +205,11 @@ Page({
             return item;
           });
           sale.comments = newComments;
-          _this.setData({
+          this.setData({
             sale: sale
           });
         }
-        _this.setData({
+        this.setData({
           content: '',
           objId: '',
           objType: '',
@@ -232,14 +230,13 @@ Page({
       hidden: false,
       showCommentInput: false
     });
-    let _this = this;
     http.post(`/praise`,
       { obj_id: objId, obj_type: objType },
       res => {
       if (!res.data.data.error_code){
-        let sale = _this.data.sale;
+        let sale = this.data.sale;
         sale.praise_number += 1;
-        _this.setData({
+        this.setData({
           sale:sale
         });
       }

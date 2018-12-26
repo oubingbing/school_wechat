@@ -50,7 +50,7 @@
             </view>
             <view class='zan share-user-button'>
               <button class='button' open-type="share" style='border: none;'>
-                分享
+                分享转发
               </button>
             </view>
             <view class='comment'>

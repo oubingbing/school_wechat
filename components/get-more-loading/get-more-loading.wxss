@@ -1,0 +1,30 @@
+/** 加载更多 **/
+.get-more{
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 25rpx;
+  font-weight: 200;
+  width: 100%;
+  background: #F2F2F2;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.get-more image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.get-more .get-more-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading{
+  margin-left: 15rpx;
+}

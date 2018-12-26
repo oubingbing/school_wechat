@@ -21,10 +21,11 @@ Page({
     },
     qiniu: {
       uploadNumber: 9,
-      region: "SCN",
+      region: config.region,
       token: '',
       domain: config.qiniuDomain
-    }
+    },
+    canPost:true
   },
   onLoad: function () {
 
@@ -61,6 +62,9 @@ Page({
 
   /** 提交 */
   post: function () {
+
+    this.setData({ canPost:false})
+
     let content = this.data.textContent;
     let attachments = this.data.attachments;
     let privateValue = this.data.private;
@@ -76,6 +80,7 @@ Page({
       wx.showLoading({
         title: '内容不能为空！',
       });
+      this.setData({ canPost: true })
       setTimeout(function(){
         wx.hideLoading();
       },1500)
@@ -93,9 +98,11 @@ Page({
       username: username,
       mobile:mobile
     }, res => {
+      this.setData({ canPost: true })
       wx.hideLoading();
       console.log(res);
       if(res.data.error_code == 0){
+        app.globalData.reloadHome = true;
         wx.navigateBack({ comeBack: true });
       }else{
         wx.showLoading({

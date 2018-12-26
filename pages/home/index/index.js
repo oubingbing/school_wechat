@@ -1,5 +1,5 @@
-const util = require("./../../utils/util.js");
-const http = require("./../../utils/http.js");
+const util = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 const app = getApp()
 
 Page({
@@ -52,7 +52,8 @@ Page({
     PostImageRight: '',
     rate: 0,
     face: '',
-    conclusion: ''
+    conclusion: '',
+    canComment:true
   },
 
   onLoad: function (e) {
@@ -70,28 +71,32 @@ Page({
         }
       }
     })
-
-    //设置当前时间
-    this.setData({
-      currentTime: util.formatTime(new Date())
-    });
     
-    this.getPost(this);
+    this.getPost();
     this.topic();
   },
+
   onShow: function (option) {
-    let _this = this;
-    this.getMostNewPost();
+
+    if (app.globalData.reloadHome == true){
+      app.globalData.reloadHome = false;
+      this.setData({
+        pageNumber: this.data.initPageNumber,
+        posts: []
+      });
+      this.getPost();
+    }
+
     let type = 0;
-    app.getNewInbox(type, function (res) {
+    app.getNewInbox(type, res=>{
       console.log("新消息数量：" + res.data.data);
       if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
-        _this.setData({
+        this.setData({
           newMessage: true,
           newMessageNumber: res.data.data
         });
       } else {
-        _this.setData({
+        this.setData({
           newMessage: false,
           newMessageNumber: 0
         });
@@ -104,9 +109,8 @@ Page({
    */
   praiseTopic: function (e) {
     let id = e.currentTarget.dataset.id;
-    let _this = this;
     http.post('/praise/'+id+'/topic', {}, function (res) {
-      _this.setData({topic:res.data.data});
+      this.setData({topic:res.data.data});
     });
   },
 
@@ -118,7 +122,7 @@ Page({
       show_auth: false
     });
     app.login(null, null, null, res=>{
-      this.getPost(this);
+      this.getPost();
       this.topic();
     });
   },
@@ -129,7 +133,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: 'hi，同学，有人跟你表白了',
-      path: '/pages/index/index',
+      path: '/pages/home/index/index',
       imageUrl:'http://image.kucaroom.com/share1.jpg',
       success: function (res) {
         // 转发成功
@@ -180,9 +184,8 @@ Page({
       pageNumber: this.data.initPageNumber
     });
 
-    let _this = this;
     if (objType != 5) {
-      _this.getPost(this);
+      this.getPost();
     }
 
   },
@@ -199,11 +202,10 @@ Page({
     this.setData({
       pageNumber: this.data.initPageNumber
     });
-    let _this = this;
     wx.showLoading({
       title: '搜索中...',
     });
-    this.getPost(this);
+    this.getPost();
   },
 
   /**
@@ -219,18 +221,21 @@ Page({
    * 下拉刷新，获取最新的贴子
    */
   onPullDownRefresh: function () {
-    this.getMostNewPost();
+    this.setData({
+      pageNumber: this.data.initPageNumber,
+      posts:[]
+    });
+    this.getPost();
   },
 
   /**
    * 上拉加载更多
    */
   onReachBottom: function () {
-    let _this = this;
     this.setData({
       showGeMoreLoadin: true
     });
-    this.getPost(_this);
+    this.getPost();
   },
 
   /**
@@ -249,7 +254,7 @@ Page({
    */
   post: function () {
     wx.navigateTo({
-      url: '/pages/index/post/post'
+      url: '/pages/home/post/post'
     })
   },
 
@@ -257,7 +262,6 @@ Page({
    * 获取最新的贴子
    */
   getMostNewPost: function () {
-    let _this = this;
     http.get('/most_new_post', {
       date_time: this.data.currentTime
     }, res => {
@@ -266,7 +270,7 @@ Page({
         currentTime: util.formatTime(new Date())
       });
       wx.stopPullDownRefresh();
-      let posts = _this.data.posts;
+      let posts = this.data.posts;
       if(res.data.data){
         if (res.data.data.length > 0) {
           res.data.data.map(item => {
@@ -282,12 +286,11 @@ Page({
             }
           });
 
-          _this.setData({
+          this.setData({
             posts: posts
           });
         }
       }
-
     });
   },
 
@@ -312,8 +315,7 @@ Page({
   /**
    * 获取贴子
    */
-  getPost: function (_this, objType = null) {
-    let that = this;
+  getPost: function (objType = null) {
     let order_by = 'created_at';
     let sort_by = 'desc';
     if (this.data.postType == 4) {
@@ -327,29 +329,29 @@ Page({
       });
     }
 
-    _this.setData({
+    this.setData({
       notDataTips: false
     });
 
-    http.get(`/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${_this.data.filter}`,
+    http.get(`/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&type=${this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${this.data.filter}`,
       {},
       res => {
         wx.hideLoading();
-        _this.setData({
+        this.setData({
           showGeMoreLoadin: false
         })
-        let posts = that.data.posts;
+        let posts = this.data.posts;
         if(res.data.data){
           if (res.data.data.page_data.length > 0) {
             res.data.data.page_data.map(item => {
               posts.push(item);
             });
-            _this.setData({
+            this.setData({
               posts: posts,
-              pageNumber: _this.data.pageNumber + 1              
+              pageNumber: this.data.pageNumber + 1              
             });
           } else {
-            _this.setData({
+            this.setData({
               notDataTips: true
             });
           }
@@ -372,9 +374,8 @@ Page({
  * 预览图片
  */
   previewMoreImage: function (event) {
-    let _this = this;
     let images = event.currentTarget.dataset.obj.map(item=>{
-      return _this.data.baseImageUrl+item;
+      return this.data.baseImageUrl+item;
     });
     let url = event.target.id;
     wx.previewImage({
@@ -429,9 +430,8 @@ Page({
       hidden: false,
       showCommentInput: false
     });
-    let _this = this;
     http.post(`/praise`,{ obj_id: objId, obj_type: objType }, res => {
-        let postList = _this.data.posts;
+        let postList = this.data.posts;
         let newPostList = postList.map(item => {
           if (objId == item.id) {
             item.praises.push(res.data.data);
@@ -487,16 +487,28 @@ Page({
    * 提交评论
    */
   sendComment: function (e) {
+
+    if (!this.data.canComment){
+      return false;
+    }
+
+    this.setData({ canComment: false })
+
     wx.showLoading({
       title: '发送中',
     });
-    let _this = this;
+    
     let content = this.data.commentContent;
     let objId = this.data.commentObjId;
     let type = this.data.commentType;
     let refcommentId = this.data.refcommentId;
     if (content == '') {
-      return;
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none'
+      })
+      this.setData({ canComment:true})
+      return false;
     }
 
     http.post('/comment', {
@@ -504,10 +516,10 @@ Page({
       obj_id: objId,
       type: type,
       ref_comment_id: refcommentId
-    }, function (res) {
-
+    }, res=> {
+      this.setData({ canComment:true})
       wx.hideLoading();
-      _this.setData({
+      this.setData({
         commentContent: '',
         commentObjId: '',
         commentType: '',
@@ -515,7 +527,7 @@ Page({
         refcommentId: ''
       })
 
-      let postList = _this.data.posts;
+      let postList = this.data.posts;
       let newPostList = postList.map(item => {
         if (objId == item.id) {
           item.comments.push(res.data.data);
@@ -524,7 +536,7 @@ Page({
       });
 
       //重新赋值，更新数据列表
-      _this.setData({
+      this.setData({
         posts: newPostList
       });
     });
@@ -553,15 +565,14 @@ Page({
   deleteComment: function (e) {
     let objId = e.currentTarget.dataset.objid;
     let commentId = e.currentTarget.dataset.refid;
-    let _this = this;
     wx.showModal({
       title: '提示',
       content: '确认删除该评论?',
-      success: function (res) {
+      success: res=> {
         if (res.confirm) {
           http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
-              let newPostList = _this.data.posts.map(item => {
+              let newPostList = this.data.posts.map(item => {
                 if (objId == item.id) {
                   let newComment = item.comments.filter((item, index) => {
                     if (item.id != commentId) {
@@ -572,7 +583,7 @@ Page({
                 }
                 return item;
               });
-              _this.setData({
+              this.setData({
                 posts: newPostList
               });
             }
@@ -591,22 +602,21 @@ Page({
    */
   deletePost: function (e) {
     let objId = e.target.id;
-    let _this = this;
     wx.showModal({
       title: '提示',
       content: '确定删除吗?',
-      success: function (res) {
+      success: res=> {
         if (res.confirm) {
           http.httpDelete(`/delete/${objId}/post`, {}, res => {
             let result = res.data.data;
             if (result == 1) {
-              let newPosts = _this.data.posts.filter((item, index) => {
+              let newPosts = this.data.posts.filter((item, index) => {
                 if (item.id != objId) {
                   return item;
                 }
               });
 
-              _this.setData({
+              this.setData({
                 posts: newPosts
               });
             } 
@@ -632,14 +642,10 @@ Page({
    * 关注
    */
   follow: function (e) {
-    let _this = this;
     let objId = e.target.dataset.obj;
-    http.post('/follow', {
-      obj_id: objId,
-      obj_type: 1
-    }, function (res) {
+    http.post('/follow', {obj_id: objId,obj_type: 1}, res=> {
       let follow = res.data.data;
-      let post = _this.data.posts;
+      let post = this.data.posts;
       let newPost = post.map(item => {
         if (item.id == follow.obj_id) {
           item.follow = true;
@@ -647,7 +653,7 @@ Page({
         return item;
       });
 
-      _this.setData({
+      this.setData({
         posts: newPost
       });
     });
@@ -657,18 +663,17 @@ Page({
    * 取消关注
    */
   cancelFolllow: function (e) {
-    let _this = this;
     let objId = e.target.dataset.obj;
-    http.put(`/cancel/${objId}/follow/1`, {}, function (res) {
+    http.put(`/cancel/${objId}/follow/1`, {},res=> {
       let follow = res.data.data;
-      let post = _this.data.posts;
+      let post = this.data.posts;
       let newPost = post.map(item => {
         if (item.id == objId) {
           item.follow = false;
         }
         return item;
       });
-      _this.setData({
+      this.setData({
         posts: newPost
       });
     });
@@ -676,17 +681,16 @@ Page({
   },
 
   topic:function(){
-    let _this = this;
-    http.get(`/topic`, {}, function (res) {
+    http.get(`/topic`, {}, res=> {
       let topicShow = res.data.data != null ?true:false;
-      _this.setData({ topic: res.data.data, showTopic: topicShow});
+      this.setData({ topic: res.data.data, showTopic: topicShow});
 
     });
   },
   openTopic:function(e){
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/index/topic_detail/topic_detail?id=' + id
+      url: '/pages/home/topic_detail/topic_detail?id=' + id
     })
   }
 

@@ -45,5 +45,21 @@
     </view>
   </view>
 
+  <view class='tips-container' wx:if="{{plans.length <= 0}}">
+    <view class='tips-content'>
+      <view class='title'>规则</view>
+      <view class='item-rule tips-teim'>
+        <view> 用您的</view>
+        <view class='travel-world'>微信步数</view>
+        <view>来一次</view>
+        <view class='travel-world'>虚拟旅行</view>
+        <view>吧</view>
+      </view>
+      <view class='item-a tips-teim'>1.制定旅行线路后会根据您每天的微信运动步数进行旅行行走。</view>
+      <view class='item-b tips-teim'>2.首次旅行系统会使用您最近三十天的步数进行旅行，步数使用后将不能被再次使用。</view>
+      <view class='item-b tips-teim'>3.每当旅行到一个地方，您的步数会把它住的酒店、吃的美食和游玩的景点以日记的形式记录下来。</view>
+    </view>
+  </view>
+
 </view>
 

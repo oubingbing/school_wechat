@@ -5,6 +5,7 @@ const app = getApp()
 
 Page({
   data: {
+    canPost:true,
     latitude: 0,
     longitude: 0,
     plans: [],

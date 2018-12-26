@@ -12,8 +12,8 @@ Page({
     imageUrl: app.globalData.imageUrl,
     todayStep: 0,
     totalStep: 0,
-    pageSize: 10,
-    pageNumber: 1,
+    stepPageSize: 10,
+    stepPageNumber: 1,
     initPageNumber: 1,
     steps: [],
     user: '',
@@ -36,8 +36,8 @@ Page({
       dottedLine: false
     }],
     logs: [],
-    pageSize: 4,
-    pageNumber: 1,
+    travelPageSize: 4,
+    travelPageNumber: 1,
     initPageNumber: 1,
     plan: '',
     showPostPlan: false,
@@ -56,7 +56,8 @@ Page({
     randList:[],
     rankPageSize: 10,
     rankPageNumber: 1,
-    
+    myRankData:'',
+    myRank:0
   },
 
   onLoad: function (option) {
@@ -77,7 +78,6 @@ Page({
     }
 
     wx.showLoading({ title: '加载中' });
-    this.plan();
     this.downLoadAvatar();
     qqmapsdk = new QQMapWX({
       key: config.TX_MAP_KEY
@@ -86,9 +86,11 @@ Page({
   },
 
   onReady: function (e) {
+    this.plan();
     this.travelLogs();
     this.getPersonalInfo();
-    this.getRandList()
+    this.getRandList();
+    this.getMyRank();
   },
 
   onShow: function () {
@@ -131,6 +133,30 @@ Page({
     }
   },
 
+  /**
+   * 跳转到私信
+   */
+  letter: function (e) {
+    console.log(e)
+    let id = e.currentTarget.dataset.user_id;
+    let canChat = e.target.dataset.chat;
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id + '&can_chat=' + true
+    })
+  },
+
+  getMyRank: function () {
+    http.get(`/my_rank`, {}, res => {
+      let resData = res.data;
+      if (resData.error_code == 0) {
+        this.setData({
+          myRankData: resData.data.data,
+          myRank: resData.data.rank
+        })
+      }
+    });
+  },
+
   getRandList:function(){
     http.get(`/rand_list?page_size=${this.data.rankPageSize}&page_number=${this.data.rankPageNumber}`, {}, res => {
       let resData = res.data;
@@ -152,7 +178,7 @@ Page({
  */
   selected(e) {
     let objType = e.currentTarget.dataset.type;
-    this.setData({ select: objType, pageNumber:1})
+    this.setData({ select: objType})
   },
 
   /**
@@ -251,14 +277,13 @@ Page({
    * 获取步数列表
    */
   steps: function () {
-    //wx.showLoading({ title: '加载中' });
+    console.log("获取步数");
     let order_by = 'run_at';
     let sort_by = 'desc';
-    http.get(`/run_steps?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&order_by=${order_by}&sort_by=${sort_by}`,
+    http.get(`/run_steps?page_size=${this.data.stepPageSize}&page_number=${this.data.stepPageNumber}&order_by=${order_by}&sort_by=${sort_by}`,
       {},
       res=> {
         wx.hideLoading();
-        console.log(res);
         if (res.data.error_code == 0) {
           let steps = this.data.steps;
           let stepData = res.data.data.page_data;
@@ -267,7 +292,7 @@ Page({
           }
           this.setData({
             steps: steps,
-            pageNumber: this.data.pageNumber + 1,
+            stepPageNumber: this.data.stepPageNumber + 1,
             showGeMoreLoadin: false
           })
         }
@@ -281,14 +306,14 @@ Page({
     this.setData({
       showGeMoreLoadin: true
     })
-    switch(this.data.select){
-      case '1':
-      this.steps();
-        break;
-      case '2':
+    switch (parseInt(this.data.select)){
+      case 1:
         this.travelLogs();
         break;
-      case '3':
+      case 2:
+        this.steps();
+        break;
+      case 3:
         this.getRandList();
         break;
     }
@@ -369,7 +394,6 @@ Page({
     this.setData({
       markers: []
     })
-    console.log()
     if (!show) {
       this.setData({
         showTravelLabel: true,
@@ -381,22 +405,20 @@ Page({
         markers: this.data.notLabelMarkers
       })
     }
-    console.log(this.data.markers)
   },
 
   getReport: function () {
     wx.showLoading({ title: '海报生成中' });
-    let _this = this;
-    http.get(`/travel_report/${this.data.plan.id}`, {}, function (res) {
-
-      console.log(res.data.data);
+    http.get(`/travel_report/${this.data.plan.id}`, {}, res=> {
       if (res.data.data != '') {
-        _this.setData({
+        this.setData({
           report: res.data.data
         })
-        _this.drawReport();
+        this.drawReport();
+        wx.pageScrollTo({
+          scrollTop:10000
+        })
       }
-
     });
   },
 
@@ -628,7 +650,8 @@ Page({
             if (item.name != null) {
               travelLogMarkers.push({
                 id: key,
-                iconPath: '/image/traveling.png',
+                iconPath: this.data.avatar,
+                //iconPath: '/image/traveling.png',
                 latitude: item.latitude,
                 longitude: item.longitude,
                 width: 30,
@@ -645,7 +668,8 @@ Page({
             } else {
               travelLogMarkers.push({
                 id: key,
-                iconPath: '/image/traveling.png',
+                iconPath: this.data.avatar,
+                //iconPath: '/image/traveling.png',
                 latitude: item.latitude,
                 longitude: item.longitude,
                 width: 30,
@@ -739,6 +763,8 @@ Page({
             });
           }
 
+          console.log("头像：" + this.data.avatar)
+
           notLabelMarkers.push({
             iconPath: icon,
             id: notTravelLogMarkers.length + key,
@@ -752,7 +778,8 @@ Page({
           console.log('这到底是啥：' + travelLogs[travelLogs.length - 1].name);
           //没有旅途点的标记
           notTravelLogMarkers.push({
-            iconPath: '/image/traveling.png',
+            //iconPath: '/image/traveling.png',
+            iconPath: this.data.avatar,
             id: travelLogLength + 1,
             latitude: travelLogs[travelLogs.length - 1].latitude,
             longitude: travelLogs[travelLogs.length - 1].longitude,
@@ -769,7 +796,8 @@ Page({
           });
 
           notLabelMarkers.push({
-            iconPath: '/image/traveling.png',
+            //iconPath: '/image/traveling.png',
+            iconPath: this.data.avatar,
             id: travelLogLength + 1,
             latitude: travelLogs[travelLogs.length - 1].latitude,
             longitude: travelLogs[travelLogs.length - 1].longitude,
@@ -806,6 +834,8 @@ Page({
         polyline[0].points = points;
         console.log('地图线路的数据：');
         console.log(polyline);
+        console.log("地图数组")
+        console.log(notTravelLogMarkers)
         let markers = travelLogMarkers;
         _this.setData({
           polyline: polyline,
@@ -831,24 +861,20 @@ Page({
    * 获取旅行日志
    */
   travelLogs: function () {
-    let _this = this;
-    http.get(`/ravel_logs?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}`,
-      {},
-      function (res) {
-        console.log(res.data.data);
+    http.get(`/ravel_logs?page_size=${this.data.travelPageSize}&page_number=${this.data.travelPageNumber}`,{},res=> {
         let logData = res.data.data.page_data;
         if (logData != null) {
-          let logs = _this.data.logs;
+          let logs = this.data.logs;
           logData.map(item => {
             logs.push(item);
           })
-          _this.setData({
+          this.setData({
             logs: logs,
-            pageNumber: _this.data.pageNumber + 1,
+            travelPageNumber: this.data.travelPageNumber + 1,
             showGeMoreLoadin: false
           })
-          _this.exchangeLocation(_this, logData);
-          _this.getPoi(_this, logData);
+          this.exchangeLocation(this, logData);
+          this.getPoi(this, logData);
         }
       });
   },

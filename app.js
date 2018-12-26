@@ -10,6 +10,7 @@ App({
     this.globalData.bgIimage = config.bgImage;
     
     this.globalData.reloadSale = false;
+    this.globalData.reloadHome = false;
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -103,6 +104,7 @@ App({
     changeSchoolSale: false,
     changeSchoolMatch: false,
     postHelp:false,
-    reloadSale:false
+    reloadSale:false,
+    reloadHome:false
   }
 })

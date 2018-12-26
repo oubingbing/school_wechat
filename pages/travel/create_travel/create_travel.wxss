@@ -149,28 +149,38 @@ page{
   justify-content: center;
 }
 
+/** 提示样式 **/
 .tips-container{
-  position: fixed;
-  z-index: 300;
   width: 100%;
   height: 50%;
-  background: gray;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background:rgba(2,2,2,0.8);
-  bottom: 50rpx;
+  bottom: 1rpx;
+  margin-top: 150rpx;
 }
 
-.tips{
+.tips-content{
   background: white;
   width: 90%;
-  height: 400rpx;
+  height: 460rpx;
   border-radius: 10rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.item-rule{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.travel-world{
+  font-size: 40rpx;
+  color: #FF6347;
 }
 
 .title{
@@ -183,9 +193,10 @@ page{
   font-size: 30rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
+  justify-content: center;
 }
 
-.tips image{
+.tips-content image{
   width: 50rpx;
   height: 50rpx;
   position: absolute;

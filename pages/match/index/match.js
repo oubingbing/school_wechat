@@ -1,5 +1,5 @@
-const uploader = require("../../utils/util.js");
-const http = require("./../../utils/http.js");
+const uploader = require("../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 const app = getApp();
 
 Page({

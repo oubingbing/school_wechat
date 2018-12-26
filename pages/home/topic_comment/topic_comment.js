@@ -20,7 +20,7 @@ Page({
     },
     qiniu: {
       uploadNumber: 9,
-      region: "SCN",
+      region: config.region,
       token: '',
       domain: config.qiniuDomain
     }

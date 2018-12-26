@@ -1,5 +1,5 @@
-const util = require("../../utils/util.js");
-const http = require("../../utils/http.js");
+const util = require("./../../../utils/util.js");
+const http = require("./../../../utils/http.js");
 
 const app = getApp();
 let genderArray = ['男', '女', '人妖', '未知生物'];
@@ -201,7 +201,6 @@ Page({
    * 上拉加载跟多
   */
   onReachBottom: function () {
-    let _this = this;
     this.setData({
       notDataTips: false
     });
@@ -216,7 +215,6 @@ Page({
    * 获取当前最新的贴子
    */
   getMostNewData:function(){
-    let _this = this;
     let time = this.data.currentTime;
     http.get('/most_new_sale_friend?time='+time, {}, res => {
       let sales = _this.data.sales;
@@ -232,11 +230,11 @@ Page({
         }
       });
 
-      _this.setData({
+      this.setData({
         sales:sales
         });
       wx.stopPullDownRefresh();
-      _this.setData({
+      this.setData({
         currentTime: util.formatTime(new Date())
       });
     });
@@ -253,13 +251,9 @@ Page({
       hidden: false,
       showCommentInput: false
     });
-    let _this = this;
-    http.post(`/praise`, {
-       obj_id: objId, 
-       obj_type: objType 
-       }, res => {
+    http.post(`/praise`, {obj_id: objId, obj_type: objType }, res => {
         if(res.data.data.length != 0){
-          let sales = _this.data.sales;
+          let sales = this.data.sales;
           let newSales = sales.map(item => {
             if (item.id == objId) {
               item.praise_number += 1;
@@ -268,7 +262,7 @@ Page({
             return item;
           });
 
-          _this.setData({
+          this.setData({
             sales: newSales
           });
         }

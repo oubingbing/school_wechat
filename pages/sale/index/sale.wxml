@@ -76,16 +76,8 @@
   </view>
 </view>
 
-<view class='get-more' wx:if="{{showGeMoreLoadin}}">
-  <view class='get-more-item'>
-    <image src='/image/get-more.gif' mode='aspectFit'></image>
-    <view class='loading'>加载中</view>
-  </view>
-</view>
-
-  <view class='no-more-data' wx-if="{{notDataTips && leftList.length != 0}}">
-    <view>别扯了，到底啦~_~</view>
-  </view>
+<get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+<not-more wx:if="{{notDataTips && leftList.length != 0}}"></not-more>
 
   <view class='no-more-data' wx-if="{{sales.length == 0}}">
     <view class='power_by'>power by 叶子</view>

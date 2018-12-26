@@ -12,14 +12,15 @@ const config={
   }
 }
 
-//const domain = config.prod.domain;
-const domain = config.dev.domain;
+const domain = config.prod.domain;
+//const domain = config.dev.domain;
 
 const qiniuDomain = config.prod.qiniuDomain;
 const bgImage = config.prod.qiniuDomain;
 const alianceKey = config.alianceKey;
 const TX_MAP_KEY = 'XCDBZ-EG7C6-2OIS6-MSJDG-OQ2FT-2EBED';
+const region = 'SCN';
 
 module.exports = {
-  domain, qiniuDomain, bgImage, alianceKey, TX_MAP_KEY
+  domain, qiniuDomain, bgImage, alianceKey, TX_MAP_KEY, region
 }

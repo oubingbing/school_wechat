@@ -39,7 +39,7 @@
 </view>
 
   <view class='button-container'>
-    <button bindtap='post'> 发表 </button>
+    <button bindtap='post' disabled='{{!canPost}}'> 发表 </button>
   </view>
 
 </view>

@@ -1,6 +1,6 @@
 
 const app = getApp();
-const http = require("./../../utils/http.js");
+const http = require("./../../../utils/http.js");
 
 Page({
   data: {

@@ -20,6 +20,7 @@ Page({
     imageArray: [],
     baseImageUrl: app.globalData.imageUrl,
     canChat:true,
+    canPost:true,
 
     icon: {
       width: "75rpx",
@@ -29,7 +30,7 @@ Page({
     },
     qiniu: {
       uploadNumber: 9,
-      region: "SCN",
+      region: config.region,
       token: '',
       domain: config.qiniuDomain
     }
@@ -96,11 +97,8 @@ Page({
    * 设置title
    */
   setTitle: function (id,cantChat){
-    let _this = this;
     if (cantChat != 1){
-      http.get(`/user/${id}`,
-        {},
-        function (res) {
+      http.get(`/user/${id}`,{},res=>{
           console.log(res.data.data);
           let name = res.data.data.nickname;
           wx.setNavigationBarTitle({ title: name });
@@ -114,16 +112,12 @@ Page({
    * 获取消息 
    */
   getMessageList:function(id,oprateType=null){
-    let _this = this;
-    let pageSize = _this.data.pageSize;
-    let pageNumber = _this.data.pageNumber;
-    http.get(`/message/${id}/list?page_size=${pageSize}&page_number=${pageNumber}`,
-      {},
-      function (res) {
+    let pageSize = this.data.pageSize;
+    let pageNumber = this.data.pageNumber;
+    http.get(`/message/${id}/list?page_size=${pageSize}&page_number=${pageNumber}`,{},res=>{
         wx.stopPullDownRefresh();
-        console.log(res.data.data);
         let data = res.data.data.page_data;
-        let list = _this.data.list;
+        let list = this.data.list;
         if (oprateType == 'unshift'){
           if(data.length == 0){
             wx.showLoading({
@@ -141,9 +135,9 @@ Page({
             list.push(item);
           })
         }
-        _this.setData({
+        this.setData({
           list: list,
-          pageNumber: _this.data.pageNumber + 1
+          pageNumber: this.data.pageNumber + 1
         })
       });
   },
@@ -161,22 +155,19 @@ Page({
    */
   deleteContent:function(e){
     let objId = e.currentTarget.dataset.objid;
-    let _this = this;
     wx.showModal({
       title: '提示',
       content: '确定撤回该消息吗',
-      success: function (res) {
+      success: res=> {
         if (res.confirm) {
-          http.httpDelete(`/delete/${objId}/chat_message`,
-            {},
-            function (res) {
-              let list = _this.data.list;
+          http.httpDelete(`/delete/${objId}/chat_message`,{},res=>{
+              let list = this.data.list;
               let newList = list.filter((item, index) => {
                 if (item.id != objId) {
                   return item;
                 }
               });
-              _this.setData({
+              this.setData({
                 list: newList
               })
             });
@@ -200,40 +191,50 @@ Page({
    * 发送消息
    */
   send:function(){
+
+    if (!this.data.canPost){
+      return false;
+    }
+
+    this.setData({ canPost: false })
+
     wx.showLoading({
       title: '发送中',
     });
     let friendId = this.data.friendId;
     let content = this.data.content;
     let attachments = this.data.imageArray;
-    let _this = this;
-    _this.setData({
+    this.setData({
       imageArray: []
     })
     if (content == '' && attachments.length == 0){
-      return;
+      this.setData({ canPost: true })
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none'
+      })
+      setTimeout(function () {
+        wx.hideLoading();
+      }, 1500)
+      return false;
     }
 
-    http.post(`/send/${friendId}/message`,
-     {
-       content:content,
-       attachments: attachments
-     }, 
-     function (res) {
+    http.post(`/send/${friendId}/message`,{content:content,attachments: attachments}, res=>{
+       this.setData({ canPost:true})
        wx.hideLoading();
-       _this.setData({
+       this.setData({
          content:''
        })
 
-      let chatData = _this.data.list;
+      let chatData = this.data.list;
       chatData.push(res.data.data);
-      _this.setData({
+      this.setData({
         list:chatData,
         content:''
         })
-      setTimeout(function () {
+      setTimeout(res=> {
         wx.pageScrollTo({
-          scrollTop: _this.data.scrollTop += 1000
+          scrollTop: this.data.scrollTop += 1000
         })
       }, 500); 
     });

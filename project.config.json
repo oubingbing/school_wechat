@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -56,9 +56,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "个人中心",
-					"pathName": "pages/personal/personal",
+					"pathName": "pages/personal/index/personal",
 					"query": ""
 				},
 				{

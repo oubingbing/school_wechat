@@ -28,7 +28,8 @@
     "pages/help/post_help/post_help",
     "pages/help/help_detail/help_detail",
     "pages/travel/index/index",
-    "pages/travel/create_travel/create_travel"
+    "pages/travel/create_travel/create_travel",
+    "pages/compare_face/face"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -67,10 +68,10 @@
         "text": "步数旅行"
       },
       {
-        "pagePath": "pages/help/index/help",
-        "iconPath": "image/help.png",
-        "selectedIconPath": "image/select-help.png",
-        "text": "悬赏令"
+        "pagePath": "pages/compare_face/face",
+        "iconPath": "image/fall-in-love.png",
+        "selectedIconPath": "image/select-fall-in-love.png",
+        "text": "情侣脸"
       },
       {
         "pagePath": "pages/personal/index/personal",

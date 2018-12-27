@@ -1,0 +1,66 @@
+<view class='container'>
+
+  <view class='header'>
+    <view class='tips'>试试你跟Ta有没有情侣相吧</view>
+  </view>
+
+  <view class='image-container' wx-if="{{showSelect}}">
+    <view class='image-left' bindtap='selectLeft'>
+      <view class='image' wx:if="{{!imageLeft}}">
+        <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              class="upload"
+              bind:success="leftUploadSuccess"/>
+      </view>
+    </view>
+    <view class='image-left' bindtap='selectRight'>
+      <view class='image' wx:if="{{!imageRight}}">
+        <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"
+              class="upload"  
+              bind:success="rightUploadSuccess"/>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view class='report' wx-if="{{showReport}}">
+  <view class='bind-report' wx-if="{{bindReport}}">
+    <image src='/image/bind-face-report.png'></image>
+  </view>
+  <view class='content'>
+    <view class='report-title'>
+      <view>检测报告</view>
+    </view>
+    <view class='report-main'>
+      <view class='rate report-item'>相似度：<view class='rate-world'>{{rate}}%</view></view>
+      <view class='face report-item'>脸型：{{face}}</view>
+      <view class='description report-item'>结论：{{conclusion}}</view>
+      <view class='seal-world'>{{face}}</view>
+      <view class='seal'>
+        <image src='/image/seal.png'></image>
+      </view>
+      <view class='support'>阿里AI提供技术支持</view>
+    </view>
+  </view>
+</view>
+
+<view class='ding-container'><image src='/image/ding.png'></image></view>
+
+<view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
+  <view class='beging-button'>开始</view>
+</view>
+
+<view class='beging' bindtap='cancelSelect' wx-if="{{showCancel}}">
+  <view class='beging-button'>取消</view>
+</view>
+
+<view class='beging' bindtap='submit' wx-if="{{showSubmit}}">
+  <view class='beging-button'>提交</view>
+</view>
+
+<view class='beging' bindtap='tryAgant' wx-if="{{tryAgant}}">
+  <view class='beging-button'>再来一次</view>
+</view>
+

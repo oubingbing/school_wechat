@@ -17,10 +17,10 @@ Page({
       width: "100rpx",
       height: "100rpx",
       path: "",
-      showImage:true
+      showImage:false
     },
     qiniu: {
-      uploadNumber: 9,
+      uploadNumber: 1,
       region: config.region,
       token: '',
       domain: config.qiniuDomain

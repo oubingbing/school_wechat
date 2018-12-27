@@ -29,7 +29,7 @@ Page({
       showImage: false
     },
     qiniu: {
-      uploadNumber: 9,
+      uploadNumber: 1,
       region: config.region,
       token: '',
       domain: config.qiniuDomain

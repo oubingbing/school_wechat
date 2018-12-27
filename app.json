@@ -37,6 +37,11 @@
     "navigationBarTitleText": "校园小情书",
     "navigationBarTextStyle": "white"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于当前位置的定位"
+    }
+  },
   "plugins": {
     "uploadPlugins": {
       "version": "1.2.3",

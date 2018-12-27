@@ -164,4 +164,13 @@ page{
   border-radius: 10rpx;
 }
 
+.author{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25rpx;
+  margin-top: 50rpx;
+  color: gainsboro;
+}
 

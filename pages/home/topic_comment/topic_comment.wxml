@@ -1,0 +1,25 @@
+<view class='post-container container'>
+  <view class='form'>
+
+    <view class='input'>
+      <textarea 
+        maxlength="1024"
+        class='textarea-content'
+        placeholder="你的看法"    
+        bindinput="getTextContent"/>
+    </view>
+    <view class='image-form'>
+        <upload icon-info="{{icon}}" 
+                qiniu-info="{{qiniu}}"  
+                bind:success="uploadSuccess" 
+                bind:delete="deleteSuccess"
+                bind:error="uploadError"/>
+    </view>  
+  </view>
+
+
+  <view class='button-container'>
+    <button bindtap='post'> 评论 </button>
+  </view>
+
+</view>

@@ -1,19 +1,19 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/index/post/post",
-    "pages/index/post_detail/post_detail",
-    "pages/index/school/school",
-    "pages/index/topic_comment/topic_comment",
-    "pages/index/topic_detail/topic_detail",
-    "pages/sale/sale",
+    "pages/home/index/index",
+    "pages/home/post/post",
+    "pages/home/post_detail/post_detail",
+    "pages/home/school/school",
+    "pages/home/topic_comment/topic_comment",
+    "pages/home/topic_detail/topic_detail",
+    "pages/sale/index/sale",
     "pages/sale/post_sale/post_sale",
     "pages/sale/comment_sale/comment_sale",
-    "pages/match/match",
+    "pages/match/index/match",
     "pages/match/match_detail/match_detail",
     "pages/match/match_result/match_result",
     "pages/match/post_match/post_match",
-    "pages/personal/personal",
+    "pages/personal/index/personal",
     "pages/personal/letter/letter",
     "pages/personal/message/message",
     "pages/personal/suggestion/suggestion",
@@ -22,11 +22,13 @@
     "pages/personal/sale_list/sale_list",
     "pages/personal/match_list/match_list",
     "pages/personal/set_profile/set_profile",
-    "pages/help/help",
+    "pages/help/index/help",
     "pages/help/comment_mission/comment_mission",
     "pages/help/help_single/help_single",
     "pages/help/post_help/post_help",
     "pages/help/help_detail/help_detail",
+    "pages/travel/index/index",
+    "pages/travel/create_travel/create_travel",
     "pages/compare_face/face"
   ],
   "window": {
@@ -35,6 +37,17 @@
     "navigationBarTitleText": "校园小情书",
     "navigationBarTextStyle": "white"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于当前位置的定位"
+    }
+  },
+  "plugins": {
+    "uploadPlugins": {
+      "version": "1.2.3",
+      "provider": "wx00caa212d6710dcb"
+    }
+  },
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#66CDAA",
@@ -42,22 +55,22 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/home/index/index",
         "iconPath": "image/saylove.png",
         "selectedIconPath": "image/select-saylove.png",
         "text": "表白墙"
       },
       {
-        "pagePath": "pages/sale/sale",
+        "pagePath": "pages/sale/index/sale",
         "iconPath": "image/sale.png",
         "selectedIconPath": "image/select-sale.png",
         "text": "卖舍友"
       },
       {
-        "pagePath": "pages/help/help",
-        "iconPath": "image/help.png",
-        "selectedIconPath": "image/select-help.png",
-        "text": "悬赏令"
+        "pagePath": "pages/travel/index/index",
+        "iconPath": "image/run.png",
+        "selectedIconPath": "image/select-run.png",
+        "text": "步数旅行"
       },
       {
         "pagePath": "pages/compare_face/face",
@@ -66,7 +79,7 @@
         "text": "情侣脸"
       },
       {
-        "pagePath": "pages/personal/personal",
+        "pagePath": "pages/personal/index/personal",
         "iconPath": "image/iam.png",
         "selectedIconPath": "image/select-iam.png",
         "text": "我的"

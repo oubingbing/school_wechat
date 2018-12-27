@@ -26,6 +26,72 @@ Page({
       });
     });
   },
+
+  /**
+ * 删除帖子
+ */
+  deleteSale: function (e) {
+    let id = this.data.sale.id;
+    wx.showModal({
+      title: '提示',
+      content: '确认删除?',
+      success: function (res) {
+        if (res.confirm) {
+          http.httpDelete(`/delete/${id}/sale_friend`, {}, res => {
+            console.log(res.data)
+            if (res.data.error_code == 0) {
+              app.globalData.reloadSale = true;
+              wx.navigateBack({ comeBack: true });
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+
+  /**
+ * 关注
+ */
+  follow: function (e) {
+    let objId = this.data.sale.id;
+    http.post('/follow', {
+      obj_id: objId,
+      obj_type: 2
+    }, res=> {
+      let sale = this.data.sale;
+      sale.follow = true;
+      sale.follow_number += 1
+      this.setData({sale: sale});
+    });
+  },
+
+  /**
+ * 取消关注
+ */
+  cancelFolllow: function (e) {
+    let objId = this.data.sale.id;
+    http.put(`/cancel/${objId}/follow/2`, {}, res=> {
+      let sale = this.data.sale;
+      sale.follow = false;
+      sale.follow_number -= 1
+      this.setData({ sale: sale });
+    })
+  },
+
+  /** 
+   * 预览图片
+   */
+  previewImage: function (event) {
+    let url = event.target.id;
+    wx.previewImage({
+      current: '',
+      urls: [url]
+    })
+  },
+
   /**
    * 触摸屏幕后移动触发一些隐藏操作
    */
@@ -55,7 +121,6 @@ Page({
   deleteComment: function (e) {
     let objId = e.currentTarget.dataset.objid;
     let commentId = e.currentTarget.dataset.refid;
-    let _this = this;
     wx.showModal({
       title: '提示',
       content: '确认删除该评论?',
@@ -63,7 +128,7 @@ Page({
         if (res.confirm) {
           http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
-              let sale = _this.data.sale;
+              let sale = this.data.sale;
               let comments = sale.comments;
               let newComment = comments.map(comment=>{
                 let sub_comments = comment.sub_comments;
@@ -79,7 +144,7 @@ Page({
                 return comment;
               })
               sale.comments = newComment;
-              _this.setData({
+              this.setData({
                 sale: sale
               });
             }
@@ -114,23 +179,22 @@ Page({
     let objId = this.data.objId;
     let content = this.data.content;
     let refCommentId = this.data.refCommentId;
-    let _this = this;
 
     http.post('/comment', {
       content: content,
       obj_id: objId,
       type: objType,
       ref_comment_id:refCommentId
-    }, function (res) {
+    }, res=> {
       wx.hideLoading();
       let resData = res.data.data;
       if (!resData.error_code){
-        let sale = _this.data.sale;
+        let sale = this.data.sale;
         if (resData.obj_type == 2){
           let data = resData;
           sale.comments.unshift(data);
           sale.comment_number += 1;
-          _this.setData({
+          this.setData({
             sale: sale
           });
         }else{
@@ -141,11 +205,11 @@ Page({
             return item;
           });
           sale.comments = newComments;
-          _this.setData({
+          this.setData({
             sale: sale
           });
         }
-        _this.setData({
+        this.setData({
           content: '',
           objId: '',
           objType: '',
@@ -166,17 +230,33 @@ Page({
       hidden: false,
       showCommentInput: false
     });
-    let _this = this;
     http.post(`/praise`,
       { obj_id: objId, obj_type: objType },
       res => {
       if (!res.data.data.error_code){
-        let sale = _this.data.sale;
+        let sale = this.data.sale;
         sale.praise_number += 1;
-        _this.setData({
+        this.setData({
           sale:sale
         });
       }
     });
-  }
+  },
+
+  /**
+   * 分享
+   */
+  onShareAppMessage: function (res) {
+    return {
+      title: "卖舍友啦，便宜又好看，五毛钱一个清仓大甩卖...",
+      path: '/pages/home/index/index?type=sale_friend&id=' + this.data.sale.id,
+      imageUrl: this.data.baseImageUrl+this.data.sale.attachments[0],
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })

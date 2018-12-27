@@ -1,5 +1,8 @@
 {
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
-  "navigationBarTitleText": ""
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "upload": "plugin://uploadPlugins/upload"
+  }
 }

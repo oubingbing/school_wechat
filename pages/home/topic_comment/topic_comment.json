@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "评论话题",
+  "usingComponents": {
+    "upload": "plugin://uploadPlugins/upload"
+  }
+}

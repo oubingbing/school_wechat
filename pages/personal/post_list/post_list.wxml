@@ -161,19 +161,10 @@
       </view>
       </view>
     </view>
-
   </view>
 
-  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
-    <view class='get-more-item'>
-      <image src='/image/get-more.gif' mode='aspectFit'></image>
-      <view class='loading'>加载中</view>
-    </view>
-  </view>
-
-  <view class='no-more-data' wx-if="{{notDataTips && posts.length != 0}}">
-    <view>我是一只有底线的神~_~</view>
-  </view>
+  <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+  <not-more wx:if="{{notDataTips && posts.length != 0}}"></not-more>
 
   <view class='no-more-data' wx-if="{{posts.length == 0}}">
     <view>power by 叶子</view>

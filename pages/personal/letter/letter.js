@@ -1,8 +1,10 @@
 const util = require('./../../../utils/util.js')
-const qiniuUploader = require("./../../../utils/qiniuUploader");
-const uploader = require("./../../../utils/uploadImage");
 const http = require("./../../../utils/http.js");
+const qiniuUtil = require("./../../../utils/qiniuToken.js");
+const config = require("./../../../config.js");
 const app = getApp();
+
+const icon = 'http://image.kucaroom.com//tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.ATIzBaoptXWG8c3ea5b7fe584cf68b45959a9f934eee.png';
 
 Page({
   data: {
@@ -17,7 +19,21 @@ Page({
     initPageNumber: 1,
     imageArray: [],
     baseImageUrl: app.globalData.imageUrl,
-    canChat:true
+    canChat:true,
+    canPost:true,
+
+    icon: {
+      width: "75rpx",
+      height: "75rpx",
+      path: icon,
+      showImage: false
+    },
+    qiniu: {
+      uploadNumber: 1,
+      region: config.region,
+      token: '',
+      domain: config.qiniuDomain
+    }
   },
   onLoad: function (option) {
     wx.hideTabBar();
@@ -38,16 +54,51 @@ Page({
         scrollTop: _this.data.scrollTop
       })
     }, 500); 
+
+    this.getQiNiuToken();
   },
+
+  /**
+   * 获取七牛token
+   */
+  getQiNiuToken: function () {
+    qiniuUtil.getQiniuToken(res => {
+      let qiniu = this.data.qiniu;
+      qiniu.token = res;
+      this.setData({ qiniu: qiniu })
+    })
+  },
+
+  /**
+   * 获取上传的图片
+   */
+  uploadSuccess: function (uploadData) {
+    console.log(uploadData)
+
+    let attachments = [];
+    uploadData.detail.map(item => {
+      attachments.push(item.uploadResult.key)
+    })
+
+    this.setData({
+      imageArray: attachments
+    })
+    this.send();
+  },
+
+  /**
+   * 获取删除后的图片
+   */
+  deleteSuccess: function (uploadData) {
+    this.setData({ imageArray: uploadData.detail })
+  },
+
   /**
    * 设置title
    */
   setTitle: function (id,cantChat){
-    let _this = this;
     if (cantChat != 1){
-      http.get(`/user/${id}`,
-        {},
-        function (res) {
+      http.get(`/user/${id}`,{},res=>{
           console.log(res.data.data);
           let name = res.data.data.nickname;
           wx.setNavigationBarTitle({ title: name });
@@ -61,16 +112,12 @@ Page({
    * 获取消息 
    */
   getMessageList:function(id,oprateType=null){
-    let _this = this;
-    let pageSize = _this.data.pageSize;
-    let pageNumber = _this.data.pageNumber;
-    http.get(`/message/${id}/list?page_size=${pageSize}&page_number=${pageNumber}`,
-      {},
-      function (res) {
+    let pageSize = this.data.pageSize;
+    let pageNumber = this.data.pageNumber;
+    http.get(`/message/${id}/list?page_size=${pageSize}&page_number=${pageNumber}`,{},res=>{
         wx.stopPullDownRefresh();
-        console.log(res.data.data);
         let data = res.data.data.page_data;
-        let list = _this.data.list;
+        let list = this.data.list;
         if (oprateType == 'unshift'){
           if(data.length == 0){
             wx.showLoading({
@@ -88,9 +135,9 @@ Page({
             list.push(item);
           })
         }
-        _this.setData({
+        this.setData({
           list: list,
-          pageNumber: _this.data.pageNumber + 1
+          pageNumber: this.data.pageNumber + 1
         })
       });
   },
@@ -108,22 +155,19 @@ Page({
    */
   deleteContent:function(e){
     let objId = e.currentTarget.dataset.objid;
-    let _this = this;
     wx.showModal({
       title: '提示',
       content: '确定撤回该消息吗',
-      success: function (res) {
+      success: res=> {
         if (res.confirm) {
-          http.httpDelete(`/delete/${objId}/chat_message`,
-            {},
-            function (res) {
-              let list = _this.data.list;
+          http.httpDelete(`/delete/${objId}/chat_message`,{},res=>{
+              let list = this.data.list;
               let newList = list.filter((item, index) => {
                 if (item.id != objId) {
                   return item;
                 }
               });
-              _this.setData({
+              this.setData({
                 list: newList
               })
             });
@@ -147,113 +191,55 @@ Page({
    * 发送消息
    */
   send:function(){
+
+    if (!this.data.canPost){
+      return false;
+    }
+
+    this.setData({ canPost: false })
+
     wx.showLoading({
       title: '发送中',
     });
     let friendId = this.data.friendId;
     let content = this.data.content;
     let attachments = this.data.imageArray;
-    let _this = this;
-    _this.setData({
+    this.setData({
       imageArray: []
     })
     if (content == '' && attachments.length == 0){
-      return;
+      this.setData({ canPost: true })
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none'
+      })
+      setTimeout(function () {
+        wx.hideLoading();
+      }, 1500)
+      return false;
     }
 
-    http.post(`/send/${friendId}/message`,
-     {
-       content:content,
-       attachments: attachments
-     }, 
-     function (res) {
+    http.post(`/send/${friendId}/message`,{content:content,attachments: attachments}, res=>{
+       this.setData({ canPost:true})
        wx.hideLoading();
-       _this.setData({
+       this.setData({
          content:''
        })
 
-      let chatData = _this.data.list;
+      let chatData = this.data.list;
       chatData.push(res.data.data);
-      _this.setData({
+      this.setData({
         list:chatData,
         content:''
         })
-      setTimeout(function () {
+      setTimeout(res=> {
         wx.pageScrollTo({
-          scrollTop: _this.data.scrollTop += 1000
+          scrollTop: this.data.scrollTop += 1000
         })
       }, 500); 
     });
   },
-  /**
-   * 轮询
-   */
-  polling:function(_this){
-    let friendId = _this.data.friendId;
-    setTimeout(function () {//setInterval
-      http.get(`/new/${friendId}/messages`,
-        {},
-        function (res) {
-          let newMessages = res.data.data;
-          if(newMessages.length > 0){
-            let list = _this.data.list;
 
-            newMessages.map(item => {
-              if(item.from_user_id != item.to_user_id){
-                list.push(item);
-              }
-            });
-
-            _this.setData({
-              list: list
-            })
-
-            setTimeout(function () {
-              wx.pageScrollTo({
-                scrollTop: _this.data.scrollTop += 700
-              })
-            }, 500); 
-          }
-        });
-    }, 1000);
-  },
-  /**
-   * 发图片
-   */
-  sendImage:function(){
-      let _this = this;
-      wx.chooseImage({
-        count: 9, // 默认9
-        sizeType: ['original', 'compressed'],
-        sourceType: ['album', 'camera'],
-        success: function (res) {
-          var filePaths = res.tempFilePaths;
-          let position = res.tempFilePaths.length - 1;
-          wx.showLoading({
-            title: '发送中',
-          })
-          filePaths.map((item, index) => {
-            uploader.upload(item, key => {
-              console.log('上传图片成功的回调');
-              console.log(position);
-              if (position == index) {
-                wx.hideLoading();
-              }
-
-              if (key != '' || key != null) {
-                //提交到服务器
-                let tempImageArray = _this.data.imageArray;
-                tempImageArray.push(key)
-                _this.setData({
-                  imageArray: tempImageArray
-                })
-                _this.send();
-              }
-            })
-          });
-        }
-      })
-  },
   /**
    * 预览图片
    */

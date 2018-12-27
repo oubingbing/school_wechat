@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "消息"
+  "navigationBarTitleText": "消息",
+  "usingComponents": {
+    "get-more-loading": "/components/get-more-loading/get-more-loading",
+    "not-more": "/components/not-more-tip/not-more-tip"
+  }
 }

@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "我的卖舍友"
+  "navigationBarTitleText": "我的卖舍友",
+  "usingComponents": {
+    "get-more-loading": "/components/get-more-loading/get-more-loading",
+    "not-more": "/components/not-more-tip/not-more-tip"
+  }
 }

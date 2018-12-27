@@ -1,0 +1,609 @@
+page{
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.switch-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 50rpx 0rpx;
+  color: white;
+  background: #66CDAA;
+  font-size: 40rpx;
+}
+
+.switch-container .selected{
+  height: 1rpx;
+  width: 100%;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: white;
+  padding-top: 10rpx;
+}
+
+.step-log{
+  width: 50%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container .header{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  background: white;
+  padding-bottom: 50rpx;
+  padding-top: 50rpx;
+  color:#66CDAA;
+}
+
+.header .header-content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content .step-content{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/** 内容样式 **/
+.step-content .today-step{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right-style:solid;
+  border-width:1rpx;
+  border-color: #CCCCCC;
+}
+
+.step-content .total-step{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-content .step{
+  font-size: 50rpx;
+}
+
+.content-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  align-items: center;
+  margin-top: 5rpx;
+}
+
+.content-container .content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container .item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.item .step-left{
+  width: 25%;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  flex-direction: column;
+  border-right-style:solid;
+  border-width:1rpx;
+  border-color: #CCCCCC;
+  justify-content: center;
+}
+
+
+.step-left .date{
+  position: absolute;
+  left: 120rpx;
+  background: #66CDAA;
+  color: white;
+  font-size: 25rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  border-radius: 10rpx;
+}
+
+.item .step-right{
+  padding-left: 300rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.step-right .step-number{
+  font-size: 40rpx;
+  width: 100%;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #CCCCCC;
+  color: #66CDAA;
+}
+/** 加载更多 **/
+.get-more{
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30rpx;
+  font-weight: 200;
+  width: 100%;
+  background: white;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.get-more image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.get-more .get-more-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.loading{
+  margin-left: 15rpx;
+}
+
+/**  **/
+
+
+.page-body{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-section-gap{
+  box-sizing: border-box;
+}
+
+.full-View{
+  width: 100%; 
+  height: 1000rpx;
+}
+
+.harf-View{
+  width: 100%; 
+  height: 550rpx;
+}
+
+
+/** 内容样式 **/
+.step-content .today-step{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right-style:solid;
+  border-width:1rpx;
+  border-color: darkgray;
+}
+
+.step-content .total-step{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-content .step{
+  font-size: 50rpx;
+}
+
+.content-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  align-items: center;
+  margin-top: 5rpx;
+}
+
+.content-container .content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container .item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.item .left{
+  width: 13%;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  flex-direction: column;
+  border-right-style:solid;
+  border-width:1rpx;
+  border-color: #CCCCCC;
+  justify-content: flex-start;
+}
+
+
+.left .date{
+  position: absolute;
+  left: 20rpx;
+  background: #66CDAA;
+  color: white;
+  font-size: 25rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  border-radius: 10rpx;
+}
+
+.item .right{
+  width: 87%;
+  padding-left: 100rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.right .travel-log{
+  width: 100%;
+  background: #E6E6E6;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+
+  font-size: 35rpx;
+  border-radius: 15rpx;
+}
+
+.travel-log .travel-point{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20rpx;
+  background: #66CDAA;
+  color: white;
+  font-size: 30rpx;
+}
+
+.travel-log .step-number{
+  padding-top: 10rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  padding: 10rpx;
+}
+
+.step-number .travel-label{
+  width: 15%;
+}
+
+.step-number .travel-number{
+  width: 85%;
+
+}
+
+.travel-log .address{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  padding: 10rpx;
+}
+
+.address .address-label{
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+}
+
+.address .address-content{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+}
+
+.my-log{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 30rpx;
+  padding: 10rpx;
+}
+
+.my-log .my-log-label{
+  width: 15%;
+}
+
+.my-log .my-log-content{
+  width: 85%;
+}
+
+.my-log-content .foods,.hotel{
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+  margin-top: 10rpx;
+}
+
+.foods .food-wall{
+  width: 90%;
+  background: white;
+  color: #666666;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+
+.my-log-content .views{
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+  margin-top: 10rpx;
+}
+
+.views .views-wall{
+  width: 90%;
+  background: white;
+  color: #666666;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+/**post css**/
+
+.post-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx 0rpx;
+}
+
+.post {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  background: #FF6347;
+  color: white;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  justify-content: center;
+  padding: 20rpx 0rpx;
+}
+
+/** 图标按钮样式 **/
+.icon-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FF6347;
+}
+
+.icon-container .icon{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  padding-top:15rpx;
+  padding-bottom: 15rpx; 
+  justify-content: space-between;
+}
+
+.icon image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/** 画图 **/
+.canvas-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: a;
+  z-index: 300;
+  background:rgba(2,2,2,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.convas{
+  width: 90%;
+  border-radius: 5rpx;
+  height: 90%;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  background: darkgray;
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  background:rgba(2,2,2,0.8);
+}
+
+.convas-save{
+  width: 100%;
+  border-radius: 5rpx;
+  height: 100%;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  background: darkgray;
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  background:rgba(2,2,2,0.8);
+}
+
+.long-tap-tip{
+  color: white;
+}
+
+.finish-travel{
+  position: fixed;
+  top: 850rpx;
+  right: 20rpx;
+}
+
+.finish-travel image{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+/** 加载更多 **/
+.get-more{
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30rpx;
+  font-weight: 200;
+  width: 100%;
+  background: white;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.get-more image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.get-more .get-more-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.loading{
+  margin-left: 15rpx;
+}
+
+/** 排行榜样式 **/
+
+.rand-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rand-container .rand-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rand-content .rand-item{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 20rpx;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #F5F5F5;
+  background: white;
+}
+
+.rand-item .rand{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 20rpx;
+}
+
+.rand-item .rand-left{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rand-left .rand-left-item{
+  margin: 0rpx 20rpx;
+}
+
+.rand-left .rand-avatar{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.rand-item .rand-right{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 50rpx;
+  color: #FBAD67;
+}
+
+.rank-avatar{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  margin-left: 20rpx;
+}
+
+.rand-index{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+}
+
+.rank-title{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  color: gainsboro;
+  padding: 10rpx 0rpx;
+}
+
+.my-rank{
+  margin-bottom: 50rpx;
+}
+
+.rand-index image{
+  width: 50rpx;
+  height: 50rpx;
+}

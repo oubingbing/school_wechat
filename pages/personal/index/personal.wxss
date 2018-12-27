@@ -1,0 +1,176 @@
+page{
+  background-color: #F5F5F5;
+  padding: 0rpx;
+  margin: 0rpx;
+}
+
+.personal-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-container .bg-container{
+  width: 100%;
+  height: 550rpx;
+}
+
+.bg-image image{
+  width: 100%;
+  height: 400rpx;
+}
+.bg-container .user-info{
+  width: 100%;
+  height: 150rpx;
+  background: #FFE7BA;
+  margin-top: -10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.article{
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+  height: 80rpx;
+  align-items: center;
+}
+
+.letter{
+  display: flex;
+  flex-direction: row;
+  margin-right: 20rpx;
+  align-items: center;
+}
+
+.word{
+  margin-left: 20rpx;
+
+}
+
+.letter image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+}
+
+.bg-container .user-image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 80rpx;
+  z-index: 10;
+  position: absolute;
+  margin-top: -90rpx;
+  margin-left: 50rpx;
+  border-style:solid;
+  border-width:8rpx;
+  border-color: white;
+}
+
+.user-info{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+.user-info .user-name{
+  margin-top: 80rpx;
+  width: 35%;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+
+.content-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  align-items: center;
+  margin-top: 15rpx;
+}
+
+.content-item{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  align-items: center;
+}
+
+.item-image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+}
+
+.word{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+
+.content-container{
+  width: 100%;
+  background: white;
+  margin-top: 15rpx;
+}
+
+.content-container .say-love{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #EEE9E9;
+}
+
+.content-container .sale{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #EEE9E9;
+}
+
+.suggestion{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  align-items: center;
+  margin-top: 15rpx;
+}
+
+.update-info{
+  position: fixed;
+  z-index: 200;
+  top: 20rpx;
+  left: 20rpx;
+  font-size: 25rpx;
+  padding-bottom: 20rpx;
+  border-style:solid;
+  border-width:1rpx;
+  border-color: #66CDAA;
+  color: #66CDAA;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+
+.author{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25rpx;
+  margin-top: 50rpx;
+  color: gainsboro;
+}
+

@@ -1,10 +1,11 @@
-const qiniuUploader = require("./../../utils/qiniuUploader");
-const uploader = require("./../../utils/uploadImage");
 const http = require("./../../utils/http.js");
+const qiniuUtil = require("./../../utils/qiniuToken.js");
+const config = require("./../../config.js");
 const app = getApp()
 
 Page({
   data: {
+    baseImageUrl: app.globalData.imageUrl,
     showSelect:false,
     showBegin:true,
     showCancel:false,
@@ -15,21 +16,61 @@ Page({
     imageLeft:'',
     imageRight:'',
     postImageLeft:'',
-    PostImageRight:'',
+    postImageRight:'',
     rate:0,
     face:'',
-    conclusion:''
+    conclusion:'',
+    icon: {
+      width: "250rpx",
+      height: "250rpx",
+      path: "http://image.kucaroom.com/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.LnBKkU9zx3EP4d2e331c723875767480754faf0248b7.png",
+      showImage: true
+    },
+    qiniu: {
+      uploadNumber: 1,
+      region: config.region,
+      token: '',
+      domain: config.qiniuDomain
+    },
   },
   onLoad: function (option) {
     this.hiddenSelect();
-    //设置七牛上传token
-    app.getUploadToken(token => {
-      this.setData({
-        uploadToken: token
-      });
-    });
-
+    this.getQiNiuToken();
   },
+
+  /**
+   * 获取七牛token
+   */
+  getQiNiuToken: function () {
+    qiniuUtil.getQiniuToken(res => {
+      let qiniu = this.data.qiniu;
+      qiniu.token = res;
+      this.setData({ qiniu: qiniu })
+    })
+  },
+
+  /**
+ * 获取上传的图片
+ */
+  leftUploadSuccess: function (uploadData) {
+    console.log(uploadData.detail[0].uploadResult.imageURL);
+    this.setData({ postImageLeft: this.data.baseImageUrl +uploadData.detail[0].uploadResult.key})
+    if (this.data.postImageLeft && this.data.postImageRight) {
+      this.setData({ showSubmit: true })
+    }
+  },
+
+  /**
+  * 获取上传的图片
+  */
+  rightUploadSuccess: function (uploadData) {
+    console.log(uploadData.detail[0].uploadResult.imageURL);
+    this.setData({ postImageRight: this.data.baseImageUrl+uploadData.detail[0].uploadResult.key })
+    if (this.data.postImageLeft && this.data.postImageRight) {
+      this.setData({ showSubmit: true })
+    }
+  },
+
   showSelect:function(){
     this.setData({
       showSelect: true,
@@ -37,6 +78,7 @@ Page({
       showCancel: true
     });
   },
+  
   hiddenSelect:function(){
     this.setData({
       showSelect: false,
@@ -44,6 +86,7 @@ Page({
       bindReport: false
     });
   },
+
   cancelSelect:function(){
     this.setData({
       showSelect: false,
@@ -52,93 +95,30 @@ Page({
       bindReport: false
     });
   },
+
   selectLeft:function(){
     this.setData({ showReport: false })
-    let _this = this;
-    wx.chooseImage({
-      count: 1, 
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        _this.setData({
-          imageLeft: tempFilePaths[0]
-        });
-        wx.showLoading({
-          title: '加载中',
-        });
-        uploader.upload(tempFilePaths[0], key => {
-          wx.hideLoading();
-          console.log(key);
-          _this.setData({
-            postImageLeft: app.globalData.imageUrl+key
-          });
-
-          if (_this.postImageLeft != '' && _this.PostImageRight != ''){
-            _this.setData({
-              showBegin: false,
-              showCancel: true,
-              showSubmit: true,
-              tryAgant: false
-            });
-          }
-        })
-      }
-    })
   },
+
   selectRight:function(){
     this.setData({ showReport: false})
-    let _this = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        _this.setData({
-          imageRight: tempFilePaths[0]
-        });
 
-        wx.showLoading({
-          title: '加载中',
-        });
-
-        uploader.upload(tempFilePaths[0], key => {
-          wx.hideLoading();
-          console.log(key);
-          _this.setData({
-            PostImageRight: app.globalData.imageUrl+key
-          });
-          if (_this.postImageLeft != '' && _this.PostImageRight != '') {
-            _this.setData({
-              showBegin: false,
-              showCancel: true,
-              showSubmit: true,
-              tryAgant: false,
-            });
-          }
-        })
-      }
-    })
   },
+
   submit:function(){
     if (this.data.postImageLeft == ''){
-      wx.showLoading({
+      wx.showToast({
         title: '左图上传失败，请重试',
-      });
-      setTimeout(function(){
-        wx.hideLoading();
-      },1500);
+        icon: 'none'
+      })
       return false;
     }
 
-    if (this.data.PostImageRight == '') {
-      wx.showLoading({
+    if (this.data.postImageRight == '') {
+      wx.showToast({
         title: '右图上传失败，请重试',
-      });
-      setTimeout(function () {
-        wx.hideLoading();
-      }, 1500);
+        icon: 'none'
+      })
       return false;
     }
 
@@ -146,12 +126,13 @@ Page({
       title: '检测中',
     });
 
-    http.post(`/compare_face`, { your_face: this.data.postImageLeft, his_face: this.data.PostImageRight }, res => {
+    http.post(`/compare_face`, { your_face: this.data.postImageLeft, his_face: this.data.postImageRight }, res => {
       wx.hideLoading();
       if (res.data.error_code){
-        wx.showLoading({
+        wx.showToast({
           title: res.data.error_message,
-        });
+          icon: 'none'
+        })
         setTimeout(function () {
           wx.hideLoading();
         }, 2000);
@@ -168,6 +149,7 @@ Page({
           });
       });
   },
+
   tryAgant:function(){
     this.setData({
       rate: 0,
@@ -185,6 +167,7 @@ Page({
       imageRight: '',
     });
   },
+
   onShareAppMessage: function (res) {
     return {
       title: '喜欢ta，那就说出来吧',

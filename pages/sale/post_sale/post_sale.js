@@ -1,6 +1,6 @@
-const qiniuUploader = require("./../../../utils/qiniuUploader");
-const uploader = require("./../../../utils/uploadImage");
 const http = require("./../../../utils/http.js");
+const qiniuUtil = require("./../../../utils/qiniuToken.js");
+const config = require("./../../../config.js");
 
 const app = getApp();
 let genderArray = ['男', '女', '人妖', '未知生物'];
@@ -16,80 +16,61 @@ Page({
     expectation: '',
     introduce: false,
     attachments: [],
-    uploadToken: ''
+    imageArray: [],
+
+    icon: {
+      "width": "100rpx",
+      "height": "100rpx",
+      "path": ""
+    },
+    qiniu: {
+      uploadNumber: 9,
+      region: config.region,
+      token: '',
+      domain: config.qiniuDomain
+    }
   },
+
   onLoad: function () {
-  },
-  onShow:function(){
-    //设置七牛上传token
-    app.getUploadToken(token => {
-      this.setData({
-        uploadToken: token
-      });
-    });
 
   },
+
+  onShow:function(){
+    this.getQiNiuToken();
+  },
+
+  /**
+   * 获取上传的图片
+   */
+  uploadSuccess: function (uploadData) {
+    console.log("图片上传：")
+    console.log(uploadData)
+    this.setData({ imageArray: uploadData.detail })
+  },
+
+  /**
+   * 获取删除后的图片
+   */
+  deleteSuccess: function (uploadData) {
+    this.setData({ imageArray: uploadData.detail })
+  },
+
+  /**
+   * 获取七牛token
+   */
+  getQiNiuToken: function () {
+    qiniuUtil.getQiniuToken(res => {
+      let qiniu = this.data.qiniu;
+      qiniu.token = res;
+      this.setData({ qiniu: qiniu })
+    })
+  },
+
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       gender: genderArray[e.detail.value],
       genderValue:e.detail.value
-    })
-  },
-  /**
-   * 选择图片
-   */
-  selectImage: function () {
-    let _this = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        _this.setData({
-          userImage: tempFilePaths[0],
-          hiddenSelectImage: true
-        })
-
-        wx.showLoading({
-          title: '加载中',
-        })
-
-        uploader.upload(tempFilePaths[0], key => {
-          wx.hideLoading();
-          let temAttachments = _this.data.attachments;
-          if (key != '' || key != null) {
-            temAttachments.push(key);
-            _this.setData({
-              attachments: temAttachments
-            });
-          }
-          console.log(key);
-        },error=>{
-          console.log(error);
-        });
-      }
-    })
-  },
-  /** 
-   * 预览图片
-   */
-  previewImage: function (event) {
-    let url = event.target.id;
-    wx.previewImage({
-      current: '',
-      urls: [url]
-    })
-  },
-
-  /**
-   * 移除图片
-   */
-  removeImage: function () {
-    this.setData({
-      hiddenSelectImage: false,
-      userImage: ''
     })
   },
 
@@ -98,8 +79,6 @@ Page({
     this.setData({
       name: value
     });
-    console.log(value);
-
   },
 
   getMajor: function (e) {
@@ -107,7 +86,6 @@ Page({
     this.setData({
       major: value
     });
-    console.log(value);
   },
 
   getLike: function (e) {
@@ -115,7 +93,6 @@ Page({
     this.setData({
       expectation: value
     });
-    console.log(value);
   },
 
   getContent: function (e) {
@@ -123,7 +100,6 @@ Page({
     this.setData({
       introduce: value
     });
-    console.log(value);
   },
 
   /**
@@ -131,73 +107,39 @@ Page({
    * 提交数据
   */
   post: function () {
-    let _app = app;
-    let attachments = this.data.attachments;
+    let attachments = [];
     let name = this.data.name;
     let gender = this.data.genderValue;
     let major = this.data.major;
     let expectation = this.data.expectation;
     let introduce = this.data.introduce;
 
-    if (attachments.length == 0) {
-      wx.showLoading({
-        title: '图片不能为空',
-      })
-      setTimeout(res => {
-        wx.hideLoading();
-      }, 2000);
-      return;
-    }
+    this.data.imageArray.map(item => {
+      attachments.push(item.uploadResult.key)
+    })
 
-    if (name == '') {
-      wx.showLoading({
+    if (!name) {
+      wx.showToast({
         title: '名字不能为空',
+        icon: 'none'
       })
-      setTimeout(res => {
-        wx.hideLoading();
-      }, 1500);
-      return;
+      return false;
     }
 
-    if (gender == '') {
-      wx.showLoading({
+    if (!gender) {
+      wx.showToast({
         title: '性别不能为空',
+        icon: 'none'
       })
-      setTimeout(res => {
-        wx.hideLoading();
-      }, 1500);
-      return;
+      return false;
     }
 
-    if (major == '') {
-      wx.showLoading({
-        title: '专业不能为空',
+    if(attachments.length<=0){
+      wx.showToast({
+        title: '图片不能为空',
+        icon: 'none'
       })
-      setTimeout(res => {
-        wx.hideLoading();
-      }, 1500);
-      return;
-    }
-
-    if (expectation == '') {
-      wx.showLoading({
-        title: '喜欢不能为空',
-      })
-      setTimeout(res => {
-        wx.hideLoading();
-      }, 1500);
-      return;
-    }
-
-    if (introduce == '') {
-      wx.showLoading({
-        title: '介绍不能为空',
-      })
-      setTimeout(res => {
-        wx.hideLoading();
-      }, 1500);
-
-      return;
+      return false;
     }
 
     wx.showLoading({
@@ -212,14 +154,15 @@ Page({
       introduce: introduce
     }, res => {
       wx.hideLoading();
-      if(res.data.data.error_code){
+      if(res.data.error_code != 0){
         wx.showLoading({
-          title: res.data.data.error_message,
+          title: res.data.error_message,
         })
         setTimeout(res => {
           wx.hideLoading();
         }, 2000);
       }else{
+        app.globalData.reloadSale = true;
         wx.navigateBack({ comeBack: true });
       }
     });

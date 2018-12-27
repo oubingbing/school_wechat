@@ -94,6 +94,11 @@ page{
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+}
+
+.upload{
+  margin-bottom: -50rpx;
 }
 
 .image .add-button-image{

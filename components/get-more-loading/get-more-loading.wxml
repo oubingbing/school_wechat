@@ -1,0 +1,6 @@
+<view class='get-more'>
+  <view class='get-more-item'>
+    <image src='/image/get-more.gif' mode='aspectFit'></image>
+    <view class='loading'>加载中</view>
+  </view>
+</view>

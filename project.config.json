@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.0",
+	"libVersion": "2.4.0",
 	"appid": "wx0f587d7c97a68e2b",
 	"projectname": "%E6%A0%A1%E5%9B%AD%E5%B0%8F%E6%83%85%E4%B9%A6%E9%87%8D%E6%9E%84",
 	"condition": {
@@ -29,205 +29,55 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
-					"id": -1,
-					"name": "搜索学校",
-					"pathName": "pages/school/school",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "表白",
-					"pathName": "pages/post/post",
-					"query": ""
-				},
-				{
-					"id": -1,
+					"id": 0,
 					"name": "卖舍友",
 					"pathName": "pages/sale/sale",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "暗恋匹配",
-					"pathName": "pages/match/match",
+					"name": "发表卖舍友",
+					"pathName": "pages/sale/post_sale/post_sale",
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/personal/personal",
+					"id": 2,
+					"name": "表白",
+					"pathName": "pages/index/post/post",
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "我要卖舍友",
-					"pathName": "pages/post_sale/post_sale",
-					"query": ""
-				},
-				{
-					"id": 6,
-					"name": "卖舍友详情",
-					"pathName": "pages/comment_sale/comment_sale",
-					"query": "id=8"
-				},
-				{
-					"id": 7,
-					"name": "发表暗恋匹配",
-					"pathName": "pages/compare_photo/index",
-					"query": "id=8"
-				},
-				{
-					"id": 8,
-					"name": "私信",
+					"id": 3,
+					"name": "情侣脸",
 					"pathName": "pages/compare_face/face",
-					"query": "friend_id=5"
-				},
-				{
-					"id": 9,
-					"name": "消息列表",
-					"pathName": "pages/message/message",
-					"query": "type=0&new_message=1"
-				},
-				{
-					"id": 10,
-					"name": "私信",
-					"pathName": "pages/letter/letter",
-					"query": "friend_id=5"
-				},
-				{
-					"id": -1,
-					"name": "好友列表",
-					"pathName": "pages/friends/friends",
-					"query": "friend_id=5"
-				},
-				{
-					"id": -1,
-					"name": "好友列表",
-					"pathName": "pages/friends/friends",
-					"query": "friend_id=5"
-				},
-				{
-					"id": -1,
-					"name": "我的表白墙",
-					"pathName": "pages/post_list/post_list",
 					"query": ""
 				},
 				{
-					"id": 14,
-					"name": "表白墙详情",
-					"pathName": "pages/post_detail/post_detail",
+					"id": 4,
+					"name": "个人中心",
+					"pathName": "pages/personal/index/personal",
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "匹配详情详情",
-					"pathName": "pages/match_detail/match_detail",
-					"query": ""
-				},
-				{
-					"id": 16,
-					"name": "匹配结果",
-					"pathName": "pages/match_result/match_result",
-					"query": "username=我&match_name=你"
-				},
-				{
-					"id": -1,
-					"name": "测试",
-					"pathName": "pages/logs/logs",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "情侣脸",
-					"pathName": "pages/compare_photo/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "情侣脸",
-					"pathName": "pages/match/match",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "情侣脸",
-					"pathName": "pages/compare_photo/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "私信",
-					"pathName": "pages/topic_detail/topic_detail",
-					"query": "friend_id=4"
-				},
-				{
-					"id": -1,
-					"name": "话题详情",
-					"pathName": "pages/topic_detail/topic_detail",
-					"query": "friend_id=4"
-				},
-				{
-					"id": -1,
-					"name": "悬赏令",
-					"pathName": "pages/help/help",
-					"query": "id=8"
-				},
-				{
-					"id": -1,
-					"name": "悬赏令",
-					"pathName": "pages/help/help",
-					"query": "id=8"
-				},
-				{
-					"id": -1,
+					"id": 5,
 					"name": "悬赏令",
 					"pathName": "pages/help/help",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "悬赏详情",
-					"pathName": "pages/help_detail/help_detail",
+					"name": "步数旅行",
+					"pathName": "pages/travel/index/index",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "悬赏详情",
-					"pathName": "pages/help/help",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "修改个人资料",
-					"pathName": "pages/set_profile/set_profile",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "评论悬赏",
-					"pathName": "pages/comment_mission/comment_mission",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "评论悬赏",
-					"pathName": "pages/help/help",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "评论悬赏",
-					"pathName": "pages/comment_mission/comment_mission",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "评论悬赏",
-					"pathName": "pages/comment_mission/comment_mission",
-					"query": ""
+					"name": "卖舍友详情",
+					"pathName": "pages/sale/comment_sale/comment_sale",
+					"query": "id=142"
 				}
 			]
 		}

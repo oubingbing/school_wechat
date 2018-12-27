@@ -1,103 +1,66 @@
 <view class="sale-container">
-
   <view class='message-tip' 
         wx:if="{{newMessage}}" 
         bindtap='openMessage'>
-    <view class='tip-content'>{{newMessageNumber}}条新消息</view>
-  </view>
-
-  <view class='sale-wall'>
-  <view class='sale-item' wx:for="{{sales}}" wx:key="{{sales}}">
-    <view class='content'>
-      <view class='image-container'>
-        <view class='praise-image'>
-          <view class='praise-container'>
-            <view bindtap='praise' 
-              data-objid='{{item.id}}'><image src='/image/sale_praise.png'></image>
-            </view></view>
-          <view class='praise-number'>{{item.praise_number}}</view>
-        </view>
-        <view class='slae-person-container'>
-        <view>
-          <image class='sale-image' 
-               mode="aspectFill" 
-               src='{{baseImageUrl+item.attachments[0]}}' 
-               bindtap='previewImage'
-               id="{{baseImageUrl+item.attachments[0]}}"></image>
-        </view>
-        <view class='detail-item detail-item-user'>
-            {{item.name}} 
-        </view>
-        <view class='user-name'>{{item.poster.nickname}}</view>
-        <view class='follow-label to-follow' 
-                bindtap="follow" 
-                wx:if="{{!item.follow}}"
-                data-obj="{{item.id}}">+ 关注</view>
-        <view class='follow-label had-follow' 
-                wx:if="{{item.follow}}"
-                bindtap="cancelFolllow" 
-                data-obj="{{item.id}}">已关注</view>
-        </view>
-      </view>
-      <view class='other-info'>
-        <view class='craete_at' wx:if="{{item.show_college}}">{{item.college}}</view>
-      </view>
-      <view class='content-detail'>
-        <view class='detail-item detail-item-gender detail-item-gray'>
-          <view class='gender-image'><image src='/image/gender.png'></image></view>
-          <view class='gender-world'>{{item.gender}}</view>
-        </view>
-        <view class='detail-item detail-item-gender'>
-          <view class='gender-image'><image src='/image/major.png'></image></view>
-          <view class='gender-world'>{{item.major}}</view>
-        </view>
-        <view class='detail-item detail-item-gender detail-item-gray'>
-          <view class='gender-image'><image src='/image/ilike.png'></image></view>
-          <view class='gender-world'>{{item.expectation}}</view>
-        </view>
-        <view class='detail-item detail-item-gender'>
-          <view class='gender-image'><image src='/image/show-self.png'></image></view>
-          <view class='gender-world'>{{item.introduce}}</view>
-        </view>
-      </view>
-
-      <view class='comment-container'>
-        <view class='comment-wall'>
-          <view class='zan' 
-              bindtap='letter' 
-              data-obj='{{item.owner_id}}'>
-          <image src='/image/letter.png'></image>
-        </view>
-        <view class='delete-icon'>
-          <view class='delete' 
-              data-objid="{{item.id}}" 
-              wx-if="{{item.can_delete}}"
-              bindtap='delete'>
-                <image src='/image/delete-icon.png'></image>
-              </view>
-        </view>
-        <view class='comment' 
-              bindtap='comment' 
-              data-objid="{{item.id}}">
-          <view class='comment-icon'><image src='/image/comment.png'></image></view>
-          <view class='comment-num'>{{item.comment_number}}</view>
-        </view>
-      </view>
-        </view>
-
-    </view>
-  </view>
-  </view>
-  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
-    <view class='get-more-item'>
-      <image src='/image/get-more.gif' mode='aspectFit'></image>
-      <view class='loading'>加载中</view>
+    <view class='tip-content'>
+      <view>远方飘来{{newMessageNumber}}条新消息</view>
+      <view><image src='/image/qiqiu.png'></image></view>
     </view>
   </view>
 
-  <view class='no-more-data' wx-if="{{notDataTips && sales.length != 0}}">
-    <view>我是一只有底线的神~_~</view>
+<view class='container'>
+  <view class='content'>
+    <view class='content-left'>
+      <view class='item'  
+            wx:for="{{leftList}}" 
+            catchtap='comment'
+            data-objid='{{item.id}}'
+            wx:key="{{leftList}}">
+        <image class='main-pic' 
+               mode='widthFix' 
+               src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+        <view class='footer'>
+          <view class='footer-item'>
+            <view class='user-info'>
+              <image class='icon avatar' src='{{item.poster.avatar}}'></image>
+              <view>{{item.poster.nickname}}</view>
+            </view>
+            <view class='share-icon'>
+              {{item.comment_number}}评论
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class='content-right'>
+
+      <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}">
+        <image class='main-pic' 
+               mode='widthFix'
+               catchtap='comment'
+               data-objid='{{item.id}}' 
+               src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+        <view class='footer'>
+          <view class='footer-item'>
+            <view class='user-info'>
+              <image class='icon avatar' src='{{item.poster.avatar}}'></image>
+              <view>{{item.poster.nickname}}</view>
+            </view>
+            <view class='share-icon'>
+              {{item.comment_number}}评论
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
   </view>
+</view>
+
+  <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+  <not-more wx:if="{{notDataTips && leftList.length != 0}}"></not-more>
 
   <view class='no-more-data' wx-if="{{sales.length == 0}}">
     <view class='power_by'>power by 叶子</view>

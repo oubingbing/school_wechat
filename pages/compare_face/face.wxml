@@ -6,12 +6,20 @@
 
   <view class='image-container' wx-if="{{showSelect}}">
     <view class='image-left' bindtap='selectLeft'>
-      <view class='image' wx:if="{{!imageLeft}}"><image class='add-button-image' src='/image/add-photo.png'></image></view>
-      <view class='image' wx:if="{{imageLeft}}"><image class='avatar' mode='aspectFit' src='{{imageLeft}}'></image></view>
+      <view class='image' wx:if="{{!imageLeft}}">
+        <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              class="upload"
+              bind:success="leftUploadSuccess"/>
+      </view>
     </view>
-    <view class='image-right' bindtap='selectRight'>
-      <view class='image' wx:if="{{!imageRight}}"><image class='add-button-image' src='/image/add-photo.png'></image></view>
-      <view class='image' wx:if="{{imageRight}}"><image class='avatar' mode='aspectFit' src='{{imageRight}}'></image></view>
+    <view class='image-left' bindtap='selectRight'>
+      <view class='image' wx:if="{{!imageRight}}">
+        <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"
+              class="upload"  
+              bind:success="rightUploadSuccess"/>
+      </view>
     </view>
   </view>
 

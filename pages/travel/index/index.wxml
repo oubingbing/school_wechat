@@ -1,0 +1,224 @@
+<view class='container'>
+
+  <view class='switch-container'>
+    <view bindtap="selected" data-type="1">
+      <view>旅行</view>
+      <view class='line {{select==1?"selected":""}}'></view>
+    </view>
+    <view bindtap="selected" data-type="2">
+      <view>步数</view>
+      <view class='line {{select==2?"selected":""}}'></view>
+    </view>
+    <view bindtap="selected" data-type="3">
+      <view>校园榜</view>
+      <view class='line {{select==3?"selected":""}}'></view>
+    </view>
+  </view>
+
+<view class="page-body" wx:if="{{select==1}}">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      class='{{mapView==1?"harf-View":"full-View"}}'
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      polyline="{{polyline}}"
+      include-points="{{includePoints}}"
+      show-location
+      wx:if="{{showMap}}"
+    ></map>
+  </view>
+
+    <view class='icon-container' wx:if="{{!showPostPlan}}">
+      <view class='icon'>
+        <image src='/image/add-image1.png' bindtap='createTravel'></image>
+        <image src='/image/show-label.png' bindtap='ifShowTravelLabel'></image>
+        <image src='/image/report.png' bindtap='getReport'></image>
+        <image src='/image/not-location.png' bindtap='ifShowTravelLocation'></image>
+        <image src='/image/all-view.png' bindtap='changeView'></image>
+        <image src='/image/help-me.png' bindtap='helpMe'></image>
+      </view>
+    </view>
+
+    <!-- 具体步数内容 -->
+  <view wx:if="{{showMap}}" class='content-container'>
+    <view class='content'>
+    <view class='post-container' bindtap='createTravel' wx:if="{{showPostPlan}}">
+      <view class='post'>
+        <view>制定旅行线路</view>
+      </view>
+    </view>
+
+      <view class='item' wx:for="{{logs}}" wx:key="{{logs}}">
+          <view class='left'>
+            <view class='date'>{{item.run_at}}</view>
+          </view>
+          <view class='right'>
+            <view class='travel-log'>
+              <view class='travel-point'>
+                <view class='left-item'>
+                  <view>东经:{{item.format_latitude}}</view>
+                </view>
+                <view class='rightitem'>
+                  <view>北纬:{{item.format_longitude}}</view>
+                </view>
+              </view>
+
+              <view class='step-number'>
+                <view class='travel-label'>行程:</view>
+                <view class='travel-number'>{{item.distance}}公里</view>
+              </view>
+
+              <view class='address' wx:if="{{item.city != ''}}">
+                <view class='address-label'>城市:</view>
+                <view class='address-content'>{{item.city}}</view>
+              </view>
+
+              <view class='address'>
+                <view class='address-label'>地点:</view>
+                <view class='address-content'>{{item.name}}</view>
+              </view>
+
+              <view class='my-log'>
+                <view class='my-log-label'>日记:</view>
+                <view class='my-log-content'>
+                  今天走了{{item.distance}}公里，我来到了{{item.name}}，这是一个美丽的地方。
+                  <view class='hotel' wx:if="{{item.hotel != null}}">
+                    我住在{{item.hotel}}
+                  </view>
+                  <view class='foods' wx:if="{{item.foods != ''}}">
+                    <view>我吃了好多好吃的，这些店里的美食我统统都吃了个遍</view>
+                    <view class='food-wall'>
+                      <view wx:for="{{item.foods}}" 
+                            wx:key="{{item.foods}}" 
+                            wx:for-item="food">
+                        {{food.title}}
+                      </view>
+                    </view>
+                  </view>
+                  <view class='views' wx:if="{{item.views != ''}}">
+                    <view>我去了下面这几个景点，感觉很美，希望下次还能来，哈哈</view>
+                    <view class='views-wall'>
+                      <view wx:for="{{item.views}}" 
+                            wx:key="{{item.views}}" 
+                            wx:for-item="food">
+                            {{food.title}}
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='canvas-container' wx:if="{{showReport}}">
+    <canvas class='convas' 
+            canvas-id="myCanvas" 
+            bindlongtap='saveReport' 
+            bindtap='hideReport' 
+            style="border:none" 
+            wx:if="{{showReport}}"/>
+    <view class='long-tap-tip'>长按图片保存</view>
+  </view>
+
+  <view class='finish-travel' wx:if="{{showFinish}}">
+    <image src='/image/finish.png'></image>
+  </view>
+
+</view>
+
+  <view class='step-number-container' wx:if="{{select==2}}">
+    <!-- 头部 -->
+    <view class='header'>
+      <view class='header-content'>
+        <view class='step-content'>
+          <view class='today-step'>
+            <view class='label'>今天</view>
+            <view class='step'>{{todayStep}}</view>
+          </view>
+          <view class='total-step'>
+            <view class='label'>累计</view>
+            <view class='step'>{{totalStep}}万</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 具体步数内容 -->
+    <view class='content-container'>
+      <view class='content'>
+        <view class='item' wx:for="{{steps}}" wx:key="{{steps}}">
+            <view class='step-left'>
+              <view class='date'>{{item.run_at}}</view>
+            </view>
+            <view class='step-right'>
+              <view class='step-number'>{{item.step}}</view>
+            </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='rand-container' wx:if="{{select==3}}">
+    <view class='rand-content'>
+
+      <view class='rank-title'>
+        今日步数排行榜
+      </view>
+
+      <view class='rand-item my-rank' wx:if="{{myRankData}}">
+        <view class='rand'>
+          <view class='rand-left'>
+            <view class='rand-index'>
+              <image wx:if="{{myRank==1}}" src='/image/god.png'></image>
+              <image wx:elif="{{myRank==2}}" src='/image/silver.png'></image>
+              <image wx:elif="{{myRank==3}}" src='/image/tong.png'></image>
+              <view wx:else>{{myRank}}</view>
+            </view>
+            <image class='rank-avatar' src='{{myRankData.user.avatar}}'></image>
+            <view class='nickname rand-left-item'>{{myRankData.user.nickname}}</view>
+          </view>
+          <view class='rand-right'>
+            <view class='rand-step'>{{myRankData.step}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class='rand-item' 
+            bindtap='letter' 
+            data-user_id='{{item.user_id}}' 
+            wx:for="{{randList}}" 
+            wx:key="{{item.id}}">
+        <view class='rand'>
+          <view class='rand-left'>
+            <view class='rand-index'>
+              <image wx:if="{{(index+1)==1}}" src='/image/god.png'></image>
+              <image wx:elif="{{(index+1)==2}}" src='/image/silver.png'></image>
+              <image wx:elif="{{(index+1)==3}}" src='/image/tong.png'></image>
+              <view wx:else>{{index+1}}</view>
+            </view>
+            <image class='rank-avatar' src='{{item.user.avatar}}'></image>
+            <view class='nickname rand-left-item'>{{item.user.nickname}}</view>
+          </view>
+          <view class='rand-right'>
+            <view class='rand-step'>{{item.step}}</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>
+</view>

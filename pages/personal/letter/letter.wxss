@@ -192,15 +192,16 @@
   width: 15%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  margin-right: -10rpx;
+  align-items: flex-end;
+  
 }
 
-.add-image image{
+.add-image .image-container{
   width: 75rpx;
   height: 75rpx;
-  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
 }
 
 .hei{  

@@ -53,22 +53,37 @@ const getUserInfo = function (code, _method = null, _url = null, _data = null, c
   })
 }
 
+/**
+ * get
+ */
 const get=function ( _url, _data, callback) {
   httpRequest("GET",_url,_data,callback);
 }
 
+/**
+ * post
+ */
 const post = function (_url, _data, callback) {
   httpRequest("POST", _url, _data, callback);
 }
 
+/**
+ * put
+ */
 const put = function (_url, _data, callback) {
   httpRequest("PUT", _url, _data, callback);
 }
 
+/**
+ * delete
+ */
 const httpDelete = function (_url, _data, callback) {
   httpRequest("DELETE", _url, _data, callback);
 }
 
+/**
+ * patch
+ */
 const patch = function (_url, _data, callback) {
   httpRequest("PATCH", _url, _data, callback);
 }

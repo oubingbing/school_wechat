@@ -73,8 +73,6 @@ Page({
    * 获取上传的图片
    */
   uploadSuccess: function (uploadData) {
-    console.log(uploadData)
-
     let attachments = [];
     uploadData.detail.map(item => {
       attachments.push(item.uploadResult.key)

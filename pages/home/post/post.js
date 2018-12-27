@@ -17,7 +17,7 @@ Page({
       width: "100rpx",
       height: "100rpx",
       path: "",
-      showImage:false
+      showImage:true
     },
     qiniu: {
       uploadNumber: 9,

@@ -707,8 +707,10 @@ Page({
 
   topic:function(){
     http.get(`/topic`, {}, res=> {
-      let topicShow = res.data.data != null ?true:false;
-      this.setData({ topic: res.data.data, showTopic: topicShow});
+      if(res.data.data){
+        let topicShow = res.data.data != null ? true : false;
+        this.setData({ topic: res.data.data, showTopic: topicShow });
+      }
 
     });
   },

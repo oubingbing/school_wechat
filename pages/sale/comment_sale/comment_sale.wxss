@@ -314,6 +314,14 @@ page{
 
 .right .comment-name{
   color: #0061b2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-name .letter-image{
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .right .right-item{

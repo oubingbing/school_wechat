@@ -29,12 +29,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "卖舍友",
-					"pathName": "pages/sale/sale",
+					"pathName": "pages/sale/index/sale",
 					"query": ""
 				},
 				{

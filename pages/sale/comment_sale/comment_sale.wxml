@@ -72,7 +72,13 @@
           <view class='right'>
             <view 
               class='comment-name right-item'>
-                {{item.commenter.nickname}}
+              <view>{{item.commenter.nickname}}</view>
+              <image class='letter-image'
+                      bindtap='letter'
+                      wx:if="{{sale.can_chat==true}}"
+                      data-obj="{{item.commenter.id}}"
+                      data-chat="1" 
+                      src='/image/letter.png'></image>
             </view>
             <view class='content right-item'>
               {{item.content}}

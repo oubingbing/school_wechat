@@ -53,8 +53,18 @@ Page({
   },
 
   /**
- * 关注
- */
+   * 跳转到私信
+   */
+  letter: function (e) {
+    let id = e.target.dataset.obj;
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id + '&can_chat=' + true
+    })
+  },
+
+  /**
+   * 关注
+   */
   follow: function (e) {
     let objId = this.data.sale.id;
     http.post('/follow', {

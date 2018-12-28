@@ -23,7 +23,8 @@ Page({
       uploadNumber: 9,
       region: config.region,
       token: '',
-      domain: config.qiniuDomain
+      domain: config.qiniuDomain,
+      returnAllImage: true
     },
     canPost:true
   },

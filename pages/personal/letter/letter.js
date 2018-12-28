@@ -29,10 +29,11 @@ Page({
       showImage: false
     },
     qiniu: {
-      uploadNumber: 1,
+      uploadNumber: 9,
       region: config.region,
       token: '',
-      domain: config.qiniuDomain
+      domain: config.qiniuDomain,
+      returnAllImage: false
     }
   },
   onLoad: function (option) {
@@ -73,15 +74,10 @@ Page({
    * 获取上传的图片
    */
   uploadSuccess: function (uploadData) {
+    console.log("发送图片");
     let attachments = [];
-    uploadData.detail.map(item => {
-      attachments.push(item.uploadResult.key)
-    })
-
-    this.setData({
-      imageArray: attachments
-    })
-    this.send();
+    attachments.push(uploadData.detail.key)
+    this.send(attachments);
   },
 
   /**
@@ -188,23 +184,13 @@ Page({
   /**
    * 发送消息
    */
-  send:function(){
-
-    if (!this.data.canPost){
-      return false;
-    }
-
-    this.setData({ canPost: false })
-
+  send: function (attachments){
     wx.showLoading({
       title: '发送中',
     });
     let friendId = this.data.friendId;
     let content = this.data.content;
-    let attachments = this.data.imageArray;
-    this.setData({
-      imageArray: []
-    })
+    //let attachments = this.data.imageArray;
     if (content == '' && attachments.length == 0){
       this.setData({ canPost: true })
       wx.showToast({

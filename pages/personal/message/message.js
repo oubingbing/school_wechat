@@ -85,7 +85,7 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
 
     if (objType == 1){
         wx.navigateTo({
-          url: `/pages/index/post_detail/post_detail?id=${id}`
+          url: `/pages/home/post_detail/post_detail?id=${id}`
         })
         return false;
     }
@@ -106,7 +106,7 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
 
     if (parent.obj_type == 5){
       wx.navigateTo({
-        url: '/pages/index/topic_detail/topic_detail?id=' + pobj
+        url: '/pages/home/topic_detail/topic_detail?id=' + pobj
       })
       return false;
     }

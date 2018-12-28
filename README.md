@@ -1,5 +1,7 @@
 **部署好后台之后，需要部署前端小程序项目**
 
+后台源码在这里：https://github.com/oubingbing/wechatAlliance
+
 #### 一、注册管理后台
 
 **1、登录小情书站点进行注册：https://lianyan.kucaroom.com/**，这里换成你自己部署后的域名

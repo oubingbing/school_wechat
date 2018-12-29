@@ -91,15 +91,11 @@ Page({
    * 设置title
    */
   setTitle: function (id,cantChat){
-    if (cantChat != 1){
-      http.get(`/user/${id}`,{},res=>{
-          console.log(res.data.data);
-          let name = res.data.data.nickname;
-          wx.setNavigationBarTitle({ title: name });
-        });
-    }else{
-      wx.setNavigationBarTitle({ title: '匿名の同学' });
-    }
+    http.get(`/user/${id}`, {}, res => {
+      console.log(res.data.data);
+      let name = res.data.data.nickname;
+      wx.setNavigationBarTitle({ title: name });
+    });
   },
 
   /**

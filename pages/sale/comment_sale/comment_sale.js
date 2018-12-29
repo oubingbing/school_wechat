@@ -79,7 +79,7 @@ Page({
       obj_type: 2
     }, res=> {
       let sale = this.data.sale;
-      sale.follow = true;
+      sale.follow = false;
       sale.follow_number += 1
       this.setData({ sale: sale, canFollow:true});
     });
@@ -88,7 +88,7 @@ Page({
   /**
  * 取消关注
  */
-  cancelFolllow: function (e) {
+  cancelFollow: function (e) {
     if (this.data.canFollow == false) {
       return false;
     }
@@ -98,7 +98,7 @@ Page({
     let objId = this.data.sale.id;
     http.put(`/cancel/${objId}/follow/2`, {}, res=> {
       let sale = this.data.sale;
-      sale.follow = false;
+      sale.follow = true;
       sale.follow_number -= 1
       this.setData({ sale: sale, canFollow: true });
     })

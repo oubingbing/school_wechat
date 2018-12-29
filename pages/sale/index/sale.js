@@ -217,7 +217,7 @@ Page({
   getMostNewData:function(){
     let time = this.data.currentTime;
     http.get('/most_new_sale_friend?time='+time, {}, res => {
-      let sales = _this.data.sales;
+      let sales = this.data.sales;
       let data = res.data.data.map(item => {
         let ifRepeat = false;
         for(let sale of sales){

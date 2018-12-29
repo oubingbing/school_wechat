@@ -234,7 +234,6 @@ Page({
         iv: iv,
         code: code
       }, res => {
-        wx.hideLoading();
         console.log(res);
         this.statistic();
         this.steps();
@@ -258,7 +257,6 @@ Page({
    */
   statistic: function () {
     http.get('/run_statistic', {}, res=>{
-      wx.hideLoading();
       let todayStep = res.data.data.today_step != null ? res.data.data.today_step : 0;
       let totalStep = res.data.data.total_step != null ? res.data.data.total_step : 0;
       this.setData({
@@ -280,7 +278,6 @@ Page({
     http.get(`/run_steps?page_size=${this.data.stepPageSize}&page_number=${this.data.stepPageNumber}&order_by=${order_by}&sort_by=${sort_by}`,
       {},
       res=> {
-        wx.hideLoading();
         if (res.data.error_code == 0) {
           let steps = this.data.steps;
           let stepData = res.data.data.page_data;
@@ -515,6 +512,8 @@ Page({
     let windowWidth = (wx.getSystemInfoSync().windowWidth - 35);
     let windowHeight = wx.getSystemInfoSync().windowHeight;
     let avatar = this.data.avatar;
+
+    console.log("海报头像："+avatarImage)
 
     const ctx = wx.createCanvasContext('myCanvas')
 

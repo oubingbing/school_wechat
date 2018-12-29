@@ -41,7 +41,7 @@
       <view class='comment-wall'>
           <view class='comment-header'>
             <view class='zan'>
-              {{sale.follow_number}}喜欢
+              {{sale.follow_number<=0?0:sale.follow_number}}喜欢
             </view>
             <view class='zan'
                   wx:if="{{sale.can_delete}}" 

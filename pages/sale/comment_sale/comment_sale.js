@@ -14,7 +14,8 @@ Page({
     objId:'',
     objType:'',
     refCommentId:'',
-    attachments:''
+    attachments:'',
+    canFollow:true
   },
   onLoad: function (option) {
     let objId = option.id;
@@ -66,6 +67,12 @@ Page({
    * 关注
    */
   follow: function (e) {
+    if (this.data.canFollow == false){
+      return false;
+    }
+
+    this.setData({ canFollow: false})
+
     let objId = this.data.sale.id;
     http.post('/follow', {
       obj_id: objId,
@@ -74,7 +81,7 @@ Page({
       let sale = this.data.sale;
       sale.follow = true;
       sale.follow_number += 1
-      this.setData({sale: sale});
+      this.setData({ sale: sale, canFollow:true});
     });
   },
 
@@ -82,12 +89,18 @@ Page({
  * 取消关注
  */
   cancelFolllow: function (e) {
+    if (this.data.canFollow == false) {
+      return false;
+    }
+
+    this.setData({ canFollow: false })
+
     let objId = this.data.sale.id;
     http.put(`/cancel/${objId}/follow/2`, {}, res=> {
       let sale = this.data.sale;
       sale.follow = false;
       sale.follow_number -= 1
-      this.setData({ sale: sale });
+      this.setData({ sale: sale, canFollow: true });
     })
   },
 

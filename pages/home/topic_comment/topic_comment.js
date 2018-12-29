@@ -69,20 +69,23 @@ Page({
     let content = this.data.textContent;
     let attachments = this.data.attachments;
     let id = this.data.objId;
-    if (content == '') {
-      wx.showLoading({
-        title: '内容不能为空！',
-      });
-      setTimeout(function () {
-        wx.hideLoading();
-      }, 1500)
-      return false;
-    }
 
     //获取图片
     this.data.imageArray.map(item => {
       attachments.push(item.uploadResult.key)
     })
+
+    if (content == '') {
+      wx.showToast({
+        title: '文字内容不能为空',
+        icon: 'none'
+      })
+      this.setData({ canPost: true })
+      setTimeout(function () {
+        wx.hideLoading();
+      }, 1500)
+      return false;
+    }
 
     http.post('/comment', {
       content: content,
@@ -90,6 +93,7 @@ Page({
       type:5,
       obj_id: id,
     }, res => {
+      let resData = res.data;
       wx.navigateBack({ comeBack: true });
       console.log(res);
     });

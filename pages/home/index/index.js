@@ -106,7 +106,6 @@ Page({
 
     let type = 0;
     app.getNewInbox(type, res=>{
-      console.log("新消息数量：" + res.data.data);
       if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
         this.setData({
           newMessage: true,

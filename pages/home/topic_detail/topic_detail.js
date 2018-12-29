@@ -48,7 +48,7 @@ Page({
         praiseNumber: topic.praise_number,
         viewNumber: topic.view_number,
         commentNumber: topic.comment_number,
-        comments:topic.comments,
+        //comments: topic.comments ? topic.comments,
         objId:topic.id,
         showFooter: true
       });
@@ -75,25 +75,27 @@ Page({
     wx.showLoading({
       title: '评论加载中',
     });
-
-    let _this = this;
-
     let id = this.data.objId;
     http.get('/topic/' + id + `/comments?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}`,{}, res=> {
-       let commentsArray = _this.data.comments;
+       let tempArray = this.data.comments;
        wx.hideLoading();
-       _this.setData({
+       this.setData({
          showGeMoreLoadin: false
        });
 
       if (res.data.data.page_data){
         res.data.data.page_data.map(item=>{
-          commentsArray.push(item);
+          if (item != undefined){
+            console.log(item)
+            console.log(tempArray)
+            tempArray.push(item);
+          }
         })
-
-        _this.setData({
-          comments: commentsArray,
-          pageNumber: _this.data.pageNumber + 1
+        console.log("评论：")
+        console.log(tempArray)
+        this.setData({
+          comments: tempArray,
+          pageNumber: this.data.pageNumber + 1
         });
       }
     });
@@ -103,10 +105,10 @@ Page({
   */
   getNewComments: function () {
     let id = this.data.objId;
-    let commentsArray = this.data.comments;
     http.get('/topic/' + id + `/new_comments?time=` + this.data.currentTime,
       {}, res=> {
         if (res.data.data) {
+          let commentsArray = this.data.comments;
           res.data.data.map(item => {
             let ifRepeat = false;
             for (let comment of commentsArray) {
@@ -150,7 +152,7 @@ Page({
   openCommentTopic:function(e){
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/index/topic_comment/topic_comment?id=' + id
+      url: '/pages/home/topic_comment/topic_comment?id=' + id
     })
   },
 
@@ -179,6 +181,7 @@ Page({
       refCommentId: refId
     });
   },
+  
   removeComment:function(e){
     let commentId = e.currentTarget.dataset.refid;
     let _this = this;
@@ -188,7 +191,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${commentId}/comment`, {}, res => {
+          http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let newComment = comments.filter(item => {
                 if (item.id != commentId) {

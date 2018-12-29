@@ -234,7 +234,6 @@ Page({
         iv: iv,
         code: code
       }, res => {
-        wx.hideLoading();
         console.log(res);
         this.statistic();
         this.steps();
@@ -245,7 +244,7 @@ Page({
   /** 
    * 小程序的二维码
    */
-  getQrCode: function (_this) {
+  getQrCode: function () {
     http.get('/qr_code', {}, res=> {
       this.setData({
         qrCode: res.data.data.qr_code
@@ -258,7 +257,6 @@ Page({
    */
   statistic: function () {
     http.get('/run_statistic', {}, res=>{
-      wx.hideLoading();
       let todayStep = res.data.data.today_step != null ? res.data.data.today_step : 0;
       let totalStep = res.data.data.total_step != null ? res.data.data.total_step : 0;
       this.setData({
@@ -280,7 +278,6 @@ Page({
     http.get(`/run_steps?page_size=${this.data.stepPageSize}&page_number=${this.data.stepPageNumber}&order_by=${order_by}&sort_by=${sort_by}`,
       {},
       res=> {
-        wx.hideLoading();
         if (res.data.error_code == 0) {
           let steps = this.data.steps;
           let stepData = res.data.data.page_data;
@@ -601,21 +598,20 @@ Page({
    * 获取计划
    */
   plan: function () {
-    let _this = this;
     http.get(`/plan`, {}, res => {
       wx.hideLoading();
       console.log(res.data.data);
       let resData = res.data.data;
       if (resData == null) {
-        _this.setData({
+        this.setData({
           showPostPlan: true
         })
         return false;
       }
 
       if (res.data.error_code == 0) {
-        let travelLogMarkers = _this.data.travelLogMarkers;
-        let polyline = _this.data.polyline;
+        let travelLogMarkers = this.data.travelLogMarkers;
+        let polyline = this.data.polyline;
         let points = polyline[0].points;
         let planPoints = resData.points;
         planPoints.map(item => {
@@ -639,6 +635,7 @@ Page({
                 longitude: item.longitude,
                 width: 30,
                 height: 30,
+                alpha: 1,
                 label: {
                   content: item.name,
                   fontSize: 8,
@@ -652,6 +649,7 @@ Page({
               travelLogMarkers.push({
                 id: key,
                 iconPath: this.data.avatar,
+                alpha: 1,
                 //iconPath: '/image/traveling.png',
                 latitude: item.latitude,
                 longitude: item.longitude,
@@ -678,8 +676,8 @@ Page({
 
         let linePoint = resData.points;
         let travelLogLength = travelLogs.lenght;
-        let notTravelLogMarkers = _this.data.notTravelLogMarkers;
-        let notLabelMarkers = _this.data.notLabelMarkers;
+        let notTravelLogMarkers = this.data.notTravelLogMarkers;
+        let notLabelMarkers = this.data.notLabelMarkers;
         linePoint.map((item, key) => {
           let icon = '';
           if (key == 0) {
@@ -696,6 +694,7 @@ Page({
             travelLogMarkers.push({
               iconPath: icon,
               id: travelLogLength + key,
+              alpha: 1,
               latitude: item.latitude,
               longitude: item.longitude,
               width: 30,
@@ -715,6 +714,7 @@ Page({
               id: notTravelLogMarkers.length + key,
               latitude: item.latitude,
               longitude: item.longitude,
+              alpha: 1,
               width: 30,
               height: 30,
               label: {
@@ -730,6 +730,7 @@ Page({
             travelLogMarkers.push({
               iconPath: icon,
               id: travelLogLength + key,
+              alpha: 1,
               latitude: item.latitude,
               longitude: item.longitude,
               width: 30,
@@ -739,6 +740,7 @@ Page({
             notTravelLogMarkers.push({
               iconPath: icon,
               id: notTravelLogMarkers.length + key,
+              alpha: 1,
               latitude: item.latitude,
               longitude: item.longitude,
               width: 30,
@@ -753,6 +755,7 @@ Page({
             id: notTravelLogMarkers.length + key,
             latitude: item.latitude,
             longitude: item.longitude,
+            alpha: 1,
             width: 30,
             height: 30
           })
@@ -766,6 +769,7 @@ Page({
             id: travelLogLength + 1,
             latitude: travelLogs[travelLogs.length - 1].latitude,
             longitude: travelLogs[travelLogs.length - 1].longitude,
+            alpha: 1,
             width: 30,
             height: 30,
             label: {
@@ -781,6 +785,7 @@ Page({
           notLabelMarkers.push({
             //iconPath: '/image/traveling.png',
             iconPath: this.data.avatar,
+            alpha: 1,
             id: travelLogLength + 1,
             latitude: travelLogs[travelLogs.length - 1].latitude,
             longitude: travelLogs[travelLogs.length - 1].longitude,
@@ -799,7 +804,7 @@ Page({
         polyline.push(finishPolyline)
 
         //缩放地图
-        let includePoints = _this.data.includePoints;
+        let includePoints = this.data.includePoints;
         if (travelLogs.length > 0) {
           includePoints.push({
             longitude: travelLogs[travelLogs.length - 1].longitude,
@@ -820,7 +825,7 @@ Page({
         console.log("地图数组")
         console.log(notTravelLogMarkers)
         let markers = travelLogMarkers;
-        _this.setData({
+        this.setData({
           polyline: polyline,
           latitude: planPoints[0].latitude,
           longitude: planPoints[0].longitude,
@@ -856,8 +861,8 @@ Page({
             travelPageNumber: this.data.travelPageNumber + 1,
             showGeMoreLoadin: false
           })
-          this.exchangeLocation(this, logData);
-          this.getPoi(this, logData);
+          this.exchangeLocation(logData);
+          this.getPoi(logData);
         }
       });
   },
@@ -865,7 +870,7 @@ Page({
   /**
    * 获取地理名字
    */
-  exchangeLocation: function (_this, logs) {
+  exchangeLocation: function (logs) {
     logs.map(item => {
       if (item.name == '') {
         qqmapsdk.reverseGeocoder({
@@ -873,12 +878,12 @@ Page({
             latitude: item.latitude,
             longitude: item.longitude
           },
-          success: function (res) {
+          success: res=>{
             console.log(res);
             if (res.status == 0) {
               let name = res.result.formatted_addresses.recommend
               let address = res.result.address
-              let theLogs = _this.data.logs;
+              let theLogs = this.data.logs;
               let newLogs = theLogs.map(sub_item => {
                 if (sub_item.id == item.id) {
                   sub_item.name = name;
@@ -887,14 +892,14 @@ Page({
                 return sub_item;
               })
               console.log('new logs' + newLogs);
-              _this.setData({
+              this.setData({
                 logs: newLogs
               })
               let ad_info = res.result.ad_info;
               let province = ad_info.province;
               let city = ad_info.city;
               let district = ad_info.district;
-              _this.updateLog(item.id, name, address, province, city, district);
+              this.updateLog(item.id, name, address, province, city, district);
             }
           },
           fail: function (res) {
@@ -927,16 +932,16 @@ Page({
   /**
    * 获取附近的咨询
    */
-  getPoi: function (_this, logs) {
+  getPoi: function (logs) {
     logs.map(item => {
       if (item.hotel == null) {
-        _this.getPoiHotel(_this, item.id, item.latitude, item.longitude);
+        this.getPoiHotel(item.id, item.latitude, item.longitude);
       }
       if (item.foods == '') {
-        _this.getPoiFood(_this, item.id, item.latitude, item.longitude);
+        this.getPoiFood(item.id, item.latitude, item.longitude);
       }
       if (item.views == '') {
-        _this.getPoiView(_this, item.id, item.latitude, item.longitude);
+        this.getPoiView(item.id, item.latitude, item.longitude);
       }
     })
   },
@@ -944,7 +949,7 @@ Page({
   /**
    * 获取酒店信息
    */
-  getPoiHotel: function (_this, id, latitude, longitude) {
+  getPoiHotel: function (id, latitude, longitude) {
     qqmapsdk.search({
       keyword: "酒店",
       page_size: 1,
@@ -952,11 +957,11 @@ Page({
         latitude: latitude,
         longitude: longitude
       },
-      success: function (res) {
+      success: res=> {
         console.log(res);
         if (res.status == 0) {
           let hotel = res.data[0].title
-          let theLogs = _this.data.logs;
+          let theLogs = this.data.logs;
           let newLogs = theLogs.map(sub_item => {
             if (sub_item.id == id) {
               sub_item.hotel = hotel;
@@ -964,10 +969,10 @@ Page({
             return sub_item;
           })
           console.log('new logs' + newLogs);
-          _this.setData({
+          this.setData({
             logs: newLogs
           })
-          _this.savePoi(id, hotel, res.data[0].address, 1)
+          this.savePoi(id, hotel, res.data[0].address, 1)
         }
       },
       fail: function (res) {
@@ -979,7 +984,7 @@ Page({
   /**
    * 获取美食
    */
-  getPoiFood: function (_this, id, latitude, longitude) {
+  getPoiFood: function (id, latitude, longitude) {
     qqmapsdk.search({
       keyword: "美食",
       page_size: 5,
@@ -987,11 +992,11 @@ Page({
         latitude: latitude,
         longitude: longitude
       },
-      success: function (res) {
+      success: res=>{
         console.log(res);
         if (res.status == 0) {
           let foods = res.data;
-          let theLogs = _this.data.logs;
+          let theLogs = this.data.logs;
           let newLogs = theLogs.map(sub_item => {
             if (sub_item.id == id) {
               sub_item.foods = foods;
@@ -999,12 +1004,12 @@ Page({
             return sub_item;
           })
           console.log('new logs' + newLogs);
-          _this.setData({
+          this.setData({
             logs: newLogs
           })
 
           foods.map(item => {
-            _this.savePoi(id, item.title, item.address, 2)
+            this.savePoi(id, item.title, item.address, 2)
           })
         }
       },
@@ -1017,7 +1022,7 @@ Page({
   /**
    * 获取景点
    */
-  getPoiView: function (_this, id, latitude, longitude) {
+  getPoiView: function (id, latitude, longitude) {
     qqmapsdk.search({
       keyword: "景点",
       page_size: 5,
@@ -1025,11 +1030,11 @@ Page({
         latitude: latitude,
         longitude: longitude
       },
-      success: function (res) {
+      success: res=> {
         console.log(res);
         if (res.status == 0) {
           let views = res.data;
-          let theLogs = _this.data.logs;
+          let theLogs = this.data.logs;
           let newLogs = theLogs.map(sub_item => {
             if (sub_item.id == id) {
               sub_item.views = views;
@@ -1037,11 +1042,11 @@ Page({
             return sub_item;
           })
           console.log('new logs' + newLogs);
-          _this.setData({
+          this.setData({
             logs: newLogs
           })
           views.map(item => {
-            _this.savePoi(id, item.title, item.address, 3)
+            this.savePoi(id, item.title, item.address, 3)
           })
         }
       },

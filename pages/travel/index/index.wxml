@@ -37,7 +37,6 @@
         <image src='/image/report.png' bindtap='getReport'></image>
         <image src='/image/not-location.png' bindtap='ifShowTravelLocation'></image>
         <image src='/image/all-view.png' bindtap='changeView'></image>
-        <image src='/image/help-me.png' bindtap='helpMe'></image>
       </view>
     </view>
 

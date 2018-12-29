@@ -77,8 +77,7 @@ Page({
       })
     }
 
-    wx.showLoading({ title: '加载中' });
-    this.downLoadAvatar();
+    this.getPersonalInfo();
     qqmapsdk = new QQMapWX({
       key: config.TX_MAP_KEY
     });
@@ -86,9 +85,6 @@ Page({
   },
 
   onReady: function (e) {
-    this.plan();
-    this.travelLogs();
-    this.getPersonalInfo();
     this.getRandList();
     this.getMyRank();
   },
@@ -185,11 +181,12 @@ Page({
    * 获取个人信息
    */
   getPersonalInfo() {
+    wx.showLoading({ title: '加载中' });
     http.get(`/personal_info`, {}, res => {
       this.setData({
         user: res.data.data
       })
-      wx.setStorageSync('user', res.data.data);
+      this.downLoadAvatar();
     });
   },
 
@@ -426,19 +423,18 @@ Page({
    * 获取用户当前位置
    */
   getLocation: function () {
-    let _this = this;
     wx.getLocation({
       type: 'wgs84',
-      success: function (res) {
+      success: res=>{
         var latitude = res.latitude
         var longitude = res.longitude
-        let includePoints = _this.data.includePoints;
+        let includePoints = this.data.includePoints;
         includePoints.push({
           longitude: longitude,
           latitude: latitude
         })
 
-        _this.setData({
+        this.setData({
           latitude: latitude,
           longitude: longitude,
           includePoints: includePoints
@@ -451,29 +447,21 @@ Page({
    * 下载用户头像
    */
   downLoadAvatar: function () {
-    let _this = this;
-    let avatarImage = _this.data.avatar;
-    let user = wx.getStorageSync('user');
-    if (avatarImage == '') {
-      wx.downloadFile({
-        url: user.avatar,
-        success: function (res) {
-          if (res.statusCode === 200) {
-            wx.playVoice({
-              filePath: res.tempFilePath
-            })
-            console.log(res);
-            _this.setData({
-              avatar: res.tempFilePath
-            })
-          }
+    wx.downloadFile({
+      url: this.data.user.avatar,
+      success: res => {
+        if (res.statusCode === 200) {
+          wx.playVoice({
+            filePath: res.tempFilePath
+          })
+          this.setData({
+            avatar: res.tempFilePath
+          })
         }
-      })
-    } else {
-      _this.setData({
-        avatar: avatarImage
-      })
-    }
+        this.plan();
+        this.travelLogs();
+      }
+    })
   },
 
   /**
@@ -524,14 +512,10 @@ Page({
       showMap: false
     })
     let avatarImage = this.data.avatar;
-    console.log(wx.getSystemInfoSync().windowWidth);
     let windowWidth = (wx.getSystemInfoSync().windowWidth - 35);
     let windowHeight = wx.getSystemInfoSync().windowHeight;
     let avatar = this.data.avatar;
 
-    console.log('头像：' + avatar);
-    console.log(wx.getSystemInfoSync());
-    console.log('高度：' + windowHeight);
     const ctx = wx.createCanvasContext('myCanvas')
 
     //ctx.setStrokeStyle('red')
@@ -617,7 +601,6 @@ Page({
    * 获取计划
    */
   plan: function () {
-    console.log('plan');
     let _this = this;
     http.get(`/plan`, {}, res => {
       wx.hideLoading();
@@ -763,7 +746,7 @@ Page({
             });
           }
 
-          console.log("头像：" + this.data.avatar)
+          console.log("地图的头像：" + this.data.avatar)
 
           notLabelMarkers.push({
             iconPath: icon,

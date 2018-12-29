@@ -82,8 +82,6 @@ Page({
       key: config.TX_MAP_KEY
     });
     this.getLocation();
-    this.plan();
-    this.travelLogs();
   },
 
   onReady: function (e) {
@@ -189,6 +187,8 @@ Page({
         user: res.data.data
       })
       this.downLoadAvatar();
+      this.plan();
+      this.travelLogs();
     });
   },
 
@@ -629,8 +629,8 @@ Page({
             if (item.name != null) {
               travelLogMarkers.push({
                 id: key,
-                //iconPath: this.data.avatar,
-                iconPath: '/image/mylocation.png',
+                iconPath: this.data.user.avatar,
+                //iconPath: '/image/mylocation.png',
                 latitude: item.latitude,
                 longitude: item.longitude,
                 width: 30,
@@ -648,9 +648,9 @@ Page({
             } else {
               travelLogMarkers.push({
                 id: key,
-                //iconPath: this.data.avatar,
+                iconPath: this.data.user.avatar,
                 alpha: 1,
-                iconPath: '/image/mylocation.png',
+                //iconPath: '/image/mylocation.png',
                 latitude: item.latitude,
                 longitude: item.longitude,
                 width: 30,
@@ -748,7 +748,7 @@ Page({
             });
           }
 
-          console.log("地图的头像：" + this.data.avatar)
+          console.log("地图的头像：" + this.data.user.avatar)
 
           notLabelMarkers.push({
             iconPath: icon,
@@ -764,8 +764,8 @@ Page({
           console.log('这到底是啥：' + travelLogs[travelLogs.length - 1].name);
           //没有旅途点的标记
           notTravelLogMarkers.push({
-            iconPath: '/image/mylocation.png',
-            //iconPath: this.data.avatar,
+            //iconPath: '/image/mylocation.png',
+            iconPath: this.data.user.avatar,
             id: travelLogLength + 1,
             latitude: travelLogs[travelLogs.length - 1].latitude,
             longitude: travelLogs[travelLogs.length - 1].longitude,
@@ -783,8 +783,8 @@ Page({
           });
 
           notLabelMarkers.push({
-            iconPath: '/image/mylocation.png',
-            //iconPath: this.data.avatar,
+            //iconPath: '/image/mylocation.png',
+            iconPath: this.data.user.avatar,
             alpha: 1,
             id: travelLogLength + 1,
             latitude: travelLogs[travelLogs.length - 1].latitude,

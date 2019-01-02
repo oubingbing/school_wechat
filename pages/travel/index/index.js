@@ -163,7 +163,7 @@ Page({
         })
         this.setData({
           randList:temList,
-          pageNumber: this.data.rankPageNumber + 1,
+          rankPageNumber: this.data.rankPageNumber + 1,
         })
       }
     });

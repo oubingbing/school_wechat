@@ -77,7 +77,7 @@ Page({
     console.log("发送图片");
     let attachments = [];
     attachments.push(uploadData.detail.key)
-    this.send(attachments);
+    this.send(null,attachments);
   },
 
   /**
@@ -180,7 +180,7 @@ Page({
   /**
    * 发送消息
    */
-  send: function (attachments){
+  send: function (e,attachments=null){
     wx.showLoading({
       title: '发送中',
     });
@@ -199,7 +199,7 @@ Page({
       return false;
     }
 
-    http.post(`/send/${friendId}/message`,{content:content,attachments: attachments}, res=>{
+    http.post(`/send/${friendId}/message`,{content:content,attachments: attachments?attachments:[]}, res=>{
        this.setData({ canPost:true})
        wx.hideLoading();
        this.setData({

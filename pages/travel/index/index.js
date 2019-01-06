@@ -157,6 +157,7 @@ Page({
     http.get(`/rand_list?page_size=${this.data.rankPageSize}&page_number=${this.data.rankPageNumber}`, {}, res => {
       let resData = res.data;
       if (resData.error_code == 0){
+        wx.hideLoading();
         let temList = this.data.randList;
         resData.data.page_data.map(item=>{
           temList.push(item)

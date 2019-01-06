@@ -33,7 +33,7 @@
   </view>
 
   <view class='private'>
-    <view class='item'>同学</view>
+    <view class='item'>是否开启树洞</view>
     <switch bindchange="setPrivate" color='#0aecc3'/>
   </view>
 </view>

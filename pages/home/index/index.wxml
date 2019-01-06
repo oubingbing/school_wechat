@@ -108,7 +108,7 @@
           <view wx:if="{{item.private == 0}}">
             <view>{{item.poster.nickname}}</view>
           </view>
-          <view wx:if="{{item.private == 1}}">同学</view>
+          <view wx:if="{{item.private == 1}}">树洞</view>
           <view class='follow-icon' 
                 wx:if="{{!item.follow}}">
                  <view class='follow-world' data-obj="{{item.id}}" bindtap="follow">收藏</view>

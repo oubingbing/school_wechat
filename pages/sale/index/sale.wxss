@@ -85,6 +85,10 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 70%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .footer-item .share-icon{
@@ -92,6 +96,7 @@ page{
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  width: 30%;
 }
 
 .share-icon .delete-icon{

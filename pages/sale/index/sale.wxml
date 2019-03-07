@@ -62,8 +62,8 @@
         <view class='footer'>
           <view class='footer-item'>
             <view class='user-info'>
-              <image class='icon avatar' src='{{item.poster.avatar}}'></image>
-              <view>{{item.poster.nickname}}</view>
+              <image class='icon avatar' style='width: 40rpx;' src='{{item.poster.avatar}}'></image>
+              <view >{{item.poster.nickname}}</view>
             </view>
             <view class='share-icon'>
               {{item.comment_number}}评论

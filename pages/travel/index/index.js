@@ -482,6 +482,9 @@ Page({
     let report = this.data.report;
     let plan = this.data.plan;
 
+    console.log("头像信息：");
+    console.log(user)
+
     let status = '旅行中';
     if (plan.status == 1) {
       status = '旅行中';

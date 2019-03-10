@@ -89,7 +89,7 @@ page{
 }
 
 .for-user{
-  color: #1874CD;
+  color: darkgray;
   font-size: 35rpx;
 }
 
@@ -274,7 +274,7 @@ page{
 }
 
 .comment-detail .comment-user{
-  color: #0061b2;
+  color: #66CDAA;
 }
 
 .comment-wall-item{
@@ -676,4 +676,9 @@ page{
 .tip-content image{
   width: 35rpx;
   height: 35rpx;
+}
+
+.nickname{
+  color: #66CDAA;
+  font-weight: bold;
 }

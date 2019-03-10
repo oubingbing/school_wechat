@@ -360,6 +360,9 @@ Page({
     http.get(`/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&type=${this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${this.data.filter}`,
       {},
       res => {
+        setTimeout(t=>{
+          wx.stopPullDownRefresh();
+        },700)
         wx.hideLoading();
         this.setData({
           showGeMoreLoadin: false

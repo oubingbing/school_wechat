@@ -7,19 +7,14 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rpx;
-  padding-top: 20rpx;
 }
 
 .post-sale-container .post-container{
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: white;
   border-radius: 10rpx;
-  -webkit-box-shadow:0 0 20rpx rgba(79, 79, 79, .5);
-  -moz-box-shadow:0 0 20rpx rgba(79, 79, 79, .5);
-  box-shadow:0 0 20rpx rgba(79, 79, 79, .5);
 }
 
 .post-sale-container .post-header{

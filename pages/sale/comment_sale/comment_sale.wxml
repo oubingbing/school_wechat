@@ -32,7 +32,7 @@
                   data-refid=""
                   data-type="2">撩一下</button>
       </view>
-      <view class='collect' bindtap='follow' wx:if="{{sale.follow==true}}">喜欢</view>
+      <view class='collect' bindtap='follow' wx:if="{{sale.follow==false}}">喜欢</view>
       <view class='collect' bindtap='cancelFollow' wx:else>已喜欢</view>
       </view>
     </view>

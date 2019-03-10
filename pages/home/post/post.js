@@ -106,8 +106,9 @@ Page({
         app.globalData.reloadHome = true;
         wx.navigateBack({ comeBack: true });
       }else{
-        wx.showLoading({
+        wx.showToast({
           title: res.data.error_message,
+          icon:'none'
         });
         setTimeout(function () {
           wx.hideLoading();

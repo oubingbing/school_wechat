@@ -56,10 +56,13 @@ Page({
     canComment:true,
     sharecomeIn:false,
     shareId:'',
-    shareType:''
+    shareType:'',
+    param:app.globalData.param
   },
 
   onLoad: function (e) {
+
+    console.log("param="+this.data.param)
 
     if (e.id != undefined) {
       this.setData({ sharecomeIn: true, shareId: e.id, shareType: e.type })
@@ -118,6 +121,18 @@ Page({
         });
       }
     });
+  },
+
+  onReady(){
+    app.getParam(res => {
+      let resData = res.data;
+      if (resData.error_code == 0) {
+        this.setData({
+          param: resData.data == 2 ? true : false
+        })
+        app.globalData.param = this.data.param;
+      }
+    })
   },
 
   /**

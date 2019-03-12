@@ -75,7 +75,7 @@
               <view>{{item.commenter.nickname}}</view>
               <image class='letter-image'
                       bindtap='letter'
-                      wx:if="{{sale.can_chat==true}}"
+                      wx:if="{{sale.can_chat==true && param==true}}"
                       data-obj="{{item.commenter.id}}"
                       data-chat="1" 
                       src='/image/letter.png'></image>

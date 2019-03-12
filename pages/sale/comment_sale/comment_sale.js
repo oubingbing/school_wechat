@@ -15,9 +15,12 @@ Page({
     objType:'',
     refCommentId:'',
     attachments:'',
-    canFollow:true
+    canFollow:true,
+    param: app.globalData.param
   },
   onLoad: function (option) {
+    this.setData({ param: app.globalData.param})
+    console.log(app.globalData.param)
     let objId = option.id;
     http.get(`/sale_friend/${objId}`, {}, res => {
       let data = res.data.data;

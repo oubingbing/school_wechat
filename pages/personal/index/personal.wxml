@@ -10,7 +10,7 @@
       <view class='user-info'>
           <view class='user-name'>{{user.nickname}}</view>
           <view class='article'>
-            <view class="letter" bindtap="openLetter">
+            <view class="letter" bindtap="openLetter" wx:if="{{param==true}}">
               <image src="/image/message.png"></image>
               <view class="letter-item">私信</view>
               <view class='new-letter' wx:if="{{newLetterNumber != 0}}">
@@ -23,7 +23,7 @@
       </view>
   </view>
 
-  <view class='message' bindtap='openMessage'>
+  <view class='message' bindtap='openMessage' wx:if="{{param==true}}">
     <view><image src='/image/my-message.png' class='item-image'></image></view>
     <view class='word'>消息</view>
   </view>

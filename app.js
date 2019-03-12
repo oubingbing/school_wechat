@@ -11,6 +11,7 @@ App({
     
     this.globalData.reloadSale = false;
     this.globalData.reloadHome = false;
+    this.globalData.param = false;
 
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -83,6 +84,16 @@ App({
   },
 
   /**
+   * 获取新的消息盒子
+   */
+  getParam: function (callback) {
+    let id = config.alianceKey;
+    http.get(`/config?app_id=${id}`, {}, function (res) {
+      callback(res);
+    });
+  },
+
+  /**
    * 收集form id
    */
   collectFormId:function(formId){
@@ -105,6 +116,7 @@ App({
     changeSchoolMatch: false,
     postHelp:false,
     reloadSale:false,
-    reloadHome:false
+    reloadHome:false,
+    param:false
   }
 })

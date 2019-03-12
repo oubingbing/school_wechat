@@ -12,6 +12,7 @@ Page({
     textContent: '',
     name: '',
     phone:'',
+    param: app.globalData.param,
 
     icon: {
       width: "100rpx",

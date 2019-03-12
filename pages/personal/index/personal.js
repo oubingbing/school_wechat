@@ -6,7 +6,8 @@ Page({
   data: {
     user: '',
     newLetterNumber: 0,
-    serviceId: ''
+    serviceId: '',
+    param: app.globalData.param
   },
   onLoad: function () {
     let userStorage = wx.getStorageSync('user');
@@ -15,6 +16,7 @@ Page({
         user: userStorage
       })
     }
+    this.setData({ param: app.globalData.param })
     this.getPersonalInfo();
     this.newLetterCount();
     this.getService();

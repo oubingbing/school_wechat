@@ -8,7 +8,7 @@
               wx:for="{{list}}" 
           wx:key="{{listData}}"
               class='letter-content'>
-  <block wx:if="{{item.from_user_id == friendId}}">
+  <block wx:if="{{item.from_user_id == friendId && param==true}}">
     <view class="scroll-view-item">
       <view class='user-left'>
 
@@ -39,7 +39,7 @@
     </view>
   </block>
 
-  <block wx:if="{{item.from_user_id != friendId}}">
+  <block wx:if="{{item.from_user_id != friendId && param==true}}">
     <view class="scroll-view-item">
       <view class='user-right'>
 
@@ -77,7 +77,7 @@
 
   <view class='hei' id="hei"></view>  
 
-  <view class='comment-input-container'>
+  <view class='comment-input-container' wx:if="{{param==true}}">
     <view class='add-image' bindtap='sendImage'>
       <view class='image-container'>
         <upload icon-info="{{icon}}" 

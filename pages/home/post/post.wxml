@@ -32,7 +32,7 @@
            bindinput="getPhone"/>
   </view>
 
-  <view class='private'>
+  <view class='private' wx:if="{{param}}">
     <view class='item'>是否开启树洞</view>
     <switch bindchange="setPrivate" color='#0aecc3'/>
   </view>

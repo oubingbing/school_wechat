@@ -28,7 +28,8 @@ Page({
     notDataTips: false,
     newMessage: false,
     newMessageNumber: 0,
-    select: 1
+    select: 1,
+    param: app.globalData.param
   },
 
   onLoad: function () {
@@ -39,6 +40,7 @@ Page({
     let _this = this;
     let token = wx.getStorageSync('token');
     this.getPost(_this);
+    this.setData({ param: app.globalData.param })
   },
   onShow: function () {
     let _this = this;

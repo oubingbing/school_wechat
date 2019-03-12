@@ -21,6 +21,7 @@ Page({
     baseImageUrl: app.globalData.imageUrl,
     canChat:true,
     canPost:true,
+    param: app.globalData.param,
 
     icon: {
       width: "75rpx",
@@ -45,7 +46,8 @@ Page({
       friendId: friendId,
       canChat:cantChat
     });
-
+    
+    this.setData({ param: app.globalData.param })
     this.setTitle(friendId,cantChat);
     this.getMessageList(friendId);
 

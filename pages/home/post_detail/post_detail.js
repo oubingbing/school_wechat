@@ -29,7 +29,8 @@ Page({
     newMessage: false,
     newMessageNumber: 0,
     select: 1,
-    id:''
+    id:'',
+    param: app.globalData.param
   },
 
   onLoad: function (option) {
@@ -40,6 +41,7 @@ Page({
       id: objId
     })
 
+    this.setData({ param: app.globalData.param })
     let _this = this;
     let token = wx.getStorageSync('token');
     this.getPost(_this);

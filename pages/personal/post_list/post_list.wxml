@@ -77,7 +77,7 @@
                 src='/image/letter1.png' 
                 style='width:60rpx;height:60rpx'
                 bindtap='letter'
-                wx:if="{{param}}"
+                wx:if="{{param==true && item.private!=1}}"
                 data-obj="{{item.poster.id}}"
                 data-chat="{{item.can_chat}}"></image>
                 <image src='/image/pinglun.png' 

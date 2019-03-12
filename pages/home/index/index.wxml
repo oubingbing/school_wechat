@@ -166,7 +166,7 @@
                       bindtap='praise'></image>
                       <image  
                       src='/image/letter1.png'
-                      wx:if="{{param}}" 
+                      wx:if="{{param==true && item.private!=1}}" 
                       style='width:60rpx;height:60rpx'
                       bindtap='letter'
                       data-obj="{{item.poster.id}}"

@@ -11,12 +11,14 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     pageNumber: 1,
     initPageNumber: 1,
     showGeMoreLoadin: false,
-    notDataTips: false
+    notDataTips: false,
+    param: app.globalData.param,
   },
   onLoad: function (option) {
     let objType = option.type;
     let messageType = option.new_message;
     this.getInboxList(objType, messageType);
+    this.setData({ param: app.globalData.param })
   },
   /**
    * 获取消息列表

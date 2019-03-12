@@ -167,10 +167,6 @@
   <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
   <not-more wx:if="{{notDataTips && posts.length != 0}}"></not-more>
 
-  <view class='no-more-data' wx-if="{{posts.length == 0}}">
-    <view>power by 叶子</view>
-  </view>
-
 </view>
 
 <view class='comment-input-container' wx:if="{{showCommentInput}}">

@@ -1,7 +1,5 @@
 **部署好后台之后，需要部署前端小程序项目**
 
-有问题可以联系叶子：13425144866
-
 后台源码在这里：https://github.com/oubingbing/wechatAlliance
 
 有空点一下左上角的start,谢谢。

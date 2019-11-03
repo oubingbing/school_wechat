@@ -12,7 +12,7 @@ Page({
     notPraiseBorder: '',
     posts: [],
     postType: 1,
-    baseImageUrl: app.globalData.imageUrl,
+    baseImageUrl: app.globalData.imageUrl+"/",
     show: 0,
     hidden: false,
     showCommentInput: false,

@@ -1,8 +1,0 @@
-{
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark",
-  "navigationBarTitleText": "",
-  "usingComponents": {
-    "upload": "plugin://uploadPlugins/upload"
-  }
-}

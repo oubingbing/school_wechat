@@ -22,7 +22,7 @@
   <view class='location'>
     <view class='like-word'>我喜欢</view>
     <input class='like-content' 
-           placeholder="慧怡" 
+           placeholder="宝连" 
            bindinput="getName"/>
   </view>
   <view class='location'>
@@ -30,11 +30,6 @@
     <input class='like-content' 
            placeholder="Ta的手机号码（选填）" 
            bindinput="getPhone"/>
-  </view>
-
-  <view class='private' wx:if="{{param}}">
-    <view class='item'>是否开启树洞</view>
-    <switch bindchange="setPrivate" color='#0aecc3'/>
   </view>
 </view>
 

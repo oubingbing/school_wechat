@@ -6,7 +6,7 @@ App({
 
     this.globalData.apiUrl = config.domain;
     this.globalData.appKey = config.alianceKey;
-    this.globalData.imageUrl = config.qiniuDomain;
+    this.globalData.imageUrl = config.qiniuDomain+"/";
     this.globalData.bgIimage = config.bgImage;
     
     this.globalData.reloadSale = false;

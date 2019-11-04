@@ -2,7 +2,7 @@
 
   <view class="bg-container">
       <view class='bg-image'>
-        <image mode="aspectFill" src='http://image.kucaroom.com/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.QEZuzGgsiSFtf6b9dd803a7fe4bf5f75b6afd5705a73.jpg'></image>
+        <image mode="aspectFill" src='http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.QEZuzGgsiSFtf6b9dd803a7fe4bf5f75b6afd5705a73.jpg'></image>
       </view>
       <view>
         <image class='user-image' src='{{user.avatar}}'></image>

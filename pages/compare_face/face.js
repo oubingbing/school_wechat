@@ -23,7 +23,7 @@ Page({
     icon: {
       width: "250rpx",
       height: "250rpx",
-      path: "http://image.kucaroom.com/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.LnBKkU9zx3EP4d2e331c723875767480754faf0248b7.png",
+      path: "http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.LnBKkU9zx3EP4d2e331c723875767480754faf0248b7.png",
       showImage: true
     },
     qiniu: {

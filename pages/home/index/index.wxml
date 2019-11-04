@@ -255,7 +255,7 @@
 <view class='post-container'>
   <view class='wall'></view>
   <view class='post'>
-    <image src='/image/new-post.png' bindtap='post'></image>
+    <image src='/image/post.png' bindtap='post'></image>
   </view>
 </view>
 

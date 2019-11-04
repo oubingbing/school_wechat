@@ -6,12 +6,12 @@
 
 #### 效果图
 
-![](http://image.kucaroom.com/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.bRrrxT8E9R8A3280bf2c92be9407e0d8c55edc628c3d.png)
+![](http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.bRrrxT8E9R8A3280bf2c92be9407e0d8c55edc628c3d.png)
 
 
 #### 一、注册管理后台
 
-**1、登录小情书站点进行注册：https://lianyan.kucaroom.com/**，这里换成你自己部署后的域名
+**1、登录小情书站点进行注册：https://love.qiuhuiyi.cn/**，这里换成你自己部署后的域名
 
 **2、注册成功后会发送一封邮件到您的邮箱，进入邮箱访问接收到的地址即可激活账户。**
 
@@ -35,19 +35,19 @@
 
     request合法域名
     
-    https://lianyan.kucaroom.com //你的后台域名
+    https://love.qiuhuiyi.cn //你的后台域名
     
     uploadFile合法域名
     
     https://up-z2.qbox.me
     
-    https://lianyan.kucaroom.com
+    https://love.qiuhuiyi.cn
     
     downloadFile合法域名
     
     https://baldkf.bkt.clouddn.com 
     
-    https://lianyan.kucaroom.com //你的后台域名
+    https://love.qiuhuiyi.cn //你的后台域名
 
 这样子微信小程序就和后台服务器绑定好了。
 

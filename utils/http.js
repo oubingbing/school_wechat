@@ -119,6 +119,14 @@ const httpRequest=function (_method, _url, _data, callback) {
         },1500)
         //login(_method, _url, _data, callback);
       } else {
+
+        if (res.data.error_code != 0) {
+          wx.showToast({
+            title: res.data.error_message,
+            icon:"none"
+          })
+        }
+
         callback(res);
       }
     },

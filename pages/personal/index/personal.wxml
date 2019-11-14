@@ -5,17 +5,20 @@
         <image mode="aspectFill" src='http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.QEZuzGgsiSFtf6b9dd803a7fe4bf5f75b6afd5705a73.jpg'></image>
       </view>
       <view>
-        <image class='user-image' src='{{user.avatar}}'></image>
+        <image wx:if="{{!showLoginButton}}" class='user-image' src='{{user.avatar}}'></image>
       </view>
       <view class='user-info'>
-          <view class='user-name'>{{user.nickname}}</view>
+          <view wx:if="{{!showLoginButton}}" class='user-name'>{{user.nickname}}</view>
           <view class='article'>
             <view class="word">爱情属于勇敢的人儿</view>
+            <view class="login-button" wx:if="{{showLoginButton}}">
+              <button open-type="getUserInfo" bindgetuserinfo="getAuthUserInfo">登录</button>
+            </view>
           </view>
       </view>
   </view>
 
-  <view class='message' bindtap='openMessage' wx:if="{{param==true}}">
+  <view class='message' bindtap='openMessage'>
     <view><image src='/image/my-message.png' class='item-image'></image></view>
     <view class='word'>消息</view>
   </view>

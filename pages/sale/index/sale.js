@@ -37,7 +37,7 @@ Page({
 
   onShow:function(){
     let type = 0;
-    app.getNewInbox(type,res=> {
+    http.getNewInbox(type,res=> {
       if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
         this.setData({
           newMessage: true,

@@ -1,4 +1,5 @@
 const config = require("./../config.js");
+const app = getApp();
 
 /**
 * 登录获取token
@@ -92,6 +93,7 @@ const patch = function (_url, _data, callback) {
 * 封装微信http请求
 */
 const httpRequest=function (_method, _url, _data, callback) {
+  _data.app_code = config.alianceKey
   let token = wx.getStorageSync('token');
   let _this = this;
   wx.request({
@@ -103,20 +105,48 @@ const httpRequest=function (_method, _url, _data, callback) {
     method: _method,
     data: _data,
     success: function (res) {
-
-      if (res.data.error_code == '4001' || res.data.error_code == '4000') {
-        console.log('token过期了');
-        login(_method, _url, _data, callback);
+      if (res.data.error_code == '5000') {
+        app.globalData.authStatus = true;
+        callback(res);
+        wx.showToast({
+          title: res.data.error_message,
+          icon:"none"
+        })
+        setTimeout(res=>{
+          wx.switchTab({
+            url: '/pages/personal/index/personal?status=ture'
+          })
+        },1500)
+        //login(_method, _url, _data, callback);
       } else {
         callback(res);
       }
     },
     fail: function (res) {
       console.log(res);
-      console.log('出错了');
     }
   })
 }
 
-module.exports = { get, post, patch, put, httpDelete, httpRequest, login}
+/**
+ * 获取新的消息盒子
+ */
+const getNewInbox = function(type, callback) {
+  this.get(`/new/${type}/inbox`, {}, function (res) {
+    callback(res);
+  });
+}
+
+/**
+ * 收集form id
+ */
+const collectFormId = function(formId) {
+  this.post(`/save_form_id`, {
+    form_id: formId
+  }, function (res) {
+    console.log(res);
+  });
+}
+
+module.exports = { get, post, patch, put, httpDelete, httpRequest, login, getNewInbox,collectFormId}
 

@@ -34,6 +34,7 @@ page{
   width: 65%;
   height: 80rpx;
   align-items: center;
+  justify-content: space-between;
 }
 
 .letter{
@@ -172,5 +173,11 @@ page{
   font-size: 25rpx;
   margin-top: 50rpx;
   color: gainsboro;
+}
+
+.login-button button{
+  font-size: 30rpx;
+  background: #66CDAA;
+  color: white;
 }
 

@@ -1,5 +1,5 @@
 const config={
-  alianceKey:"nRdtSTmp6gJmoWez",//后台分配的allianceKey
+  alianceKey:"PS7K0R7sfFNGtNrc",//后台分配的allianceKey
   dev:{//开发环境
     domain:"http://127.0.0.1:8000/api/wechat",//后台接口地址
     qiniuDomain:"https://image.qiuhuiyi.cn",//七牛地址

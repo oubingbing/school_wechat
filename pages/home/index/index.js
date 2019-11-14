@@ -61,9 +61,6 @@ Page({
   },
 
   onLoad: function (e) {
-
-    console.log("param="+this.data.param)
-
     if (e.id != undefined) {
       this.setData({ sharecomeIn: true, shareId: e.id, shareType: e.type })
     }
@@ -71,26 +68,6 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-
-    let that = this;
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          that.setData({
-            show_auth: true
-          });
-        } else {
-          if (that.data.shareId != undefined) {
-            that.setData({ sharecomeIn: false })
-            if (that.data.shareType == 'sale_friend') {
-              wx.navigateTo({
-                url: '/pages/sale/comment_sale/comment_sale?id=' + that.data.shareId
-              })
-            }
-          }
-        }
-      }
-    })
     
     this.getPost();
     this.topic();
@@ -108,7 +85,7 @@ Page({
     }
 
     let type = 0;
-    app.getNewInbox(type, res=>{
+    http.getNewInbox(type, res=>{
       if (res.data.data != 0 && res.data.data != null && res.data.data != '') {
         this.setData({
           newMessage: true,
@@ -123,18 +100,6 @@ Page({
     });
   },
 
-  onReady(){
-    app.getParam(res => {
-      let resData = res.data;
-      if (resData.error_code == 0) {
-        this.setData({
-          param: resData.data == 2 ? true : false
-        })
-        app.globalData.param = this.data.param;
-      }
-    })
-  },
-
   /**
    * 点赞话题
    */
@@ -142,27 +107,6 @@ Page({
     let id = e.currentTarget.dataset.id;
     http.post('/praise/'+id+'/topic', {}, function (res) {
       this.setData({topic:res.data.data});
-    });
-  },
-
-  /**
-   * 监听用户点击授权按钮
-   */
-  getAuthUserInfo:function(data){
-    this.setData({
-      show_auth: false
-    });
-    app.login(null, null, null, res=>{
-      this.getPost();
-      this.topic();
-      if (this.data.shareId != undefined) {
-        this.setData({ sharecomeIn: false })
-        if (this.data.shareType == 'sale_friend') {
-          wx.navigateTo({
-            url: '/pages/sale/comment_sale/comment_sale?id=' + this.data.shareId
-          })
-        }
-      }
     });
   },
 
@@ -516,6 +460,7 @@ Page({
       commentContent: content
     })
   },
+
   /**
    * 获取搜索框的内容
    */
@@ -525,6 +470,7 @@ Page({
       filter: content
     })
   },
+  
   /**
    * 提交评论
    */
@@ -680,6 +626,7 @@ Page({
       url: '/pages/personal/letter/letter?friend_id=' + id + '&can_chat=' + canChat
     })
   },
+
   /**
    * 关注
    */
@@ -731,6 +678,7 @@ Page({
 
     });
   },
+  
   openTopic:function(e){
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({

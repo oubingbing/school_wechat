@@ -1,7 +1,7 @@
 <view class="message-container">
   <view class='message-content'>
 
-        <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}" wx:if="{{param}}">
+        <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
           <view class='item' 
                 bindtap="opendDetail" 
                 data-parent="{{item.parentObj}}"

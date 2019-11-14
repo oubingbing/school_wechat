@@ -7,9 +7,13 @@ Page({
     user: '',
     newLetterNumber: 0,
     serviceId: '',
-    param: app.globalData.param
+    param: app.globalData.param,
+    showLoginButton: app.globalData.authStatus
   },
   onLoad: function () {
+
+    this.checkAuth();
+
     let userStorage = wx.getStorageSync('user');
     if (userStorage){
       this.setData({
@@ -18,14 +22,46 @@ Page({
     }
     this.setData({ param: app.globalData.param })
     this.getPersonalInfo();
-    this.newLetterCount();
+    //this.newLetterCount();
     this.getService();
   },
+
   onShow: function () {
-    this.newLetterCount();
+    //this.newLetterCount();
+    this.checkLogin();
   },
-  onReady: function () {
+
+  checkLogin:function(){
+    http.post(`/check_login`, {}, res => {
+      if (res.data.error_code == '5000') {
+        app.globalData.authStatus = true;
+        this.setData({
+          showLoginButton : true
+        })
+      }
+    });
   },
+
+  /**
+   * 是否授权
+   */
+  checkAuth:function(){
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          that.setData({
+            showLoginButton: true
+          });
+          app.globalData.authStatus = true;
+        } else {
+          that.getPersonalInfo()
+        }
+      }
+    })
+
+  },
+
   /**
    * 获取客服id
    */
@@ -37,6 +73,7 @@ Page({
       });
     });
   },
+
   /**
    * 获取个人信息
    */
@@ -49,6 +86,7 @@ Page({
       wx.setStorageSync('user', res.data.data);
     });
   },
+
   /**
    * 获取未读私信数量
    */
@@ -62,6 +100,7 @@ Page({
       }
     });
   },
+
   /**
    * 进入消息列表
    */
@@ -70,6 +109,7 @@ Page({
       url: '/pages/personal/message/message?type=0&new_message=0'
     })
   },
+
   /**
    * 进入私信列表
    */
@@ -78,6 +118,7 @@ Page({
       url: '/pages/personal/friends/friends'
     })
   },
+
   /**
    * 进入建议留言列表
    */
@@ -88,6 +129,7 @@ Page({
       url: '/pages/personal/letter/letter?friend_id=' + id
     })
   },
+
   /**
    * 进入表白墙列表
    */
@@ -96,6 +138,7 @@ Page({
       url: '/pages/personal/post_list/post_list'
     })
   },
+
   /**
    * 进入卖舍友列表
    */
@@ -104,6 +147,7 @@ Page({
       url: '/pages/personal/sale_list/sale_list'
     })
   },
+
   /**
    * 进入匹配列表
    */
@@ -112,9 +156,22 @@ Page({
       url: '/pages/help/help_single/help_single'
     })
   },
+
   updateInfo: function () {
     wx.navigateTo({
       url: '/pages/personal/set_profile/set_profile'
     })
-  }
+  },
+
+  /**
+ * 监听用户点击授权按钮
+ */
+  getAuthUserInfo: function (data) {
+    this.setData({
+      showLoginButton: false
+    });
+    http.login(null, null, null, res => {
+      this.getPersonalInfo();
+    });
+  },
 })

@@ -172,7 +172,7 @@ Page({
     return {
       title: '喜欢ta，那就说出来吧',
       path: '/pages/index/index',
-      imageUrl: 'http://image.kucaroom.com/compare_face.jpg',
+      imageUrl: 'http://img.qiuhuiyi.cn/compare_face.jpg',
       success: function (res) {
         // 转发成功
       },

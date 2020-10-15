@@ -74,6 +74,7 @@ Page({
   },
 
   onShow: function (option) {
+    this.getSchool()
 
     if (app.globalData.reloadHome == true){
       app.globalData.reloadHome = false;
@@ -96,6 +97,30 @@ Page({
           newMessage: false,
           newMessageNumber: 0
         });
+      }
+    });
+  },
+
+  /**
+   * 选择学校
+   */
+  selectSchool:function(){
+    wx.navigateTo({
+      url: '/pages/home/school/school'
+    })
+  },
+
+  /**
+   * 获取所在学校
+   */
+  getSchool:function(){
+    http.get('/school',{},res=>{
+      if(res.data.data){
+        if (res.data.data.length > 0) {
+          this.setData({
+            school:res.data.data
+          });
+        }
       }
     });
   },
@@ -133,7 +158,6 @@ Page({
   selected(e) {
     let objType = e.target.dataset.type;
     let thisTopic = this.data.topic;
-
     if (objType == 1 && thisTopic != null){
       this.setData({
         showTopic: true,
@@ -170,7 +194,6 @@ Page({
     if (objType != 5) {
       this.getPost();
     }
-
   },
 
   /**
@@ -181,7 +204,6 @@ Page({
       postType: 1,
       posts: []
     })
-
     this.setData({
       pageNumber: this.data.initPageNumber
     });

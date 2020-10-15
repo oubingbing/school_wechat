@@ -2,6 +2,17 @@
 <view class='all-container'>
   <view class="container" bindtouchmove="hiddenComment">
 
+  <view class="select-school">
+    <view class="school-location" bindtap='selectSchool'>
+      <view class="location-image">
+        <image class="location-icon" mode="" src="/image/school.png"></image>
+      </view>
+      <view class="location-name">
+        <view>{{school}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class='nav-bar-container'>
     <view class='nav-bar'>
       <view class='all {{select==1?"selected":""}}' 

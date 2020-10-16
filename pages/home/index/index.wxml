@@ -28,7 +28,7 @@
           <block wx:for="{{attachments}}" wx:key="{{item}}">
             <swiper-item class="image-item">
               <image class="{{item.show==true?'current-image':'goods-image'}}" 
-                     src="{{item.url}}"
+                     src="{{item.image}}"
                      mode='aspectFill' />
             </swiper-item>
           </block>

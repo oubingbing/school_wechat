@@ -4,6 +4,50 @@ page{
   flex-direction: column;
 }
 
+/** 轮播图 **/
+.swiper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 400rpx;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+  background: white;
+}
+
+.image-item {
+  border-radius: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.goods-image{
+  width: 100%;
+  height: 250rpx;
+  border-radius: 20rpx;
+  box-shadow: 0rpx 0rpx 15rpx 5rpx gainsboro;
+  transition: all 0.5s;
+}
+
+.current-image{
+  border-radius: 25rpx;
+  width: 90%;
+  box-shadow: 0rpx 0rpx 15rpx 5rpx gainsboro;
+  transition: all 0.5s;
+}
+
+.image-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 350rpx;
+}
+
 /**FF7256**/
 
 .select-school{
@@ -13,6 +57,7 @@ page{
   width: 100%;
   height: 90rpx;
   margin-top: 70rpx;
+  background: white;
 }
 
 .select-school .school-location{
@@ -41,7 +86,8 @@ page{
   flex-direction: column;
   justify-content: space-around;
   font-weight: 200;
-  font-size: 30rpx;
+  font-size: 32rpx;
+  color: #CC6600;
 }
 
 .container{
@@ -56,7 +102,6 @@ page{
   flex-direction: column;
   justify-content:space-around;
   background: white;
-  margin-top: 75rpx;
 }
 
 .container-wall .wall-item{

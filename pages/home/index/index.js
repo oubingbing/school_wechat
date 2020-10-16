@@ -2,8 +2,16 @@ const util = require("./../../../utils/util.js");
 const http = require("./../../../utils/http.js");
 const app = getApp()
 
+const images = [
+  { show: true, url: "http://article.qiuhuiyi.cn/hui_yi_15532398760009200"},
+  { show: false, url: "http://article.qiuhuiyi.cn/hui_yi_15532398790002956"},
+  { show: false, url: "http://article.qiuhuiyi.cn/hui_yi_15542637220008929"},
+  { show: false, url: "http://article.qiuhuiyi.cn/hui_yi_15542633790005932"}
+]
+
 Page({
   data: {
+    attachments: [],
     show_auth:false,
     userInfo: {},
     hasUserInfo: false,
@@ -71,6 +79,7 @@ Page({
     
     this.getPost();
     this.topic();
+    this.rotationImage()
   },
 
   onShow: function (option) {
@@ -102,6 +111,22 @@ Page({
   },
 
   /**
+   * 轮播图切换监听事件
+   */
+  onSwiperChange:function(e){
+    let current = e.detail.current;
+    let images = this.data.attachments;
+    images.map((item,index)=>{
+      if((index) == current){
+        item.show = true;
+      }else{
+        item.show = false;
+      }
+    })
+    this.setData({attachments:images})
+  },
+
+  /**
    * 选择学校
    */
   selectSchool:function(){
@@ -121,6 +146,21 @@ Page({
             school:res.data.data
           });
         }
+      }
+    });
+  },
+
+    /**
+   * 获取轮播图
+   */
+  rotationImage: function (e) {
+    http.get('/rotations', {}, res => {
+      console.log(res)
+      let resData = res.data
+      if(resData.error_code == 0){
+        let data = resData.data
+        console.log(data)
+        this.setData({attachments:data})
       }
     });
   },

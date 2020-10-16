@@ -13,6 +13,28 @@
     </view>
   </view>
 
+    <!-- 轮播图 -->
+    <view class='swiper'>
+      <swiper indicator-dots="true" 
+              indicator-color="#ffffff" 
+              indicator-active-color="#66CDAA"
+              autoplay="true"
+              interval="3000"
+              circular="true"
+              duration="1500"
+              easing-function="easeInOutCubic"
+              bindchange="onSwiperChange"
+              class='image-container'>
+          <block wx:for="{{attachments}}" wx:key="{{item}}">
+            <swiper-item class="image-item">
+              <image class="{{item.show==true?'current-image':'goods-image'}}" 
+                     src="{{item.url}}"
+                     mode='aspectFill' />
+            </swiper-item>
+          </block>
+      </swiper>
+    </view>
+
   <view class='nav-bar-container'>
     <view class='nav-bar'>
       <view class='all {{select==1?"selected":""}}' 

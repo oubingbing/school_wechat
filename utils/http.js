@@ -93,11 +93,30 @@ const patch = function (_url, _data, callback) {
 * 封装微信http请求
 */
 const httpRequest=function (_method, _url, _data, callback) {
+  let school = wx.getStorageSync('school')
+  if(school == 0 || school == undefined || school == ""){
+    console.log("school")
+    wx.setNavigationBarTitle({
+      title: '选择学校',
+    })
+    wx.switchTab({
+      url: '/pages/home/school/school'
+    })
+    return
+  }
+
   _data.app_code = config.alianceKey
   let token = wx.getStorageSync('token');
   let _this = this;
+
+  if(_url.includes("?")){
+    _url = _url + "&college_id="+school
+  }else{
+    _url = _url + "?college_id="+school
+  }
+
   wx.request({
-    url: config.domain + _url,
+    url: config.domain + _url + "&college_id="+school,
     header: {
       'content-type': 'application/json',
       'Authorization': 'Bearer ' + token
@@ -119,12 +138,15 @@ const httpRequest=function (_method, _url, _data, callback) {
         },1500)
         //login(_method, _url, _data, callback);
       } else {
-
-        if (res.data.error_code != 0) {
-          wx.showToast({
-            title: res.data.error_message,
-            icon:"none"
-          })
+        if(res.data.error_code == '5001'){
+          login(_method, _url, _data, callback);
+        }else{
+          if (res.data.error_code != 0) {
+            wx.showToast({
+              title: res.data.error_message,
+              icon:"none"
+            })
+          }
         }
 
         callback(res);

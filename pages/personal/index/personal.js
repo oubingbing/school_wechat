@@ -33,7 +33,11 @@ Page({
 
   checkLogin:function(){
     http.post(`/check_login`, {}, res => {
-      if (res.data.error_code == '5000') {
+      if (res.data.error_code == '5001') {
+        http.login(null, null, null, res => {
+          this.getPersonalInfo();
+        });
+      }else{
         app.globalData.authStatus = true;
         this.setData({
           showLoginButton : true

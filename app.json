@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/home/school/school",
     "pages/home/index/index",
     "pages/home/post/post",
     "pages/home/post_detail/post_detail",
-    "pages/home/school/school",
     "pages/home/topic_comment/topic_comment",
     "pages/home/topic_detail/topic_detail",
     "pages/sale/index/sale",

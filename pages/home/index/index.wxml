@@ -3,7 +3,7 @@
   <view class="container" bindtouchmove="hiddenComment">
 
   <view class="select-school">
-    <view class="school-location" bindtap='selectSchool'>
+    <view class="school-location">
       <view class="location-image">
         <image class="location-icon" mode="" src="/image/school.png"></image>
       </view>

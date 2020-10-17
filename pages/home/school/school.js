@@ -8,16 +8,26 @@ Page({
     showEmpty:false
   },
   onLoad: function () {
-    console.log('post loading');
-    let _this = this;
 
+    let school = wx.getStorageSync('school')
+    if(school <= 0 || school == undefined || school == ""){
+      wx.setStorageSync('school', -1)
+      wx.setNavigationBarTitle({
+        title: '选择学校',
+      })
+    }else{
+      wx.switchTab({
+        url: '/pages/home/index/index'
+      })
+      return false
+    }
+
+    let _this = this;
     this.recommendSchool(_this);
   },
 
   //推荐学校
   recommendSchool:function(_this){
-    console.log('recommmend school');
-
     http.get('/recommend_school',{},function(res){
       console.log(res.data);
       _this.setData({
@@ -34,8 +44,9 @@ Page({
   //选择学校
   selectCollege:function(event){
     let collegeId = event.target.id;
+    wx.setStorageSync('school', collegeId)
     let _this = this;
-    http.put(`/set/${collegeId}/college`,{},function(res){
+    http.get(`/set/${collegeId}/college`,{},function(res){
       console.log(res.data);
       if(res.data.error_code == 5004){
         wx.showToast({
@@ -43,7 +54,11 @@ Page({
           icon:"none"
         })
       }else{
-        wx.navigateBack();
+        //wx.navigateBack();
+        wx.setStorageSync('school', collegeId)
+        wx.switchTab({
+          url: '/pages/home/index/index'
+        })
       }
     });
   },

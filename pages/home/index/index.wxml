@@ -14,7 +14,7 @@
   </view>
 
     <!-- 轮播图 -->
-    <view class='swiper'>
+    <view class='swiper' wx:if="{{attachments.length > 0}}">
       <swiper indicator-dots="true" 
               indicator-color="#ffffff" 
               indicator-active-color="#66CDAA"

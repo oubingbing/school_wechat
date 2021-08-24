@@ -1,107 +1,110 @@
 {
-	"description": "项目配置文件。",
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": false,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
-	"appid": "wx0f587d7c97a68e2b",
-	"projectname": "%E6%A0%A1%E5%9B%AD%E5%B0%8F%E6%83%85%E4%B9%A6",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": 0,
-					"name": "卖舍友",
-					"pathName": "pages/sale/index/sale",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "发表卖舍友",
-					"pathName": "pages/sale/post_sale/post_sale",
-					"query": ""
-				},
-				{
-					"id": 2,
-					"name": "表白",
-					"pathName": "pages/index/post/post",
-					"query": ""
-				},
-				{
-					"id": 3,
-					"name": "情侣脸",
-					"pathName": "pages/compare_face/face",
-					"query": ""
-				},
-				{
-					"id": 4,
-					"name": "个人中心",
-					"pathName": "pages/personal/index/personal",
-					"query": ""
-				},
-				{
-					"id": 5,
-					"name": "悬赏令",
-					"pathName": "pages/help/help",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "步数旅行",
-					"pathName": "pages/travel/index/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "卖舍友详情",
-					"pathName": "pages/sale/comment_sale/comment_sale",
-					"query": "id=142"
-				}
-			]
-		}
-	}
+  "description": "项目配置文件。",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": false,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "bundle": false,
+    "useApiHook": true,
+    "useApiHostProcess": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.4.0",
+  "appid": "wx0f587d7c97a68e2b",
+  "projectname": "%E6%A0%A1%E5%9B%AD%E5%B0%8F%E6%83%85%E4%B9%A6",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "卖舍友",
+          "pathName": "pages/sale/index/sale",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "发表卖舍友",
+          "pathName": "pages/sale/post_sale/post_sale",
+          "query": ""
+        },
+        {
+          "id": 2,
+          "name": "表白",
+          "pathName": "pages/index/post/post",
+          "query": ""
+        },
+        {
+          "id": 3,
+          "name": "情侣脸",
+          "pathName": "pages/compare_face/face",
+          "query": ""
+        },
+        {
+          "id": 4,
+          "name": "个人中心",
+          "pathName": "pages/personal/index/personal",
+          "query": ""
+        },
+        {
+          "id": 5,
+          "name": "悬赏令",
+          "pathName": "pages/help/help",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "步数旅行",
+          "pathName": "pages/travel/index/index",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "卖舍友详情",
+          "pathName": "pages/sale/comment_sale/comment_sale",
+          "query": "id=142"
+        }
+      ]
+    }
+  }
 }

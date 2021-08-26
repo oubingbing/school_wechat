@@ -5,51 +5,43 @@ const app = getApp();
 * 登录获取token
 */
 const login = function (_method = null, _url = null, _data = null, callback = null) {
-  wx.login({
-    success: res => {
-      // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      console.log(res);
-      getUserInfo(res.code, _method, _url, _data, callback);
-    }
-  })
+  getUserInfo(_method, _url, _data, callback);
 }
 
 /**
 * 获取用户信息 
 */
-const getUserInfo = function (code, _method = null, _url = null, _data = null, callback = null) {
+const getUserInfo = function (_method = null, _url = null, _data = null, callback = null) {
   console.log('get user info');
   let that = this;
-  wx.getSetting({
+  console.log("内容")
+  wx.getUserProfile({
+    desc: '用于完善会员资料',
     success: res => {
-      console.log(res);
-      if (res.authSetting['scope.userInfo']) {
-        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-        wx.getUserInfo({
-          success: res => {
-            // 可以将 res 发送给后台解码出 unionId
-            post("/auth/login_v2?type=weChat", {
-              encrypted_data: res.encryptedData,
-              code: code,
-              iv: res.iv,
-              app_id: config.alianceKey
-            }, function (res) {
-              wx.setStorageSync('token', res.data.data);
-              console.log('token:' + res.data.data);
-              if (_method) {
-                httpRequest(_method, _url, _data, callback);
-              }
-              if (callback) {
-                //回调函数
-                callback();
-              }
-            });
+      wx.login({
+        success: loginResult => { // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          post("/auth/login_v2?type=weChat", {
+            encrypted_data: res.encryptedData,
+            code: loginResult.code,
+            iv: res.iv,
+            app_id: config.alianceKey
+          }, function (res) {
+            wx.setStorageSync('token', res.data.data);
+            console.log('token:' + res.data.data);
+            if (_method) {
+              httpRequest(_method, _url, _data, callback);
+            }
+            if (callback) {
+              //回调函数
+              callback();
+            }
+          });
 
-          }
-        })
-      } else {
-        console.log('未授权');
-      }
+        },
+        fail:res=>{
+          console.log(res);
+        }
+      })
     }
   })
 }

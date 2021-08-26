@@ -47,19 +47,13 @@ Page({
    */
   checkAuth:function(){
     let that = this;
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          that.setData({
-            showLoginButton: true
-          });
-          app.globalData.authStatus = true;
-        } else {
-          that.getPersonalInfo()
-        }
-      }
-    })
 
+    if (wx.getUserProfile) {
+      this.setData({
+        showLoginButton: false
+      })
+      that.getPersonalInfo()
+    }
   },
 
   /**

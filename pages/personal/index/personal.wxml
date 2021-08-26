@@ -12,7 +12,7 @@
           <view class='article'>
             <view class="word">爱情属于勇敢的人儿</view>
             <view class="login-button" wx:if="{{showLoginButton}}">
-              <button open-type="getUserInfo" bindgetuserinfo="getAuthUserInfo">登录</button>
+              <button bindtap="getAuthUserInfo">登录</button>
             </view>
           </view>
       </view>

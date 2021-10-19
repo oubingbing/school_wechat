@@ -112,6 +112,7 @@ Page({
    */
   previewImage: function (event) {
     let url = event.target.id;
+    console.log(url)
     wx.previewImage({
       current: '',
       urls: [url]

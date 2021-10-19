@@ -12,7 +12,7 @@ Page({
     notPraiseBorder: '',
     posts: [],
     postType: 1,
-    baseImageUrl: app.globalData.imageUrl+"/",
+    baseImageUrl: app.globalData.imageUrl,
     show: 0,
     hidden: false,
     showCommentInput: false,
@@ -352,6 +352,8 @@ Page({
    */
   previewImage: function (event) {
     let url = event.target.id;
+    console.log("图片")
+    console.log(url)
     wx.previewImage({
       current: '',
       urls: [url]

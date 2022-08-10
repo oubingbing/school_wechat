@@ -2,7 +2,7 @@
 
 后台源码在这里：https://github.com/oubingbing/wechatAlliance
 
-有空点一下左上角的start,谢谢。
+有空点一下左上角的star,谢谢。
 
 ### 需要帮忙部署的可以加微信 bingbing_ou
 

@@ -126,13 +126,13 @@ Page({
       return false;
     }
 
-    if (!gender) {
-      wx.showToast({
-        title: '性别不能为空',
-        icon: 'none'
-      })
-      return false;
-    }
+    // if (!gender) {
+    //   wx.showToast({
+    //     title: '性别不能为空',
+    //     icon: 'none'
+    //   })
+    //   return false;
+    // }
 
     if(attachments.length<=0){
       wx.showToast({

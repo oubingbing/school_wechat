@@ -17,8 +17,8 @@
       </view>
       <view class='friend-info-container'>
         <view class='friend-name'>{{sale.name}}</view>
-        <view class='gender'>{{sale.gender}}</view>
-        <view class='major'>专业：{{sale.major}}</view>
+        <!-- <view class='gender'>{{sale.gender}}</view>
+        <view class='major'>专业：{{sale.major}}</view> -->
         <view class='major'>喜欢TA：{{sale.expectation}}</view>
         <view class='major'>舍友简介：{{sale.introduce}}</view>
       </view>
@@ -30,8 +30,9 @@
                   bindtap='showCommentInput' 
                   data-objid="{{sale.id}}"
                   data-refid=""
-                  data-type="2">撩一下</button>
+                  data-type="2">评论</button>
       </view>
+      <view class='collect' bindtap='letter' data-objid="{{objId}}">留言</view>
       <view class='collect' bindtap='follow' wx:if="{{sale.follow==false}}">喜欢</view>
       <view class='collect' bindtap='cancelFollow' wx:else>已喜欢</view>
       </view>
@@ -86,11 +87,16 @@
             <view class='create_at right-item'>
               <view>{{item.created_at}}</view>
               <view class='comment-icon'>
-                <image src='/image/comment.png' 
+                <view class="coment-icon-sub"
                   bindtap='showCommentInput' 
                   data-objid="{{item.id}}"
                   data-type='4'
-                  data-refid=""></image>
+                  data-refid="">评论</view>
+                <view class="coment-icon-sub"
+                  bindtap='letter'
+                  data-objid="{{item.id}}"
+                  data-type='4'
+                  data-refid="">留言</view>
               </view>
             </view>
                 <view class='comment-user-wall' 

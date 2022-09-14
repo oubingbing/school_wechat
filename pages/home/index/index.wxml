@@ -157,9 +157,12 @@
                     bindtap='deletePost'>删除</view>
             </view>
             <view class='comment-container'>
-              <view
-               class='comment-icon' 
+              <view class='comment-icon' 
                 wx:if="{{item.id==show}}">
+                <image src='/image/make-letter.png' 
+                      style='width:60rpx;height:60rpx'
+                      bindtap='letter'
+                      data-obj="{{item.poster.id}}"></image>
                       <image src='/image/zan.png' 
                       style='width:60rpx;height:60rpx'
                       data-obj="{{item.id}}"

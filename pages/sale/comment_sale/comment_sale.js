@@ -22,6 +22,9 @@ Page({
     this.setData({ param: app.globalData.param})
     console.log(app.globalData.param)
     let objId = option.id;
+    this.setData({
+      objId: objId,
+    });
     http.get(`/sale_friend/${objId}`, {}, res => {
       let data = res.data.data;
       data.comments = data.comments.reverse();
@@ -215,33 +218,44 @@ Page({
     }, res=> {
       wx.hideLoading();
       let resData = res.data.data;
-      if (!resData.error_code){
-        let sale = this.data.sale;
-        if (resData.obj_type == 2){
-          let data = resData;
-          sale.comments.unshift(data);
-          sale.comment_number += 1;
+
+      if(res.data.error_code == 0){
+        if (!resData.error_code){
+          let sale = this.data.sale;
+          if (resData.obj_type == 2){
+            let data = resData;
+            sale.comments.unshift(data);
+            sale.comment_number += 1;
+            this.setData({
+              sale: sale
+            });
+          }else{
+            let newComments = sale.comments.map(item=>{
+              if(item.id == objId){
+                item.sub_comments.push(resData);
+              }
+              return item;
+            });
+            sale.comments = newComments;
+            this.setData({
+              sale: sale
+            });
+          }
           this.setData({
-            sale: sale
-          });
-        }else{
-          let newComments = sale.comments.map(item=>{
-            if(item.id == objId){
-              item.sub_comments.push(resData);
-            }
-            return item;
-          });
-          sale.comments = newComments;
-          this.setData({
-            sale: sale
+            content: '',
+            objId: '',
+            objType: '',
+            showCommentInput: false
           });
         }
-        this.setData({
-          content: '',
-          objId: '',
-          objType: '',
-          showCommentInput: false
+      }else{
+        wx.showToast({
+          title: res.data.error_message,
+          icon:'none'
         });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500)
       }
     });
   },
@@ -285,5 +299,15 @@ Page({
         // 转发失败
       }
     }
+  },
+
+  /**
+   * 跳转到私信
+   */
+  letter: function (e) {
+    let id = e.target.dataset.objid;
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id
+    })
   },
 })

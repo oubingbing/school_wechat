@@ -1,0 +1,109 @@
+<view class="letter-container" bindtouchmove="hiddenComment">
+
+  <scroll-view scroll-y 
+              bindscrolltoupper="upper" 
+              bindscrolltolower="lower"
+              scroll-top="{{scrollTop}}" 
+              bindscroll="scroll" 
+              wx:for="{{list}}" 
+          wx:key="{{listData}}"
+              class='letter-content'>
+  <block wx:if="{{item.from_user_id == friendId}}">
+    <view class="scroll-view-item">
+      <view class='user-left'>
+
+        <view class='left-content-avatar'>
+          <image src='{{item.from_user.avatar}}'></image>
+        </view>
+
+        <view class='left-content'>
+          <view class='left-content-message'>
+          <view class="qipao"></view>
+            <view wx:if="{{item.content != null}}" 
+                  class='left-content-item'>
+                  {{item.content}}
+            </view>
+            <view class='left-content-item' 
+                  wx:if="{{item.attachments.length != 0}}">
+              <image mode='widthFix' 
+                     bindtap='previewImage'
+                     id="{{baseImageUrl+item.attachments[0]}}"
+                     src="{{baseImageUrl+item.attachments[0]}}"></image>
+            </view>
+          </view>
+          <view class='left-time'>{{item.created_at}}</view>
+        </view>
+
+      </view>
+          
+    </view>
+  </block>
+
+  <block wx:if="{{item.from_user_id != friendId}}">
+    <view class="scroll-view-item">
+      <view class='user-right'>
+
+        <view class='right-content' 
+              data-objid="{{item.id}}"
+              bindlongpress="deleteContent">
+          <view class='right-content-message'>
+            <view class='right-content-item'
+                  wx:if="{{item.content != null}}">
+                  {{item.content}}
+            </view>
+            <view class='right-content-item' 
+                  wx:if="{{item.attachments.length != 0}}">
+              <image mode='widthFix' 
+                     bindtap='previewImage'
+                     id="{{baseImageUrl+item.attachments[0]}}"
+                     src="{{baseImageUrl+item.attachments[0]}}"></image>
+            </view>
+            <view class="qipao"></view>
+          </view>
+          <view class='right-time'>{{item.created_at}}</view>
+        </view>
+
+        <view class='right-content-avatar'>
+          <image src='{{item.from_user.avatar}}'></image>
+        </view>
+
+      </view>
+          
+    </view>
+  </block>
+
+
+  </scroll-view>
+
+  <view class='hei' id="hei"></view>  
+
+  <view class='comment-input-container' wx:if="{{showCommentInput}}">
+    <view class='add-image' bindtap='sendImage'>
+      <view class='image-container'>
+        <upload icon-info="{{icon}}" 
+                qiniu-info="{{qiniu}}"  
+                bind:success="uploadSuccess" 
+                bind:delete="deleteSuccess"
+                bind:error="uploadError"/> 
+      </view>
+    </view>
+    <textarea class='text-content'
+              maxlength="1024" 
+              bindinput='getContent' 
+              value='{{content}}' 
+              fixed="true"
+              cursor-spacing="10"
+              auto-height/>
+    <view class='send-button' bindtap='send'>
+      <view>发送</view>
+    </view>
+  </view>
+
+<view class='post-container' wx:if="{{!showCommentInput}}" bindtap='comment'>
+  <view class='wall'></view>
+  <view class='post'>
+    <image src='/image/talk.png' bindtap='post'></image>
+  </view>
+</view>
+
+</view>

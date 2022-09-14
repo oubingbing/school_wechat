@@ -1,7 +1,7 @@
 {
   "description": "项目配置文件。",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": false,
@@ -26,6 +26,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": false,
@@ -42,16 +43,13 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
@@ -103,6 +101,12 @@
           "name": "卖舍友详情",
           "pathName": "pages/sale/comment_sale/comment_sale",
           "query": "id=142"
+        },
+        {
+          "name": "互留言",
+          "pathName": "pages/personal/letter/letter",
+          "query": "friend_id=4058",
+          "scene": null
         }
       ]
     }

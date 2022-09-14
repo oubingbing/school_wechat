@@ -16,6 +16,7 @@
     "pages/personal/post_list/post_list",
     "pages/personal/sale_list/sale_list",
     "pages/personal/set_profile/set_profile",
+    "pages/personal/letter/letter",
     "pages/help/index/help",
     "pages/help/comment_mission/comment_mission",
     "pages/help/help_single/help_single",

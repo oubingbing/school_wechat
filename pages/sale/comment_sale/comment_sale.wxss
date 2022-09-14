@@ -105,9 +105,8 @@ page{
 }
 
 .operate .share-button{
-  width: 40%;
-  background: #66CDAA;
-  margin-right: 10rpx;
+  width: 25%;
+  background: #FF7F00;
   border-radius: 10rpx;
 }
 
@@ -126,13 +125,13 @@ page{
 }
 
 .operate .collect{
-  width: 40%;
+  width: 25%;
   background: #FF7F00;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-left: 10rpx;
+  margin-left: 30rpx;
   font-size: 30rpx;
   border-radius: 10rpx;
 }
@@ -306,17 +305,19 @@ page{
   align-items: center;
 }
 
-.comment-icon image{
-  width: 40rpx;
-  height: 40rpx;
+.comment-icon{
+  display: flex;
+  flex-direction: row;
 }
-
-
 .right .comment-name{
   color: #0061b2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.coment-icon-sub{
+  padding: 15rpx;
 }
 
 .comment-name .letter-image{

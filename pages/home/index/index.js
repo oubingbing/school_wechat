@@ -16,7 +16,6 @@ Page({
     show: 0,
     hidden: false,
     showCommentInput: false,
-    showCommentInput: false,
     commentContent: '',
     commentObjId: '',
     commentType: '',
@@ -519,18 +518,29 @@ Page({
         refcommentId: ''
       })
 
-      let postList = this.data.posts;
-      let newPostList = postList.map(item => {
-        if (objId == item.id) {
-          item.comments.push(res.data.data);
-        }
-        return item;
-      });
+      if(res.data.error_code == 0){
+        let postList = this.data.posts;
+        let newPostList = postList.map(item => {
+          if (objId == item.id) {
+            item.comments.push(res.data.data);
+          }
+          return item;
+        });
+  
+        //重新赋值，更新数据列表
+        this.setData({
+          posts: newPostList
+        });
+      }else{
+        wx.showToast({
+          title: res.data.error_message,
+          icon:'none'
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500)
+      }
 
-      //重新赋值，更新数据列表
-      this.setData({
-        posts: newPostList
-      });
     });
   },
 
@@ -627,7 +637,7 @@ Page({
     let id = e.target.dataset.obj;
     let canChat = e.target.dataset.chat;
     wx.navigateTo({
-      url: '/pages/personal/letter/letter?friend_id=' + id + '&can_chat=' + canChat
+      url: '/pages/personal/letter/letter?friend_id=' + id
     })
   },
 

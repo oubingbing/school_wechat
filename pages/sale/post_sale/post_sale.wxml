@@ -9,7 +9,7 @@
                class='right-item' 
                placeholder-style="color:darkgray"/>
       </view>
-      <view class='user-name right-item'>
+      <!-- <view class='user-name right-item'>
         <picker bindchange="bindPickerChange" 
                 value="{{gender}}" 
                 range="{{array}}">
@@ -26,7 +26,7 @@
                bindinput='getMajor'
                class='right-item' 
                placeholder-style="color:darkgray"/>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class='post-content'>

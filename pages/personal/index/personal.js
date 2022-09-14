@@ -22,7 +22,7 @@ Page({
     }
     this.setData({ param: app.globalData.param })
     this.getPersonalInfo();
-    //this.newLetterCount();
+    this.newLetterCount();
     this.getService();
   },
 

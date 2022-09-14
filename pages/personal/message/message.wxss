@@ -20,7 +20,7 @@
   flex-direction: column;
   border-bottom-style:solid;
   border-width:1rpx;
-  border-color: #F0F8FF;
+  border-color: gainsboro;
   align-items: center;
 }
 

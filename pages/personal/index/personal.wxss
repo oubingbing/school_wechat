@@ -181,3 +181,12 @@ page{
   color: white;
 }
 
+.letter-count{
+  display: flex;
+  flex-direction: row;
+}
+
+.letter-count-sub{
+  margin-left: 15rpx;
+  color:red;
+}

@@ -57,14 +57,17 @@ page{
 }
 
 .beging .beging-button{
-  background: #5A97B4;
-  color: white;
   font-size: 35rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
   padding-left: 50rpx;
   padding-right: 50rpx;
   border-radius: 10rpx;
+
+  background: center center #4A54FF;
+  background-image: linear-gradient(315deg,#6772FF,#00F9E5);
+  background-size: 104% 104%;
+  color: #fff;
 }
 
 .image-container{

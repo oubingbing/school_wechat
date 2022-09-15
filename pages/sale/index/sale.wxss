@@ -180,10 +180,19 @@ page{
   font-weight: 200;
   margin-top: 5rpx;
   margin-bottom: 5rpx;
+  font-size: 28rpx;
 }
 
 .nav-bar .selected{
-  color: #FF4500;
+  border-radius: 30rpx;
+  background: center center #4A54FF;
+  background-image: linear-gradient(315deg,#6772FF,#00F9E5);
+  background-size: 104% 104%;
+  color: #fff;
+}
+
+.nav-padding{
+  padding: 5rpx 10px;
 }
 
 .power_by{
@@ -205,14 +214,17 @@ page{
 
 .message-tip .tip-content{
   padding: 20rpx;
-  background: #575757;
-  color: white;
   border-radius: 10rpx;
   font-size: 30rpx;
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
+
+  background: center center #4A54FF;
+  background-image: linear-gradient(315deg,#6772FF,#FF4500);
+  background-size: 104% 104%;
+  color: #fff;
 }
 
 .tip-content image{

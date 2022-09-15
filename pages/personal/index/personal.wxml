@@ -26,7 +26,7 @@
   <view class='content-container'>
     <view class='content-item sale' bindtap="openLetter">
       <view><image src='/image/letter-icon.png' class='item-image'></image></view>
-      <view class='word letter-count'><view>留言板 </view> <view class="letter-count-sub" wx:if="{{newLetterNumber != 0}}">{{newLetterNumber}}</view></view>
+      <view class='word letter-count'><view>留言板 </view> <view class="letter-count-sub" wx:if="{{newLetterNumber != 0}}">({{newLetterNumber}})</view></view>
     </view>
     <view class='content-item say-love' bindtap="opendPostList">
       <view><image src='/image/color-love.png' class='item-image'></image></view>

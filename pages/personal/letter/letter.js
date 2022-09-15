@@ -94,9 +94,10 @@ Page({
    */
   setTitle: function (id,cantChat){
     http.get(`/user/${id}`, {}, res => {
+      let name = res.data.data.nickname;
       console.log(res.data.data);
-      //let name = res.data.data.nickname;
-      wx.setNavigationBarTitle({ title: "留言板" });
+      console.log(name);
+      wx.setNavigationBarTitle({ title: "留言板 | "+name });
     });
   },
 

@@ -4,16 +4,16 @@
 
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='all {{select==1?"selected":""}}' 
+      <view class='all {{select==1?"selected":""}} nav-padding' 
             bindtap="selected" 
             data-type="1">全部</view>
-      <view class='follow {{select==2?"selected":""}}' 
+      <view class='follow {{select==2?"selected":""}} nav-padding' 
             bindtap="selected" 
             data-type='2'>收藏</view>
-      <view class='hot {{select==4?"selected":""}}' 
+      <view class='hot {{select==4?"selected":""}} nav-padding' 
             bindtap="selected" 
             data-type='4'>最热</view>
-      <view class='new {{select==5?"selected":""}}' 
+      <view class='new {{select==5?"selected":""}} nav-padding' 
             bindtap="selected" 
             data-type='5'>搜索</view>
     </view>
@@ -105,10 +105,15 @@
       </view>
       <view class="item-content">
         <view class="user-name">
-          <view wx:if="{{item.private == 0}}">
+          <view wx:if="{{item.supertube == 0}}">
             <view class='nickname'>{{item.poster.nickname}}</view>
           </view>
-          <view wx:if="{{item.private == 1}}" class='nickname'>树洞</view>
+          <view wx:if="{{item.supertube == 1}}">
+            <view class='nickname supertube admin-nickname'>
+              <view>{{item.poster.nickname}}</view>
+              <view class="admin-item">超管</view>
+            </view>
+          </view>
           <view class='follow-icon' 
                 wx:if="{{!item.follow}}">
                  <view class='follow-world' data-obj="{{item.id}}" bindtap="follow">收藏</view>
@@ -219,22 +224,38 @@
                         data-objid="{{item.id}}"
                         data-refid="{{sub.id}}" 
                         data-objtype='1'>
-
                         <view class='comment-user-container' wx:if="{{!sub.ref_comment}}">
-                          <view class="comment-user inline-item">
+                          <view class="comment-user inline-item" wx:if="{{sub.author == 0 && sub.commenter.supertube != 1}}">
                             {{sub.commenter.nickname}}:
+                          </view>
+                          <view class="comment-user inline-item" wx:if="{{sub.author == 1 && sub.commenter.supertube != 1}}">
+                            {{sub.commenter.nickname}}(楼主):
+                          </view>
+                          <view class="comment-user inline-item" wx:if="{{sub.commenter.supertube == 1}}">
+                            {{sub.commenter.nickname}}(超管):
                           </view>
                           <view class='inline-item'>{{sub.content}}</view>
                         </view>
-
                         <view class='comment-user-container' 
                               wx:if="{{sub.ref_comment}}">
-                          <view class="comment-user inline-item">
+                          <view class="comment-user inline-item" wx:if="{{sub.author == 0 && sub.commenter.supertube != 1}}">
                             {{sub.commenter.nickname}}
                           </view>
+                          <view class="comment-user inline-item" wx:if="{{sub.author == 1 && sub.commenter.supertube != 1}}">
+                            {{sub.commenter.nickname}}(楼主)
+                          </view>
+                          <view class="comment-user inline-item" wx:if="{{sub.commenter.supertube == 1}}">
+                            {{sub.commenter.nickname}}(超管)
+                          </view>
                           <view class="inline-item">回复</view>
-                          <view class="comment-user inline-item">
+                          <view class="comment-user inline-item" wx:if="{{sub.ref_comment.refCommenter.admin == 0 && sub.ref_comment.refCommenter.type != 2}}">
                             {{sub.ref_comment.refCommenter.nickname}}:
+                          </view>
+                          <view class="comment-user inline-item" wx:if="{{sub.ref_comment.refCommenter.admin == 1 && sub.ref_comment.refCommenter.type != 2}}">
+                            {{sub.ref_comment.refCommenter.nickname}}(楼主):
+                          </view>
+                          <view class="comment-user inline-item" wx:if="{{sub.ref_comment.refCommenter.type == 2}}">
+                            {{sub.ref_comment.refCommenter.nickname}}(超管):
                           </view>
                           <view class='inline-item'>{{sub.content}}</view>
                         </view>
@@ -252,7 +273,6 @@
 
   <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
   <not-more wx:if="{{notDataTips && posts.length != 0}}"></not-more>
-
 </view>
 
 <view class='post-container'>

@@ -73,7 +73,12 @@
           <view class='right'>
             <view 
               class='comment-name right-item'>
-              <view>{{item.commenter.nickname}}</view>
+              <view wx:if="{{item.author == 0 && item.commenter.supertube != 1}}" class="comment-nickname">{{item.commenter.nickname}}</view>
+              <view  wx:if="{{item.author == 1 && item.commenter.supertube != 1}}" class="comment-nickname">{{item.commenter.nickname}}(楼主)</view>
+              <view wx:if="{{item.commenter.supertube == 1}}" class="admin-nickname">
+                <view class="supertube">{{item.commenter.nickname}}</view>
+                <view class="admin-item">超管</view>
+              </view>
               <image class='letter-image'
                       bindtap='letter'
                       wx:if="{{sale.can_chat==true && param==true}}"
@@ -113,8 +118,14 @@
                             data-refid="{{sub.id}}"
                              bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
                             <view class='comment-user-container'>
-                              <view class="comment-user inline-item">
+                              <view class="comment-user inline-item"  wx:if="{{sub.author == 0 && sub.commenter.supertube != 1}}">
                                 {{sub.commenter.nickname}}：
+                              </view>
+                              <view class="comment-user inline-item" wx:if="{{sub.author == 1 && sub.commenter.supertube != 1}}">
+                                {{sub.commenter.nickname}}(楼主)：
+                              </view>
+                              <view class="comment-user inline-item" wx:if="{{sub.commenter.supertube == 1}}">
+                                {{sub.commenter.nickname}}(超管)：
                               </view>
                               <view class='inline-item'>{{sub.content}}</view>
                             </view>

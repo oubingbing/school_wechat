@@ -119,3 +119,7 @@ button{
   width: 95%;
   font-size: 35rpx;
 }
+
+.right-item{
+  font-size: 35rpx;
+}

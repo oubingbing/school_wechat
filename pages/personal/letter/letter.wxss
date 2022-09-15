@@ -59,8 +59,7 @@
 .left-content-message .left-content-item{
   border-radius: 20rpx;
   padding: 20rpx;
-  background: #F1AAA6;
-  color: white;
+  background: gainsboro;
 }
 
 .left-content image{
@@ -82,7 +81,7 @@
   width: 0;
   height: 0;
   border-top: 15rpx solid white;
-  border-right: 15rpx solid #F1AAA6;
+  border-right: 15rpx solid gainsboro;
   border-bottom: 15rpx solid white;
   margin-left: 20rpx;
   margin-top: 20rpx;
@@ -92,7 +91,7 @@
   width: 0;
   height: 0;
   border-top: 15rpx solid white;
-  border-left: 15rpx solid #48D1CC;
+  border-left: 15rpx solid gainsboro;
   border-bottom: 15rpx solid white;
   margin-top: 20rpx;
 }
@@ -134,8 +133,7 @@
 }
 
 .right-content-message .right-content-item{
-  background: #48D1CC;
-  color: white;
+  background: gainsboro;
   padding: 20rpx;
   border-radius: 20rpx;
 }
@@ -220,7 +218,7 @@
   margin-right: 20rpx;
   border-bottom-style:solid;
   border-width:1rpx;
-  border-color: #66CDAA;
+  border-color: gainsboro;
   margin-bottom: -10rpx;
 }
 

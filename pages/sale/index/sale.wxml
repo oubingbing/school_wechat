@@ -1,16 +1,16 @@
 <view class="sale-container">
   <view class='nav-bar-container'>
     <view class='nav-bar'>
-      <view class='follow {{select==1?"selected":""}}'  
+      <view class='follow {{select==1?"selected":""}} nav-padding'  
             bindtap="selected" 
             data-type="1">全部</view>
-      <view class='follow {{select==2?"selected":""}}'               
+      <view class='follow {{select==2?"selected":""}} nav-padding'               
             bindtap="selected" 
             data-type="2">喜欢</view>
-      <view class='new {{select==3?"selected":""}}'                  
+      <view class='new {{select==3?"selected":""}} nav-padding'                  
             bindtap="selected" 
             data-type="3">最新</view>
-      <view class='hot {{select==4?"selected":""}}'                  
+      <view class='hot {{select==4?"selected":""}} nav-padding'                  
             bindtap="selected" 
             data-type="4">最热</view>
     </view>
@@ -84,6 +84,6 @@
 <view class='post-container'>
   <view class='wall'></view>
   <view class='post'>
-    <image src='/image/new-post.png' bindtap='post'></image>
+    <image src='/image/post.png' bindtap='post'></image>
   </view>
 </view>

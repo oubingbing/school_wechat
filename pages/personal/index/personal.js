@@ -11,9 +11,7 @@ Page({
     showLoginButton: app.globalData.authStatus
   },
   onLoad: function () {
-
     this.checkAuth();
-
     let userStorage = wx.getStorageSync('user');
     if (userStorage){
       this.setData({
@@ -27,7 +25,7 @@ Page({
   },
 
   onShow: function () {
-    //this.newLetterCount();
+    this.newLetterCount();
     this.checkLogin();
   },
 

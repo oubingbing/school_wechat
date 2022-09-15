@@ -167,7 +167,6 @@ page{
 
 .comment-container .comment-icon{
   height: 75rpx;
-  background: #424242;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -177,6 +176,11 @@ page{
   position: absolute;
   z-index: 10;
   right: 85rpx;
+
+  background: center center #8E44AD;
+  background-image: linear-gradient(315deg,#154360,#17202A);
+  background-size: 104% 104%;
+  color: #fff;
 }
 
 .comment-icon image{
@@ -316,7 +320,6 @@ page{
 }
 
 /**post css**/
-
 .post-container{
   position:fixed;
   right:18rpx;
@@ -366,13 +369,22 @@ page{
   justify-content: space-between;
   width: 95%;
   font-weight: 200;
-  font-size: 35rpx;
+  font-size: 28rpx;
   margin-top: 5rpx;
   margin-bottom: 5rpx;
+  
 }
 
 .nav-bar .selected{
-  color: #FF4500;
+  border-radius: 30rpx;
+  background: center center #4A54FF;
+  background-image: linear-gradient(315deg,#6772FF,#00F9E5);
+  background-size: 104% 104%;
+  color: #fff;
+}
+
+.nav-padding{
+  padding: 5rpx 10px;
 }
 
 .comment-input-container{
@@ -424,7 +436,6 @@ page{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   border-top-style:solid;
   border-bottom-style:solid;
   border-width:20rpx;
@@ -456,9 +467,12 @@ page{
   padding-right: 35rpx;
   margin-top: 20rpx;
   font-size: 35rpx;
-  background-color: #F5F5F5;
-  color: #7A7A7A;
+  color: white;
   border-radius: 10rpx;
+  background: center center #AED6F1;
+  background-image: linear-gradient(315deg,#48C9B0,#884EA0);
+  background-size: 104% 104%;
+  color: #fff;
 }
 
 .attachments-single-image image{
@@ -594,14 +608,16 @@ page{
 
 .message-tip .tip-content{
   padding: 20rpx;
-  background: #575757;
-  color: white;
   border-radius: 10rpx;
   font-size: 30rpx;
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
+  background: center center #4A54FF;
+  background-image: linear-gradient(315deg,#6772FF,#FF4500);
+  background-size: 104% 104%;
+  color: #fff;
 }
 
 .tip-content image{
@@ -612,4 +628,27 @@ page{
 .nickname{
   color: #66CDAA;
   font-weight: bold;
+}
+
+.admin-nickname{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.admin-item{
+  font-size: 20rpx;
+  margin-left: 15rpx;
+  border-radius: 30rpx;
+  background: center center #8E44AD;
+  background-image: linear-gradient(315deg,#D35400,#00F9E5);
+  background-size: 104% 104%;
+  color: #fff;
+  width: 80rpx;
+  text-align: center;
+  padding: 3rpx 0rpx;
+}
+
+.supertube{
+  color: #FF7F00;
 }

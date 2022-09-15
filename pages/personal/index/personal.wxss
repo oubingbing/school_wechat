@@ -187,6 +187,6 @@ page{
 }
 
 .letter-count-sub{
-  margin-left: 15rpx;
+  margin-left: 5rpx;
   color:red;
 }

@@ -106,7 +106,18 @@
       <view class="item-content">
         <view class="user-name">
           <view wx:if="{{item.supertube == 0}}">
-            <view class='nickname'>{{item.poster.nickname}}</view>
+            <view class='nickname nickname-level'>
+              <view>{{item.poster.nickname}}</view>
+              <star num="{{item.poster.star}}"></star>
+              <!-- <view class="qingtong-item" wx:if="{{item.poster.star == 1}}">青铜</view>
+              <view class="baiyin-item" wx:if="{{item.poster.star == 2}}">白银</view>
+              <view class="huangjing-item" wx:if="{{item.poster.star == 3}}">黄金</view>
+              <view class="bojing-item" wx:if="{{item.poster.star == 4}}">铂金</view>
+              <view class="zs-item" wx:if="{{item.poster.star == 5}}">钻石</view>
+              <view class="xingyao-item" wx:if="{{item.poster.star == 6}}">星耀</view>
+              <view class="wangzhe-item" wx:if="{{item.poster.star == 7}}">王者</view>
+              <view class="end-item" wx:if="{{item.poster.star == 8}}">666</view> -->
+            </view>
           </view>
           <view wx:if="{{item.supertube == 1}}">
             <view class='nickname supertube admin-nickname'>

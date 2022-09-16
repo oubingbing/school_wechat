@@ -63,11 +63,9 @@ Page({
     if (e.id != undefined) {
       this.setData({ sharecomeIn: true, shareId: e.id, shareType: e.type })
     }
-
     wx.showLoading({
       title: '加载中',
     });
-    
     this.getPost();
     this.topic();
   },

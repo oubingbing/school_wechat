@@ -1,0 +1,8 @@
+<view class="qingtong-item" wx:if="{{num == 1}}">幼园</view>
+<view class="baiyin-item" wx:if="{{num == 2}}">小学</view>
+<view class="huangjing-item" wx:if="{{num == 3}}">初中</view>
+<view class="bojing-item" wx:if="{{num == 4}}">高中</view>
+<view class="zs-item" wx:if="{{num == 5}}">大学</view>
+<view class="xingyao-item" wx:if="{{num == 6}}">硕士</view>
+<view class="wangzhe-item" wx:if="{{num == 7}}">博士</view>
+<view class="end-item" wx:if="{{num == 8}}">毕业</view>

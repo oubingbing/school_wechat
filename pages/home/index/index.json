@@ -3,6 +3,7 @@
   "backgroundTextStyle": "dark",
   "usingComponents": {
     "get-more-loading": "/components/get-more-loading/get-more-loading",
-    "not-more": "/components/not-more-tip/not-more-tip"
+    "not-more": "/components/not-more-tip/not-more-tip",
+    "star": "/components/star/star"
   }
 }

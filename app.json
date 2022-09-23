@@ -24,13 +24,15 @@
     "pages/help/help_detail/help_detail",
     "pages/travel/index/index",
     "pages/travel/create_travel/create_travel",
-    "pages/compare_face/face"
+    "pages/compare_face/face",
+
+    "pages/home/index_2/index_2"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#66CDAA",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "校园小情书",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "permission": {
     "scope.userLocation": {

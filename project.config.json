@@ -107,6 +107,12 @@
           "pathName": "pages/personal/letter/letter",
           "query": "friend_id=4058",
           "scene": null
+        },
+        {
+          "name": "表白墙_2",
+          "pathName": "pages/home/index_2/index_2",
+          "query": "friend_id=4058",
+          "scene": null
         }
       ]
     }

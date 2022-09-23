@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class='wall-container'>
+  <!-- 导航栏 -->
+  <view class="navigation">
+    <view class="navigation-item"><view class="select-tab">全部</view><view class="select-tab-bootom"></view></view>
+    <view class="navigation-item"><view>最热</view></view>
+    <view class="navigation-item"><view>收藏</view></view>
+    <view class='search-container'>
+        <view class='search'>
+          <input type='text' 
+                class='search-input' 
+                placeholder="输入你要找的表白消息"         
+                bindinput='getFilter'
+                auto-focus/>
+          <view class='search-image' bindtap='search'>
+              <image mode="" src='/image/v2/index-search.png'></image>
+          </view>
+        </view>
+    </view>
+  </view>
+
+  <!-- 内容 -->
+  <view class='body-content'>
+    <!-- 话题 -->
+    <view class="topic-content">
+      <view class="topic-title"><view class="title"><view>今日话题</view></view></view>
+      <image class="topic-image" mode="aspectFill" src='/image/v2/topic.jpeg'></image>
+      <view class="topic-data">
+        <view class="topic-data-content">你见过的最美的地方是哪？它是不是让你很心动？进 来说说吧。</view>
+      </view>
+      <view class="topic-bottom">
+        <view class="topic-bottom-content">
+          <view class="topic-bottom-left"><image src="/image/v2/index-browse.png"></image><view>645次</view></view>
+          <view class="topic-bottom-middle"><image src="/image/v2/index-topic-zan.png"></image><view>645</view></view>
+          <view class="topic-bottom-right"><image src="/image/v2/index-topic-comment.png"></image><view>645</view></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发布表白信息 -->
+  <view class='post-container'>
+    <view class='wall'></view>
+    <view class='post'>
+      <image src='/image/v2/index-poster.png' bindtap='post'></image>
+    </view>
+  </view>
+
+</view>
+
+
+

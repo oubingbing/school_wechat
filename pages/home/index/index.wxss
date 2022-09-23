@@ -348,7 +348,6 @@ page{
 }
 
 /** nav-bar **/
-
 .nav-bar-container{
   width: 100%;
   height: 70rpx;

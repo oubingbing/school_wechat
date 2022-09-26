@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/index_2/index_2",
     "pages/home/index/index",
     "pages/home/post/post",
     "pages/home/post_detail/post_detail",
@@ -24,9 +25,7 @@
     "pages/help/help_detail/help_detail",
     "pages/travel/index/index",
     "pages/travel/create_travel/create_travel",
-    "pages/compare_face/face",
-
-    "pages/home/index_2/index_2"
+    "pages/compare_face/face"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -47,20 +46,20 @@
   },
   "tabBar": {
     "color": "#515151",
-    "selectedColor": "#66CDAA",
+    "selectedColor": "#fbc346",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home/index/index",
-        "iconPath": "image/saylove.png",
-        "selectedIconPath": "image/select-saylove.png",
+        "pagePath": "pages/home/index_2/index_2",
+        "iconPath": "image/v2/saylove.png",
+        "selectedIconPath": "image/v2/select-saylove.png",
         "text": "表白墙"
       },
       {
         "pagePath": "pages/sale/index/sale",
-        "iconPath": "image/sale.png",
-        "selectedIconPath": "image/select-sale.png",
+        "iconPath": "image/v2/sale.png",
+        "selectedIconPath": "image/v2/select-sale.png",
         "text": "卖舍友"
       },
       {
@@ -77,8 +76,8 @@
       },
       {
         "pagePath": "pages/personal/index/personal",
-        "iconPath": "image/iam.png",
-        "selectedIconPath": "image/select-iam.png",
+        "iconPath": "image/v2/my.png",
+        "selectedIconPath": "image/v2/my.png",
         "text": "我的"
       }
     ]

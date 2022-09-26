@@ -381,15 +381,17 @@ Page({
     let id = event.target.id;
     let hidden = event.target.dataset.show;
 
+    console.log("显示评论")
+
     if (!hidden) {
       this.setData({
         show: id,
-        hidden: true
+        showCommentInput: true
       });
     } else {
       this.setData({
         show: 0,
-        hidden: false
+        showCommentInput: false
       });
     }
   },

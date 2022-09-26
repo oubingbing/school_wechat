@@ -113,6 +113,12 @@
           "pathName": "pages/home/index_2/index_2",
           "query": "friend_id=4058",
           "scene": null
+        },
+        {
+          "name": "卖舍友2",
+          "pathName": "pages/sale/index_2/sale_2",
+          "query": "friend_id=4058",
+          "scene": null
         }
       ]
     }

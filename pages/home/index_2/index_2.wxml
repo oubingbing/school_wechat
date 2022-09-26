@@ -88,8 +88,9 @@
             <image src="/image/v2/index-share.png"></image>
           </view>
           <view class="letter-icon"
-                bindtap="showComment" 
-                id="{{item.id}}" >
+          bindtap='showCommentInput' 
+                      data-objid="{{item.id}}"
+                      data-objtype='1'>
             <image src="/image/v2/index-topic-comment.png"></image>
             <view>{{item.comments.length}}</view>
           </view>

@@ -8,6 +8,7 @@
     "pages/home/topic_comment/topic_comment",
     "pages/home/topic_detail/topic_detail",
     "pages/sale/index/sale",
+    "pages/sale/index_2/sale_2",
     "pages/sale/post_sale/post_sale",
     "pages/sale/comment_sale/comment_sale",
     "pages/personal/index/personal",
@@ -57,7 +58,7 @@
         "text": "表白墙"
       },
       {
-        "pagePath": "pages/sale/index/sale",
+        "pagePath": "pages/sale/index_2/sale_2",
         "iconPath": "image/v2/sale.png",
         "selectedIconPath": "image/v2/select-sale.png",
         "text": "卖舍友"

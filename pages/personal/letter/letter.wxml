@@ -58,7 +58,7 @@
                      id="{{baseImageUrl+item.attachments[0]}}"
                      src="{{baseImageUrl+item.attachments[0]}}"></image>
             </view>
-            <view class="qipao"></view>
+            <view class="qipao-right"></view>
           </view>
           <view class='right-time'>{{item.created_at}}</view>
         </view>
@@ -92,6 +92,7 @@
               bindinput='getContent' 
               value='{{content}}' 
               fixed="true"
+              placeholder="请输入内容"
               cursor-spacing="10"
               auto-height/>
     <view class='send-button' bindtap='send'>
@@ -102,7 +103,7 @@
 <view class='post-container' wx:if="{{!showCommentInput}}" bindtap='comment'>
   <view class='wall'></view>
   <view class='post'>
-    <image src='/image/talk.png' bindtap='post'></image>
+    <image src='/image/v2/index-poster.png' bindtap='post'></image>
   </view>
 </view>
 

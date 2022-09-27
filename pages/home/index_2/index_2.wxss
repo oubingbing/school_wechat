@@ -593,38 +593,43 @@ page{
   bottom: 0rpx;
   z-index:100;
   width: 100%;
-  height: 200prx;
-  background: WhiteSmoke;
+  height: 100rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 10rpx;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0px 0px 16rpx 0px rgba(0,0,0,0.54); 
 }
 
 .comment-input-container textarea{
-  width: 100%;
+  width: 80%;
+  height: 90rpx;
   margin-left: 20rpx;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #0aecc3;
   margin-right: 20rpx;
-  padding-bottom: 15rpx;
-  font: 30rpx;
   font-weight: 200;
-  margin-bottom: 20rpx;
-  padding-top: 17rpx;
+  padding: 20rpx 20rpx;
+  background: #f1f1f1;
+  border-radius: 40rpx;
+
+  font-size: 24rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #7d7d7d;
 }
 
 .comment-input-container .send-button{
   width: 130rpx;
   height: 70rpx;
-  font-size: 30rpx;
-  background: #0aecc3;
-  color: white;
+  font-size: 28rpx;
+  color: #604708;
   margin-right: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border-radius: 10rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 40rpx;
+  box-shadow: 0px 0px 12rpx 0px rgba(229,161,34,0.69); 
 }

@@ -13,7 +13,8 @@
       <view class='user-left'>
 
         <view class='left-content-avatar'>
-          <image src='{{item.from_user.avatar}}'></image>
+          <image class="avatar-border" src="/image/v2/border.png"></image>
+          <image class="avatar-item" src='{{item.from_user.avatar}}'></image>
         </view>
 
         <view class='left-content'>
@@ -64,7 +65,8 @@
         </view>
 
         <view class='right-content-avatar'>
-          <image src='{{item.from_user.avatar}}'></image>
+          <image class="avatar-border" src="/image/v2/border.png"></image>
+          <image  class="avatar-item" src='{{item.from_user.avatar}}'></image>
         </view>
 
       </view>

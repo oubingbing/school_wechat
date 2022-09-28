@@ -46,7 +46,8 @@
       <view class="body-item"  wx:for="{{posts}}" wx:key="{{posts}}">
         <view class="item-header">
           <view class="avatar-item">
-            <image src="{{item.poster.avatar}}"></image>
+            <image class="avatar-border" src="/image/v2/border.png"></image>
+            <image class="user-avatar" src="{{item.poster.avatar}}"></image>
           </view>
           <view class="nickname-item">
             <view class="nickname-top">

@@ -315,9 +315,10 @@ page{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
-.avatar-item image{
+.avatar-item .user-avatar{
   width: 120rpx;
   height: 120rpx;
   border: 4rpx solid #303030;
@@ -328,14 +329,12 @@ page{
 }
 
 .avatar-border{
-  width: 120rpx;
-  height: 120rpx;
-  border-left: 8rpx solid #fbc346;
-  border-top: 8rpx solid #fbc346;
-  border-radius: 30rpx;
-  z-index: 110;
-  position: relative;
-  top: -30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  z-index: 200;
+  left: -22.5rpx;
+  top: -50rpx;
 }
 
 .nickname-item{

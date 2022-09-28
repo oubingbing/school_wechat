@@ -21,9 +21,9 @@ Page({
     face:'',
     conclusion:'',
     icon: {
-      width: "250rpx",
-      height: "250rpx",
-      path: "http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.LnBKkU9zx3EP4d2e331c723875767480754faf0248b7.png",
+      width: "170rpx",
+      height: "170rpx",
+      path: "http://image.qiuhuiyi.cn/face-select.png",
       showImage: true
     },
     qiniu: {

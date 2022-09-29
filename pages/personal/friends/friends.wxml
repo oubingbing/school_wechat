@@ -8,8 +8,12 @@
           data-obj="{{item.friend_id}}"
           bindtap='letter'>
       <view class="user-info">
-          <image src="{{item.friend.avatar}}"></image>
-        <view class="user-name">{{item.friend.nickname}}</view>
+          <image class="avatar-border" src="/image/v2/border.png"></image>
+          <image class="avatar" src="{{item.friend.avatar}}"></image>
+        <view class="user-name">
+          <view class="user-nickname">{{item.friend.nickname}}</view>
+          <view class="date-time">{{item.created_at}}</view>
+        </view>
       </view>
       <view class="message" wx:if="{{item.newMessageNumber > 0}}">{{item.newMessageNumber}}</view>
     </view> 

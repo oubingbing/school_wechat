@@ -12,16 +12,18 @@
   border-top-style:solid;
   border-width:1rpx;
   border-color: #F0F8FF;
+  align-items: center;
 }
 
 .message-item{
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: gainsboro;
   align-items: center;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 4rpx 10rpx 0px rgba(0,0,0,0.20); 
+  margin-bottom: 15rpx;
 }
 
 .delete-message{
@@ -38,19 +40,34 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 20rpx;
-  padding-top: 20rpx;
+  padding: 10rpx 0rpx;
 }
 
 .item .left{
-  width: 15%;
+  width: 13%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
-.left image{
-  width: 100rpx;
-  height: 100rpx;
+.avatar-view{
+  position: relative;
+}
+
+.avatar-border{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  z-index: 200;
+  left: -15rpx;
+  top: -15rpx;
+}
+
+.left .avatar{
+  width: 70rpx;
+  height: 70rpx;
+  border: 4rpx solid #303030;
+  border-radius: 28rpx;
 }
 
 .item .content{
@@ -61,12 +78,19 @@
 }
 
 .content .username{
-  color: #0061b2;
+  font-size: 30rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 800;
+  text-align: left;
+  color: #303030;
 }
 
 .content .created_at{
-  color: darkgray;
-  font-size: 30rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #8c8c8c;
 }
 
 .item .right{
@@ -77,8 +101,9 @@
 }
 
 .right image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
 }
 
 .praise image{
@@ -87,7 +112,7 @@
 }
 
 .right .content{
-  font-size: 30rpx;
+  font-size: 27rpx;
   width: 130rpx;
   height: 130rpx;
   overflow: hidden;

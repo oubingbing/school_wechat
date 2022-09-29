@@ -73,6 +73,13 @@
           "query": "type=0&new_message=0",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "留言板列表",
+          "pathName": "pages/personal/friends/friends",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

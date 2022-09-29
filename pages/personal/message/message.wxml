@@ -12,9 +12,10 @@
                 data-objid="{{item.obj_id}}"
                 data-id="{{item.obj.obj_id}}">
             <view class='left'>
-              <view>
-                <image src='{{item.from_user.avatar}}'></image>
-                </view>
+              <view class="avatar-view">
+                <image class="avatar-border" src="/image/v2/border.png"></image>
+                <image class="avatar" src='{{item.from_user.avatar}}'></image>
+              </view>
             </view>
             <view class='content'>
               <view class='username'>

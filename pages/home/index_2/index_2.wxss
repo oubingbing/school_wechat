@@ -333,7 +333,7 @@ page{
   height: 90rpx;
   position: absolute;
   z-index: 200;
-  left: -22.5rpx;
+  left: -22rpx;
   top: -50rpx;
 }
 

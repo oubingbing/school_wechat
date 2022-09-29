@@ -81,7 +81,8 @@
               wx:key="{{sale.comments}}">
           <view class='left'>
             <view class='user-image'>
-              <image src='{{item.commenter.avatar}}'></image>
+              <image class="avatar-border" src="/image/v2/border.png"></image>
+              <image class="comment-user-avatar" src='{{item.commenter.avatar}}'></image>
             </view>
           </view>
           <view class='right'>

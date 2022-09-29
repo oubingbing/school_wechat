@@ -430,7 +430,7 @@ page{
   font-size: 35rpx;
 }
 
-.user-image image{
+.user-image .comment-user-avatar{
   width: 110rpx;
   height: 110rpx;
   border: 4rpx solid #303030;
@@ -439,6 +439,19 @@ page{
   position: relative;
   top: -60rpx;
   margin-left: 15rpx;
+}
+
+.user-image{
+  position: relative;
+}
+
+.avatar-border{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  z-index: 200;
+  left: -7rpx;
+  top: -80rpx;
 }
 
 .right .create_at{

@@ -31,7 +31,7 @@
         <view class="topic-bottom-content">
           <view class="topic-bottom-left"><image src="/image/v2/index-browse.png"></image><view>645次</view></view>
           <view class="topic-bottom-middle"><image src="/image/v2/index-topic-zan.png"></image><view>645</view></view>
-          <view class="topic-bottom-right"><image src="/image/v2/index-topic-comment.png"></image><view>645</view></view>
+          <view class="topic-bottom-right"><image src="/image/v2/index-topic-comment.png" bindtap='openTopic' data-id="{{topic.id}}"></image><view>645</view></view>
         </view>
       </view>
     </view>

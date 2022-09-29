@@ -5,39 +5,57 @@ page{
 .sale-container{
   width: 100%;
   background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /** #F5F5F5 **/
-
 .detail-container{
-  width: 100%;
+  width: 90%;
+  height: 1100rpx;
   display: flex;
   flex-direction: column;
+  background: #f9f9f9;
+  border: 4rpx solid #000000;
+  border-radius: 30rpx;
+  box-shadow: 0px 8rpx 100rpx -34rpx rgba(0,0,0,0.25); 
+  margin-top: 30rpx;
 }
 
 .header-container{
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 700rpx;
+  height: 65%;
+  position: relative;
 }
 
-.header-container .header-bg{
-  height: 50%;
-  background: #66CDAA;
-  border-bottom-left-radius:35%;
-  border-bottom-right-radius: 35%;
-}
-
-.header-container .image-container{
-  position: absolute;
-  z-index: 100;
-  width: 100%;
+.genber{
+  width: 90rpx;
+  height: 90rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70rpx;
-  height: 600rpx;
+  justify-content: center;
+  color: #303030;
+  position: absolute;
+  z-index: 200;
+  left: 20rpx;
+  bottom: 20rpx;
+}
+
+.genber image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.header-container .image-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image-item{
@@ -45,13 +63,14 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 600rpx;
+  height: 100%;
 }
 
 .image-container .sale-image{
-  border-radius: 10rpx;
-  width: 80%;
-  height: 600rpx;
+  border-top-left-radius: 26rpx;
+  border-top-right-radius: 26rpx;
+  height: 100%;
+  width: 100%;
 }
 
 .friend-info-container{
@@ -59,14 +78,18 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 35%;
 }
 
 .friend-info-container .friend-name{
-  color: #66CDAA;
   font-weight: bold;
-  margin-bottom: 20rpx;
-  margin-top: 20rpx;
+  padding: 30rpx 0rpx;
   font-size: 40rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 40rpx;
 }
 
 .friend-info-container .delete-opetate{
@@ -90,9 +113,72 @@ page{
 }
 
 .friend-info-container .major{
-  font-size: 25rpx;
-  color: gray;
+  width: 95%;
   padding: 5rpx 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #303030;
+}
+
+.like-icon{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.like-icon-content{
+  width: 90rpx;
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Medium;
+  font-weight: 500;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 28rpx;
+  position: relative;
+  z-index: 100;
+  bottom: -65rpx;
+}
+
+.like-icon image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.like-tab{
+  width: 140rpx;
+  height: 60rpx;
+  background: linear-gradient(139deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 30rpx;
+  box-shadow: 0px 0px 6rpx 0px rgba(247,171,30,0.81); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.like-introduce{
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: CENTER;
+  color: #000000;
+  line-height: 32rpx;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
 }
 
 .operate {
@@ -152,7 +238,7 @@ page{
 }
 
 .comment-wall{
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -168,13 +254,49 @@ page{
   font-size: 28rpx;
   height: 100rpx;
   color: gray;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #F0F8FF;
   font-weight: bold;
 }
 
+.coment-icon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+}
+
+.coment-icon image{
+  width: 50rpx;
+  height: 50rpx;  
+}
+
+.comment-title{
+  width: 70%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  font-size: 35rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 1000;
+  text-align: left;
+  color: #303030;
+  line-height: 50rpx;
+}
+
+.title-border{
+  width:140rpx;
+  height: 10rpx;
+  background: #fbc346;
+  box-shadow: 0px 0px 8rpx 0px rgba(247,171,30,0.81);
+}
+
 .comment-header .zan{
+  width: 10%;
   display: flex;
   flex-direction: row;
 }
@@ -206,40 +328,52 @@ page{
   bottom: 0rpx;
   z-index:100;
   width: 100%;
-  height: 200prx;
-  background: white;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 10rpx;
+  justify-content: space-around;
+  background: #ffffff;
+  padding: 20rpx 10rpx;
+  box-shadow: 0px 0px 8rpx 0px rgba(0,0,0,0.34);
 }
 
 .comment-input-container textarea{
-  width: 100%;
-  margin-left: 20rpx;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #66CDAA;
-  margin-right: 20rpx;
-  padding-bottom: 15rpx;
-  font: 30rpx;
-  font-weight: 200;
-  margin-bottom: 20rpx;
-  padding-top: 17rpx;
+  height: 70rpx;
+  padding: 20rpx 10rpx;
+  width: 70%;
+  background: #f1f1f1;
+  border-radius: 35rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #7d7d7d;
+  line-height: 34rpx;
 }
 
 .comment-input-container .send-button{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+}
+
+.bt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
   width: 130rpx;
   height: 70rpx;
   font-size: 30rpx;
-  background: #66CDAA;
-  color: white;
-  margin-right: 20rpx;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  border-radius: 10rpx;
+  color: #604708;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 35rpx;
+  box-shadow: 0px 0px 12rpx 0px rgba(229,161,34,0.69); 
 }
 
 .show-self{
@@ -265,26 +399,27 @@ page{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: white;
+  margin-top: 30rpx;
 }
 
 .user-comment .comment-item{
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-direction: row;
-  margin-bottom: 20rpx;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-color: #E8E8E8;
+  margin-bottom: 30rpx;
   padding-top: 20rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 20rpx 0px rgba(193,193,193,0.71); 
+  margin-top: 50rpx;
 }
 
 .comment-item .left{
-  width: 15%;
+  width: 22%;
 }
 
 .comment-item .right{
-  width: 85%;
+  width: 78%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -296,9 +431,14 @@ page{
 }
 
 .user-image image{
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
+  width: 110rpx;
+  height: 110rpx;
+  border: 4rpx solid #303030;
+  border-radius: 30rpx;
+  z-index: 100;
+  position: relative;
+  top: -60rpx;
+  margin-left: 15rpx;
 }
 
 .right .create_at{
@@ -306,10 +446,14 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: darkgray;
-  font-size: 25rpx;
   margin-top: 5rpx;
   align-items: center;
+  font-size: 20rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 25rpx;
 }
 
 .comment-icon{
@@ -317,14 +461,22 @@ page{
   flex-direction: row;
 }
 .right .comment-name{
-  color: #0061b2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 800;
+  text-align: left;
+  color: #303030;
+  line-height: 40rpx;
 }
 
 .coment-icon-sub{
   padding: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .comment-name .letter-image{
@@ -365,6 +517,7 @@ page{
   font-size: 30rpx;
   background: WhiteSmoke;
   padding: 10rpx;
+  width: 90%;
 }
 
 .qipao{
@@ -405,18 +558,17 @@ page{
 }
 
 .comment-user{
-  color: #66CDAA;
 }
 
 
-.share-user-button .button{
-  background: none !important;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 30rpx;
-  color: #FF7F00;
+.share-user-button image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.delete-icon{
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .button::after{
@@ -429,25 +581,29 @@ page{
   align-items: center;
 }
 
+.admin-nickname image{
+  width: 90rpx;
+  height: 27rpx;
+  margin-left: 10px;
+}
+
 .admin-item{
     font-size: 20rpx;
-  margin-left: 15rpx;
-  border-radius: 30rpx;
-  background: center center #8E44AD;
-  background-image: linear-gradient(315deg,#D35400,#00F9E5);
-  background-size: 104% 104%;
-  color: #fff;
-  width: 80rpx;
-  text-align: center;
-  padding: 3rpx 0rpx;
+    margin-left: 15rpx;
+    border-radius: 30rpx;
+    background: center center #8E44AD;
+    background-image: linear-gradient(315deg,#D35400,#00F9E5);
+    background-size: 104% 104%;
+    color: #fff;
+    width: 80rpx;
+    text-align: center;
+    padding: 3rpx 0rpx;
 }
 
 .supertube{
-  color: #FF7F00;
   font-weight: bold;
 }
 
 .comment-nickname{
-  color: #66CDAA;
   font-weight: bold;
 }

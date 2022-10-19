@@ -80,6 +80,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "新个人中心",
+          "pathName": "pages/personal/index_2/personal",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

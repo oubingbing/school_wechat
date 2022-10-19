@@ -11,6 +11,7 @@
     "pages/sale/index_2/sale_2",
     "pages/sale/post_sale/post_sale",
     "pages/sale/comment_sale/comment_sale",
+    "pages/personal/index_2/personal",
     "pages/personal/index/personal",
     "pages/personal/message/message",
     "pages/personal/suggestion/suggestion",
@@ -76,7 +77,7 @@
         "text": "情侣脸"
       },
       {
-        "pagePath": "pages/personal/index/personal",
+        "pagePath": "pages/personal/index_2/personal",
         "iconPath": "image/v2/my.png",
         "selectedIconPath": "image/v2/my.png",
         "text": "我的"

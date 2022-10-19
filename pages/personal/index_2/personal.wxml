@@ -1,0 +1,28 @@
+<view class="container">
+  <!--背景-->
+  <view class="bg-content">
+    <image class="bg" src="/image/v2/bg.png"></image>
+    <view class="my-word">
+      <view class="my-word-content">你在路上随便碰到的一个路人 都是别人做梦都想见到的那人</view>
+    </view>
+    <view class="bg-null"></view>
+    <view class="avatar-container">
+      <image class="avatar" wx:if="{{!showLoginButton}}" src='{{user.avatar}}'></image>
+      <image class="avatar-border" src="/image/v2/border.png"></image>
+    </view>
+  </view>
+    <!--个人信息-->
+    <view class="user-info">
+      <view class="fans">
+        <view>994</view>
+        <view>粉丝</view>
+      </view>
+      <view class="nickname">
+        <view>叶子</view>
+      </view>
+      <view class="follow">
+        <view>1639</view>
+        <view>关注</view>
+      </view>
+    </view>
+</view>

@@ -65,14 +65,14 @@
       },
       {
         "pagePath": "pages/travel/index/index",
-        "iconPath": "image/run.png",
-        "selectedIconPath": "image/select-run.png",
+        "iconPath": "image/v2/run.png",
+        "selectedIconPath": "image/v2/select-run.png",
         "text": "步数旅行"
       },
       {
         "pagePath": "pages/compare_face/face",
-        "iconPath": "image/fall-in-love.png",
-        "selectedIconPath": "image/select-fall-in-love.png",
+        "iconPath": "image/v2/fall-in-love.png",
+        "selectedIconPath": "image/v2/select-fall-in-love.png",
         "text": "情侣脸"
       },
       {

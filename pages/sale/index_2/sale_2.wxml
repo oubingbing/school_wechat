@@ -1,18 +1,19 @@
 <view class="sale-container">
-  <view class='nav-bar-container'>
-    <view class='nav-bar'>
-      <view class='follow {{select==1?"selected":""}} nav-padding'  
-            bindtap="selected" 
-            data-type="1">全部</view>
-      <view class='follow {{select==2?"selected":""}} nav-padding'               
-            bindtap="selected" 
-            data-type="2">喜欢</view>
-      <view class='new {{select==3?"selected":""}} nav-padding'                  
-            bindtap="selected" 
-            data-type="3">最新</view>
-      <view class='hot {{select==4?"selected":""}} nav-padding'                  
-            bindtap="selected" 
-            data-type="4">最热</view>
+  <!-- 导航栏 -->
+  <view class="navigation">
+    <view class="navigation-item"><view class="select-tab">全部</view><view class="select-tab-bootom"></view></view>
+    <view class="navigation-item"><view>最热</view></view>
+    <view class="navigation-item"><view>收藏</view></view>
+    <view class='search-container'>
+        <view class='search'>
+          <input type='text' 
+                class='search-input' 
+                placeholder="输入你要找的表白消息"         
+                bindinput='getFilter'/>
+          <view class='search-image' bindtap='search'>
+              <image mode="" src='/image/v2/index-search.png'></image>
+          </view>
+        </view>
     </view>
   </view>
 
@@ -40,10 +41,13 @@
           <view class='footer-item'>
             <view class='user-info'>
               <image class='icon avatar' src='{{item.poster.avatar}}'></image>
-              <view>{{item.poster.nickname}}</view>
+              <image class="left-avatar-border" src="/image/v2/border.png"></image>
+              <view class="user-name">{{item.poster.nickname}}</view>
             </view>
+            <view class="introduce">“你最近是不是又胖了?” “没有啊，为什么这么说?” “那为什么在我心里的分量越来越重了?”</view>
             <view class='share-icon'>
-              {{item.comment_number}}评论
+              <view>{{item.comment_number}}</view>
+              <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
             </view>
           </view>
         </view>
@@ -63,10 +67,13 @@
           <view class='footer-item'>
             <view class='user-info'>
               <image class='icon avatar' style='width: 40rpx;' src='{{item.poster.avatar}}'></image>
-              <view >{{item.poster.nickname}}</view>
+              <image class="right-avatar-border" src="/image/v2/border.png"></image>
+              <view class="user-name">{{item.poster.nickname}}</view>
             </view>
+            <view class="introduce">“你最近是不是又胖了?” “没有啊，为什么这么说?” “那为什么在我心里的分量越来越重了?”</view>
             <view class='share-icon'>
-              {{item.comment_number}}评论
+              <view>{{item.comment_number}}</view>
+              <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
             </view>
           </view>
         </view>

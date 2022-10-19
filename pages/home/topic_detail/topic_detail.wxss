@@ -1,72 +1,151 @@
 page{
-  background: #F5F5F5;
+  background: #ffffff;
 }
 
 .topic-container{
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.topic-container .topic{
+.topic-content{
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  height: 500rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 20rpx 0px rgba(193,193,193,0.71); 
+  position:relative;
+  margin-top: 70rpx;
+}
+
+.topic-title{
   width: 100%;
-  background: white;
+  display: flex;
+  flex-direction: column;
+  position:absolute;
+}
+
+.title{
+  display: flex;
+  flex-direction: column;
+  width: 250rpx;
+  height: 70rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 12rpx 0px rgba(196,174,134,0.50); 
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 100;
+  top: -35rpx;
+  margin: 0rpx auto;
+}
+
+.topic-image{
+  width: 100%;
+  height: 350rpx;
+  border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+}
+
+.topic-data{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 150rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.topic-data-content{
+  width: 92%;
+  height: 80rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.topic-bottom{
+  width: 100%;
+  height: 70rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.topic .topic-content{
-  width: 95%;
-  display: flex;
-  flex-direction: column;
-}
-
-.topic-content .title{
-  font-size: 45rpx;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
-}
-
-.topic-content .content{
-  color: gray;
-  padding-top: 10rpx;
-}
-
-.topic-content .attachments{
-  width: 95%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20rpx;
-}
-
-.single-image image{
-  width: 400rpx;
-}
-
-.more-image{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-}
-
-.more-image image{
-  width: 180rpx;
-  height: 180rpx;
-  margin-right: 10rpx;
-  margin-bottom: 10rpx;
-}
-
-.topic .footer{
+.topic-bottom-content{
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
-  padding-top: 15rpx;
-  font-size: 30rpx;
-  padding-bottom: 15rpx;
+  justify-content: flex-end;
 }
 
+.topic-bottom-left{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.topic-bottom-left image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.topic-bottom-middle{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.topic-bottom-middle image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.topic-bottom-right{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 32rpx;
+}
+
+.topic-bottom-right image{
+  width: 50rpx;
+  height: 50rpx;
+}
 .footer .footer-praise{
   display: flex;
   flex-direction: row;
@@ -107,46 +186,75 @@ page{
 
 /** 用户评论内容 **/
 .user-comment{
-  width: 100%;
+  width: 92%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: white;
   margin-top: 20rpx;
 }
 
 .user-comment .comment-item{
-  width: 95%;
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 20rpx;
-  margin-bottom: 20rpx;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #E8E8E8;
+  margin-bottom: 50rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 45rpx -20rpx rgba(193,193,193,0.71); 
 }
 
 .comment-item .left{
-  width: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .comment-item .right{
-  width: 85%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin-bottom: 20rpx;
+  align-items: center;
 }
 
 .comment-item .content{
-  font-size: 35rpx;
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 28rpx;
+  padding: 30rpx 0rpx;
 }
 
-.user-image image{
+.user-image{
+  position: relative;
+  width: 22%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-image .user-avatar{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 30rpx;
+  border: 4rpx solid #303030;
+  z-index: 100;
+  position: absolute;
+  left: 18rpx;
+  top: -35rpx;
+}
+
+.avatar-border{
   width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
+  height:80rpx;
+  position: absolute;
+  z-index: 200;
+  top: -55rpx;
 }
 
 .right .create_at{
@@ -161,22 +269,43 @@ page{
 }
 
 .comment-icon image{
-  width: 40rpx;
-  height: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
+.comment-name{
+  width: 75%;
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Medium;
+  font-weight: 500;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 30rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.right .comment-name{
-  color: #0061b2;
+.comment-delete-icon{
+  width: 42rpx;
+  height: 42rpx;
 }
 
 .right .right-item{
-  margin-bottom: 10rpx;
+  width: 95%;
 }
 
 .right-item .time-deleted{
   display: flex;
   flex-direction: row;
+  font-size: 20rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 18rpx;
 }
 
 .time-deleted .delete-comment{
@@ -210,33 +339,38 @@ page{
 /** 新的评论css **/
 
 .comment-user-container{
-  font-size: 30rpx;
-  background: WhiteSmoke;
-  padding: 10rpx;
+  flex-direction: row;
+  margin-top: 20rpx;
 }
 
-.qipao{
-  width: 0;
-  height: 0;
-  border-right: 20rpx solid white;
-  border-bottom: 20rpx solid WhiteSmoke;
-  border-left: 20rpx solid white;
-  margin-left: 20rpx;
+.comment-user-avatar{
+
 }
 
-.inline-item{
+.comment-nickname{
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Semibold;
+  font-weight: 600;
+  text-align: LEFT;
+  color: #303030;
+  text-align: center;
+}
+
+/**.inline-item{
   display: inline;
-}
+}**/
 
 .comment-wall-item .comment-user-container{
   display: inline;
 }
 
 .comment-user-container image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 5rpx;
-  border-radius:20rpx;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+  border-radius:10rpx;
+  box-shadow: 0px 0px 50rpx -10rpx rgba(193,193,193,0.71);
+  border: 2rpx solid #303030; 
 }
 
 .comment-wall-item .comment-ref-user-container{
@@ -253,7 +387,9 @@ page{
 }
 
 .comment-user{
-  color: #0061b2;
+  display: flex;
+  flex-direction: row;
+
 }
 
 /** 评论框 **/
@@ -338,4 +474,74 @@ page{
   font-weight: 200;
   text-align: center;
   color: darkgray;
+}
+
+
+.comment-wall{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+
+.comment-wall .comment-header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  height: 100rpx;
+  color: gray;
+  font-weight: bold;
+}
+
+.coment-icon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+}
+
+.coment-icon image{
+  width: 50rpx;
+  height: 50rpx;  
+}
+
+.comment-title{
+  width: 30%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 35rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 1000;
+  text-align: left;
+  color: #303030;
+  line-height: 50rpx;
+}
+
+.title-border{
+  width:140rpx;
+  height: 10rpx;
+  background: #fbc346;
+  box-shadow: 0px 0px 8rpx 0px rgba(247,171,30,0.81);
+}
+
+.comment-header .zan{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.comment-header .comment{
+  display: flex;
+  flex-direction: row;
 }

@@ -21,7 +21,7 @@
   <!-- 内容 -->
   <view class='body-content'>
     <!-- 话题 -->
-    <view class="topic-content">
+    <view class="topic-content" bindtap='openTopic' data-id="{{topic.id}}">
       <view class="topic-title"><view class="title"><view>今日话题</view></view></view>
       <image class="topic-image" mode="aspectFill" src='/image/v2/topic.jpeg'></image>
       <view class="topic-data">
@@ -31,7 +31,7 @@
         <view class="topic-bottom-content">
           <view class="topic-bottom-left"><image src="/image/v2/index-browse.png"></image><view>645次</view></view>
           <view class="topic-bottom-middle"><image src="/image/v2/index-topic-zan.png"></image><view>645</view></view>
-          <view class="topic-bottom-right"><image src="/image/v2/index-topic-comment.png" bindtap='openTopic' data-id="{{topic.id}}"></image><view>645</view></view>
+          <view class="topic-bottom-right"><image src="/image/v2/index-topic-comment.png"></image><view>645</view></view>
         </view>
       </view>
     </view>

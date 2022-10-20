@@ -11,7 +11,7 @@ Page({
     userImage: '',
     name: '',
     major: '',
-    gender: '',
+    gender: 1,
     genderValue:'',
     expectation: '',
     introduce: false,
@@ -19,9 +19,9 @@ Page({
     imageArray: [],
 
     icon: {
-      "width": "100rpx",
-      "height": "100rpx",
-      "path": ""
+      "width": "150rpx",
+      "height": "150rpx",
+      "path": "http://article.qiuhuiyi.cn/uload.png"
     },
     qiniu: {
       uploadNumber: 9,
@@ -33,6 +33,13 @@ Page({
 
   onLoad: function () {
 
+  },
+
+  selectGender:function(e){
+    let gender = e.target.dataset.gender;
+    this.setData({
+      gender:gender
+    })
   },
 
   onShow:function(){

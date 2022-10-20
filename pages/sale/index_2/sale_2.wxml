@@ -1,9 +1,9 @@
 <view class="sale-container">
   <!-- 导航栏 -->
   <view class="navigation">
-    <view class="navigation-item"><view class="select-tab">全部</view><view class="select-tab-bootom"></view></view>
-    <view class="navigation-item"><view>最热</view></view>
-    <view class="navigation-item"><view>收藏</view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="1">全部</view><view class='{{select==1?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="4">最热</view><view class='{{select==4?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="2">收藏</view><view class='{{select==2?"select-tab-bootom":""}}'></view></view>
     <view class='search-container'>
         <view class='search'>
           <input type='text' 

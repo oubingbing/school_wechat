@@ -131,6 +131,8 @@ Page({
     let objType = e.target.dataset.type;
     let thisTopic = this.data.topic;
 
+    console.log(e.target,"选择类型")
+
     if (objType == 1 && thisTopic != null){
       this.setData({
         showTopic: true,

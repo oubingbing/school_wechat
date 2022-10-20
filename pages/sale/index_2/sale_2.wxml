@@ -44,7 +44,7 @@
               <image class="left-avatar-border" src="/image/v2/border.png"></image>
               <view class="user-name">{{item.poster.nickname}}</view>
             </view>
-            <view class="introduce">“你最近是不是又胖了?” “没有啊，为什么这么说?” “那为什么在我心里的分量越来越重了?”</view>
+            <view class="introduce">{{item.introduce}}</view>
             <view class='share-icon'>
               <view>{{item.comment_number}}</view>
               <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
@@ -70,7 +70,7 @@
               <image class="right-avatar-border" src="/image/v2/border.png"></image>
               <view class="user-name">{{item.poster.nickname}}</view>
             </view>
-            <view class="introduce">“你最近是不是又胖了?” “没有啊，为什么这么说?” “那为什么在我心里的分量越来越重了?”</view>
+            <view class="introduce">{{item.introduce}}</view>
             <view class='share-icon'>
               <view>{{item.comment_number}}</view>
               <image class="comment-icon" src="/image/v2/sale-comment.png"></image>

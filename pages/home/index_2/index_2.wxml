@@ -88,17 +88,14 @@
                 data-obj="{{item.poster.id}}">
             <image src="/image/v2/index-share.png"></image>
           </view>
-          <view class="letter-icon"
-          bindtap='showCommentInput' 
-                      data-objid="{{item.id}}"
-                      data-objtype='1'>
-            <image src="/image/v2/index-topic-comment.png"></image>
+          <view class="letter-icon">
+            <image bindtap='showCommentInput' 
+                data-objid="{{item.id}}"
+                data-objtype='1' src="/image/v2/index-topic-comment.png"></image>
             <view>{{item.comments.length}}</view>
           </view>
-          <view class="letter-icon" 
-                data-obj="{{item.id}}"
-                bindtap='praise'>
-            <image src="/image/v2/index-topic-zan.png"></image>
+          <view class="letter-icon">
+            <image data-obj="{{item.id}}" bindtap='praise' src="/image/v2/index-topic-zan.png"></image>
             <view>{{item.praises.length}}</view>
           </view>
         </view>

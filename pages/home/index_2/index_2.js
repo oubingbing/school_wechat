@@ -444,6 +444,7 @@ Page({
   showCommentInput: function (event) {
     let objId = event.target.dataset.objid;
     let type = event.target.dataset.objtype;
+    console.log(objId,type,event)
     this.setData({
       commentObjId: objId,
       commentType: type,

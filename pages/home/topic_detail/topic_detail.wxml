@@ -66,13 +66,12 @@
                         wx:key="{{item.sub_comments}}" 
                         wx:for-item="sub">
                       <view class='comment-wall-item' 
-                            wx:if="{{!sub.ref_comment}}" 
-                            data-objid="{{item.id}}"
+                            wx:if="{{!sub.ref_comment}}">
+                            <view class='comment-user-container'>
+                              <view class="comment-user inline-item" data-objid="{{item.id}}"
                             data-type='5'
                             data-refid="{{sub.id}}"
-                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
-                            <view class='comment-user-container'>
-                              <view class="comment-user inline-item">
+                             catchtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
                                 <image class="comment-user-avatar" src='{{sub.commenter.avatar}}'></image>
                                   <view class="comment-nickname">{{sub.commenter.nickname}}：</view>
                                   <view class='inline-item'>{{sub.content}}</view>
@@ -81,7 +80,7 @@
                         </view>
 
                       <view class='comment-ref-user-container' 
-                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}"
+                             catchtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}"
                              data-objid="{{item.id}}"
                             data-type='5'
                             data-refid="{{sub.id}}"

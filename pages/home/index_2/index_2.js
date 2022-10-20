@@ -131,6 +131,8 @@ Page({
     let objType = e.target.dataset.type;
     let thisTopic = this.data.topic;
 
+    console.log(e.target,"选择类型")
+
     if (objType == 1 && thisTopic != null){
       this.setData({
         showTopic: true,
@@ -442,6 +444,7 @@ Page({
   showCommentInput: function (event) {
     let objId = event.target.dataset.objid;
     let type = event.target.dataset.objtype;
+    console.log(objId,type,event)
     this.setData({
       commentObjId: objId,
       commentType: type,

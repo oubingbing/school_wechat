@@ -1,9 +1,9 @@
 <view class="sale-container">
   <!-- 导航栏 -->
   <view class="navigation">
-    <view class="navigation-item"><view class="select-tab">全部</view><view class="select-tab-bootom"></view></view>
-    <view class="navigation-item"><view>最热</view></view>
-    <view class="navigation-item"><view>收藏</view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="1">全部</view><view class='{{select==1?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="4">最热</view><view class='{{select==4?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="2">收藏</view><view class='{{select==2?"select-tab-bootom":""}}'></view></view>
     <view class='search-container'>
         <view class='search'>
           <input type='text' 
@@ -44,7 +44,7 @@
               <image class="left-avatar-border" src="/image/v2/border.png"></image>
               <view class="user-name">{{item.poster.nickname}}</view>
             </view>
-            <view class="introduce">“你最近是不是又胖了?” “没有啊，为什么这么说?” “那为什么在我心里的分量越来越重了?”</view>
+            <view class="introduce">{{item.introduce}}</view>
             <view class='share-icon'>
               <view>{{item.comment_number}}</view>
               <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
@@ -70,7 +70,7 @@
               <image class="right-avatar-border" src="/image/v2/border.png"></image>
               <view class="user-name">{{item.poster.nickname}}</view>
             </view>
-            <view class="introduce">“你最近是不是又胖了?” “没有啊，为什么这么说?” “那为什么在我心里的分量越来越重了?”</view>
+            <view class="introduce">{{item.introduce}}</view>
             <view class='share-icon'>
               <view>{{item.comment_number}}</view>
               <image class="comment-icon" src="/image/v2/sale-comment.png"></image>

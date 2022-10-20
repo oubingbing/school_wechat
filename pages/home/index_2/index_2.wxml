@@ -2,9 +2,9 @@
 <view class='wall-container'>
   <!-- 导航栏 -->
   <view class="navigation">
-    <view class="navigation-item"><view class="select-tab">全部</view><view class="select-tab-bootom"></view></view>
-    <view class="navigation-item"><view>最热</view></view>
-    <view class="navigation-item"><view>收藏</view></view>
+    <view class="navigation-item"><view data-type="1" bindtap="selected" class="select-tab">全部</view><view class='{{select==1?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view data-type="4" bindtap="selected" class="select-tab">最热</view><view class='{{select==4?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view data-type="2" bindtap="selected" class="select-tab">收藏</view><view class='{{select==2?"select-tab-bootom":""}}'></view></view>
     <view class='search-container'>
         <view class='search'>
           <input type='text' 
@@ -88,17 +88,14 @@
                 data-obj="{{item.poster.id}}">
             <image src="/image/v2/index-share.png"></image>
           </view>
-          <view class="letter-icon"
-          bindtap='showCommentInput' 
-                      data-objid="{{item.id}}"
-                      data-objtype='1'>
-            <image src="/image/v2/index-topic-comment.png"></image>
+          <view class="letter-icon">
+            <image bindtap='showCommentInput' 
+                data-objid="{{item.id}}"
+                data-objtype='1' src="/image/v2/index-topic-comment.png"></image>
             <view>{{item.comments.length}}</view>
           </view>
-          <view class="letter-icon" 
-                data-obj="{{item.id}}"
-                bindtap='praise'>
-            <image src="/image/v2/index-topic-zan.png"></image>
+          <view class="letter-icon">
+            <image data-obj="{{item.id}}" bindtap='praise' src="/image/v2/index-topic-zan.png"></image>
             <view>{{item.praises.length}}</view>
           </view>
         </view>

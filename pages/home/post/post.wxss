@@ -29,6 +29,7 @@ page{
   width: 90%;
   display: flex;
   flex-direction: column;
+  margin-top: 30rpx;
 }
 
 .image-form .select-image{

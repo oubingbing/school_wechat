@@ -57,7 +57,8 @@ Page({
     rankPageSize: 10,
     rankPageNumber: 1,
     myRankData:'',
-    myRank:0
+    myRank:0,
+    windowHeight:0
   },
 
   onLoad: function (option) {
@@ -76,6 +77,10 @@ Page({
         showTips: true
       })
     }
+
+    this.setData({
+      windowHeight:app.globalData.ScreenTotalH
+    })
 
     this.getPersonalInfo();
     qqmapsdk = new QQMapWX({
@@ -300,6 +305,26 @@ Page({
    * 上拉加载更多
    */
   onReachBottom: function () {
+    this.setData({
+      showGeMoreLoadin: true
+    })
+    switch (parseInt(this.data.select)){
+      case 1:
+        this.travelLogs();
+        break;
+      case 2:
+        this.steps();
+        break;
+      case 3:
+        this.getRandList();
+        break;
+    }
+  },
+
+    /**
+   * 上拉加载更多
+   */
+  getMoreTravelLogs: function () {
     this.setData({
       showGeMoreLoadin: true
     })

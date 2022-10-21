@@ -1,18 +1,18 @@
-<view class='container'>
+<view class='container' style="height:{{windowHeight}}rpx;background-image: url('http://article.qiuhuiyi.cn/Group.png')">
 
   <view class='switch-container'>
-    <view bindtap="selected" data-type="1">
-      <view>旅行</view>
-      <view class='line {{select==1?"selected":""}}'></view>
+    <view class="switch-left">
+      <view bindtap="selected" data-type="1">
+      <view class='line {{select==1?"selected":""}}'>旅行</view>
+      </view>
+      <view bindtap="selected" data-type="2">
+        <view class='line {{select==2?"selected":""}}'>步数</view>
+      </view>
+      <view bindtap="selected" data-type="3">
+        <view class='line {{select==3?"selected":""}}'>校园榜</view>
+      </view>
     </view>
-    <view bindtap="selected" data-type="2">
-      <view>步数</view>
-      <view class='line {{select==2?"selected":""}}'></view>
-    </view>
-    <view bindtap="selected" data-type="3">
-      <view>校园榜</view>
-      <view class='line {{select==3?"selected":""}}'></view>
-    </view>
+    <view class="switch-right" bindtap='createTravel'><view class="switch-right-item">制定旅游线路</view></view>
   </view>
 
 <view class="page-body" wx:if="{{select==1}}">
@@ -30,7 +30,7 @@
     ></map>
   </view>
 
-    <view class='icon-container' wx:if="{{!showPostPlan}}">
+    <!--<view class='icon-container' wx:if="{{!showPostPlan}}">
       <view class='icon'>
         <image src='/image/add-image1.png' bindtap='createTravel'></image>
         <image src='/image/show-label.png' bindtap='ifShowTravelLabel'></image>
@@ -38,16 +38,16 @@
         <image src='/image/not-location.png' bindtap='ifShowTravelLocation'></image>
         <image src='/image/all-view.png' bindtap='changeView'></image>
       </view>
-    </view>
+    </view>-->
 
     <!-- 具体步数内容 -->
   <view wx:if="{{showMap}}" class='content-container'>
-    <view class='content'>
-    <view class='post-container' bindtap='createTravel' wx:if="{{showPostPlan}}">
-      <view class='post'>
-        <view>制定旅行线路</view>
+    <view class='travel-content'>
+      <view class='post-container' bindtap='createTravel' wx:if="{{showPostPlan}}">
+        <view class='post'>
+          <view>制定旅行线路</view>
+        </view>
       </view>
-    </view>
 
       <view class='item' wx:for="{{logs}}" wx:key="{{logs}}">
           <view class='left'>
@@ -55,32 +55,31 @@
           </view>
           <view class='right'>
             <view class='travel-log'>
+              <view class='address ' wx:if="{{item.city != ''}}">
+                <view class='address-content city'>{{item.city}}</view>
+              </view>
+
               <view class='travel-point'>
                 <view class='left-item'>
-                  <view>东经:{{item.format_latitude}}</view>
+                  <view>东经：{{item.format_latitude}}</view>
                 </view>
                 <view class='rightitem'>
-                  <view>北纬:{{item.format_longitude}}</view>
+                  <view>北纬：{{item.format_longitude}}</view>
                 </view>
               </view>
 
               <view class='step-number'>
-                <view class='travel-label'>行程:</view>
+                <view class='travel-label'>行程：</view>
                 <view class='travel-number'>{{item.distance}}公里</view>
               </view>
 
-              <view class='address' wx:if="{{item.city != ''}}">
-                <view class='address-label'>城市:</view>
-                <view class='address-content'>{{item.city}}</view>
-              </view>
-
               <view class='address'>
-                <view class='address-label'>地点:</view>
+                <view class='address-label'>地点：</view>
                 <view class='address-content'>{{item.name}}</view>
               </view>
 
               <view class='my-log'>
-                <view class='my-log-label'>日记:</view>
+                <view class='my-log-label'>日记：</view>
                 <view class='my-log-content'>
                   今天走了{{item.distance}}公里，我来到了{{item.name}}，这是一个美丽的地方。
                   <view class='hotel' wx:if="{{item.hotel != null}}">
@@ -111,6 +110,7 @@
             </view>
           </view>
       </view>
+      <view class="more-icon" bindtap="getMoreTravelLogs"><image src='/image/v2/travel-more.png'></image></view>
     </view>
   </view>
 

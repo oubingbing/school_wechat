@@ -1,6 +1,12 @@
 <view class="message-container">
   <view class='message-content'>
-
+    <!-- 头部切换Tab -->
+    <view class="poster-container">
+      <view class="poster-data">
+        <view class="poster-data-item select-item"><view data-type="1" bindtap="switch" class="select-tab">留言消息</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item"><view data-type="2" bindtap="switch" class="select-tab">资料设置</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+      </view>
+    </view>
         <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
           <view class='item' 
                 bindtap="opendDetail" 

@@ -112,3 +112,183 @@
   text-align: CENTER;
   color: #303030;
 }
+
+/** 用户动态信息 **/
+.user-info-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80rpx;
+}
+
+.info-top{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.user-info-item{
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  background: #f6f5f4;
+  border-radius: 40rpx;
+  height: 180rpx;
+  margin-bottom: 30rpx;
+}
+
+.user-info-image {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-content{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.p1{
+  background: #45b26b;
+}
+
+.p2{
+  background: #9757d7;
+}
+
+.p3{
+  background: #3772ff;
+}
+
+.p4{
+  background: #4bc9f0;
+}
+
+.user-info-image image{
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.user-info-data{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.user-info-flag{
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 500;
+  text-align: LEFT;
+  color: #353945;
+  line-height: 40rpx;
+}
+
+.user-info-word{
+  font-size: 35rpx;
+  font-family: OPPOSans, OPPOSans-Heavy;
+  font-weight: 800;
+  text-align: LEFT;
+  color: #353945;
+  line-height: 28rpx;
+}
+
+/** 动态详情 **/
+.poster-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+}
+
+.poster-data{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.poster-data-item{
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Medium;
+  font-weight: 500;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 32rpx;
+}
+
+.select-item{
+}
+
+.select-tab{
+  margin-bottom: 15rpx;
+}
+
+.select-tab-bootom{
+  width: 60rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 8rpx 0px #fbc346; 
+  background: #fbc346;
+  top: 35rpx;
+}
+
+.not-select-tab-bootom{
+  width: 60rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  top: 35rpx;
+}
+
+/** 消息盒子 **/
+.inbox-content{
+  display: flex;
+  flex-direction: column;
+  width: 130rpx;
+  height: 130rpx;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 100;
+  right: -600rpx;
+}
+
+.inbox-count{
+  width: 46rpx;
+  height: 46rpx;
+  background: #ff6060;
+  color: white;
+  font-size: 25rpx;
+  z-index: 300;
+  position: absolute;
+  right: -5rpx;
+  top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 23rpx;
+}
+
+.inbox-content image{
+  width: 120rpx;
+  height: 120rpx;
+  z-index: 200;
+}

@@ -13,6 +13,7 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     showGeMoreLoadin: false,
     notDataTips: false,
     param: app.globalData.param,
+    selectPoster:1
   },
   onLoad: function (option) {
     let objType = option.type;
@@ -20,6 +21,14 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     this.getInboxList(objType, messageType);
     this.setData({ param: app.globalData.param })
   },
+
+  switch:function(e){
+      let objType = e.target.dataset.type;
+      this.setData({
+        selectPoster:objType
+      })
+  },
+
   /**
    * 获取消息列表
    */

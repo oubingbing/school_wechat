@@ -1,4 +1,4 @@
-<view class='container' style="height:{{windowHeight}}rpx;background-image: url('http://article.qiuhuiyi.cn/Group.png')">
+<view class='container' style="height:{{windowHeight}}rpx;">
 
   <view class='switch-container'>
     <view class="switch-left">

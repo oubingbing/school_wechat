@@ -8,7 +8,8 @@ Page({
     newLetterNumber: 0,
     serviceId: '',
     param: app.globalData.param,
-    showLoginButton: app.globalData.authStatus
+    showLoginButton: app.globalData.authStatus,
+    selectPoster:1
   },
   onLoad: function () {
     this.checkAuth();

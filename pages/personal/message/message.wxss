@@ -1,3 +1,7 @@
+page{
+  background: #ffffff;
+}
+
 .message-container{
   width: 100%;
   display: flex;
@@ -27,11 +31,11 @@
 }
 
 .delete-message{
-  background: darkgray;
-  font-size: 30rpx;
-  padding: 5rpx;
+  background: #FFD73B;
+  font-size: 20rpx;
+  padding: 10rpx;
   border-radius: 5rpx;
-  width: 220rpx;
+  width: 150rpx;
   text-align: center;
 }
 
@@ -117,4 +121,61 @@
   height: 130rpx;
   overflow: hidden;
   text-overflow:ellipsis;
+}
+
+/** 头部切换Tab **/
+.poster-container{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0px 0px 20rpx 0px rgba(203,203,203,0.50);
+  margin-bottom: 30rpx;
+}
+
+.poster-data{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.poster-data-item{
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Medium;
+  font-weight: 500;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 32rpx;
+}
+
+.select-item{
+}
+
+.select-tab{
+  margin-bottom: 15rpx;
+}
+
+.select-tab-bootom{
+  width: 130rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 8rpx 0px #fbc346; 
+  background: #fbc346;
+  top: 35rpx;
+}
+
+.not-select-tab-bootom{
+  width: 60rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  top: 35rpx;
 }

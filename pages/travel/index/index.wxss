@@ -10,9 +10,9 @@ page{
   position: fix;
   z-index: 100;
   width: 100%;
-  height: 1300rpx;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-image: url('http://article.qiuhuiyi.cn/Group.png');
 }
 
 .switch-container{
@@ -345,7 +345,7 @@ page{
   padding-bottom: 30rpx;
   display: flex;
   flex-direction: column;
-  height: 550rpx;
+  height: 450rpx;
   width: 220rpx;
   overflow-x: hidden;
   overflow-y: scroll;

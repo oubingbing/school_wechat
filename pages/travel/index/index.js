@@ -58,7 +58,7 @@ Page({
     rankPageNumber: 1,
     myRankData:'',
     myRank:0,
-    windowHeight:0
+    windowHeight:app.globalData.windowHeight
   },
 
   onLoad: function (option) {
@@ -77,11 +77,6 @@ Page({
         showTips: true
       })
     }
-
-    this.setData({
-      windowHeight:app.globalData.ScreenTotalH
-    })
-
     this.getPersonalInfo();
     qqmapsdk = new QQMapWX({
       key: config.TX_MAP_KEY

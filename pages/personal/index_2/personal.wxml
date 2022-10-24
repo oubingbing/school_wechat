@@ -25,4 +25,55 @@
         <view>关注</view>
       </view>
     </view>
+
+    <!-- 步数信息 -->
+    <view class="user-info-content">
+      <view class="info-top">
+        <view class="today-step user-info-item">
+          <view class="user-info-image"><view class="image-content p1"><image src="/image/v2/p1.png"></image></view></view>
+          <view class="user-info-data">
+            <view class="user-info-flag">今日步数</view>
+            <view class="user-info-word">24</view>
+          </view>
+        </view>
+        <view class="today-rand user-info-item">
+          <view class="user-info-image"><view class="image-content p2"><image src="/image/v2/p2.png"></image></view></view>
+          <view class="user-info-data">
+            <view class="user-info-flag">今日排名</view>
+            <view class="user-info-word">3</view>
+          </view>
+        </view>
+      </view>
+      <view class="info-top">
+        <view class="today-step user-info-item">
+          <view class="user-info-image"><view class="image-content p3"><image src="/image/v2/p3.png"></image></view></view>
+          <view class="user-info-data">
+            <view class="user-info-flag">今日步数</view>
+            <view class="user-info-word">24</view>
+          </view>
+        </view>
+        <view class="today-rand user-info-item">
+          <view class="user-info-image"><view class="image-content p4"><image src="/image/v2/p4.png"></image></view></view>
+          <view class="user-info-data">
+            <view class="user-info-flag">打卡天数</view>
+            <view class="user-info-word">3</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 动态详情 -->
+    <view class="poster-container">
+      <view class="poster-data">
+        <view class="poster-data-item select-item"><view data-type="1" class="select-tab">全部</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item"><view data-type="2" class="select-tab">表白墙</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item"><view data-type="3" class="select-tab">卖舍友</view><view class='{{selectPoster==3?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+      </view>
+    </view>
+
+    <!-- 消息盒子 -->
+    <view class="inbox-content" bindtap="openMessage">
+      <view class="inbox-count"><view>99</view></view>
+      <image src="/image/v2/personal-poster.png"></image>
+    </view>
 </view>

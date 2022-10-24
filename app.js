@@ -32,7 +32,6 @@ App({
     reloadHome:false,
     param:false,
     authStatus:false,
-    ScreenTotalW: SCREEN_WIDTH,
-    ScreenTotalH: SCREEN_WIDTH * RATE,
+    windowHeight:SCREEN_WIDTH * RATE
   }
 })

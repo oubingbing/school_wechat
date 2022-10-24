@@ -179,3 +179,92 @@ page{
   border-radius: 10rpx;
   top: 35rpx;
 }
+
+.call-server{
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(132deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 50px;
+  box-shadow: 0px 0px 10rpx 0px rgba(229,161,34,0.69); 
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: CENTER;
+  color: #604708;
+  line-height: 30rpx;
+  bottom: 50rpx;
+  right: 30rpx;
+}
+
+/** 个人资料设置 **/
+.settle-info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 200rpx;
+}
+
+.set-ttile{
+  width: 100%;
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Heavy;
+  font-weight: 800;
+  text-align: center;
+  color: #303030;
+  line-height: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.set-input{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textarea-content{
+  width: 600rpx;
+  height: 160rpx;
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
+  padding: 15rpx 15rpx;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
+}
+
+.set-save{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150rpx;
+}
+
+.set-save-button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 70rpx;
+  background: linear-gradient(132deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 50rpx;
+  box-shadow: 0px 0px 10rpx 0px rgba(229,161,34,0.69); 
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  color: #604708;
+  line-height: 30rpx;
+}

@@ -7,7 +7,8 @@
         <view class="poster-data-item"><view data-type="2" bindtap="switch" class="select-tab">资料设置</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
       </view>
     </view>
-        <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}">
+    <!-- 消息列表 -->
+    <view class='message-item' wx:if="{{selectPoster==1}}" wx:for="{{messageList}}" wx:key="{{messageList}}">
           <view class='item' 
                 bindtap="opendDetail" 
                 data-parent="{{item.parentObj}}"
@@ -60,12 +61,25 @@
                     wx:if="{{item.parentObj.attachments.length == 0}}">
                       {{item.parentObj.content}} 
                     </view>
-                  
             </view>
           </view>
+    </view>
+    <!-- 资料设置 -->
+    <view class="settle-info" wx:if="{{selectPoster==2}}">
+      <view class="set-ttile">个性签名</view>
+      <view class="set-input">
+        <textarea 
+        maxlength="128"
+        value='{{setData}}'
+        class='textarea-content'
+        placeholder="爱情属于勇敢的人儿"    
+        bindinput="getTextContent"/>
       </view>
-
+      <view class="set-save"><view class="set-save-button"><view>保存修改</view></view></view>
+    </view>
   </view>
+
+  <view class="call-server">客服</view>
 
   <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
   <not-more wx:if="{{notDataTips}}"></not-more>

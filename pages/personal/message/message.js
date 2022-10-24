@@ -13,7 +13,8 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     showGeMoreLoadin: false,
     notDataTips: false,
     param: app.globalData.param,
-    selectPoster:1
+    selectPoster:1,
+    setData:"爱情属于勇敢的人儿"
   },
   onLoad: function (option) {
     let objType = option.type;

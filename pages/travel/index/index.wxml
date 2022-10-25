@@ -1,4 +1,4 @@
-<view class='container' style="height:{{windowHeight}}rpx;">
+<view class='container' style="height:{{windowHeight}}rpx;background-image: url('{{bgUlr}}')">
 
   <view class='switch-container'>
     <view class="switch-left">
@@ -150,9 +150,9 @@
 
     <!-- 具体步数内容 -->
     <view class='content-container'>
-      <view class='content'>
-        <view class='item' wx:for="{{steps}}" wx:key="{{steps}}">
-            <view class='step-left'>
+      <view class='content step-data-content'>
+        <view class='step-data-item' wx:for="{{steps}}" wx:key="{{steps}}">
+            <view class='step-data-left'>
               <view class='date'>{{item.run_at}}</view>
             </view>
             <view class='step-right'>
@@ -166,30 +166,25 @@
 
   <view class='rand-container' wx:if="{{select==3}}">
     <view class='rand-content'>
-
-      <view class='rank-title'>
-        今日步数排行榜
-      </view>
-
       <view class='rand-item my-rank' wx:if="{{myRankData}}">
         <view class='rand'>
-          <view class='rand-left'>
-            <view class='rand-index'>
-              <image wx:if="{{myRank==1}}" src='/image/god.png'></image>
-              <image wx:elif="{{myRank==2}}" src='/image/silver.png'></image>
-              <image wx:elif="{{myRank==3}}" src='/image/tong.png'></image>
+          <view class='my-rand-left'>
+            <view class='my-rank-image'>
+              <image wx:if="{{myRank==1}}" src='/image/v2/rank-one.png'></image>
+              <image wx:elif="{{myRank==2}}" src='/image/v2/rank-two.png'></image>
+              <image wx:elif="{{myRank==3}}" src='/image/v2/rank-three.png'></image>
               <view wx:else>{{myRank}}</view>
             </view>
-            <image class='rank-avatar' src='{{myRankData.user.avatar}}'></image>
-            <view class='nickname rand-left-item'>{{myRankData.user.nickname}}</view>
           </view>
-          <view class='rand-right'>
-            <view class='rand-step'>{{myRankData.step}}</view>
+          <view class='my-rand-right'>
+            <view class="my-rank-word">您当前步数榜排名</view>
+            <view class='my-rank-num'>第{{myRank}}名</view>
           </view>
         </view>
       </view>
 
-      <view class='rand-item' 
+      <view class="rank-item-list">
+        <view class='rand-item' 
             bindtap='letter' 
             data-user_id='{{item.user_id}}' 
             wx:for="{{randList}}" 
@@ -197,9 +192,9 @@
         <view class='rand'>
           <view class='rand-left'>
             <view class='rand-index'>
-              <image wx:if="{{(index+1)==1}}" src='/image/god.png'></image>
-              <image wx:elif="{{(index+1)==2}}" src='/image/silver.png'></image>
-              <image wx:elif="{{(index+1)==3}}" src='/image/tong.png'></image>
+              <image class="rank-image" wx:if="{{(index+1)==1}}" src='/image/v2/rank-one.png'></image>
+              <image class="rank-image" wx:elif="{{(index+1)==2}}" src='/image/v2/rank-two.png'></image>
+              <image class="rank-image" wx:elif="{{(index+1)==3}}" src='/image/v2/rank-three.png'></image>
               <view wx:else>{{index+1}}</view>
             </view>
             <image class='rank-avatar' src='{{item.user.avatar}}'></image>
@@ -209,15 +204,9 @@
             <view class='rand-step'>{{item.step}}</view>
           </view>
         </view>
+        </view>
       </view>
 
-    </view>
-  </view>
-
-  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
-    <view class='get-more-item'>
-      <image src='/image/get-more.gif' mode='aspectFit'></image>
-      <view class='loading'>加载中</view>
     </view>
   </view>
 </view>

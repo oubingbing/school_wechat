@@ -155,6 +155,15 @@
     </view>
   </view>
 
+  <view class='message-tip' 
+        wx:if="{{newMessage}}" 
+        bindtap='openMessage'>
+    <view class='tip-content'>
+      <image src='/image/v2/bell.png'></image>
+      <view>{{newMessageNumber}}条新消息</view>
+    </view>
+  </view>
+
   <!-- 发布表白信息 -->
   <view class='post-container'>
     <view class='wall'></view>

@@ -12,7 +12,9 @@ page{
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-image: url('http://article.qiuhuiyi.cn/Group.png');
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
 }
 
 .switch-container{
@@ -117,15 +119,27 @@ page{
   flex-direction: column;
   width: 100%;
   align-items: center;
-  padding-bottom: 50rpx;
-  padding-top: 50rpx;
-  color:#66CDAA;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.label{
+  font-size: 40rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 700;
+  color: #5c1c49;
+  line-height: 40rpx;
 }
 
 .header .header-content{
   width: 95%;
+  height: 240rpx;
   display: flex;
   flex-direction: column;
+  background: rgba(255,255,255,0.90);
+  border-radius: 40rpx;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-content .step-content{
@@ -153,7 +167,10 @@ page{
 }
 
 .step-content .step{
-  font-size: 50rpx;
+  font-size: 60rpx;
+  font-family: OPPOSans, OPPOSans-Heavy;
+  font-weight: 800;
+  color: #f25358;
 }
 
 .content-container{
@@ -185,7 +202,6 @@ page{
 
 
 .step-left .date{
-  position: absolute;
   left: 120rpx;
   background: #66CDAA;
   color: white;
@@ -210,10 +226,8 @@ page{
 .step-right .step-number{
   font-size: 40rpx;
   width: 100%;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #CCCCCC;
-  color: #66CDAA;
+  color: #F25358;
+  font-size: 35rpx;
 }
 /** 加载更多 **/
 .get-more{
@@ -275,8 +289,12 @@ page{
   flex-direction: column;
   align-items: center;
   border-right-style:solid;
-  border-width:1rpx;
-  border-color: darkgray;
+  border-width:2rpx;
+  border-color: #FF4545;
+}
+
+.step-data-content{
+  margin-bottom: 200rpx;
 }
 
 .step-content .total-step{
@@ -313,6 +331,17 @@ page{
   align-items: center;
 }
 
+.step-data-item{
+  background: rgba(255,255,255,0.50);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height: 150rpx;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+
 .item .left{
   width: 160rpx;
   height: 50rpx;
@@ -320,6 +349,13 @@ page{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.step-data-left{
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 700;
+  color: #5c1c49;
 }
 
 .left .date{
@@ -614,17 +650,60 @@ page{
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.rand-content .rand-item{
-  width: 100%;
+.rank-item-list{
+  width: 90%;
   display: flex;
   flex-direction: column;
-  padding: 20rpx 20rpx;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-color: #F5F5F5;
-  background: white;
+
+  background: rgba(255,255,255,0.90);
+  border-radius: 40rpx;
+  margin-top: 50rpx;
+}
+
+.my-rank{
+  height: 250rpx;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.90);
+  border-radius: 40rpx;
+  margin-top: 50rpx;
+}
+
+.my-rand-left{
+  width: 50%;
+}
+
+.my-rand-right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.my-rank-word{
+  font-size: 30rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 700;
+  color: #000000;
+}
+
+.my-rank-num{
+  font-size: 70rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 700;
+  color: #E74C3C;
+}
+
+.my-rank-image image{
+  width: 250rpx;
+  height: 250rpx;
 }
 
 .rand-item .rand{
@@ -635,7 +714,7 @@ page{
 }
 
 .rand-item .rand-left{
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -644,16 +723,23 @@ page{
 
 .rand-left .rand-left-item{
   margin: 0rpx 20rpx;
+  font-size: 28rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 700;
+  width: 100rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .rand-left .rand-avatar{
   width: 80rpx;
   height: 80rpx;
-  border-radius: 40rpx;
+  border-radius: 20rpx;
 }
 
 .rand-item .rand-right{
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -663,9 +749,9 @@ page{
 }
 
 .rank-avatar{
-  width: 70rpx;
-  height: 70rpx;
-  border-radius: 35rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
   margin-left: 20rpx;
 }
 
@@ -674,7 +760,15 @@ page{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 15%;
+  font-size: 40rpx;
+  font-family: OPPOSans, OPPOSans-Heavy;
+  font-weight: 800;
+  color: #000000;
+}
+
+.rank-image{
+  width: 120rpx;
+  height: 120rpx;
 }
 
 .rank-title{
@@ -686,11 +780,9 @@ page{
   padding: 10rpx 0rpx;
 }
 
-.my-rank{
-  margin-bottom: 50rpx;
-}
-
-.rand-index image{
-  width: 50rpx;
-  height: 50rpx;
+.rand-step{
+  color: #E74C3C;
+  font-size: 40rpx;
+  font-family: OPPOSans, OPPOSans-Heavy;
+  font-weight: 800;
 }

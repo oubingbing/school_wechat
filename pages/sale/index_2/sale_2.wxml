@@ -17,15 +17,6 @@
     </view>
   </view>
 
-  <view class='message-tip' 
-        wx:if="{{newMessage}}" 
-        bindtap='openMessage'>
-    <view class='tip-content'>
-      <view>远方飘来{{newMessageNumber}}条新消息</view>
-      <view><image src='/image/qiqiu.png'></image></view>
-    </view>
-  </view>
-
 <view class='container'>
   <view class='content'>
     <view class='content-left'>
@@ -85,6 +76,15 @@
 
 <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
 <not-more wx:if="{{notDataTips && leftList.length != 0}}"></not-more>
+
+<view class='message-tip' 
+      wx:if="{{newMessageNumber}}" 
+      bindtap='openMessage'>
+  <view class='tip-content'>
+    <image src='/image/v2/bell.png'></image>
+    <view>{{newMessageNumber}}条新消息</view>
+  </view>
+</view>
 
 </view>
 

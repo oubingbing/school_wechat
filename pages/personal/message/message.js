@@ -13,12 +13,15 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     showGeMoreLoadin: false,
     notDataTips: false,
     param: app.globalData.param,
-    selectPoster:1,
-    setData:"爱情属于勇敢的人儿"
+    selectPoster:3,
+    setData:"爱情属于勇敢的人儿",
+    friendId: '',
+    friends: []
   },
   onLoad: function (option) {
     let objType = option.type;
     let messageType = option.new_message;
+    this.friends();
     this.getInboxList(objType, messageType);
     this.setData({ param: app.globalData.param })
   },
@@ -28,6 +31,29 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
       this.setData({
         selectPoster:objType
       })
+  },
+
+    /**
+   * 好友列表
+   */
+  friends:function(){
+    let _this = this;
+    http.get(`/friends`,
+      {},
+      function (res) {
+        _this.setData({
+          friends: res.data.data
+        })
+      });
+  },
+  /**
+   * 跳转私信
+   */
+  letter: function (e) {
+    let id = e.currentTarget.dataset.obj;
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id
+    })
   },
 
   /**

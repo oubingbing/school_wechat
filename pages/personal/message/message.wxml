@@ -3,10 +3,32 @@
     <!-- 头部切换Tab -->
     <view class="poster-container">
       <view class="poster-data">
-        <view class="poster-data-item select-item"><view data-type="1" bindtap="switch" class="select-tab">留言消息</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item"><view data-type="3" bindtap="switch" class="select-tab">留言列表</view><view class='{{selectPoster==3?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item select-item"><view data-type="1" bindtap="switch" class="select-tab">消息列表</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
         <view class="poster-data-item"><view data-type="2" bindtap="switch" class="select-tab">资料设置</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
       </view>
     </view>
+    <!-- 留言列表 -->
+    <view class="friend-container" wx:if="{{selectPoster==3}}">
+      <view class="container-content">
+        <view class="content-item" 
+              wx:for="{{friends}}" 
+              wx:key="{{friends}}"
+              data-obj="{{item.friend_id}}"
+              bindtap='letter'>
+          <view class="user-info">
+              <image class="avatar-border" src="/image/v2/border.png"></image>
+              <image class="avatar" src="{{item.friend.avatar}}"></image>
+            <view class="user-name">
+              <view class="user-nickname">{{item.friend.nickname}}</view>
+              <view class="date-time">{{item.created_at}}</view>
+            </view>
+          </view>
+          <view class="message-count" wx:if="{{item.newMessageNumber > 0}}">{{item.newMessageNumber}}</view>
+        </view> 
+      </view>
+    </view>
+
     <!-- 消息列表 -->
     <view class='message-item' wx:if="{{selectPoster==1}}" wx:for="{{messageList}}" wx:key="{{messageList}}">
           <view class='item' 

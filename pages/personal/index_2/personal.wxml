@@ -6,10 +6,17 @@
       <view class="my-word-content">你在路上随便碰到的一个路人 都是别人做梦都想见到的那人</view>
     </view>
     <view class="bg-null"></view>
-    <view class="avatar-container">
-      <image class="avatar" wx:if="{{!showLoginButton}}" src='{{user.avatar}}'></image>
+    <view class="avatar-container" wx:if="{{!showLoginButton}}">
+      <image class="avatar" src='{{user.avatar}}'></image>
       <image class="avatar-border" src="/image/v2/border.png"></image>
     </view>
+
+    <view class="avatar-container" wx:if="{{showLoginButton}}">
+      <view class="login-button" wx:if="{{showLoginButton}}">
+        <button bindtap="getAuthUserInfo">登录</button>
+      </view>
+    </view>
+
   </view>
     <!--个人信息-->
     <view class="user-info">
@@ -18,7 +25,7 @@
         <view>粉丝</view>
       </view>
       <view class="nickname">
-        <view>叶子</view>
+        <view wx:if="{{!showLoginButton}}">叶子</view>
       </view>
       <view class="follow">
         <view>1639</view>
@@ -73,7 +80,7 @@
 
     <!-- 消息盒子 -->
     <view class="inbox-content" bindtap="openMessage">
-      <view class="inbox-count"><view>99</view></view>
+      <view class="inbox-count" wx:if="{{newLetterNumber != 0}}"><view>{{newLetterNumber}}</view></view>
       <image src="/image/v2/personal-poster.png"></image>
     </view>
 </view>

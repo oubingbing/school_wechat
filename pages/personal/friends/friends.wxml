@@ -1,7 +1,5 @@
 <view class="friend-container">
-
   <view class="container-content">
-
     <view class="content-item" 
           wx:for="{{friends}}" 
           wx:key="{{friends}}"
@@ -17,7 +15,5 @@
       </view>
       <view class="message" wx:if="{{item.newMessageNumber > 0}}">{{item.newMessageNumber}}</view>
     </view> 
-
   </view>
-
 </view>

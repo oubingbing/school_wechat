@@ -292,3 +292,12 @@
   height: 120rpx;
   z-index: 200;
 }
+
+.login-button button{
+  background: #fbc346;
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: CENTER;
+  color: #303030;
+}

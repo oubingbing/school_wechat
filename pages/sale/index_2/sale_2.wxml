@@ -46,12 +46,8 @@
     </view>
 
     <view class='content-right'>
-      <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}">
-        <image class='main-pic' 
-               mode='widthFix'
-               catchtap='comment'
-               data-objid='{{item.id}}' 
-               src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+      <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}" catchtap='comment' data-objid='{{item.id}}'>
+        <image class='main-pic' mode='widthFix' src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
         <view class='footer'>
           <view class='footer-item'>
             <view class='user-info'>

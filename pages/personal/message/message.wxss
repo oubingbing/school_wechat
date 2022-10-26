@@ -58,7 +58,7 @@ page{
   position: relative;
 }
 
-.avatar-border{
+.message-avatar-border{
   width: 60rpx;
   height: 60rpx;
   position: absolute;

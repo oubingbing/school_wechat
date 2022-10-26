@@ -42,7 +42,7 @@
     </view>
 
     <!-- 表白墙列表 -->
-    <view class="body-list">
+    <view class="body-list" bindtouchmove="hiddenComment">
       <view class="body-item"  wx:for="{{posts}}" wx:key="{{posts}}">
         <view class="item-header">
           <view class="avatar-item">
@@ -82,7 +82,7 @@
           </view>
         </view>
         <view class="item-footer">
-          <view class="date">2020.07.03 18:57</view>
+          <view class="date">{{item.created_at}}</view>
           <view class="letter-icon" 
                 bindtap='letter'
                 data-obj="{{item.poster.id}}">

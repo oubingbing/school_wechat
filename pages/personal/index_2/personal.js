@@ -51,6 +51,17 @@ Page({
   },
 
   /**
+   * 触摸屏幕后移动触发一些隐藏操作
+   */
+  hiddenComment: function () {
+    this.setData({
+      show: 0,
+      hidden: false,
+      showCommentInput: false
+    });
+  },
+
+  /**
    * 进入详情页面
    */
   openSalecomment:function(e){

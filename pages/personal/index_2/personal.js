@@ -9,7 +9,10 @@ Page({
     serviceId: '',
     param: app.globalData.param,
     showLoginButton: app.globalData.authStatus,
-    selectPoster:1
+    selectPoster:1,
+    sinageture:"",
+    todayStep:0,
+    myRank:0
   },
   onLoad: function () {
     this.checkAuth();
@@ -23,11 +26,41 @@ Page({
     this.getPersonalInfo();
     this.newLetterCount();
     this.getService();
+    this.statistic()
+    this.getMyRank()
   },
 
   onShow: function () {
     this.newLetterCount();
     this.checkLogin();
+    let user = wx.getStorageSync('user')
+    this.setData({sinageture:user.personal_signature})
+  },
+
+  getMyRank: function () {
+    http.get(`/my_rank`, {}, res => {
+      let resData = res.data;
+      if (resData.error_code == 0) {
+        this.setData({
+          myRank: resData.data.rank
+        })
+      }
+    });
+  },
+
+    /**
+   * 获取统计的数据
+   */
+  statistic: function () {
+    http.get('/run_statistic', {}, res=>{
+      let todayStep = res.data.data.today_step != null ? res.data.data.today_step : 0;
+      let totalStep = res.data.data.total_step != null ? res.data.data.total_step : 0;
+      this.setData({
+        todayStep: todayStep
+      })
+      wx.setStorageSync('todayStep', todayStep);
+      wx.setStorageSync('totalStep', totalStep);
+    });
   },
 
   checkLogin:function(){
@@ -52,6 +85,8 @@ Page({
         showLoginButton: false
       })
       that.getPersonalInfo()
+      that.statistic()
+      that.getMyRank()
     }
   },
 
@@ -60,7 +95,6 @@ Page({
    */
   getService: function () {
     http.get(`/service`, {}, res => {
-      console.log('客服id:' + res.data.data);
       this.setData({
         serviceId: res.data.data
       });
@@ -72,9 +106,9 @@ Page({
    */
   getPersonalInfo() {
     http.get(`/personal_info`, {}, res => {
-      console.log(res.data.data);
       this.setData({
-        user: res.data.data
+        user: res.data.data,
+        sinageture:res.data.data.personal_signature
       })
       wx.setStorageSync('user', res.data.data);
     });
@@ -85,7 +119,6 @@ Page({
    */
   newLetterCount: function () {
     http.get(`/new_messages`, {}, res => {
-      console.log(res.data.data);
       if (res.data.data != null) {
         this.setData({
           newLetterNumber: res.data.data
@@ -163,8 +196,11 @@ Page({
     this.setData({
       showLoginButton: false
     });
+    let that = this
     http.login(null, null, null, res => {
-      this.getPersonalInfo();
+      that.getPersonalInfo();
+      that.statistic()
+      that.getMyRank()
     });
   },
 })

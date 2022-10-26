@@ -92,12 +92,12 @@
       <view class="set-input">
         <textarea 
         maxlength="128"
-        value='{{setData}}'
+        value='{{user.personal_signature}}'
         class='textarea-content'
-        placeholder="爱情属于勇敢的人儿"    
+        placeholder=""    
         bindinput="getTextContent"/>
       </view>
-      <view class="set-save"><view class="set-save-button"><view>保存修改</view></view></view>
+      <view class="set-save"><view class="set-save-button" bindtap="signatureSave"><view>保存修改</view></view></view>
     </view>
   </view>
 

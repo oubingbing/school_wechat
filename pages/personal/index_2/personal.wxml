@@ -2,8 +2,8 @@
   <!--背景-->
   <view class="bg-content">
     <image class="bg" src="/image/v2/bg.png"></image>
-    <view class="my-word">
-      <view class="my-word-content">你在路上随便碰到的一个路人 都是别人做梦都想见到的那人</view>
+    <view class="my-word" wx:if="{{sinageture}}">
+      <view class="my-word-content">{{sinageture}}</view>
     </view>
     <view class="bg-null"></view>
     <view class="avatar-container" wx:if="{{!showLoginButton}}">
@@ -21,14 +21,14 @@
     <!--个人信息-->
     <view class="user-info">
       <view class="fans">
-        <view>994</view>
+        <view>{{user.fans_num}}</view>
         <view>粉丝</view>
       </view>
       <view class="nickname">
         <view wx:if="{{!showLoginButton}}">叶子</view>
       </view>
       <view class="follow">
-        <view>1639</view>
+        <view>{{user.follow_num}}</view>
         <view>关注</view>
       </view>
     </view>
@@ -40,14 +40,14 @@
           <view class="user-info-image"><view class="image-content p1"><image src="/image/v2/p1.png"></image></view></view>
           <view class="user-info-data">
             <view class="user-info-flag">今日步数</view>
-            <view class="user-info-word">24</view>
+            <view class="user-info-word">{{todayStep}}</view>
           </view>
         </view>
         <view class="today-rand user-info-item">
           <view class="user-info-image"><view class="image-content p2"><image src="/image/v2/p2.png"></image></view></view>
           <view class="user-info-data">
             <view class="user-info-flag">今日排名</view>
-            <view class="user-info-word">3</view>
+            <view class="user-info-word">{{myRank}}</view>
           </view>
         </view>
       </view>
@@ -55,15 +55,15 @@
         <view class="today-step user-info-item">
           <view class="user-info-image"><view class="image-content p3"><image src="/image/v2/p3.png"></image></view></view>
           <view class="user-info-data">
-            <view class="user-info-flag">今日步数</view>
-            <view class="user-info-word">24</view>
+            <view class="user-info-flag">帖子动态</view>
+            <view class="user-info-word">{{user.post_num}}</view>
           </view>
         </view>
         <view class="today-rand user-info-item">
           <view class="user-info-image"><view class="image-content p4"><image src="/image/v2/p4.png"></image></view></view>
           <view class="user-info-data">
             <view class="user-info-flag">打卡天数</view>
-            <view class="user-info-word">3</view>
+            <view class="user-info-word">{{user.clock_num}}</view>
           </view>
         </view>
       </view>

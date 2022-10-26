@@ -14,16 +14,61 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     notDataTips: false,
     param: app.globalData.param,
     selectPoster:2,
-    setData:"爱情属于勇敢的人儿",
     friendId: '',
-    friends: []
+    friends: [],
+    user:{"personal_signature":""}
   },
   onLoad: function (option) {
     let objType = option.type;
     let messageType = option.new_message;
+    this.getPersonalInfo()
     this.friends();
     this.getInboxList(objType, messageType);
     this.setData({ param: app.globalData.param })
+  },
+
+  getTextContent:function(e){
+    let user = this.data.user
+    user.personal_signature = e.detail.value
+    this.setData({"user":user})
+  },
+
+  signatureSave:function(){
+    wx.showLoading({
+      title: '提交中...',
+    });
+    let that = this
+    http.post('/user/update/signature', {signature: this.data.user.personal_signature,}, res => {
+      wx.hideLoading();
+      if(res.data.error_code == 0){
+        wx.setStorageSync('user', that.data.user);
+        wx.showToast({
+          title: "保存成功",
+          icon:'none'
+        });
+      }else{
+        wx.showToast({
+          title: res.data.error_message,
+          icon:'none'
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500)
+      }
+    });
+  },
+
+    /**
+   * 获取个人信息
+   */
+  getPersonalInfo() {
+    http.get(`/personal_info`, {}, res => {
+      console.log(res.data.data);
+      this.setData({
+        user: res.data.data
+      })
+      wx.setStorageSync('user', res.data.data);
+    });
   },
 
   switch:function(e){

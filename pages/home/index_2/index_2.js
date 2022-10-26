@@ -131,8 +131,6 @@ Page({
     let objType = e.target.dataset.type;
     let thisTopic = this.data.topic;
 
-    console.log(e.target,"选择类型")
-
     if (objType == 1 && thisTopic != null){
       this.setData({
         showTopic: true,
@@ -318,8 +316,6 @@ Page({
     http.get(`/post?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&obj_type=${objType}&type=${this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${this.data.filter}`,
       {},
       res => {
-        console.log("数据")
-        console.log(res)
         setTimeout(t=>{
           wx.stopPullDownRefresh();
         },700)
@@ -351,8 +347,6 @@ Page({
    */
   previewImage: function (event) {
     let url = event.target.id;
-    console.log("图片")
-    console.log(url)
     wx.previewImage({
       current: '',
       urls: [url]
@@ -382,9 +376,6 @@ Page({
     });
     let id = event.target.id;
     let hidden = event.target.dataset.show;
-
-    console.log("显示评论")
-
     if (!hidden) {
       this.setData({
         show: id,
@@ -402,7 +393,6 @@ Page({
    * 触摸屏幕后移动触发一些隐藏操作
    */
   hiddenComment: function () {
-    console.log('inde-hiddenComment：触摸后移动');
     this.setData({
       show: 0,
       hidden: false,
@@ -444,7 +434,6 @@ Page({
   showCommentInput: function (event) {
     let objId = event.target.dataset.objid;
     let type = event.target.dataset.objtype;
-    console.log(objId,type,event)
     this.setData({
       commentObjId: objId,
       commentType: type,

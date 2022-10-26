@@ -6,20 +6,14 @@
       <view class="my-word-content">{{sinageture}}</view>
     </view>
     <view class="bg-null"></view>
-    <view class="avatar-container" wx:if="{{!showLoginButton}}">
+    <view class="avatar-container">
       <image class="avatar" src='{{user.avatar}}'></image>
       <image class="header-avatar-border" src="/image/v2/border.png"></image>
       <image class="boy" wx:if="{{user.gender == 1}}" src="/image/v2/boy.png"></image>
       <image class="girl" wx:if="{{user.gender == 2}}" src="/image/v2/girl.png"></image>
     </view>
-
-    <view class="avatar-container" wx:if="{{showLoginButton}}">
-      <view class="login-button" wx:if="{{showLoginButton}}">
-        <button bindtap="getAuthUserInfo">登录</button>
-      </view>
-    </view>
-
   </view>
+
     <!--个人信息-->
     <view class="user-info">
       <view class="fans">
@@ -28,6 +22,10 @@
       </view>
       <view class="nickname">
         <view wx:if="{{!showLoginButton}}" class="nickname-data">{{user.nickname}}</view>
+        <view class="follow-content">
+          <image class="follow-icon" src="/image/v2/to-follow.png"></image>
+          <image class="follow-icon" src="/image/v2/private-letter.png" bindtap="letter"></image>
+        </view>
       </view>
       <view class="follow">
         <view>{{user.follow_num}}</view>
@@ -241,12 +239,6 @@
           </view>
         </view>
       </view>
-    </view>
-
-    <!-- 消息盒子 -->
-    <view class="inbox-content" bindtap="openMessage">
-      <view class="inbox-count" wx:if="{{newLetterNumber != 0}}"><view>{{newLetterNumber}}</view></view>
-      <image src="/image/v2/personal-poster.png"></image>
     </view>
 
     <!-- 输入框 -->

@@ -267,4 +267,10 @@ Page({
         }
     });
   },
+  openUserInfo:function(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/personal/user_info/personal?id=' + id
+    })
+  }
 })

@@ -87,6 +87,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "个人主页",
+          "pathName": "pages/personal/user_info/personal",
+          "query": "id=3937",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

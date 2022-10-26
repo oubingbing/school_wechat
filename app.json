@@ -12,6 +12,7 @@
     "pages/sale/post_sale/post_sale",
     "pages/sale/comment_sale/comment_sale",
     "pages/personal/index_2/personal",
+    "pages/personal/user_info/personal",
     "pages/personal/index/personal",
     "pages/personal/message/message",
     "pages/personal/suggestion/suggestion",

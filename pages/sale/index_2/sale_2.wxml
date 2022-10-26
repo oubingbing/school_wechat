@@ -30,7 +30,7 @@
                src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
         <view class='footer'>
           <view class='footer-item'>
-            <view class='user-info'>
+            <view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
               <image class='icon avatar' src='{{item.poster.avatar}}'></image>
               <image class="left-avatar-border" src="/image/v2/border.png"></image>
               <view class="user-name">{{item.poster.nickname}}</view>
@@ -50,7 +50,7 @@
         <image class='main-pic' mode='widthFix' src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
         <view class='footer'>
           <view class='footer-item'>
-            <view class='user-info'>
+            <view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
               <image class='icon avatar' style='width: 40rpx;' src='{{item.poster.avatar}}'></image>
               <image class="right-avatar-border" src="/image/v2/border.png"></image>
               <view class="user-name">{{item.poster.nickname}}</view>

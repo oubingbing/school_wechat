@@ -690,6 +690,13 @@ Page({
     wx.navigateTo({
       url: '/pages/home/topic_detail/topic_detail?id=' + id
     })
+  },
+
+  openUserInfo:function(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/personal/user_info/personal?id=' + id
+    })
   }
 
 })

@@ -45,7 +45,7 @@
     <view class="body-list" bindtouchmove="hiddenComment">
       <view class="body-item"  wx:for="{{posts}}" wx:key="{{posts}}">
         <view class="item-header">
-          <view class="avatar-item">
+          <view class="avatar-item" bindtap="openUserInfo" data-id="{{item.poster.id}}">
             <image class="avatar-border" src="/image/v2/border.png"></image>
             <image class="user-avatar" src="{{item.poster.avatar}}"></image>
           </view>

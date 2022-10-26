@@ -8,7 +8,9 @@
     <view class="bg-null"></view>
     <view class="avatar-container" wx:if="{{!showLoginButton}}">
       <image class="avatar" src='{{user.avatar}}'></image>
-      <image class="avatar-border" src="/image/v2/border.png"></image>
+      <image class="header-avatar-border" src="/image/v2/border.png"></image>
+      <image class="boy" wx:if="{{user.gender == 1}}" src="/image/v2/boy.png"></image>
+      <image class="girl" wx:if="{{user.gender == 2}}" src="/image/v2/girl.png"></image>
     </view>
 
     <view class="avatar-container" wx:if="{{showLoginButton}}">
@@ -72,9 +74,174 @@
     <!-- 动态详情 -->
     <view class="poster-container">
       <view class="poster-data">
-        <view class="poster-data-item select-item"><view data-type="1" class="select-tab">全部</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
-        <view class="poster-data-item"><view data-type="2" class="select-tab">表白墙</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
-        <view class="poster-data-item"><view data-type="3" class="select-tab">卖舍友</view><view class='{{selectPoster==3?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item"><view data-type="1" bindtap="select" class="select-tab">表白墙</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+        <view class="poster-data-item"><view data-type="2" bindtap="select" class="select-tab">卖舍友</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
+      </view>
+    </view>
+
+    <!-- 表白墙列表 -->
+    <view class="body-list" wx:if="{{selectPoster==1}}">
+      <view class="body-item"  wx:for="{{posts}}" wx:key="{{posts}}">
+        <view class="item-header">
+          <view class="avatar-item">
+            <image class="avatar-border" src="/image/v2/border.png"></image>
+            <image class="user-avatar" src="{{item.poster.avatar}}"></image>
+          </view>
+          <view class="nickname-item">
+            <view class="nickname-top">
+              <view>{{item.poster.nickname}}</view>
+              <image src="/image/v2/index-admin.png" wx:if="{{item.supertube == 1}}"></image>
+            </view>
+            <view class="nickname-bottom" wx:if="{{item.topic != '无'}}">
+              <view class="nickname-flag">表白@</view>
+              <view class="bottom-name">{{item.topic}}</view>
+            </view>
+          </view>
+          <view class="icon-item">
+            <image  src="/image/v2/index-delete.png" 
+                    id="{{item.id}}"
+                    wx:if="{{item.can_delete}}" 
+                    bindtap='deletePost'></image>
+            <image src="/image/v2/index-collect.png" wx:if="{{item.follow}}" data-obj="{{item.id}}"  bindtap="cancelFolllow"></image>
+            <image src="/image/v2/index-not-collect.png" wx:if="{{!item.follow}}" data-obj="{{item.id}}" bindtap="follow"></image>
+          </view>
+        </view>
+        <view class="item-content">
+          <view class="item-content-word" wx:if="{{item.content}}">{{item.content}}</view>
+          <view class="item-content-image" wx:if='{{item.attachments.length>=1}}'>
+            <image mode="aspectFill"
+                  wx:for="{{item.attachments}}" 
+                   wx:key="{{item.attachments}}"
+                   wx:for-item="sitem"
+                   src="{{baseImageUrl+sitem}}" 
+                   bindtap='previewMoreImage'
+                   data-obj="{{item.attachments}}"
+                   id="{{baseImageUrl+sitem}}"></image>
+          </view>
+        </view>
+        <view class="item-footer">
+          <view class="date">2020.07.03 18:57</view>
+          <view class="letter-icon">
+            <image src="/image/v2/index-share.png"></image>
+          </view>
+          <view class="letter-icon">
+            <image bindtap='showCommentInput' 
+                data-objid="{{item.id}}"
+                data-objtype='1' src="/image/v2/index-topic-comment.png"></image>
+            <view>{{item.comments.length}}</view>
+          </view>
+          <view class="letter-icon">
+            <image data-obj="{{item.id}}" bindtap='praise' src="/image/v2/index-topic-zan.png"></image>
+            <view>{{item.praises.length}}</view>
+          </view>
+        </view>
+        <!-- 评论 -->
+        <view class="comment-content">
+          <view class="praise-content" wx:if="{{item.praises.length > 0}}">
+            <view class="praise-left"><image src="/image/v2/index-like.png"></image></view>
+            <view class="praise-right">
+              <view class="praise-item" 
+                    wx:for="{{item.praises}}" 
+                    wx:key="{{item.praises}}">
+                <image src="{{item.avatar}}"></image>
+                <view class="praise-name">{{item.nickname}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="comment-list" wx:if="{{item.comments.length > 0}}" >
+            <view class="comment-left"><image src="/image/v2/index-topic-comment.png"></image></view>
+            <view class="comment-right">
+              <view class="comment-item" 
+                    wx:if="{{!sub.ref_comment}}"
+                    wx:for="{{item.comments}}" 
+                    wx:key="{{item.comments}}" 
+                    wx:for-item="sub"
+                    bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
+                    data-objid="{{item.id}}"
+                    data-refid="{{sub.id}}" 
+                    data-objtype='1'>
+                <image src="{{sub.commenter.avatar}}"></image>
+                <view class="comment-name"  wx:if="{{sub.author == 0 && sub.commenter.supertube != 1}}">{{sub.commenter.nickname}}</view>
+                <view class="comment-name"  wx:if="{{sub.author == 1 && sub.commenter.supertube != 1}}">{{sub.commenter.nickname}}(楼主)</view>
+                <view class="comment-name"  wx:if="{{sub.commenter.supertube == 1}}">{{sub.commenter.nickname}}(超管)</view>
+                <view class="comment-word">：{{sub.content}}</view>
+              </view>
+
+              <view class="comment-item" 
+                    wx:if="{{sub.ref_comment}}"
+                    wx:for="{{item.comments}}" 
+                    wx:key="{{item.comments}}" 
+                    wx:for-item="sub"
+                    bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
+                    data-objid="{{item.id}}"
+                    data-refid="{{sub.id}}" 
+                    data-objtype='1'>
+                    <image src="{{sub.commenter.avatar}}"></image>
+                  <view class="comment-name">{{sub.commenter.nickname}}</view>
+                  <view class="comment-word">回复：</view>
+                  <image src="{{sub.ref_comment.refCommenter.nickname.avatar}}"></image>
+                  <view class="comment-name">{{sub.ref_comment.refCommenter.nickname}}：</view>
+                  <view class="comment-word">{{sub.content}}</view>
+              </view>
+
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 卖舍友 -->
+    <view class='container' wx:if="{{selectPoster==2}}">
+      <view class='content'>
+        <view class='content-left'>
+          <view class='item'  
+                wx:for="{{leftList}}" 
+                catchtap='comment'
+                data-objid='{{item.id}}'
+                wx:key="{{leftList}}">
+            <image class='main-pic' 
+                  mode='widthFix' 
+                  src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+            <view class='footer'>
+              <view class='footer-item'>
+                <view class='user-info'>
+                  <image class='icon avatar' src='{{item.poster.avatar}}'></image>
+                  <image class="left-avatar-border" src="/image/v2/border.png"></image>
+                  <view class="user-name">{{item.poster.nickname}}</view>
+                </view>
+                <view class="introduce">{{item.introduce}}</view>
+                <view class='share-icon'>
+                  <view>{{item.comment_number}}</view>
+                  <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class='content-right'>
+          <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}">
+            <image class='main-pic' 
+                  mode='widthFix'
+                  catchtap='comment'
+                  data-objid='{{item.id}}' 
+                  src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+            <view class='footer'>
+              <view class='footer-item'>
+                <view class='user-info'>
+                  <image class='icon avatar' style='width: 40rpx;' src='{{item.poster.avatar}}'></image>
+                  <image class="right-avatar-border" src="/image/v2/border.png"></image>
+                  <view class="user-name">{{item.poster.nickname}}</view>
+                </view>
+                <view class="introduce">{{item.introduce}}</view>
+                <view class='share-icon'>
+                  <view>{{item.comment_number}}</view>
+                  <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
 
@@ -83,4 +250,17 @@
       <view class="inbox-count" wx:if="{{newLetterNumber != 0}}"><view>{{newLetterNumber}}</view></view>
       <image src="/image/v2/personal-poster.png"></image>
     </view>
+
+    <!-- 输入框 -->
+    <view class='comment-input-container' wx:if="{{showCommentInput}}">
+    <textarea placeholder="评论" 
+              auto-focus
+              maxlength="1024"
+              cursor-spacing="15"
+              fixed="true"
+              auto-height 
+              bindinput='getCommentContent'/>
+    <view class='send-button' bindtap='sendComment'><view>发送</view></view>
+  </view>
+
 </view>

@@ -43,11 +43,9 @@
           </view>
         </view>
       </view>
-
     </view>
 
     <view class='content-right'>
-
       <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}">
         <image class='main-pic' 
                mode='widthFix'
@@ -69,7 +67,6 @@
           </view>
         </view>
       </view>
-
     </view>
   </view>
 </view>

@@ -134,7 +134,6 @@ Page({
    * 获取贴子列表
    */
   getList:function(){
-
     let objType = this.data.select;
     var order_by = 'created_at';
     var sort_by = 'desc';

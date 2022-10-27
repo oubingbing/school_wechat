@@ -53,6 +53,11 @@ page{
   justify-content: center;
 }
 
+.switch-right-item-null{
+  width: 300rpx;
+  height: 80rpx;
+}
+
 .line{
   width: 100%;
   display: flex;
@@ -769,6 +774,10 @@ page{
 .rank-image{
   width: 120rpx;
   height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .rank-title{

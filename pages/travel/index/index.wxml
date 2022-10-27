@@ -12,7 +12,7 @@
         <view class='line {{select==3?"selected":""}}'>校园榜</view>
       </view>
     </view>
-    <view class="switch-right" bindtap='createTravel'><view class="switch-right-item">制定旅游线路</view></view>
+    <view class="switch-right" bindtap='createTravel'><view class="switch-right-item" wx:if="{{select==1}}">制定旅游线路</view></view>
   </view>
 
 <view class="page-body" wx:if="{{select==1}}">
@@ -195,7 +195,7 @@
               <image class="rank-image" wx:if="{{(index+1)==1}}" src='/image/v2/rank-one.png'></image>
               <image class="rank-image" wx:elif="{{(index+1)==2}}" src='/image/v2/rank-two.png'></image>
               <image class="rank-image" wx:elif="{{(index+1)==3}}" src='/image/v2/rank-three.png'></image>
-              <view wx:else>{{index+1}}</view>
+              <view class="rank-image" wx:else><view>{{index+1}}</view></view>
             </view>
             <image class='rank-avatar' src='{{item.user.avatar}}'></image>
             <view class='nickname rand-left-item'>{{item.user.nickname}}</view>

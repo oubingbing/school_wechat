@@ -326,7 +326,7 @@ page{
 .comment-input-container{
   position:fixed;
   bottom: 0rpx;
-  z-index:100;
+  z-index:500;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -467,6 +467,16 @@ page{
   text-align: left;
   color: #303030;
   line-height: 25rpx;
+}
+
+.delete-main-comment{
+  margin-left: 20rpx;
+}
+
+.create_at_content{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .comment-icon{

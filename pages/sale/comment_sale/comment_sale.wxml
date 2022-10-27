@@ -105,19 +105,21 @@
               {{item.content}}
             </view>
             <view class='create_at right-item'>
-              <view>{{item.created_at}}</view>
+              <view class="create_at_content">
+                <view>{{item.created_at}}</view>
+                <view class="delete-main-comment" 
+                      wx:if="{{item.can_delete}}" 
+                      data-objid="{{item.id}}"
+                      data-type='4'
+                      data-refid="{{item.id}}"
+                      bindtap="deleteMainComment">删除</view>
+              </view>
               <view class='comment-icon'>
                 <image class="coment-icon-sub"
                   bindtap='showCommentInput' 
                   data-objid="{{item.id}}"
                   src='/image/v2/sale-comment.png'
                   data-type='4'
-                  data-refid=""></image>
-                <image class="coment-icon-sub"
-                  bindtap='letter'
-                  data-objid="{{item.id}}"
-                  data-type='4'
-                  src='/image/v2/sale-share.png'
                   data-refid=""></image>
               </view>
             </view>

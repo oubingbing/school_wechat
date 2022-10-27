@@ -21,11 +21,11 @@
   <!-- 内容 -->
   <view class='body-content'>
     <!-- 话题 -->
-    <view class="topic-content" bindtap='openTopic' data-id="{{topic.id}}">
+    <view class="topic-content" bindtap='openTopic' data-id="{{topic.id}}" wx:if="{{showTopic}}">
       <view class="topic-title"><view class="title"><view>今日话题</view></view></view>
-      <image class="topic-image" mode="aspectFill" src='/image/v2/topic.jpeg'></image>
+      <image class="topic-image" mode="aspectFill" src="{{baseImageUrl+topic.attachments[0]}}"></image>
       <view class="topic-data">
-        <view class="topic-data-content">你见过的最美的地方是哪？它是不是让你很心动？进 来说说吧。</view>
+        <view class="topic-data-content">{{topic.content}}</view>
       </view>
       <view class="topic-bottom">
         <view class="topic-bottom-content">
@@ -36,7 +36,7 @@
       </view>
     </view>
     <!-- 表白墙flag -->
-    <view class="body-flag">
+    <view class="body-flag" wx:if="{{posts.length>0}}">
       <view class="flag">表白墙</view>
       <view class="flag-tab"></view>
     </view>
@@ -51,12 +51,12 @@
           </view>
           <view class="nickname-item">
             <view class="nickname-top">
-              <view>{{item.poster.nickname}}</view>
+              <view class="poster-nickname">{{item.poster.nickname}}</view>
               <image src="/image/v2/index-admin.png" wx:if="{{item.supertube == 1}}"></image>
             </view>
-            <view class="nickname-bottom" wx:if="{{item.topic != '无'}}">
-              <view class="nickname-flag">表白@</view>
-              <view class="bottom-name">{{item.topic}}</view>
+            <view class="nickname-bottom">
+              <view class="nickname-flag" wx:if="{{item.topic != '无'}}">表白@</view>
+              <view class="bottom-name" wx:if="{{item.topic != '无'}}">{{item.topic}}</view>
             </view>
           </view>
           <view class="icon-item">
@@ -83,11 +83,6 @@
         </view>
         <view class="item-footer">
           <view class="date">{{item.created_at}}</view>
-          <view class="letter-icon" 
-                bindtap='letter'
-                data-obj="{{item.poster.id}}">
-            <image src="/image/v2/index-share.png"></image>
-          </view>
           <view class="letter-icon">
             <image bindtap='showCommentInput' 
                 data-objid="{{item.id}}"
@@ -113,7 +108,7 @@
             </view>
           </view>
           <view class="comment-list" wx:if="{{item.comments.length > 0}}" >
-            <view class="comment-left"><image src="/image/v2/index-topic-comment.png"></image></view>
+            <view class="comment-left"><image src="/image/v2/fill-comment.png"></image></view>
             <view class="comment-right">
               <view class="comment-item" 
                     wx:if="{{!sub.ref_comment}}"

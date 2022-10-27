@@ -514,7 +514,7 @@
 }
 
 .date{
-  width: 49%;
+  width: 70%;
   font-size: 20rpx;
   font-family: PingFangSC, PingFangSC-Regular;
   font-weight: 400;
@@ -523,7 +523,7 @@
 }
 
 .letter-icon{
-  width: 17%;
+  width: 15%;
   display: flex;
   flex-direction: row;
   font-size: 25rpx;
@@ -581,6 +581,7 @@
   color: #303030;
   align-items: center;
   margin-bottom: 15rpx;
+  margin-right: 20rpx;
 }
 
 .praise-name{
@@ -595,7 +596,7 @@
   height: 35rpx;
   border: 2rpx solid #303030;
   border-radius: 12rpx;
-  margin-right: 10rpx;
+  margin-right: 5rpx;
 }
 
 .comment-list{
@@ -624,15 +625,12 @@
 }
 
 .comment-item{
-  font-size: 28rpx;
+  font-size: 25rpx;
   font-family: PingFangSC, PingFangSC-Regular;
   font-weight: 400;
   color: #303030;
   display: inline;
-  text-align: left;
-  line-height: 30rpx;
-  justify-content: center;
-  padding: 10rpx 0rpx;
+  margin-bottom: 10rpx;
 }
 
 .comment-name{
@@ -640,6 +638,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow:ellipsis;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 600;
+  color: #303030;
 }
 
 .comment-item image{
@@ -648,6 +649,7 @@
   border: 2rpx solid #303030;
   border-radius: 12rpx;
   margin-right: 10rpx;
+  margin-bottom: -10rpx;
 }
 
 .comment-word{

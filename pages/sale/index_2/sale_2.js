@@ -126,7 +126,7 @@ Page({
    */
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/personal/message/message?type=0&new_message=1'
+      url: '/pages/personal/message/message?type=0&new_message=1&t=1'
     })
   },
 

@@ -21,6 +21,8 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
   onLoad: function (option) {
     let objType = option.type;
     let messageType = option.new_message;
+    let selectType = option.t
+    this.setData({selectPoster:selectType})
     this.getPersonalInfo()
     this.friends();
     this.getInboxList(objType, messageType);

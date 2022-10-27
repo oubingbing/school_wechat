@@ -94,6 +94,13 @@
           "query": "id=3937",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "关注列表",
+          "pathName": "pages/personal/follow_list/message",
+          "query": "type=01&user_id=3937",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

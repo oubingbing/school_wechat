@@ -51,6 +51,16 @@ Page({
   },
 
   /**
+   * 进入关注页面
+   */
+  openFollowList:function(e){
+    let t = e.currentTarget.dataset.t;
+    wx.navigateTo({
+      url: `/pages/personal/follow_list/message?objType=${t}&id=0`
+    })
+  },
+
+  /**
    * 触摸屏幕后移动触发一些隐藏操作
    */
   hiddenComment: function () {
@@ -384,7 +394,7 @@ Page({
    */
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/personal/message/message?type=0&new_message=0'
+      url: '/pages/personal/message/message?type=0&new_message=0&t=2'
     })
   },
 

@@ -1,5 +1,5 @@
 page{
-  background-color: #F5F5F5;
+  background: white;
 }
 
 .post-container{
@@ -22,12 +22,21 @@ page{
 
 .textarea-content{
   padding: 15rpx;
+  width: 90%;
+  border: 4rpx solid #303030;
+  border-radius: 20rpx;
 }
 
 .form .input{
   width: 95%;
   font-weight: 200;
   font-size: 30rpx;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rpx;
 }
 
 
@@ -77,13 +86,6 @@ page{
   margin-top: 5rpx;
 }
 
-
-.button-container{
-  display: flex;
-  flex-direction: column;
-  bottom: 0rxp;
-}
-
 .button-container{
   width: 100%;
   display: flex;
@@ -93,15 +95,20 @@ page{
   text-align: center;
 }
 
-.button-container .button{
-  background: white;
-  width: 95%;
-  padding: 10rpx 10rpx;
-}
-button{
-  background: #66CDAA;
-  color: white;
-  width: 95%;
+.button-container .bt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 90rpx;
+  background: linear-gradient(110deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 1px rgba(247,171,30,0.81); 
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  color: #303030;
 }
 
 /** 加载更多 **/

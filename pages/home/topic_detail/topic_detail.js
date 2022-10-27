@@ -26,7 +26,6 @@ Page({
   },
 
   onLoad: function (options) {
-
     this.setData({
       currentTime: util.formatTime(new Date())
     });

@@ -27,11 +27,11 @@ Page({
     commentValue: '',
     showSubmit: false,
     canComment:true,
-
     leftList: [],
     rightList: [],
     leftHeight: 0,
     rightHeigt: 1,
+    follow:0,
   },
   onLoad: function (e) {
     this.setData({userId:e.id})
@@ -40,6 +40,85 @@ Page({
     this.getMyRank()
     this.getPost()
     this.getSaleList()
+    this.checkFollow()
+  },
+
+  /**
+   * 进入关注页面
+   */
+  openFollowList:function(e){
+    let id = this.data.userId;
+    let t = e.currentTarget.dataset.t;
+    wx.navigateTo({
+      url: `/pages/personal/follow_list/message?objType=${t}&id=${id}`
+    })
+  },
+
+
+  /**
+   * 取消关注
+   */
+  cancelFollowUser: function () {
+    http.put(`/cancel/${this.data.userId}/follow/5`, {},res=> {
+      if(res.data.error_code == 0){
+        this.setData({follow:0})
+        this.getPersonalInfo()
+      }else{
+       wx.showToast({
+         title: res.data.error_message,
+         icon:'none'
+       });
+       setTimeout(function () {
+         wx.hideLoading();
+       }, 1500)
+      }
+    });
+  },
+
+  /**
+   * 检测是否关注
+   */
+  checkFollow: function () {
+    http.get(`/follow/user?obj_id=${this.data.userId}`, {}, res => {
+      if(res.data.error_code == 0){
+        if(res.data.data == 1){
+          this.setData({follow:1})
+        }
+      }else{
+       wx.showToast({
+         title: res.data.error_message,
+         icon:'none'
+       });
+       setTimeout(function () {
+         wx.hideLoading();
+       }, 1500)
+      }
+    });
+  },
+
+  /**
+   * 关注用户
+   */
+  followUser:function(){
+    wx.showLoading({
+      title: '提交中...',
+    });
+
+    http.post(`/follow_user`,{obj_id:this.data.userId}, res=>{
+      wx.hideLoading();
+      if(res.data.error_code == 0){
+        this.setData({follow:1})
+        this.getPersonalInfo()
+      }else{
+       wx.showToast({
+         title: res.data.error_message,
+         icon:'none'
+       });
+       setTimeout(function () {
+         wx.hideLoading();
+       }, 1500)
+      }
+   });
   },
 
   /**
@@ -62,7 +141,6 @@ Page({
       url: '/pages/sale/comment_sale/comment_sale?id='+id
     })
   },
-
 
   /**
    * 获取贴子列表
@@ -158,7 +236,6 @@ Page({
         posts: newPost
       });
     });
-
   },
 
   /**

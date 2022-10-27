@@ -353,10 +353,14 @@ page{
   align-items: center;
   font-size: 30rpx;
   font-family: PingFangSC, PingFangSC-Medium;
-  font-weight: 500;
+  font-weight: 700;
   text-align: left;
   color: #303030;
   line-height: 40rpx;
+}
+
+.poster-nickname{
+
 }
 
 .nickname-top image{
@@ -442,7 +446,7 @@ page{
 }
 
 .date{
-  width: 49%;
+  width: 70%;
   font-size: 20rpx;
   font-family: PingFangSC, PingFangSC-Regular;
   font-weight: 400;
@@ -451,7 +455,7 @@ page{
 }
 
 .letter-icon{
-  width: 17%;
+  width: 15%;
   display: flex;
   flex-direction: row;
   font-size: 25rpx;
@@ -500,7 +504,6 @@ page{
 }
 
 .praise-item{
-  width: 110rpx;
   display: flex;
   flex-direction: row;
   font-size: 20rpx;
@@ -509,13 +512,11 @@ page{
   color: #303030;
   align-items: center;
   margin-bottom: 15rpx;
+  margin-right: 20rpx;
 }
 
 .praise-name{
-  width: 70rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow:ellipsis;
+
 }
 
 .praise-item image{
@@ -523,7 +524,7 @@ page{
   height: 35rpx;
   border: 2rpx solid #303030;
   border-radius: 12rpx;
-  margin-right: 10rpx;
+  margin-right: 5rpx;
 }
 
 .comment-list{
@@ -552,15 +553,12 @@ page{
 }
 
 .comment-item{
-  font-size: 28rpx;
+  font-size: 25rpx;
   font-family: PingFangSC, PingFangSC-Regular;
   font-weight: 400;
   color: #303030;
   display: inline;
-  text-align: left;
-  line-height: 30rpx;
-  justify-content: center;
-  padding: 10rpx 0rpx;
+  margin-bottom: 10rpx;
 }
 
 .comment-name{
@@ -568,6 +566,9 @@ page{
   white-space: nowrap;
   overflow: hidden;
   text-overflow:ellipsis;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 600;
+  color: #303030;
 }
 
 .comment-item image{
@@ -576,6 +577,7 @@ page{
   border: 2rpx solid #303030;
   border-radius: 12rpx;
   margin-right: 10rpx;
+  margin-bottom: -10rpx;
 }
 
 .comment-word{

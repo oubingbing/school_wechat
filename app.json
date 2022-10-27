@@ -15,6 +15,7 @@
     "pages/personal/user_info/personal",
     "pages/personal/index/personal",
     "pages/personal/message/message",
+    "pages/personal/follow_list/message",
     "pages/personal/suggestion/suggestion",
     "pages/personal/friends/friends",
     "pages/personal/post_list/post_list",

@@ -16,18 +16,19 @@
 
     <!--个人信息-->
     <view class="user-info">
-      <view class="fans">
+      <view class="fans" bindtap="openFollowList" data-t="2">
         <view>{{user.fans_num}}</view>
         <view>粉丝</view>
       </view>
       <view class="nickname">
         <view wx:if="{{!showLoginButton}}" class="nickname-data">{{user.nickname}}</view>
         <view class="follow-content">
-          <image class="follow-icon" src="/image/v2/to-follow.png"></image>
-          <image class="follow-icon" src="/image/v2/private-letter.png" bindtap="letter"></image>
+          <view class='{{follow==0?"follow-icon":"not-follow-icon"}}' bindtap="followUser" wx:if="{{follow==0}}"><view>关注</view></view>
+          <view class='{{follow==0?"follow-icon":"not-follow-icon"}}' bindtap="cancelFollowUser" wx:if="{{follow!=0}}"><view>已关注</view></view>
+          <view class="follow-icon" bindtap="letter"><view>私信</view></view>
         </view>
       </view>
-      <view class="follow">
+      <view class="follow" bindtap="openFollowList" data-t="1">
         <view>{{user.follow_num}}</view>
         <view>关注</view>
       </view>
@@ -91,8 +92,8 @@
               <image src="/image/v2/index-admin.png" wx:if="{{item.supertube == 1}}"></image>
             </view>
             <view class="nickname-bottom" wx:if="{{item.topic != '无'}}">
-              <view class="nickname-flag">表白@</view>
-              <view class="bottom-name">{{item.topic}}</view>
+              <view class="nickname-flag" wx:if="{{item.topic != '无'}}">表白@</view>
+              <view class="bottom-name" wx:if="{{item.topic != '无'}}">{{item.topic}}</view>
             </view>
           </view>
           <view class="icon-item">
@@ -119,9 +120,6 @@
         </view>
         <view class="item-footer">
           <view class="date">{{item.created_at}}</view>
-          <view class="letter-icon">
-            <image src="/image/v2/index-share.png"></image>
-          </view>
           <view class="letter-icon">
             <image bindtap='showCommentInput' 
                 data-objid="{{item.id}}"

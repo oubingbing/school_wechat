@@ -168,6 +168,7 @@ page{
   justify-content: center;
   font-size: 25rpx;
   margin-bottom: 20rpx;
+  margin-top: 15rpx;
 }
 
 .like-introduce{

@@ -32,6 +32,11 @@
     <view bindtap='post' disabled='{{!canPost}}' class="button"><view>发表</view></view>
   </view>
 
+  <view class="power-by">
+    <view>Codding by 叶子</view>
+    <view>UI by 刨冰加热</view>
+  </view>
+
 </view>
 
 <view class='tips' wx:if="{{showNormal}}">

@@ -18,6 +18,8 @@ page{
   box-shadow: 0px 0px 10px 0px rgba(203,203,203,0.50); 
   display: flex;
   flex-direction: row;
+  position: fixed;
+  z-index: 500;
 }
 
 .navigation-item{
@@ -115,7 +117,7 @@ page{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 60rpx;
+  margin-top: 185rpx;
 }
 
 .topic-content{

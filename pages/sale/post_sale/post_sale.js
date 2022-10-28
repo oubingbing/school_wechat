@@ -74,7 +74,6 @@ Page({
   },
 
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       gender: genderArray[e.detail.value],
       genderValue:e.detail.value
@@ -116,7 +115,7 @@ Page({
   post: function () {
     let attachments = [];
     let name = this.data.name;
-    let gender = this.data.genderValue;
+    let gender = this.data.gender;
     let major = this.data.major;
     let expectation = this.data.expectation;
     let introduce = this.data.introduce;
@@ -132,14 +131,6 @@ Page({
       })
       return false;
     }
-
-    // if (!gender) {
-    //   wx.showToast({
-    //     title: '性别不能为空',
-    //     icon: 'none'
-    //   })
-    //   return false;
-    // }
 
     if(attachments.length<=0){
       wx.showToast({

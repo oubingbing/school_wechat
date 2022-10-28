@@ -14,8 +14,8 @@
             </block>
           </swiper>
           <view class="genber">
-            <image src="/image/v2/boy.png" wx:if="{{sale.gender=='男'}}"></image>
-            <image src="/image/v2/girl.png" wx:if="{{sale.gender=='女'}}"></image>
+            <image src="/image/v2/boy.png" wx:if="{{sale.gender==1}}"></image>
+            <image src="/image/v2/girl.png" wx:if="{{sale.gender==2}}"></image>
           </view>
       </view>
       <view class='friend-info-container'>

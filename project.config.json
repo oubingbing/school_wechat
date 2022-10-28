@@ -57,8 +57,9 @@
         },
         {
           "name": "表白",
-          "pathName": "pages/index/post/post",
-          "query": ""
+          "pathName": "pages/home/post/post",
+          "query": "",
+          "scene": null
         },
         {
           "name": "情侣脸",
@@ -88,6 +89,18 @@
         {
           "name": "互留言",
           "pathName": "pages/personal/letter/letter",
+          "query": "friend_id=4058",
+          "scene": null
+        },
+        {
+          "name": "表白墙_2",
+          "pathName": "pages/home/index_2/index_2",
+          "query": "friend_id=4058",
+          "scene": null
+        },
+        {
+          "name": "卖舍友2",
+          "pathName": "pages/sale/index_2/sale_2",
           "query": "friend_id=4058",
           "scene": null
         }

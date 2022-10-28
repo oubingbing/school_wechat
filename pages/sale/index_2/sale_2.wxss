@@ -1,0 +1,317 @@
+page{
+  background: #ffffff;
+}
+
+.sale-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/** 瀑布流图片 **/
+
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .content{
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.content .content-left{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content .content-right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content .item{
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25rpx;
+  background: #ffffff;
+  border: 2rpx solid #303030;
+  border-radius: 12rpx 12rpx 18rpx 18rpx;
+  box-shadow: 0px 0px 10rpx 0px rgba(0,0,0,0.20); 
+}
+
+.item .main-pic{
+  width: 100%;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.content .footer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10rpx;
+  background: white;
+  border-bottom-left-radius: 12rpx;
+  border-bottom-right-radius: 12rpx;
+}
+
+.footer .footer-item{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 25rpx;
+  color: gray;
+  justify-content: space-between;
+}
+
+.footer-item .user-info{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 70%;
+  position: relative;
+  justify-content: flex-start;
+}
+
+.user-name{
+  width: 100rpx;
+  font-size: 18rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: LEFT;
+  color: #303030;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  margin-left: -15rpx;
+}
+
+.footer-item .share-icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  font-size: 20rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: RIGHT;
+  color: #303030;
+  line-height: 20px;
+}
+
+.share-icon .delete-icon{
+  font-size: 20rpx;
+}
+
+.share-icon image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 10rpx;
+}
+
+.footer .avatar{
+  margin-left: 10rpx;
+  position: relative;
+  z-index: 100;
+  top: -10rpx;
+  border: 2rpx solid #303030;
+}
+
+.left-avatar-border{
+  width: 25rpx;
+  height: 25rpx;
+  position: relative;
+  z-index: 200;
+  left: -48rpx;
+  top: -17rpx;
+}
+
+.right-avatar-border{
+  width: 25rpx;
+  height: 25rpx;
+  position: relative;
+  z-index: 200;
+  left: -48rpx;
+  top: -17rpx;
+}
+
+.introduce{
+  width: 100%;
+  font-size: 20rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 30rpx;
+}
+
+.footer .icon{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
+}
+
+.footer .major{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 25rpx;
+  color: gray;
+  padding-top: 5rpx;
+}
+
+
+/**post css**/
+
+.post-container{
+  position:fixed;
+  right:18rpx;
+  bottom:20rpx;
+  z-index:100;
+  width: 120prx;
+  height: 120prx;
+}
+
+.post-container .wall{
+  position: absolute;
+  z-index: 105;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background: white;
+  right: 13rpx;
+  bottom: 30rpx;
+}
+
+.post image{
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  z-index: 110;
+}
+
+.power_by{
+  color: #D3D3D3;
+}
+
+/** 消息盒子样式 **/
+.message-tip{
+  width: 250rpx;
+  height: 70rpx;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(134deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 60rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247,171,30,0.81); 
+
+  left:25rpx;
+  bottom:50rpx;
+}
+
+.message-tip .tip-content{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 600;
+  color: #ff3222;
+}
+
+.tip-content image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/**导航栏**/
+.navigation{
+  width: 100%;
+  height: 120rpx;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(203,203,203,0.50); 
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation-item{
+  display: flex;
+  width: 15%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-tab{
+  color: #303030;
+  font-weight: 500;
+  color: #303030;
+  position: absolute;
+}
+
+.select-tab-bootom{
+  width: 60rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 8rpx 0px #fbc346; 
+  background: #fbc346;
+  z-index: 100;
+  position: relative;
+  top: 35rpx;
+}
+
+.search-container{
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-image image{
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.search{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 70rpx;
+  background: #f1f1f1;
+  border-radius: 30rpx;
+}
+
+.search-input{
+  width: 240rpx;
+  height: 25rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #7d7d7d;
+  line-height: 35rpx;
+}

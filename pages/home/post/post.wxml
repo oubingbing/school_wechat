@@ -1,14 +1,11 @@
 <view class='post-container container'>
   <view class='form'>
-
-    <view class='input'>
-      <textarea 
+    <textarea 
         maxlength="1024"
         value='{{copyData}}'
         class='textarea-content'
         placeholder="爱情属于勇敢的人儿"    
         bindinput="getTextContent"/>
-    </view>
     <view class='image-form'>
       <upload icon-info="{{icon}}" 
               qiniu-info="{{qiniu}}"  
@@ -20,13 +17,11 @@
 
 <view class='middle'>
   <view class='location'>
-    <view class='like-word'>我喜欢</view>
     <input class='like-content' 
-           placeholder="宝连" 
+           placeholder="心仪的对象" 
            bindinput="getName"/>
   </view>
   <view class='location'>
-    <view class='like-word'>手机</view>
     <input class='like-content' 
            placeholder="Ta的手机号码（选填）" 
            bindinput="getPhone"/>
@@ -34,7 +29,7 @@
 </view>
 
   <view class='button-container'>
-    <button bindtap='post' disabled='{{!canPost}}'> 发表 </button>
+    <view bindtap='post' disabled='{{!canPost}}' class="button"><view>发表</view></view>
   </view>
 
 </view>

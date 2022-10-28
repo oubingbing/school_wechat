@@ -25,13 +25,55 @@ Page({
     this.setData({
       objId: objId,
     });
-    http.get(`/sale_friend/${objId}`, {}, res => {
+    this.getDetail()
+  },
+
+  getDetail:function() {
+    http.get(`/sale_friend/${this.data.objId}`, {}, res => {
       let data = res.data.data;
       data.comments = data.comments.reverse();
       this.setData({
         sale: data,
       });
     });
+  },
+
+  openUserInfo:function(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/personal/user_info/personal?id=' + id
+    })
+  },
+
+  /**
+   * 删除评论
+   */
+  deleteMainComment: function (e) {
+    let commentId = e.currentTarget.dataset.refid;
+    let that = this
+    let objId = this.data.objId
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该评论?',
+      success: function (res) {
+        if (res.confirm) {
+          http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
+            if (res.data.data == 1) {
+              http.get(`/sale_friend/${objId}`, {}, resp => {
+                let dataNew = resp.data.data;
+                dataNew.comments = dataNew.comments.reverse();
+                that.setData({
+                  sale: dataNew,
+                });
+              });
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
   },
 
   /**

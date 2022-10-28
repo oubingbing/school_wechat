@@ -26,7 +26,6 @@ Page({
   },
 
   onLoad: function (options) {
-
     this.setData({
       currentTime: util.formatTime(new Date())
     });
@@ -38,6 +37,14 @@ Page({
     this.getTopic(id);
     this.getComments();
   },
+
+  openUserInfo:function(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/personal/user_info/personal?id=' + id
+    })
+  },
+
   getTopic:function(id){
     http.get(`/topic/`+id,{},res => {
       let topic = res.data.data;
@@ -174,6 +181,7 @@ Page({
     let objid = e.currentTarget.dataset.objid;
     let type = e.currentTarget.dataset.type;
     let refId = e.currentTarget.dataset.refid;
+    console.log(e,"数据",objid,type,refId)
     this.setData({
       showCommentInput: true,
       objId: objid,
@@ -222,7 +230,7 @@ Page({
       content: '确认删除该评论?',
       success: function (res) {
         if (res.confirm) {
-          http.delete(`/delete/${commentId}/comment`, {}, res => {
+          http.httpDelete(`/delete/${commentId}/comment`, {}, res => {
             if (res.data.data == 1) {
               let comments = _this.data.comments;
               let newComment = comments.map(comment => {

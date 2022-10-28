@@ -6,6 +6,7 @@ Page({
   data: {
 image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc37bd8dfd424f.jpg',
     baseImageUrl: app.globalData.imageUrl,
+    serviceId:0,
     messageList:[],
     pageSize: 10,
     pageNumber: 1,
@@ -13,13 +14,120 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     showGeMoreLoadin: false,
     notDataTips: false,
     param: app.globalData.param,
+    selectPoster:2,
+    friendId: '',
+    friends: [],
+    user:{"personal_signature":""}
   },
   onLoad: function (option) {
     let objType = option.type;
     let messageType = option.new_message;
+    let selectType = option.t
+    this.setData({selectPoster:selectType})
+    this.getPersonalInfo()
+    this.friends();
     this.getInboxList(objType, messageType);
     this.setData({ param: app.globalData.param })
+    this.getService()
   },
+
+ /**
+   * 获取客服id
+   */
+  getService: function () {
+    http.get(`/service`, {}, res => {
+      console.log('客服id:' + res.data.data);
+      this.setData({
+        serviceId: res.data.data
+      });
+    });
+  },
+
+    /**
+   * 进入建议留言列表
+   */
+  openSugesstion: function () {
+    let id = this.data.serviceId;
+    console.log('客服id' + id);
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id
+    })
+  },
+
+  getTextContent:function(e){
+    let user = this.data.user
+    user.personal_signature = e.detail.value
+    this.setData({"user":user})
+  },
+
+  signatureSave:function(){
+    wx.showLoading({
+      title: '提交中...',
+    });
+    let that = this
+    http.post('/user/update/signature', {signature: this.data.user.personal_signature,}, res => {
+      wx.hideLoading();
+      if(res.data.error_code == 0){
+        wx.setStorageSync('user', that.data.user);
+        wx.showToast({
+          title: "保存成功",
+          icon:'none'
+        });
+      }else{
+        wx.showToast({
+          title: res.data.error_message,
+          icon:'none'
+        });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 1500)
+      }
+    });
+  },
+
+    /**
+   * 获取个人信息
+   */
+  getPersonalInfo() {
+    http.get(`/personal_info`, {}, res => {
+      console.log(res.data.data);
+      this.setData({
+        user: res.data.data
+      })
+      wx.setStorageSync('user', res.data.data);
+    });
+  },
+
+  switch:function(e){
+      let objType = e.target.dataset.type;
+      this.setData({
+        selectPoster:objType
+      })
+  },
+
+    /**
+   * 好友列表
+   */
+  friends:function(){
+    let _this = this;
+    http.get(`/friends`,
+      {},
+      function (res) {
+        _this.setData({
+          friends: res.data.data
+        })
+      });
+  },
+  /**
+   * 跳转私信
+   */
+  letter: function (e) {
+    let id = e.currentTarget.dataset.obj;
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id
+    })
+  },
+
   /**
    * 获取消息列表
    */

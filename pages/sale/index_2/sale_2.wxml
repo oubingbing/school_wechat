@@ -1,0 +1,89 @@
+<view class="sale-container">
+  <!-- 导航栏 -->
+  <view class="navigation">
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="1">全部</view><view class='{{select==1?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="4">最热</view><view class='{{select==4?"select-tab-bootom":""}}'></view></view>
+    <view class="navigation-item"><view class="select-tab" bindtap="selected" data-type="2">收藏</view><view class='{{select==2?"select-tab-bootom":""}}'></view></view>
+    <view class='search-container'>
+        <view class='search'>
+          <input type='text' 
+                class='search-input' 
+                placeholder="输入你要找的表白消息"         
+                bindinput='getFilter'/>
+          <view class='search-image' bindtap='search'>
+              <image mode="" src='/image/v2/index-search.png'></image>
+          </view>
+        </view>
+    </view>
+  </view>
+
+<view class='container'>
+  <view class='content'>
+    <view class='content-left'>
+      <view class='item'  
+            wx:for="{{leftList}}" 
+            catchtap='comment'
+            data-objid='{{item.id}}'
+            wx:key="{{leftList}}">
+        <image class='main-pic' 
+               mode='widthFix' 
+               src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+        <view class='footer'>
+          <view class='footer-item'>
+            <view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+              <image class='icon avatar' src='{{item.poster.avatar}}'></image>
+              <image class="left-avatar-border" src="/image/v2/border.png"></image>
+              <view class="user-name">{{item.poster.nickname}}</view>
+            </view>
+            <view class="introduce">{{item.introduce}}</view>
+            <view class='share-icon'>
+              <view>{{item.comment_number}}</view>
+              <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='content-right'>
+      <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}" catchtap='comment' data-objid='{{item.id}}'>
+        <image class='main-pic' mode='widthFix' src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
+        <view class='footer'>
+          <view class='footer-item'>
+            <view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+              <image class='icon avatar' style='width: 40rpx;' src='{{item.poster.avatar}}'></image>
+              <image class="right-avatar-border" src="/image/v2/border.png"></image>
+              <view class="user-name">{{item.poster.nickname}}</view>
+            </view>
+            <view class="introduce">{{item.introduce}}</view>
+            <view class='share-icon'>
+              <view>{{item.comment_number}}</view>
+              <image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+<not-more wx:if="{{notDataTips && leftList.length != 0}}"></not-more>
+
+<view class='message-tip' 
+      wx:if="{{newMessageNumber}}" 
+      bindtap='openMessage'>
+  <view class='tip-content'>
+    <image src='/image/v2/bell.png'></image>
+    <view>{{newMessageNumber}}条新消息</view>
+  </view>
+</view>
+
+</view>
+
+<view class='post-container'>
+  <view class='wall'></view>
+  <view class='post'>
+    <image src='/image/v2/index-poster.png' bindtap='post'></image>
+  </view>
+</view>

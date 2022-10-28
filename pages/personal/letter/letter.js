@@ -4,7 +4,7 @@ const qiniuUtil = require("./../../../utils/qiniuToken.js");
 const config = require("./../../../config.js");
 const app = getApp();
 
-const icon = 'http://article.qiuhuiyi.cn/phone.png';
+const icon = 'http://article.qiuhuiyi.cn/v2-post.png';
 
 Page({
   data: {
@@ -24,8 +24,8 @@ Page({
     canPost:true,
 
     icon: {
-      width: "75rpx",
-      height: "75rpx",
+      width: "90rpx",
+      height: "90rpx",
       path: icon,
       showImage: false
     },

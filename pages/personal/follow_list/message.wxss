@@ -1,0 +1,110 @@
+page{
+  background: #ffffff;
+}
+
+.message-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  align-items: center;
+}
+
+/** 留言列表 **/
+.friend-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.friend-container .container-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  align-items: center;
+}
+
+.container-content .content-item{
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height:120rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 4rpx 10rpx 0px rgba(0,0,0,0.20); 
+  margin-top: 15rpx;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.user-info .user-name{
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-count{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  width: 50rpx;
+  height: 45rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 12rpx;
+  box-shadow: 0px 0px 10rpx 0px rgba(229,161,34,0.69); 
+  margin-right: 20rpx;
+}
+
+.user-info .avatar{
+  width: 70rpx;
+  height: 70rpx;
+  border: 4rpx solid #303030;
+  margin-left: 20rpx;
+  border-radius: 25rpx;
+}
+
+.avatar-border{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  z-index: 200;
+  left: 6rpx;
+  top: -15rpx;
+}
+
+.date-time{
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #8c8c8c;
+}
+
+.user-nickname{
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 800;
+  text-align: left;
+  color: #303030;
+}

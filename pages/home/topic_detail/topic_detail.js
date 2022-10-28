@@ -37,6 +37,14 @@ Page({
     this.getTopic(id);
     this.getComments();
   },
+
+  openUserInfo:function(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/personal/user_info/personal?id=' + id
+    })
+  },
+
   getTopic:function(id){
     http.get(`/topic/`+id,{},res => {
       let topic = res.data.data;

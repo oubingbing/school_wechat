@@ -29,12 +29,14 @@
               wx:for="{{comments}}" 
               wx:key="{{comments}}">
           <view class='left'>
-            <view class='user-image'>
+            <view class='user-image' 
+                  bindtap="openUserInfo"
+                  data-id="{{item.commenter.id}}">
               <image class="avatar-border" src="/image/v2/border.png"></image>
               <image class="user-avatar" src='{{item.commenter.avatar}}'></image>
             </view>
             <view class='comment-name'>
-                <view>{{item.commenter.nickname}}</view>
+                <view bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}</view>
                 <image wx:if="{{item.can_delete}}" 
                       data-refid="{{item.id}}"
                       bindtap="removeComment" 
@@ -68,10 +70,11 @@
                       <view class='comment-wall-item' 
                             wx:if="{{!sub.ref_comment}}">
                             <view class='comment-user-container'>
-                              <view class="comment-user inline-item" data-objid="{{item.id}}"
-                            data-type='5'
-                            data-refid="{{sub.id}}"
-                             catchtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
+                              <view class="comment-user inline-item" 
+                                    data-objid="{{item.id}}"
+                                    data-type='5'
+                                    data-refid="{{sub.id}}"
+                                    catchtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
                                 <image class="comment-user-avatar" src='{{sub.commenter.avatar}}'></image>
                                   <view class="comment-nickname">{{sub.commenter.nickname}}：</view>
                                   <view class='inline-item'>{{sub.content}}</view>

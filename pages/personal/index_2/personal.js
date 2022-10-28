@@ -343,7 +343,9 @@ Page({
 
     if (wx.getUserProfile) {
       this.setData({
-        showLoginButton: false
+        showLoginButton: false,
+        pageNumber: this.data.initPageNumber,
+        posts:[]
       })
       that.getPersonalInfo()
       that.statistic()
@@ -460,6 +462,10 @@ Page({
     });
     let that = this
     http.login(null, null, null, res => {
+      this.setData({
+        pageNumber: this.data.initPageNumber,
+        posts:[]
+      });
       that.getPersonalInfo();
       that.statistic()
       that.getMyRank()

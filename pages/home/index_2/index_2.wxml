@@ -36,7 +36,7 @@
       </view>
     </view>
     <!-- 表白墙flag -->
-    <view class="body-flag" wx:if="{{posts.length>0}}">
+    <view class="body-flag" wx:if="{{showTopic}}">
       <view class="flag">表白墙</view>
       <view class="flag-tab"></view>
     </view>
@@ -49,7 +49,7 @@
             <image class="avatar-border" src="/image/v2/border.png"></image>
             <image class="user-avatar" src="{{item.poster.avatar}}"></image>
           </view>
-          <view class="nickname-item">
+          <view class="nickname-item" bindtap="openUserInfo" data-id="{{item.poster.id}}">
             <view class="nickname-top">
               <view class="poster-nickname">{{item.poster.nickname}}</view>
               <image src="/image/v2/index-admin.png" wx:if="{{item.supertube == 1}}"></image>
@@ -100,6 +100,8 @@
             <view class="praise-left"><image src="/image/v2/index-like.png"></image></view>
             <view class="praise-right">
               <view class="praise-item" 
+                    bindtap="openUserInfo"
+                    data-id="{{item.user_id}}"
                     wx:for="{{item.praises}}" 
                     wx:key="{{item.praises}}">
                 <image src="{{item.avatar}}"></image>

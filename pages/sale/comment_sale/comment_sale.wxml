@@ -15,13 +15,10 @@
           </swiper>
           <view class="genber">
             <image src="/image/v2/boy.png" wx:if="{{sale.gender=='男'}}"></image>
-            <image src="/image/v2/boy.png" wx:if="{{sale.gender=='女'}}"></image>
+            <image src="/image/v2/girl.png" wx:if="{{sale.gender=='女'}}"></image>
           </view>
       </view>
       <view class='friend-info-container'>
-        <view class='friend-name'>{{sale.name}}</view>
-        <!-- <view class='gender'>{{sale.gender}}</view>
-        <view class='major'>专业：{{sale.major}}</view> -->
         <view class='major'><view class="like-tab">喜欢TA</view><view>{{sale.expectation}}</view></view>
         <view class='major'><view class="like-introduce">舍友简介</view><view class="">{{sale.introduce}}</view></view>
       </view>
@@ -32,20 +29,6 @@
           <view>{{sale.follow_number<=0?0:sale.follow_number}}</view>
         </view>
       </view>
-
-    <!--<view class='operate'>
-      <view class='share-button'>
-        <button   class='button' 
-                  style='border: none;'  
-                  bindtap='showCommentInput' 
-                  data-objid="{{sale.id}}"
-                  data-refid=""
-                  data-type="2">评论</button>
-      </view>
-      <view class='collect' bindtap='letter' data-objid="{{objId}}">留言</view>
-      <view class='collect' bindtap='follow' wx:if="{{sale.follow==false}}">喜欢</view>
-      <view class='collect' bindtap='cancelFollow' wx:else>已喜欢</view>
-      </view>-->
     </view>
     
     <view class='comment-container' wx:if='{{sale}}'>
@@ -60,7 +43,7 @@
                   bindtap='deleteSale'>
                   <image class="delete-icon" src='/image/v2/index-delete.png'></image>
             </view>
-            <view class='zan share-user-button'>
+            <view class='zan share-user-button' bindtap="openUserInfo" data-id="{{sale.poster.id}}">
               <image class="comment" src='/image/v2/sale-share.png'></image>
             </view>
             <view class='zan coment-icon'>
@@ -80,7 +63,7 @@
               wx:for="{{sale.comments}}" 
               wx:key="{{sale.comments}}">
           <view class='left'>
-            <view class='user-image'>
+            <view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.id}}">
               <image class="avatar-border" src="/image/v2/border.png"></image>
               <image class="comment-user-avatar" src='{{item.commenter.avatar}}'></image>
             </view>
@@ -88,9 +71,9 @@
           <view class='right'>
             <view 
               class='comment-name right-item'>
-              <view wx:if="{{item.author == 0 && item.commenter.supertube != 1}}" class="comment-nickname">{{item.commenter.nickname}}</view>
-              <view  wx:if="{{item.author == 1 && item.commenter.supertube != 1}}" class="comment-nickname">{{item.commenter.nickname}}(楼主)</view>
-              <view wx:if="{{item.commenter.supertube == 1}}" class="admin-nickname">
+              <view wx:if="{{item.author == 0 && item.commenter.supertube != 1}}" class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}</view>
+              <view  wx:if="{{item.author == 1 && item.commenter.supertube != 1}}" class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}(楼主)</view>
+              <view wx:if="{{item.commenter.supertube == 1}}" class="admin-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">
                 <view class="supertube">{{item.commenter.nickname}}</view>
                 <image src="/image/v2/index-admin.png"></image>
               </view>

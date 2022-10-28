@@ -6,6 +6,7 @@ Page({
   data: {
 image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc37bd8dfd424f.jpg',
     baseImageUrl: app.globalData.imageUrl,
+    serviceId:0,
     messageList:[],
     pageSize: 10,
     pageNumber: 1,
@@ -27,6 +28,30 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     this.friends();
     this.getInboxList(objType, messageType);
     this.setData({ param: app.globalData.param })
+    this.getService()
+  },
+
+ /**
+   * 获取客服id
+   */
+  getService: function () {
+    http.get(`/service`, {}, res => {
+      console.log('客服id:' + res.data.data);
+      this.setData({
+        serviceId: res.data.data
+      });
+    });
+  },
+
+    /**
+   * 进入建议留言列表
+   */
+  openSugesstion: function () {
+    let id = this.data.serviceId;
+    console.log('客服id' + id);
+    wx.navigateTo({
+      url: '/pages/personal/letter/letter?friend_id=' + id
+    })
   },
 
   getTextContent:function(e){

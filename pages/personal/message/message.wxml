@@ -101,7 +101,7 @@
     </view>
   </view>
 
-  <view class="call-server">客服</view>
+  <view class="call-server" bindtap='openSugesstion'>客服</view>
 
   <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
   <not-more wx:if="{{notDataTips}}"></not-more>

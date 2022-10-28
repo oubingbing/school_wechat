@@ -169,7 +169,7 @@ page{
   flex-direction: column;
   height: 400rpx;
   position:fixed;
-  bottom:140rpx;
+  top:400rpx;
   z-index:100;
   align-items: center;
 }
@@ -192,7 +192,7 @@ page{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  bottom: 490rpx;
+  top: 370rpx;
 }
 
 .bind-report image{

@@ -23,6 +23,7 @@
 </view>
 
 <view class='report' wx-if="{{showReport}}">
+  <view></view>
   <view class='bind-report' wx-if="{{bindReport}}">
     <image src='/image/bind-face-report.png'></image>
   </view>

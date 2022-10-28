@@ -1,426 +1,670 @@
 page{
-  background-color: white;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
 }
 
-.container .container-wall{
+.container{
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
-  background: white;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-color: #F0F8FF;
 }
 
-.container-wall .wall-item{
+/**导航栏**/
+.navigation{
   width: 100%;
+  height: 120rpx;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(203,203,203,0.50); 
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 15rpx;
 }
 
-.wall-item .item-container{
-  width: 95%;
+.navigation-item{
   display: flex;
-  flex-direction: row;
-  margin-bottom: 5rpx;
-}
-
-.item-container .item-image{
-  width: 16%;
-}
-
-.item-container .item-content{
-  width: 84%;
-  display: flex;
-  flex-direction: column;
-}
-
-.item-image image{
-  width:90rpx;
-  height:90rpx
-}
-
-.item-content .user-name{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-weight: 300;
-  font-size: 38rpx;
-  margin-bottom: 8rpx;
-  margin-top: -5rpx;
-}
-
-.user-name .follow{
-  font-size: 30rpx;
-  font-weight: 200;
-  color: #BEBEBE;
-}
-
-.user-name .had-follow{
-  font-size: 30rpx;
-  font-weight: 200;
-  color: red;
-}
-
-.item-content .content{
-  font-weight: 200;
-  font-size: 35rpx;
-  margin-bottom: 10rpx;
-  margin-top: 1rpx;
-}
-
-.item-content .post-time{
-  font-weight: 100;
-  font-size: 25rpx;
-  margin-bottom: 8rpx;
-  color: darkgray;
-  display: flex;
+  width: 15%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.post-time .time-and-delete{
-  display: flex;
-  flex-direction: row;
-}
-
-.time-and-delete .delete-post{
-  margin-left: 20rpx;
-}
-
-.single-image image{
-  width: 400rpx;
-}
-
-.more-image{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-}
-
-.more-image image{
-  width: 180rpx;
-  height: 180rpx;
-  margin-right: 10rpx;
-  margin-bottom: 10rpx;
-}
-
-.post-time .comment-image{
-  width: 40prx;
-}
-
-.post-time .comment-container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20rpx;
-  height: 65rpx;
-}
-
-.comment-icon-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.comment-container .comment-icon{
-  height: 75rpx;
-  width: 350rpx;
-  background: #0aecc3;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-right: 13rpx;
-  border-radius:7rpx;
+.select-tab{
+  color: #303030;
+  font-weight: 500;
+  color: #303030;
   position: absolute;
-  z-index: 10;
-  right: 70rpx;
 }
 
-.comment-icon image{
+.select-tab-bootom{
+  width: 60rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 8rpx 0px #fbc346; 
+  background: #fbc346;
+  z-index: 100;
+  position: relative;
+  top: 35rpx;
+}
+
+.search-container{
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-image image{
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.search{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 70rpx;
+  background: #f1f1f1;
+  border-radius: 30rpx;
+}
+
+.search-input{
+  width: 240rpx;
+  height: 25rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #7d7d7d;
+  line-height: 35rpx;
+}
+
+/** post css**/
+.post-container{
+  position:fixed;
+  right:18rpx;
+  bottom:20rpx;
+  z-index:100;
+  width: 120prx;
+  height: 120prx;
+}
+
+.post-container .wall{
+  position: absolute;
+  z-index: 105;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background: white;
+  right: 10rpx;
+  bottom: 30rpx;
+}
+
+.post image{
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  z-index: 110;
+}
+
+.body-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.topic-content{
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  height: 500rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 20rpx 0px rgba(193,193,193,0.71); 
+  position:relative;
+}
+
+.topic-title{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position:absolute;
+}
+
+.title{
+  display: flex;
+  flex-direction: column;
+  width: 250rpx;
+  height: 70rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 12rpx 0px rgba(196,174,134,0.50); 
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 100;
+  top: -35rpx;
+  margin: 0rpx auto;
+}
+
+.topic-image{
+  width: 100%;
+  height: 350rpx;
+  border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+}
+
+.topic-data{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 150rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.topic-data-content{
+  width: 92%;
+  height: 80rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.topic-bottom{
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topic-bottom-content{
+  width: 92%;
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.topic-bottom-left{
+  width: 64%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 32rpx;
+}
+
+.topic-bottom-left image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.topic-bottom-middle{
+  width: 18%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 32rpx;
+}
+
+.topic-bottom-middle image{
   width: 50rpx;
   height: 50rpx;
 }
 
-.item-content .comment{
-  background: WhiteSmoke;
+.topic-bottom-right{
+  width: 18%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 32rpx;
+}
+
+.topic-bottom-right image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/** 表白墙 **/
+.body-flag{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 140rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: left;
+  color: #303030;
+  line-height: 25px;
   margin-bottom: 20rpx;
 }
 
-.comment .qipao{
-  width: 0;
-  height: 0;
-  border-right: 20rpx solid white;
-  border-bottom: 20rpx solid WhiteSmoke;
-  border-left: 20rpx solid white;
-  margin-top: -18rpx;
-  margin-left: 20rpx;
+.flag-tab{
+  width: 55px;
+  height: 5px;
+  background: #fbc346;
+  box-shadow: 0px 0px 8rpx 0px rgba(247,171,30,0.81); 
+  margin-top: 10rpx;
 }
 
-.comment .comment-detail{
-  margin: 15rpx 15rpx;
-  font-size: 30rpx;
-  font-weight: 200;
+.body-list{
+  width:100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 70rpx;
 }
 
-.praise-container{
+.body-item{
+  width:92%;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 20rpx 0px rgba(193,193,193,0.71); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70rpx;
+}
+
+.item-header{
+  height: 130rpx;
+  width: 92%;
   display: flex;
   flex-direction: row;
 }
 
-.praise-container .praise-icon{
+.avatar-item{
+  width: 23%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.avatar-item .user-avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border: 4rpx solid #303030;
+  border-radius: 30rpx;
+  z-index: 100;
+  position: relative;
+  top: -30rpx;
+}
+
+.avatar-border{
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  z-index: 200;
+  left: -22rpx;
+  top: -50rpx;
+}
+
+.nickname-item{
+  width: 61%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nickname-top{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 700;
+  text-align: left;
+  color: #303030;
+  line-height: 40rpx;
+}
+
+.poster-nickname{
+
+}
+
+.nickname-top image{
+  width: 90rpx;
+  height: 27rpx;
+  margin-left: 10px;
+}
+
+.nickname-bottom{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.nickname-flag{
+  width: 90rpx;
+  height: 36rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 18rpx;
+  box-shadow: 0px 0px 16rpx 0px rgba(247,171,30,0.50); 
+  font-size: 20rpx;
+  margin-right: 15rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-name{
+  height: 50rpx;
+  flex-direction: column;
+  align-items: flex-start;
+  top: -5rpx;
+}
+
+.icon-item{
+  width: 16%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-item image{
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.item-content{
+  width: 92%;
+  margin-bottom: 10rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+}
+
+.item-content-image{
+  width: 100%;
+  margin-top: 15rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+}
+
+.item-content-image image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.item-footer{
+  width: 92%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.date{
+  width: 70%;
+  font-size: 20rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+}
+
+.letter-icon{
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  font-size: 25rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.letter-icon image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/** 评论 **/
+.comment-content{
+  width: 92%;
+  margin-bottom: 30rpx;
+}
+
+.praise-content{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.praise-left{
   width: 10%;
 }
 
-.praise-container .praise-content{
+.praise-left image{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx 0rpx;
+}
+
+.praise-right{
   width: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
+  background: #f4f4f4;
+  padding: 20rpx 20rpx;
 }
 
-.praise-container .praise-item{
+.praise-item{
   display: flex;
   flex-direction: row;
+  font-size: 20rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  color: #303030;
+  align-items: center;
+  margin-bottom: 15rpx;
+  margin-right: 20rpx;
 }
 
-.praise-item .praise-item-sub{
+.praise-name{
+
+}
+
+.praise-item image{
+  width: 35rpx;
+  height: 35rpx;
+  border: 2rpx solid #303030;
+  border-radius: 12rpx;
+  margin-right: 5rpx;
+}
+
+.comment-list{
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.praise-container-with-border{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
+.comment-left{
+  width: 10%;
 }
 
-.line{
-  margin-top: 5rpx;
-  margin-bottom: 10rpx;
-  border-top-style:solid;
-  border-width:1rpx;
-  border-color: #E8E8E8;
-}
-
-.praise-container-border{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  margin-bottom: 10rpx;
-  padding-bottom: 10rpx;
-}
-
-.praise-container .praise-item{
-  display: flex;
-  flex-direction: row;
-  margin-right: 10rpx;
-  margin-top: 5rpx;
-}
-
-.praise-item .praise-user-avatar{
+.comment-left image{
   width: 40rpx;
   height: 40rpx;
-  margin-right: 5rpx;
-  border-radius:20rpx;
+  padding: 20rpx 0rpx;
 }
 
-
-.praise-container .praise-user{
-  width: 42rpx;
-  height: 42rpx;
-  margin-right: 10rpx;
-}
-
-.comment-detail .comment-user{
-  color: #0061b2;
-}
-
-.comment-wall-item{
-  width: 100%;
+.comment-right{
+  width: 90%;
   display: flex;
   flex-direction: column;
+  flex-wrap:wrap;
+  background: #f4f4f4;
+  padding: 20rpx 20rpx;
 }
 
-.inline-item{
+.comment-item{
+  font-size: 25rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  color: #303030;
+  display: inline;
+  margin-bottom: 10rpx;
+}
+
+.comment-name{
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 600;
+  color: #303030;
+}
+
+.comment-item image{
+  width: 35rpx;
+  height: 35rpx;
+  border: 2rpx solid #303030;
+  border-radius: 12rpx;
+  margin-right: 10rpx;
+  margin-bottom: -10rpx;
+}
+
+.comment-word{
   display: inline;
 }
 
-.comment-wall-item .comment-user-container{
-  display: inline;
+.comment-sub{
+  margin-left: 50rpx;
 }
 
-.comment-user-container image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 5rpx;
-  border-radius:20rpx;
-}
-
-.comment-wall-item .comment-ref-user-container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.comment-ref-user-container image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 5rpx;
-  border-radius:20rpx;
-}
-
-/**post css**/
-
-.post-container{
-  position:fixed;
-  right:18rpx;
-  top:5rpx;
-  z-index:100;
-  width: 80prx;
-  height: 80prx;
-}
-
-.post image{
-  width: 80rpx;
-  height: 80rpx;
-}
-
-/** nav-bar **/
-
-.nav-bar-container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom-style:solid;
-  border-width:5rpx;
-  border-color: #F0F8FF;
-  background: white;
-}
-
-.nav-bar-container .nav-bar{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 95%;
-  font-weight: 200;
-  font-size: 30rpx;
-  margin-top: 5rpx;
-  margin-bottom: 5rpx;
-}
-
-.nav-bar .selected{
-  color: #FF4500;
-}
-
+/** 输入框 **/
 .comment-input-container{
   position:fixed;
   bottom: 0rpx;
-  z-index:100;
+  z-index:500;
   width: 100%;
-  height: 200prx;
-  background: #DCDCDC;
+  height: 100rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 10rpx;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0px 0px 16rpx 0px rgba(0,0,0,0.54); 
 }
 
 .comment-input-container textarea{
-  width: 100%;
+  width: 80%;
+  height: 90rpx;
   margin-left: 20rpx;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #0aecc3;
   margin-right: 20rpx;
-  padding-bottom: 15rpx;
-  font: 30rpx;
   font-weight: 200;
-  margin-bottom: 30rpx;
-  padding-top: 17rpx;
+  padding: 20rpx 20rpx;
+  background: #f1f1f1;
+  border-radius: 40rpx;
+
+  font-size: 24rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #7d7d7d;
 }
 
 .comment-input-container .send-button{
   width: 130rpx;
   height: 70rpx;
-  font-size: 30rpx;
-  background: #0aecc3;
-  color: white;
+  font-size: 28rpx;
+  color: #604708;
   margin-right: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border-radius: 10rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 40rpx;
+  box-shadow: 0px 0px 12rpx 0px rgba(229,161,34,0.69); 
 }
 
-/** 加载更多 **/
-
-.get-more{
-  height: 50rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 30rpx;
-  font-weight: 200;
-  width: 100%;
-  background: white;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-}
-
-.get-more image{
-  width: 40rpx;
-  height: 40rpx;
-}
-
-.get-more .get-more-item{
-  display: flex;
-  flex-direction: row;
-}
-
-.loading{
-  margin-left: 15rpx;
-}
-
-.no-more-data{
-  width: 100%;
-  background: white;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 25rpx;
-  font-weight: 200;
-  text-align: center;
-  color: darkgray;
-}
-
+/** 消息盒子样式 **/
 .message-tip{
-  width: 100%;
+  width: 250rpx;
+  height: 70rpx;
+  position: fixed;
+  z-index: 100;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100rpx;
   align-items: center;
-  background: white;
+  background: linear-gradient(134deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 60rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247,171,30,0.81); 
+
+  left:25rpx;
+  bottom:50rpx;
 }
 
 .message-tip .tip-content{
-  padding: 20rpx;
-  background: #575757;
-  color: white;
-  border-radius: 10rpx;
-  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 600;
+  color: #ff3222;
+}
+
+.tip-content image{
+  width: 50rpx;
+  height: 50rpx;
 }

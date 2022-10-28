@@ -365,12 +365,13 @@ page{
 }
 
 .comment-user-container image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 10rpx;
   border-radius:10rpx;
   box-shadow: 0px 0px 50rpx -10rpx rgba(193,193,193,0.71);
   border: 2rpx solid #303030; 
+  margin-top: -3rpx;
 }
 
 .comment-wall-item .comment-ref-user-container{

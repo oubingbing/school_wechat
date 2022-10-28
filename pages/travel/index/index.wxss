@@ -218,6 +218,15 @@ page{
   border-radius: 10rpx;
 }
 
+.travel-line{
+  width: 70rpx;
+  height: 70rpx;
+  position: relative;
+  z-index: 100;
+  top: -25rpx;
+  right: -125rpx;
+}
+
 .item .step-right{
   padding-left: 300rpx;
   padding-top: 30rpx;

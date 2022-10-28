@@ -52,6 +52,7 @@
       <view class='item' wx:for="{{logs}}" wx:key="{{logs}}">
           <view class='left'>
             <view class='date'>{{item.run_at}}</view>
+            <image class="travel-line" src='/image/v2/travel-line.png'></image>
           </view>
           <view class='right'>
             <view class='travel-log'>

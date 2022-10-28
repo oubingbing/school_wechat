@@ -43,61 +43,44 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "id": 0,
           "name": "卖舍友",
           "pathName": "pages/sale/index/sale",
           "query": ""
         },
         {
-          "id": -1,
           "name": "发表卖舍友",
           "pathName": "pages/sale/post_sale/post_sale",
           "query": ""
         },
         {
-          "id": 2,
           "name": "表白",
           "pathName": "pages/index/post/post",
           "query": ""
         },
         {
-          "id": 3,
           "name": "情侣脸",
           "pathName": "pages/compare_face/face",
           "query": ""
         },
         {
-          "id": 4,
           "name": "个人中心",
           "pathName": "pages/personal/index/personal",
           "query": ""
         },
         {
-          "id": 5,
           "name": "悬赏令",
           "pathName": "pages/help/help",
           "query": ""
         },
         {
-          "id": -1,
           "name": "步数旅行",
           "pathName": "pages/travel/index/index",
           "query": ""
         },
         {
-          "id": -1,
           "name": "卖舍友详情",
           "pathName": "pages/sale/comment_sale/comment_sale",
           "query": "id=142"
@@ -110,5 +93,13 @@
         }
       ]
     }
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
   }
 }

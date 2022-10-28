@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "消息",
+  "navigationBarTitleText": "个人中心",
   "usingComponents": {
     "get-more-loading": "/components/get-more-loading/get-more-loading",
     "not-more": "/components/not-more-tip/not-more-tip"

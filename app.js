@@ -1,5 +1,8 @@
 const config = require("./config.js");
 
+let SCREEN_WIDTH = 750
+let RATE = wx.getSystemInfoSync().windowHeight /wx.getSystemInfoSync().windowWidth
+
 App({
   onLaunch: function () {
 
@@ -28,6 +31,7 @@ App({
     reloadSale:false,
     reloadHome:false,
     param:false,
-    authStatus:false
+    authStatus:false,
+    windowHeight:SCREEN_WIDTH * RATE
   }
 })

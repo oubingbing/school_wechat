@@ -3,12 +3,6 @@
     <view class='post-header'>
 
     <view class='right'>
-      <view class='user-name'>
-        <input placeholder="名字" 
-               bindinput='getName' 
-               class='right-item' 
-               placeholder-style="color:darkgray"/>
-      </view>
       <!-- <view class='user-name right-item'>
         <picker bindchange="bindPickerChange" 
                 value="{{gender}}" 
@@ -30,13 +24,11 @@
     </view>
   </view>
   <view class='post-content'>
-    <view><input placeholder="喜欢怎样的ta呢..." class='like' bindinput="getLike"/></view>
-    <view>
-      <textarea placeholder="介绍一下舍友吧" 
+    <textarea placeholder="喜欢怎样的ta呢..." class='like' bindinput="getLike"/>
+    <textarea placeholder="介绍一下舍友吧" 
                 class='introduce'
                 maxlength="1024" 
                 bindinput='getContent'/>
-    </view>
   </view>
   <view class='image-form'>
       <upload icon-info="{{icon}}" 
@@ -46,13 +38,19 @@
               bind:error="uploadError"/>
     </view>  
   </view>
-
+  <view class='post-content'>
+    <input placeholder="舍友姓名" 
+               bindinput='getName' 
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
+  </view>
+  <view class="gender">
+    <image class='{{gender==1?"right-gender-border":"left-gender-border"}}' src="/image/v2/left-border.png"></image>
+    <view bindtap="selectGender" class='boy {{gender==1?"select-gender":"not-select-gender"}}' data-gender="1"><view>男生</view></view>
+    <view bindtap="selectGender" class='girl {{gender==2?"select-gender":"not-select-gender"}}' data-gender="2"><view>女生</view></view>
+  </view>
 </view>
 
   <view class='button-container'>
-    <button bindtap='post'> 发表 </button>
-  </view>
-
-  <view class='tips'>
-    <view class='warming'>温馨提示：出售您亲爱的舍友前请征得本人同意，否则后果自负。</view>
+    <view bindtap='post' class="button"> 卖舍友 </view>
   </view>

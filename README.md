@@ -12,7 +12,7 @@
 
 ![](http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3)
 
-![](http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.bRrrxT8E9R8A3280bf2c92be9407e0d8c55edc628c3d.png)
+![](http://article.qiuhuiyi.cn/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20221028153621.jpg)
 
 
 #### 一、注册管理后台

@@ -17,7 +17,7 @@ Page({
     icon: {
       width: "100rpx",
       height: "100rpx",
-      path: "",
+      path: "http://article.qiuhuiyi.cn/uload.png",
       showImage:true
     },
     qiniu: {

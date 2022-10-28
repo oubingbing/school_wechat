@@ -33,16 +33,27 @@
 }
 
 .user-left .left-content-avatar{
-  width: 15%;
+  width: 17%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.left-content-avatar image{
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
+.left-content-avatar .avatar-item{
+  width: 90rpx;
+  height: 90rpx;
+  border: 4rpx solid #303030;
+  border-radius: 30rpx;
+  margin-left: 10rpx;
+}
+
+.left-content-avatar .avatar-border{
+  width: 70rpx;
+  height: 70rpx;
+  position:absolute;
+  z-index: 100;
+  left: -7rpx;
+  top: 4rpx;
 }
 
 .left-content{
@@ -59,7 +70,9 @@
 .left-content-message .left-content-item{
   border-radius: 20rpx;
   padding: 20rpx;
-  background: gainsboro;
+  background: white;
+  border: 2rpx solid #303030;
+  margin-left: 28rpx;
 }
 
 .left-content image{
@@ -71,29 +84,44 @@
 }
 
 .left-content .left-time{
-  font-size: 30rpx;
-  color: darkgray;
   margin-top: 15rpx;
   margin-left: 30rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 26fpx;
 }
 
 .left-content-message .qipao{
-  width: 0;
-  height: 0;
-  border-top: 15rpx solid white;
-  border-right: 15rpx solid gainsboro;
-  border-bottom: 15rpx solid white;
+  width: 15rpx;
+  height: 15rpx;
+  background: white;
   margin-left: 20rpx;
   margin-top: 20rpx;
+  border-color: #303030;
+  position: absolute;
+  z-index: 100;
+  border-bottom-style:solid;
+  border-right-style:solid;
+  border-width:2rpx;
+  transform: rotate(140deg);
 }
 
-.right-content-message .qipao{
-  width: 0;
-  height: 0;
-  border-top: 15rpx solid white;
-  border-left: 15rpx solid gainsboro;
-  border-bottom: 15rpx solid white;
+.qipao-right{
+  width: 15rpx;
+  height: 15rpx;
+  background: #FBC346;
   margin-top: 20rpx;
+  border-color: #303030;
+  position: absolute;
+  z-index: 100;
+  border-top-style:solid;
+  border-left-style:solid;
+  border-width:2rpx;
+  transform: rotate(135deg);
+  margin-right: -10rpx;
 }
 
 /** right **/
@@ -102,21 +130,31 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  
 }
 
 .user-right .right-content-avatar{
-  width: 15%;
+  width: 17%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+  margin-right: 10rpx;
 }
 
-.right-content-avatar image{
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
+.right-content-avatar .avatar-item{
+  width: 90rpx;
+  height: 90rpx;
+  border: 4rpx solid #303030;
+  border-radius: 30rpx;
+}
+
+.right-content-avatar .avatar-border{
+  width: 70rpx;
+  height: 70rpx;
+  position:absolute;
+  z-index: 100;
+  right: 55rpx;
+  top: 4rpx;
 }
 
 .right-content{
@@ -124,42 +162,50 @@
   flex-direction: column;
   width: 70%;
   justify-content: flex-end;
+  margin-right: 25rpx;
 }
 
 .right-content .right-content-message{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+
 }
 
 .right-content-message .right-content-item{
-  background: gainsboro;
+  background: #FBC346;
   padding: 20rpx;
   border-radius: 20rpx;
+  border: 2rpx solid #303030;
+  margin-right: -5rpx;
 }
 
 .right-content .right-time{
-  font-size: 30rpx;
-  color: darkgray;
   margin-top: 15rpx;
   display: flex;
   justify-content: flex-end;
+  font-size: 20rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  line-height: 26fpx;
 }
 
 
 /** 底部发送 **/
-
 .comment-input-container{
   position:fixed;
   bottom: 0rpx;
   z-index:100;
   width: 100%;
   height: 250prx;
-  background: WhiteSmoke;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-top: 10rpx;
+  background: #ffffff;
+  box-shadow: 0px 0px 10rpx 0px rgba(0,0,0,0.34); 
 }
 
 .comment-input-container input{
@@ -177,17 +223,19 @@
 }
 
 .send-button{
-  height: 70rpx;
-  width: 17%;
-  font-size: 30rpx;
-  background: #66CDAA;
-  color: white;
+  width: 15%;
+  font-size: 28rpx;
   margin-right: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   border-radius: 10rpx;
+  width: 110rpx;
+  height: 62rpx;
+  background: linear-gradient(159deg,#ffd73b 11%, #fbc346 94%);
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 0px rgba(229,161,34,0.69); 
 }
 
 .comment-input-container .add-image{
@@ -195,16 +243,16 @@
   width: 15%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  
+  justify-content: center;
+  align-items: center;
 }
 
 .add-image .image-container{
-  width: 75rpx;
-  height: 75rpx;
   display: flex;
   flex-direction: column;
-  margin-left: 20rpx;
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 50rpx;
 }
 
 .hei{  
@@ -213,13 +261,17 @@
 } 
 
 .text-content{
-  width: 95%;
+  width: 60%;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: gainsboro;
-  margin-bottom: -10rpx;
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 25rpx 15rpx;
+
+  font-size: 25rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  color: #7d7d7d;
 }
 
 /**post css**/

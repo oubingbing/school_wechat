@@ -57,7 +57,9 @@ Page({
     rankPageSize: 10,
     rankPageNumber: 1,
     myRankData:'',
-    myRank:0
+    myRank:0,
+    windowHeight:app.globalData.windowHeight,
+    bgUlr:"http://article.qiuhuiyi.cn/Group.png",
   },
 
   onLoad: function (option) {
@@ -76,7 +78,6 @@ Page({
         showTips: true
       })
     }
-
     this.getPersonalInfo();
     qqmapsdk = new QQMapWX({
       key: config.TX_MAP_KEY
@@ -133,7 +134,6 @@ Page({
    * 跳转到私信
    */
   letter: function (e) {
-    console.log(e)
     let id = e.currentTarget.dataset.user_id;
     let canChat = e.target.dataset.chat;
     wx.navigateTo({
@@ -175,6 +175,11 @@ Page({
  */
   selected(e) {
     let objType = e.currentTarget.dataset.type;
+    if(objType == 1){
+      this.setData({bgUlr:"http://article.qiuhuiyi.cn/Group.png"})
+    }else{
+      this.setData({bgUlr:"http://article.qiuhuiyi.cn/step-bg.png"})
+    }
     this.setData({ select: objType})
   },
 
@@ -204,7 +209,6 @@ Page({
           wx.login({
             success: res => {
               // 发送 res.code 到后台换取 openId, sessionKey, unionId
-              console.log("res.code:" + res.code);
               let code = res.code;
               wx.getWeRunData({
                 success(res) {
@@ -237,7 +241,6 @@ Page({
         iv: iv,
         code: code
       }, res => {
-        console.log(res);
         this.statistic();
         this.steps();
       });
@@ -275,7 +278,6 @@ Page({
    * 获取步数列表
    */
   steps: function () {
-    console.log("获取步数");
     let order_by = 'run_at';
     let sort_by = 'desc';
     http.get(`/run_steps?page_size=${this.data.stepPageSize}&page_number=${this.data.stepPageNumber}&order_by=${order_by}&sort_by=${sort_by}`,
@@ -316,6 +318,26 @@ Page({
     }
   },
 
+    /**
+   * 上拉加载更多
+   */
+  getMoreTravelLogs: function () {
+    this.setData({
+      showGeMoreLoadin: true
+    })
+    switch (parseInt(this.data.select)){
+      case 1:
+        this.travelLogs();
+        break;
+      case 2:
+        this.steps();
+        break;
+      case 3:
+        this.getRandList();
+        break;
+    }
+  },
+
   /**
    * 分享
    */
@@ -326,7 +348,7 @@ Page({
     }
     return {
       title: '说走就走，让步数带你去旅行吧',
-      path: 'pages/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl: '/image/share-pic.jpg',
       success: function (res) {
       },
@@ -466,7 +488,6 @@ Page({
    * 隐藏报告
    */
   hideReport: function () {
-    console.log('隐藏');
     this.setData({
       showReport: false,
       showMap: true
@@ -481,10 +502,6 @@ Page({
     let user = wx.getStorageSync('user');
     let report = this.data.report;
     let plan = this.data.plan;
-
-    console.log("头像信息：");
-    console.log(user)
-
     let status = '旅行中';
     if (plan.status == 1) {
       status = '旅行中';
@@ -562,11 +579,9 @@ Page({
   saveReport: function () {
     wx.authorize({
       scope: "scope.writePhotosAlbum", success(res) {
-        console.log('授权获得微信运动数据');
         wx.canvasToTempFilePath({
           canvasId: 'myCanvas',
           success: function success(res) {
-            console.log(res.tempFilePath)
             let image = res.tempFilePath;
             wx.saveImageToPhotosAlbum({
               filePath: image,
@@ -604,7 +619,6 @@ Page({
   plan: function () {
     http.get(`/plan`, {}, res => {
       wx.hideLoading();
-      console.log(res.data.data);
       let resData = res.data.data;
       if (resData == null) {
         this.setData({
@@ -752,8 +766,6 @@ Page({
             });
           }
 
-          console.log("地图的头像：" + this.data.user.avatar)
-
           notLabelMarkers.push({
             iconPath: icon,
             id: notTravelLogMarkers.length + key,
@@ -765,7 +777,6 @@ Page({
           })
         })
         if (travelLogs.length > 0) {
-          console.log('这到底是啥：' + travelLogs[travelLogs.length - 1].name);
           //没有旅途点的标记
           notTravelLogMarkers.push({
             //iconPath: '/image/mylocation.png',
@@ -824,10 +835,6 @@ Page({
 
         //画线
         polyline[0].points = points;
-        console.log('地图线路的数据：');
-        console.log(polyline);
-        console.log("地图数组")
-        console.log(notTravelLogMarkers)
         let markers = travelLogMarkers;
         this.setData({
           polyline: polyline,
@@ -883,7 +890,6 @@ Page({
             longitude: item.longitude
           },
           success: res=>{
-            console.log(res);
             if (res.status == 0) {
               let name = res.result.formatted_addresses.recommend
               let address = res.result.address
@@ -895,7 +901,6 @@ Page({
                 }
                 return sub_item;
               })
-              console.log('new logs' + newLogs);
               this.setData({
                 logs: newLogs
               })
@@ -927,8 +932,6 @@ Page({
         district: district,
         city: city
       }, res => {
-
-        console.log(res);
 
       });
   },
@@ -962,7 +965,6 @@ Page({
         longitude: longitude
       },
       success: res=> {
-        console.log(res);
         if (res.status == 0) {
           let hotel = res.data[0].title
           let theLogs = this.data.logs;
@@ -972,7 +974,6 @@ Page({
             }
             return sub_item;
           })
-          console.log('new logs' + newLogs);
           this.setData({
             logs: newLogs
           })
@@ -980,7 +981,6 @@ Page({
         }
       },
       fail: function (res) {
-        console.log(res);
       }
     });
   },
@@ -997,7 +997,6 @@ Page({
         longitude: longitude
       },
       success: res=>{
-        console.log(res);
         if (res.status == 0) {
           let foods = res.data;
           let theLogs = this.data.logs;
@@ -1007,7 +1006,6 @@ Page({
             }
             return sub_item;
           })
-          console.log('new logs' + newLogs);
           this.setData({
             logs: newLogs
           })
@@ -1045,7 +1043,6 @@ Page({
             }
             return sub_item;
           })
-          console.log('new logs' + newLogs);
           this.setData({
             logs: newLogs
           })
@@ -1079,7 +1076,7 @@ Page({
     }
     return {
       title: '说走就走，让步数带你去旅行吧',
-      path: 'pages/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl: '/image/share-pic.jpg',
       success: function (res) {
       },

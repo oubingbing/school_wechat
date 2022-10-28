@@ -1,5 +1,5 @@
 page{
-  background-color: #F5F5F5;
+  background-color: #ffffff;
 }
 
 .post-sale-container{
@@ -29,6 +29,7 @@ page{
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
+  margin-top: 20rpx;
 }
 
 .post-header .left{
@@ -62,29 +63,97 @@ input{
   padding-bottom: 20rpx;
 }
 
-.right .gender{
-  border-bottom-style:solid;
-  border-width:1rpx;
-  border-color: #E8E8E8;
+ .gender{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 80rpx;
+  justify-content: space-around;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: CENTER;
+  color: #303030;
+  line-height: 28rpx;
+  position: relative;
 }
+
+.not-select-gender{
+  width: 260rpx;
+  height: 90rpx;
+  border: 4rpx solid #303030;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-gender{
+  width: 260rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(131deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247,171,30,0.81);
+}
+
+.left-gender-border{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  left: 280rpx;
+  top: -9rpx;
+}
+
+.right-gender-border{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  right: 50rpx;
+  top: -9rpx;
+}
+
 .post-content{
   display: flex;
   flex-direction: column;
   width: 100%;
   font-size: 35rpx;
+  align-items: center;
 }
 
 .post-content .like{
-  margin-left: 15rpx;
-  margin-right: 15rpx;
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
+  height: 150rpx;
+  width: 90%;
+  padding: 10rpx 10rpx;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
 }
 
 .post-content .introduce{
-  margin-left: 15rpx;
-  margin-right: 15rpx;
+  height: 300rpx;
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
+  width: 90%;
+  padding: 10rpx 10rpx;
   margin-top: 20rpx;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
 }
-
 
 .button-container{
   width: 100%;
@@ -95,15 +164,17 @@ input{
   text-align: center;
 }
 
-.button-container .button{
-  background: white;
-  width: 95%;
-  padding: 10rpx 10rpx;
-}
-button{
-  background: #66CDAA;
-  color: white;
-  width: 95%;
+.button{
+  width: 93%;
+  background: linear-gradient(110deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247,171,30,0.81); 
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  color: #303030;
+  line-height: 28rpx;
+  padding: 30rpx 0rpx;
 }
 
 .tips{
@@ -121,5 +192,16 @@ button{
 }
 
 .right-item{
-  font-size: 35rpx;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
+  height: 90rpx;
+  border: 4rpx solid #303030;
+  border-radius: 20rpx;
+  width: 90%;
+  padding: 10rpx 10rpx;
+  margin-top: 20rpx;
 }

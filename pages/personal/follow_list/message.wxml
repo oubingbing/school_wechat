@@ -1,0 +1,46 @@
+<view class="message-container">
+  <view class='message-content'>
+    <!-- 关注列表 -->
+    <view class="friend-container" wx:if="{{objType==1}}">
+      <view class="container-content">
+        <view class="content-item" 
+              wx:for="{{list}}" 
+              wx:key="{{list}}"
+              bindtap="openUserInfo" 
+              data-id="{{item.obj_id}}"
+              bindtap='openUserInfo'>
+          <view class="user-info">
+              <image class="avatar-border" src="/image/v2/border.png"></image>
+              <image class="avatar" src="{{item.be_follow_avatar}}"></image>
+            <view class="user-name">
+              <view class="user-nickname">{{item.be_follow_nickname}}</view>
+              <view class="date-time">{{item.created_at}}</view>
+            </view>
+          </view>
+        </view> 
+      </view>
+    </view>
+
+    <!-- 粉丝列表 -->
+    <view class="friend-container" wx:if="{{objType==2}}">
+      <view class="container-content">
+        <view class="content-item" 
+              wx:for="{{list}}" 
+              wx:key="{{list}}"
+              bindtap="openUserInfo" 
+              data-id="{{item.user_id}}">
+          <view class="user-info">
+              <image class="avatar-border" src="/image/v2/border.png"></image>
+              <image class="avatar" src="{{item.follow_avatar}}"></image>
+            <view class="user-name">
+              <view class="user-nickname">{{item.follow_nickname}}</view>
+              <view class="date-time">{{item.created_at}}</view>
+            </view>
+          </view>
+        </view> 
+      </view>
+    </view>
+
+  </view>
+
+</view>

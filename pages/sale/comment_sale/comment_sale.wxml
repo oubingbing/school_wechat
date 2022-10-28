@@ -2,8 +2,7 @@
 
     <view class='detail-container' wx:if="{{sale}}">
       <view class='header-container'>
-        <view class='header-bg'></view>
-          <swiper class='image-container' indicator-dots="true" indicator-color="#ffffff" indicator-active-color="#66CDAA">
+          <swiper class='image-container' indicator-dots="true" indicator-color="#000000" indicator-active-color="#F7AB1E">
             <block wx:for="{{sale.attachments}}" wx:key="{{item}}">
               <swiper-item class='image-item'>
                 <image mode='aspectFill' 
@@ -14,70 +13,69 @@
               </swiper-item>
             </block>
           </swiper>
+          <view class="genber">
+            <image src="/image/v2/boy.png" wx:if="{{sale.gender==1}}"></image>
+            <image src="/image/v2/girl.png" wx:if="{{sale.gender==2}}"></image>
+          </view>
       </view>
       <view class='friend-info-container'>
-        <view class='friend-name'>{{sale.name}}</view>
-        <!-- <view class='gender'>{{sale.gender}}</view>
-        <view class='major'>专业：{{sale.major}}</view> -->
-        <view class='major'>喜欢TA：{{sale.expectation}}</view>
-        <view class='major'>舍友简介：{{sale.introduce}}</view>
+        <view class='major'><view class="like-tab">喜欢TA</view><view>{{sale.expectation}}</view></view>
+        <view class='major'><view class="like-introduce">舍友简介</view><view class="">{{sale.introduce}}</view></view>
       </view>
 
-    <view class='operate'>
-      <view class='share-button'>
-        <button   class='button' 
-                  style='border: none;'  
-                  bindtap='showCommentInput' 
-                  data-objid="{{sale.id}}"
-                  data-refid=""
-                  data-type="2">评论</button>
-      </view>
-      <view class='collect' bindtap='letter' data-objid="{{objId}}">留言</view>
-      <view class='collect' bindtap='follow' wx:if="{{sale.follow==false}}">喜欢</view>
-      <view class='collect' bindtap='cancelFollow' wx:else>已喜欢</view>
+      <view class="like-icon">
+        <view class="like-icon-content">
+          <image src="/image/v2/sale-like.png" bindtap='follow'></image>
+          <view>{{sale.follow_number<=0?0:sale.follow_number}}</view>
+        </view>
       </view>
     </view>
-
+    
     <view class='comment-container' wx:if='{{sale}}'>
       <view class='comment-wall'>
           <view class='comment-header'>
-            <view class='zan'>
-              {{sale.follow_number<=0?0:sale.follow_number}}喜欢
+            <view class='comment-title'>
+              <view>撩撩舍友</view>
+              <view class="title-border"></view>
             </view>
             <view class='zan'
                   wx:if="{{sale.can_delete}}" 
                   bindtap='deleteSale'>
-              <view style='padding-left:5rpx;'>删除</view>
+                  <image class="delete-icon" src='/image/v2/index-delete.png'></image>
             </view>
-            <view class='zan share-user-button'>
-              <button class='button' open-type="share" style='border: none;'>
-                分享转发
-              </button>
+            <view class='zan share-user-button' bindtap="openUserInfo" data-id="{{sale.poster.id}}">
+              <image class="comment" src='/image/v2/sale-share.png'></image>
             </view>
-            <view class='comment'>
-              <view style='padding-left:5rpx;'>{{sale.comment_number}}评论</view>
+            <view class='zan coment-icon'>
+              <image  class="comment" 
+                      src='/image/v2/sale-comment.png' 
+                      bindtap='showCommentInput' 
+                      data-objid="{{sale.id}}"
+                      data-refid=""
+                      data-type="2"></image>
+              <view class="comment-num">{{sale.comment_number}}</view>
             </view>
           </view>
       </view>
 
       <view class='user-comment'>
-
         <view class='comment-item' 
               wx:for="{{sale.comments}}" 
               wx:key="{{sale.comments}}">
           <view class='left'>
-            <view class='user-image'>
-              <image src='{{item.commenter.avatar}}'></image>
+            <view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.id}}">
+              <image class="avatar-border" src="/image/v2/border.png"></image>
+              <image class="comment-user-avatar" src='{{item.commenter.avatar}}'></image>
             </view>
           </view>
           <view class='right'>
             <view 
               class='comment-name right-item'>
-              <view wx:if="{{item.author == 0 && item.commenter.supertube != 1}}" class="comment-nickname">{{item.commenter.nickname}}</view>
-              <view  wx:if="{{item.author == 1 && item.commenter.supertube != 1}}" class="comment-nickname">{{item.commenter.nickname}}(楼主)</view>
-              <view wx:if="{{item.commenter.supertube == 1}}" class="admin-nickname">
+              <view wx:if="{{item.author == 0 && item.commenter.supertube != 1}}" class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}</view>
+              <view  wx:if="{{item.author == 1 && item.commenter.supertube != 1}}" class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}(楼主)</view>
+              <view wx:if="{{item.commenter.supertube == 1}}" class="admin-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">
                 <view class="supertube">{{item.commenter.nickname}}</view>
-                <view class="admin-item">超管</view>
+                <image src="/image/v2/index-admin.png"></image>
               </view>
               <image class='letter-image'
                       bindtap='letter'
@@ -90,18 +88,22 @@
               {{item.content}}
             </view>
             <view class='create_at right-item'>
-              <view>{{item.created_at}}</view>
+              <view class="create_at_content">
+                <view>{{item.created_at}}</view>
+                <view class="delete-main-comment" 
+                      wx:if="{{item.can_delete}}" 
+                      data-objid="{{item.id}}"
+                      data-type='4'
+                      data-refid="{{item.id}}"
+                      bindtap="deleteMainComment">删除</view>
+              </view>
               <view class='comment-icon'>
-                <view class="coment-icon-sub"
+                <image class="coment-icon-sub"
                   bindtap='showCommentInput' 
                   data-objid="{{item.id}}"
+                  src='/image/v2/sale-comment.png'
                   data-type='4'
-                  data-refid="">评论</view>
-                <view class="coment-icon-sub"
-                  bindtap='letter'
-                  data-objid="{{item.id}}"
-                  data-type='4'
-                  data-refid="">留言</view>
+                  data-refid=""></image>
               </view>
             </view>
                 <view class='comment-user-wall' 
@@ -164,5 +166,5 @@
         fixed="true"
         auto-height 
         bindinput='getCommentContent'/>
-    <view class='send-button' bindtap='postComment'><view>发送</view></view>
+    <view class='send-button' bindtap='postComment'><view class="bt">发送</view></view>
   </view>

@@ -1,9 +1,4 @@
 <view class='container'>
-
-  <view class='header'>
-    <view class='tips'>试试你跟Ta有没有情侣相吧</view>
-  </view>
-
   <view class='image-container' wx-if="{{showSelect}}">
     <view class='image-left' bindtap='selectLeft'>
       <view class='image' wx:if="{{!imageLeft}}">
@@ -13,7 +8,10 @@
               bind:success="leftUploadSuccess"/>
       </view>
     </view>
-    <view class='image-left' bindtap='selectRight'>
+    <view class='image-middle' wx:if="{{!imageRight}}">
+      <image src="/image/v2/face-cp.png"></image>
+    </view>
+    <view class='image-right' bindtap='selectRight'>
       <view class='image' wx:if="{{!imageRight}}">
         <upload icon-info="{{icon}}" 
               qiniu-info="{{qiniu}}"
@@ -22,10 +20,10 @@
       </view>
     </view>
   </view>
-
 </view>
 
 <view class='report' wx-if="{{showReport}}">
+  <view></view>
   <view class='bind-report' wx-if="{{bindReport}}">
     <image src='/image/bind-face-report.png'></image>
   </view>
@@ -46,10 +44,12 @@
   </view>
 </view>
 
-<view class='ding-container'><image src='/image/ding.png'></image></view>
+<view class="tip-info">
+  <view>请在上方上传你和TA的自拍照</view>
+</view>
 
 <view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
-  <view class='beging-button'>开始</view>
+  <view class='beging-button'>开始检测</view>
 </view>
 
 <view class='beging' bindtap='cancelSelect' wx-if="{{showCancel}}">

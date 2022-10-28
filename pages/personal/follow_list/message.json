@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "关注列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "get-more-loading": "/components/get-more-loading/get-more-loading",
+    "not-more": "/components/not-more-tip/not-more-tip"
+  }
+}

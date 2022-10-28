@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "我的表白墙",
-  "usingComponents": {
-    "get-more-loading": "/components/get-more-loading/get-more-loading",
-    "not-more": "/components/not-more-tip/not-more-tip"
-  }
-}

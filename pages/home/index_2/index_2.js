@@ -112,7 +112,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: 'hi，同学，有人跟你表白了',
-      path: '/pages/home/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl:'http://img.qiuhuiyi.cn/share1.jpg',
       success: function (res) {
         // 转发成功

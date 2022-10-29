@@ -176,7 +176,7 @@
                     <image src="{{sub.commenter.avatar}}"></image>
                   <view class="comment-name">{{sub.commenter.nickname}}</view>
                   <view class="comment-word">回复：</view>
-                  <image src="{{sub.ref_comment.refCommenter.nickname.avatar}}"></image>
+                  <image src="{{sub.ref_comment.refCommenter.avatar}}"></image>
                   <view class="comment-name">{{sub.ref_comment.refCommenter.nickname}}：</view>
                   <view class="comment-word">{{sub.content}}</view>
               </view>

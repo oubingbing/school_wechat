@@ -174,7 +174,7 @@
               <image wx:if="{{myRank==1}}" src='/image/v2/rank-one.png'></image>
               <image wx:elif="{{myRank==2}}" src='/image/v2/rank-two.png'></image>
               <image wx:elif="{{myRank==3}}" src='/image/v2/rank-three.png'></image>
-              <view wx:else>{{myRank}}</view>
+              <view wx:else class="my-rank-info"><view>{{myRank}}</view></view>
             </view>
           </view>
           <view class='my-rand-right'>

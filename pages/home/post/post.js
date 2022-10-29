@@ -64,9 +64,7 @@ Page({
 
   /** 提交 */
   post: function () {
-
     this.setData({ canPost:false})
-
     let content = this.data.textContent;
     let attachments = this.data.attachments;
     let privateValue = this.data.private;

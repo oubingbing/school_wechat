@@ -93,13 +93,9 @@ Page({
       if (res.data.data.page_data){
         res.data.data.page_data.map(item=>{
           if (item != undefined){
-            console.log(item)
-            console.log(tempArray)
             tempArray.push(item);
           }
         })
-        console.log("评论：")
-        console.log(tempArray)
         this.setData({
           comments: tempArray,
           pageNumber: this.data.pageNumber + 1
@@ -167,8 +163,6 @@ Page({
    * 触摸屏幕后移动触发一些隐藏操作
    */
   hiddenComment: function () {
-    console.log('移动屏幕');
-    console.log('inde-hiddenComment：触摸后移动');
     this.setData({
       showCommentInput: false
     });
@@ -181,7 +175,6 @@ Page({
     let objid = e.currentTarget.dataset.objid;
     let type = e.currentTarget.dataset.type;
     let refId = e.currentTarget.dataset.refid;
-    console.log(e,"数据",objid,type,refId)
     this.setData({
       showCommentInput: true,
       objId: objid,
@@ -237,8 +230,6 @@ Page({
                 let sub_comments = comment.sub_comments;
                 let newSubComments = sub_comments.filter((item, index) => {
                   if (item.id != commentId) {
-                    console.log("item.id:" + item.id);
-                    console.log("commentId:" + commentId);
                     return item;
                   }
                 });
@@ -293,7 +284,6 @@ Page({
       if (!resData.error_code) {
         let comments = _this.data.comments;
         if (resData.obj_type == 2) {
-          console.log('评论贴子')
           let data = resData;
           comments.unshift(data);
           comments.comment_number += 1;

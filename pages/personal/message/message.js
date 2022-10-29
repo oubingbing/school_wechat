@@ -36,7 +36,6 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
    */
   getService: function () {
     http.get(`/service`, {}, res => {
-      console.log('客服id:' + res.data.data);
       this.setData({
         serviceId: res.data.data
       });
@@ -48,7 +47,6 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
    */
   openSugesstion: function () {
     let id = this.data.serviceId;
-    console.log('客服id' + id);
     wx.navigateTo({
       url: '/pages/personal/letter/letter?friend_id=' + id
     })
@@ -90,7 +88,6 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
    */
   getPersonalInfo() {
     http.get(`/personal_info`, {}, res => {
-      console.log(res.data.data);
       this.setData({
         user: res.data.data
       })
@@ -222,7 +219,6 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     }
     
     if (objType == 4) {
-      console.log('打开卖舍友');
         wx.navigateTo({
           url: `/pages/sale/comment_sale/comment_sale?id=${pobj}`
         })

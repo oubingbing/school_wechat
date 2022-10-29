@@ -80,7 +80,7 @@
 
     <!-- 表白墙列表 -->
     <view class="body-list" wx:if="{{selectPoster==1}}" bindtouchmove="hiddenComment">
-      <view class="body-item"  wx:for="{{posts}}" wx:key="{{posts}}">
+      <view class="body-item"  wx:for="{{posts}}" wx:key="id">
         <view class="item-header">
           <view class="avatar-item">
             <image class="avatar-border" src="/image/v2/border.png"></image>
@@ -110,7 +110,7 @@
           <view class="item-content-image" wx:if='{{item.attachments.length>=1}}'>
             <image mode="aspectFill"
                   wx:for="{{item.attachments}}" 
-                   wx:key="{{item.attachments}}"
+                   wx:key="id"
                    wx:for-item="sitem"
                    src="{{baseImageUrl+sitem}}" 
                    bindtap='previewMoreImage'
@@ -138,7 +138,7 @@
             <view class="praise-right">
               <view class="praise-item" 
                     wx:for="{{item.praises}}" 
-                    wx:key="{{item.praises}}">
+                    wx:key="id">
                 <image src="{{item.avatar}}"></image>
                 <view class="praise-name">{{item.nickname}}</view>
               </view>
@@ -150,7 +150,7 @@
               <view class="comment-item" 
                     wx:if="{{!sub.ref_comment}}"
                     wx:for="{{item.comments}}" 
-                    wx:key="{{item.comments}}" 
+                    wx:key="id" 
                     wx:for-item="sub"
                     bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
                     data-objid="{{item.id}}"
@@ -166,7 +166,7 @@
               <view class="comment-item" 
                     wx:if="{{sub.ref_comment}}"
                     wx:for="{{item.comments}}" 
-                    wx:key="{{item.comments}}" 
+                    wx:key="id" 
                     wx:for-item="sub"
                     bindtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}"
                     data-objid="{{item.id}}"
@@ -194,7 +194,7 @@
                 wx:for="{{leftList}}" 
                 catchtap='openSalecomment'
                 data-objid='{{item.id}}'
-                wx:key="{{leftList}}">
+                wx:key="id">
             <image class='main-pic' 
                   mode='widthFix' 
                   src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
@@ -216,7 +216,7 @@
         </view>
 
         <view class='content-right'>
-          <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}" catchtap='openSalecomment' data-objid='{{item.id}}'>
+          <view class='item' wx:for="{{rightList}}" wx:key="id" catchtap='openSalecomment' data-objid='{{item.id}}'>
             <image class='main-pic' 
                   mode='widthFix' 
                   src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>

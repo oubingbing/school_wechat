@@ -27,7 +27,7 @@
 
         <view class='comment-item' 
               wx:for="{{comments}}" 
-              wx:key="{{comments}}">
+              wx:key="id">
           <view class='left'>
             <view class='user-image' 
                   bindtap="openUserInfo"
@@ -65,7 +65,7 @@
                       wx:if='{{item.sub_comments.length > 0}}'>
                   <view class='comment-user-container' 
                         wx:for="{{item.sub_comments}}" 
-                        wx:key="{{item.sub_comments}}" 
+                        wx:key="id" 
                         wx:for-item="sub">
                       <view class='comment-wall-item' 
                             wx:if="{{!sub.ref_comment}}">

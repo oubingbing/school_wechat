@@ -49,7 +49,7 @@
         </view>
       </view>
 
-      <view class='item' wx:for="{{logs}}" wx:key="{{logs}}">
+      <view class='item' wx:for="{{logs}}" wx:key="id">
           <view class='left'>
             <view class='date'>{{item.run_at}}</view>
             <image class="travel-line" src='/image/v2/travel-line.png'></image>
@@ -90,7 +90,7 @@
                     <view>我吃了好多好吃的，这些店里的美食我统统都吃了个遍</view>
                     <view class='food-wall'>
                       <view wx:for="{{item.foods}}" 
-                            wx:key="{{item.foods}}" 
+                            wx:key="id" 
                             wx:for-item="food">
                         {{food.title}}
                       </view>
@@ -100,7 +100,7 @@
                     <view>我去了下面这几个景点，感觉很美，希望下次还能来，哈哈</view>
                     <view class='views-wall'>
                       <view wx:for="{{item.views}}" 
-                            wx:key="{{item.views}}" 
+                            wx:key="id" 
                             wx:for-item="food">
                             {{food.title}}
                       </view>
@@ -152,7 +152,7 @@
     <!-- 具体步数内容 -->
     <view class='content-container'>
       <view class='content step-data-content'>
-        <view class='step-data-item' wx:for="{{steps}}" wx:key="{{steps}}">
+        <view class='step-data-item' wx:for="{{steps}}" wx:key="id">
             <view class='step-data-left'>
               <view class='date'>{{item.run_at}}</view>
             </view>
@@ -189,7 +189,7 @@
             bindtap='letter' 
             data-user_id='{{item.user_id}}' 
             wx:for="{{randList}}" 
-            wx:key="{{item.id}}">
+            wx:key="id">
         <view class='rand'>
           <view class='rand-left'>
             <view class='rand-index'>

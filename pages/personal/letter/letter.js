@@ -41,7 +41,6 @@ Page({
     wx.hideTabBar();
     let cantChat = 0
     let friendId = option.friend_id;
-    console.log(friendId)
     cantChat = option.can_chat;
     this.setData({
       friendId: friendId,
@@ -76,7 +75,6 @@ Page({
    * 获取上传的图片
    */
   uploadSuccess: function (uploadData) {
-    console.log("发送图片");
     let attachments = [];
     attachments.push(uploadData.detail.key)
     this.send(null,attachments);
@@ -95,8 +93,6 @@ Page({
   setTitle: function (id,cantChat){
     http.get(`/user/${id}`, {}, res => {
       let name = res.data.data.nickname;
-      console.log(res.data.data);
-      console.log(name);
       wx.setNavigationBarTitle({ title: "留言板 | "+name });
     });
   },

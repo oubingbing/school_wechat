@@ -21,7 +21,7 @@ Page({
     icon: {
       "width": "150rpx",
       "height": "150rpx",
-      "path": "http://article.qiuhuiyi.cn/uload.png"
+      "path": "/image/select-image.png"
     },
     qiniu: {
       uploadNumber: 9,

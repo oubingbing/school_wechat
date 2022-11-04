@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "我要卖舍友",
   "usingComponents": {
-    "upload": "plugin://uploadPlugins/upload"
+    "upload": "/components/upload/components/upload/upload"
   }
 }

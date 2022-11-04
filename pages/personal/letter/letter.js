@@ -4,7 +4,7 @@ const qiniuUtil = require("./../../../utils/qiniuToken.js");
 const config = require("./../../../config.js");
 const app = getApp();
 
-const icon = 'http://article.qiuhuiyi.cn/v2-post.png';
+const icon = '/image/get-phone-2.png';
 
 Page({
   data: {

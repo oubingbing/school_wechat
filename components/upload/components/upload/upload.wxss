@@ -1,0 +1,27 @@
+
+.image-form{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-form .select-image{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40rpx;
+  flex-wrap:wrap;
+}
+
+.select-image .upload-image{
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+.select-image .image-item{
+  position: relative;
+}
+
+.remove-image{
+
+}

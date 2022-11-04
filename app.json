@@ -35,12 +35,6 @@
     "getLocation",
     "chooseLocation"
   ],
-  "plugins": {
-    "uploadPlugins": {
-      "version": "1.3.0",
-      "provider": "wx00caa212d6710dcb"
-    }
-  },
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#fbc346",

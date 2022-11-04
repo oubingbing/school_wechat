@@ -1,0 +1,28 @@
+<view class='image-form'>
+  <view class='select-image'>
+    <view class='image-item'
+          wx:if="{{iconInfo.showImage}}" 
+          wx:for="{{imageArray}}" 
+          wx:key='{{imageArray}}'>
+      <image class='upload-image' 
+             bindtap='previewImage'
+             style='width:{{iconInfo.width}};height:{{iconInfo.height}}' 
+             id='{{item}}' 
+             mode='aspectFill' 
+             src='{{item.localPath}}'></image>
+            <image src='/image/delete.png' 
+                    style="width: 35rpx;height: 35rpx;position:absolute;top: rpx;right: 0rpx;z-index: 100;"
+                   id='{{index}}' 
+                   wx:key='{{imageArray}}' 
+                   bindtap='removeImage' 
+                   class='remove-image'></image>
+        </view>
+    <view>
+      <image  class='upload-image' 
+              wx:if="{{!hiddenIcon}}"
+              bindtap='selectImage'
+              style='width:{{iconInfo.width}};height:{{iconInfo.height}}'
+              src='{{iconInfo.path}}'></image>
+    </view>
+  </view>
+</view> 

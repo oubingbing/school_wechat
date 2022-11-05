@@ -106,7 +106,7 @@ const httpRequest=function (_method, _url, _data, callback) {
         })
         setTimeout(res=>{
           wx.switchTab({
-            url: '/pages/personal/index/personal?status=ture'
+            url: '/pages/personal/index_2/personal?status=ture'
           })
         },1500)
         //login(_method, _url, _data, callback);

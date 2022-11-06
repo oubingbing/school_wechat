@@ -22,24 +22,24 @@ Page({
   },
   onLoad: function () {
     let _this = this;
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        let includePoints = _this.data.includePoints;
-        includePoints.push({
-          longitude: longitude,
-          latitude: latitude
-        })
+    // wx.getLocation({
+    //   type: 'wgs84',
+    //   success: function (res) {
+    //     var latitude = res.latitude
+    //     var longitude = res.longitude
+    //     let includePoints = _this.data.includePoints;
+    //     includePoints.push({
+    //       longitude: longitude,
+    //       latitude: latitude
+    //     })
       
-        _this.setData({
-          latitude: latitude,
-          longitude: longitude,
-          includePoints: includePoints
-        })
-      }
-    })
+    //     _this.setData({
+    //       latitude: latitude,
+    //       longitude: longitude,
+    //       includePoints: includePoints
+    //     })
+    //   }
+    // })
 
   },
   onReady: function (e) {

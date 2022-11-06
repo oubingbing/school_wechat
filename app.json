@@ -32,7 +32,6 @@
     }
   },
   "requiredPrivateInfos": [
-    "getLocation",
     "chooseLocation"
   ],
   "tabBar": {

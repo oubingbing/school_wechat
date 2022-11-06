@@ -82,7 +82,7 @@ Page({
     qqmapsdk = new QQMapWX({
       key: config.TX_MAP_KEY
     });
-    this.getLocation();
+    //this.getLocation();
   },
 
   onReady: function (e) {
@@ -402,7 +402,7 @@ Page({
       })
     } else {
       this.setData({
-        showTravelLocation: false,
+        showTravelLocation: true,
         markers: this.data.notTravelLogMarkers
       })
     }

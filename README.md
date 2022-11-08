@@ -6,11 +6,23 @@
 
 ### 需要帮忙部署的可以加微信 bingbing_ou
 
+#### 功能
+- 表白墙
+- 卖舍友
+- 步数旅行
+- 步数排行榜
+- 情侣脸
+- 个人主页
+- 私信
+- 站内消息
+- 今日话题
+- 评论点赞收藏
+
 #### 效果图
 
 扫码进入小程序
 
-![](http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3)
+<img src="http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3"  width="100px" />
 
 ![](http://article.qiuhuiyi.cn/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20221028153621.jpg)
 

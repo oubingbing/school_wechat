@@ -22,29 +22,44 @@
   </view>
 </view>
 
-<view class='report' wx-if="{{showReport}}">
-  <view></view>
-  <view class='bind-report' wx-if="{{bindReport}}">
-    <image src='/image/bind-face-report.png'></image>
-  </view>
-  <view class='content'>
-    <view class='report-title'>
-      <view>检测报告</view>
-    </view>
-    <view class='report-main'>
-      <view class='rate report-item'>相似度：<view class='rate-world'>{{rate}}%</view></view>
-      <view class='face report-item'>脸型：{{face}}</view>
-      <view class='description report-item'>结论：{{conclusion}}</view>
-      <view class='seal-world'>{{face}}</view>
-      <view class='seal'>
-        <image src='/image/seal.png'></image>
+<view class='report-container' wx:if="{{showReport}}">
+  <view class='report'>
+    <view class="report-content">
+      <image class="report-delete-image" src="/image/delete.png" bindtap="hiddenReport"></image>
+      <view class="rp-header">
+        <view class="rp-left">
+          <view class="report-cn">检测报告</view>
+          <view class="report-en">MATCH REPORT</view>
+        </view>
+        <view class="rp-right">
+          <view class="report-code">{{rate}}%</view>
+          <view class="report-same">相似度</view>
+        </view>
       </view>
-      <view class='support'>阿里AI提供技术支持</view>
+      <view class="up-image-data">
+        <view class="left-image">
+          <image class="left-avatar-border" src="/image/v2/left-border.png"></image>
+          <image class="user-avatar" src="{{postImageLeft}}"></image>
+        </view>
+        <view class="avatar-gap"><image src="/image/v2/face-cp.png"></image></view>
+        <view class="right-image">
+          <image class="right-avatar-border" src="/image/v2/left-border.png"></image>
+          <image class="user-avatar" src="{{postImageRight}}"></image>
+        </view>
+      </view>
+      <view class="rp-type">
+        <view class="rp-result">脸  型：</view>
+        <view class="rp-type-data">{{face}}</view>
+      </view>
+      <view class="rp-type">
+        <view class="rp-result">结  论：</view>
+        <view class="rp-result-content">{{conclusion}}</view>
+      </view>
     </view>
   </view>
 </view>
 
-<view class="tip-info">
+<view class="tip-info" wx:if="{{!showReport}}">
   <view>请在上方上传你和TA的自拍照</view>
 </view>
 
@@ -52,15 +67,7 @@
   <view class='beging-button'>开始检测</view>
 </view>
 
-<view class='beging' bindtap='cancelSelect' wx-if="{{showCancel}}">
-  <view class='beging-button'>取消</view>
-</view>
-
-<view class='beging' bindtap='submit' wx-if="{{showSubmit}}">
+<view class='beging' bindtap='submit' wx-if="{{showSelect}}">
   <view class='beging-button'>提交</view>
-</view>
-
-<view class='beging' bindtap='tryAgant' wx-if="{{tryAgant}}">
-  <view class='beging-button'>再来一次</view>
 </view>
 

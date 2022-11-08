@@ -103,7 +103,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-top: 850rpx;
+  margin-top: 700rpx;
   justify-content: center;
 }
 
@@ -163,106 +163,202 @@ page{
   padding-bottom: 10rpx;
 }
 
+.report-container{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .report{
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 400rpx;
+  height: 550rpx;
   position:fixed;
-  top:400rpx;
   z-index:100;
   align-items: center;
 }
 
-.report .content{
-  width: 90%;
-  height: 400rpx;
-  background: white;
-  border-radius: 10rpx;
-  -webkit-box-shadow:0 0 20rpx rgba(79, 79, 79, .6);
-  -moz-box-shadow:0 0 20rpx rgba(79, 79, 79, .6);
-  box-shadow:0 0 20rpx rgba(79, 79, 79, .6);
+.left-avatar-border{
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  z-index: 300;
+  transform: rotate(270deg);
+  left: 153rpx;
+  top: 155rpx;
 }
 
-.bind-report{
-  z-index:110;
-  position:fixed;
-  width: 100%;
+.right-avatar-border{
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  z-index: 300;
+  transform: rotate(270deg);
+  left: 405rpx;
+  top: 155rpx;
+}
+
+.report-delete-image{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 300;
+  right: 110rpx;
+}
+
+.report-content{
+  width: 70%;
+  height: 600rpx;
+  background: rgba(255,255,255,0.89);
+  border-radius: 30rpx;
+  box-shadow: 0px 30rpx 50rpx -16rpx rgba(255,116,146,0.56); 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  top: 370rpx;
 }
 
-.bind-report image{
-  width: 80rpx;
-  height: 80rpx;
-  transform:rotate(-7deg);
-  -o-transform:rotate(-7deg); 
-}
-
-.report .content{
-  display: flex;
-  flex-direction: column;
-}
-
-.content .report-title{
-  width: 100%;
+.rp-header{
+  width: 80%;
+  height: 150rpx;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.rp-left{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  margin-top: 17rpx;
-  font-size: 45rpx;
 }
 
-.report .report-main{
+.rp-right{
+  width: 50%;
   display: flex;
   flex-direction: column;
-  margin-top: 20rpx;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-.report-main .report-item{
-  padding-left: 20rpx;
+.report-cn{
+  font-size: 40rpx;
+  font-family: OPPOSans, OPPOSans-Bold;
+  font-weight: 700;
+  text-align: CENTER;
+  color: #000000;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
 }
 
-.report-main .support{
-  z-index:110;
-  position:absolute;
-  bottom: 10rpx;
-  right: 50rpx;
-  font-size: 25rpx;
-  color: darkgray
+.report-en{
+  font-size: 9px;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  color: #000000;
+  line-height: 18rpx;
+  letter-spacing: 0.04rpx;
 }
 
-.report-main .rate{
+.report-code{
+  font-size: 60rpx;
+  font-family: OPPOSans, OPPOSans-Bold;
+  font-weight: 700;
+  text-align: RIGHT;
+  color: #ee5050;
+}
+
+.report-same{
+  font-size: 20rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: LEFT;
+  color: #000000;
+  margin-top: -15rpx;
+}
+
+.up-image-data{
+  width: 80%;
   display: flex;
   flex-direction: row;
+  height: 200rpx;
+  margin-bottom: 20rpx;
 }
 
-.rate .rate-world{
-  color: red;
+.left-image{
+  width: 40%;
+  height: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.report-main .seal{
-  z-index:115;
-  position:absolute;
-  bottom: 20rpx;
-  right: 60rpx;
+.right-image{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.seal image{
-  width: 180rpx;
-  height: 180rpx;
+.avatar-gap image{
+  width: 50rpx;
+  height: 30rpx;
 }
 
-.report-main .seal-world{
-  z-index:120;
-  position:absolute;
-  bottom: 100rpx;
-  right: 100rpx;
-  font-size: 30rpx;
-  color: red;
-    transform:rotate(-14deg);
-  -o-transform:rotate(-14deg); 
+.avatar-gap{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar{
+  width: 160rpx;
+  height: 160rpx;
+  border: 4rpx solid #303030;
+  border-radius: 20rpx;
+}
+
+.rp-type{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.rp-result{
+  width: 23%;
+  font-size: 28rpx;
+  font-family: OPPOSans, OPPOSans-Bold;
+  font-weight: 700;
+  text-align: LEFT;
+  color: #000000;
+}
+
+.rp-type-data{
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #000000;
+}
+
+.rp-result-content{
+  width: 77%;
+  font-size: 22rpx;
+  font-family: OPPOSans, OPPOSans-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #000000;
 }

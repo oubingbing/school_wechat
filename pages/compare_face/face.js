@@ -100,6 +100,10 @@ Page({
     this.setData({ showReport: false })
   },
 
+  hiddenReport:function() {
+    this.setData({ showReport: false,showSelect:true })
+  },
+
   selectRight:function(){
     this.setData({ showReport: false})
 
@@ -146,6 +150,7 @@ Page({
             conclusion: response.data.message,
             showReport: true,
             bindReport: true,
+            showSelect:false
           });
       });
   },

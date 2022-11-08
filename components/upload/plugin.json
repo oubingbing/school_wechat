@@ -1,0 +1,6 @@
+{
+  "publicComponents": {
+    "upload": "components/upload/upload"
+  },
+  "main": "index.js"
+}

@@ -218,6 +218,15 @@ page{
   border-radius: 10rpx;
 }
 
+.travel-line{
+  width: 70rpx;
+  height: 70rpx;
+  position: relative;
+  z-index: 100;
+  top: -25rpx;
+  right: -125rpx;
+}
+
 .item .step-right{
   padding-left: 300rpx;
   padding-top: 30rpx;
@@ -662,10 +671,10 @@ page{
   width: 90%;
   display: flex;
   flex-direction: column;
-
   background: rgba(255,255,255,0.90);
   border-radius: 40rpx;
   margin-top: 50rpx;
+  margin-bottom: 50rpx;
 }
 
 .my-rank{
@@ -709,6 +718,17 @@ page{
 .my-rank-image image{
   width: 250rpx;
   height: 250rpx;
+}
+
+.my-rank-info{
+  width: 250rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 80rpx;
+  font-weight: 700;
 }
 
 .rand-item .rand{

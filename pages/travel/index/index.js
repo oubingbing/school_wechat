@@ -82,7 +82,7 @@ Page({
     qqmapsdk = new QQMapWX({
       key: config.TX_MAP_KEY
     });
-    this.getLocation();
+    //this.getLocation();
   },
 
   onReady: function (e) {
@@ -348,7 +348,7 @@ Page({
     }
     return {
       title: '说走就走，让步数带你去旅行吧',
-      path: 'pages/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl: '/image/share-pic.jpg',
       success: function (res) {
       },
@@ -402,7 +402,7 @@ Page({
       })
     } else {
       this.setData({
-        showTravelLocation: false,
+        showTravelLocation: true,
         markers: this.data.notTravelLogMarkers
       })
     }
@@ -1076,7 +1076,7 @@ Page({
     }
     return {
       title: '说走就走，让步数带你去旅行吧',
-      path: 'pages/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl: '/image/share-pic.jpg',
       success: function (res) {
       },

@@ -6,7 +6,7 @@
               scroll-top="{{scrollTop}}" 
               bindscroll="scroll" 
               wx:for="{{list}}" 
-          wx:key="{{listData}}"
+          wx:key="id"
               class='letter-content'>
   <block wx:if="{{item.from_user_id == friendId}}">
     <view class="scroll-view-item">

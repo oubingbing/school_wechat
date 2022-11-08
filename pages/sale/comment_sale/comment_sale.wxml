@@ -3,7 +3,7 @@
     <view class='detail-container' wx:if="{{sale}}">
       <view class='header-container'>
           <swiper class='image-container' indicator-dots="true" indicator-color="#000000" indicator-active-color="#F7AB1E">
-            <block wx:for="{{sale.attachments}}" wx:key="{{item}}">
+            <block wx:for="{{sale.attachments}}" wx:key="id">
               <swiper-item class='image-item'>
                 <image mode='aspectFill' 
                        src="{{baseImageUrl+item}}" 
@@ -14,8 +14,8 @@
             </block>
           </swiper>
           <view class="genber">
-            <image src="/image/v2/boy.png" wx:if="{{sale.gender=='男'}}"></image>
-            <image src="/image/v2/girl.png" wx:if="{{sale.gender=='女'}}"></image>
+            <image src="/image/v2/boy.png" wx:if="{{sale.gender==1}}"></image>
+            <image src="/image/v2/girl.png" wx:if="{{sale.gender==2}}"></image>
           </view>
       </view>
       <view class='friend-info-container'>
@@ -61,7 +61,7 @@
       <view class='user-comment'>
         <view class='comment-item' 
               wx:for="{{sale.comments}}" 
-              wx:key="{{sale.comments}}">
+              wx:key="id">
           <view class='left'>
             <view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.id}}">
               <image class="avatar-border" src="/image/v2/border.png"></image>
@@ -111,7 +111,7 @@
                   <view class="qipao"></view>
                   <view class='comment-user-container' 
                         wx:for="{{item.sub_comments}}" 
-                        wx:key="{{item.sub_comments}}" 
+                        wx:key="id" 
                         wx:for-item="sub">
                       <view class='comment-wall-item' 
                             wx:if="{{!sub.ref_comment}}" 

@@ -24,7 +24,7 @@
             wx:for="{{leftList}}" 
             catchtap='comment'
             data-objid='{{item.id}}'
-            wx:key="{{leftList}}">
+            wx:key="id">
         <image class='main-pic' 
                mode='widthFix' 
                src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
@@ -46,7 +46,7 @@
     </view>
 
     <view class='content-right'>
-      <view class='item' wx:for="{{rightList}}" wx:key="{{rightList}}" catchtap='comment' data-objid='{{item.id}}'>
+      <view class='item' wx:for="{{rightList}}" wx:key="id" catchtap='comment' data-objid='{{item.id}}'>
         <image class='main-pic' mode='widthFix' src='{{baseImageUrl+item.attachments[0]["url"]}}'></image>
         <view class='footer'>
           <view class='footer-item'>

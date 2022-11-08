@@ -135,3 +135,13 @@ page{
   width: 95%;
   font-size: 30rpx;
 }
+
+.power-by{
+  width: 100%;
+  font-size: 25rpx;
+  color: gainsboro;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60rpx;
+}

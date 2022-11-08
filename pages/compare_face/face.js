@@ -171,7 +171,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '喜欢ta，那就说出来吧',
-      path: '/pages/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl: 'http://img.qiuhuiyi.cn/compare_face.jpg',
       success: function (res) {
         // 转发成功

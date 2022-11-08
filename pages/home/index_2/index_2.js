@@ -112,7 +112,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: 'hi，同学，有人跟你表白了',
-      path: '/pages/home/index/index',
+      path: '/pages/home/index_2/index_2',
       imageUrl:'http://img.qiuhuiyi.cn/share1.jpg',
       success: function (res) {
         // 转发成功
@@ -412,18 +412,19 @@ Page({
     });
     http.post(`/praise`,{ obj_id: objId, obj_type: objType }, res => {
         let postList = this.data.posts;
-        let newPostList = postList.map(item => {
-          if (objId == item.id) {
-            item.praises.push(res.data.data);
-          }
-
-          return item;
-        });
-
-        //重新赋值，更新数据列表
-        this.setData({
-          posts: newPostList
-        });
+        let repData = res.data
+        if(repData.error_code == 0 && repData.data != null){
+          let newPostList = postList.map(item => {
+            if (objId == item.id) {
+              item.praises.push(res.data.data);
+            }
+            return item;
+          });
+          //重新赋值，更新数据列表
+          this.setData({
+            posts: newPostList
+          });
+        }
       });
   },
 

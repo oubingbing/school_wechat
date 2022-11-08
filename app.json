@@ -15,13 +15,7 @@
     "pages/personal/follow_list/message",
     "pages/personal/suggestion/suggestion",
     "pages/personal/friends/friends",
-    "pages/personal/set_profile/set_profile",
     "pages/personal/letter/letter",
-    "pages/help/index/help",
-    "pages/help/comment_mission/comment_mission",
-    "pages/help/help_single/help_single",
-    "pages/help/post_help/post_help",
-    "pages/help/help_detail/help_detail",
     "pages/travel/index/index",
     "pages/travel/create_travel/create_travel",
     "pages/compare_face/face"
@@ -38,15 +32,8 @@
     }
   },
   "requiredPrivateInfos": [
-    "getLocation",
     "chooseLocation"
   ],
-  "plugins": {
-    "uploadPlugins": {
-      "version": "1.3.0",
-      "provider": "wx00caa212d6710dcb"
-    }
-  },
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#fbc346",

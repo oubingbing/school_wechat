@@ -13,7 +13,7 @@
       <view class="container-content">
         <view class="content-item" 
               wx:for="{{friends}}" 
-              wx:key="{{friends}}"
+              wx:key="id"
               data-obj="{{item.friend_id}}"
               bindtap='letter'>
           <view class="user-info">
@@ -30,7 +30,7 @@
     </view>
 
     <!-- 消息列表 -->
-    <view class='message-item' wx:if="{{selectPoster==1}}" wx:for="{{messageList}}" wx:key="{{messageList}}">
+    <view class='message-item' wx:if="{{selectPoster==1}}" wx:for="{{messageList}}" wx:key="id">
           <view class='item' 
                 bindtap="opendDetail" 
                 data-parent="{{item.parentObj}}"

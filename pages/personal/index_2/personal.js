@@ -543,20 +543,21 @@ Page({
       showCommentInput: false
     });
     http.post(`/praise`,{ obj_id: objId, obj_type: objType }, res => {
+      let repData = res.data
+      if(repData.error_code == 0 && repData.data != null){
         let postList = this.data.posts;
         let newPostList = postList.map(item => {
           if (objId == item.id) {
             item.praises.push(res.data.data);
           }
-
           return item;
         });
-
         //重新赋值，更新数据列表
         this.setData({
           posts: newPostList
         });
-      });
+      }
+    });
   },
 
   /**

@@ -6,29 +6,40 @@
 
 ### 需要帮忙部署的可以加微信 bingbing_ou
 
+#### 功能
+- 表白墙
+- 卖舍友
+- 步数旅行
+- 步数排行榜
+- 情侣脸
+- 个人主页
+- 私信
+- 站内消息
+- 今日话题
+- 评论点赞收藏
+
 #### 效果图
 
 扫码进入小程序
 
-![](http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3)
+<img src="http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3"  width="100px" />
 
-![](http://img.qiuhuiyi.cn/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.bRrrxT8E9R8A3280bf2c92be9407e0d8c55edc628c3d.png)
+![](http://article.qiuhuiyi.cn/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20221028153621.jpg)
 
 
 #### 一、注册管理后台
 
-**1、登录小情书站点进行注册：https://love.qiuhuiyi.cn/，这里换成你自己部署后的域名 **
+**1、登录小情书站点进行注册：https://love.qiuhuiyi.cn/，这里换成你自己部署后的域名**
 
 **2、注册成功后会发送一封邮件到您的邮箱，进入邮箱访问接收到的地址即可激活账户。**
 
 **3、登录账号会跳转到小程序的建立页面**
 
-**4、如果提交没反应可以换个浏览器试试，因为选择学校的控制不匹配你的浏览器，改页面是有一个选择学校的搜索框的。**
+**4、如果提交没反应可以换个浏览器试试**
 ![](http://article.qiuhuiyi.cn/FpYfEmcgT_M1KcRDWVCjRpkbkF0J)
 
-小程序的名字必须和你微信注册的名称一模一样，然后选择你所在的学校，这个输入框是可以搜索的，要是没有您的学校您可以跟叶子说一下，叫他帮忙加上就可以了。填写完成之后提交就可以进入后台了。
+小程序的名字必须和你微信注册的名称一模一样，填写完成之后提交就可以进入后台了。
 
-注意：如果没有看到选择学校的输入框，请换另外一个浏览器试试，例如谷歌或者360浏览器。
 ![](http://article.qiuhuiyi.cn/FuxRaOWAbCI8c6TCLMcJ0QzMQFTJ)
 
 
@@ -79,11 +90,6 @@ https://github.com/oubingbing/school_wechat  //替换成你的后台域名
 ![](http://article.qiuhuiyi.cn/FvZTN_-Liecbr1nalSlf1ZPPhjE2)
 
 只要替换好后台生成的alliance_key以及在腾讯地图开放平台注册一个账号，把开发者ID粘贴到const TX_MAP_KEY = '';就可以了。
-
-#### 此外，我们还需要用到一个七牛传图的第三方插件用于上传图片到七牛，这个插件挺好用的，只需要配置好七牛的token就可以上传图片了，下面我们来讲讲这个插件怎么添加到我们的小程序里面。
-登录小程序后台，设置=》第三方设置=》添加插件=》搜索=》添加即可，使用改插件的最新版本即可。
-
-![](http://article.qiuhuiyi.cn/FpSdNYu-aytly00isIR3XESXoU8r)
 
 对比一下插件版本号，看看是否是最新的版本，如果不是就在app.json里面填上最新的版本号即可。
 

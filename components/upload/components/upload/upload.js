@@ -124,7 +124,6 @@ Component({
 
           filePaths.map((item, index) => {
             temArray.push({ "localPath": item });
-
             uploader.upload(configs, item, res => {
               if (position == index) {
                 wx.hideLoading();

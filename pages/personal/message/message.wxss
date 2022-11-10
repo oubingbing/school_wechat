@@ -358,3 +358,41 @@ page{
   text-align: left;
   color: #303030;
 }
+
+/** 用户头像昵称设置 **/
+
+.avatar-wrapper{
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50rpx;
+}
+
+.settle-avatar{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.nickname-input{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.nickname-tab{
+  width: 30%;
+  display: flex;
+}
+
+.nickname-data-input{
+  width: 60%;
+}
+
+.nickname-input input{
+  padding: 10rpx 20rpx;
+}

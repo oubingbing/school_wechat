@@ -1,4 +1,76 @@
 {
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "setting": {}
+  "setting": {
+    "compileHotReLoad": true,
+    "ignoreDevUnusedFiles": false
+  },
+  "projectname": "%E6%A0%A1%E5%9B%AD%E5%B0%8F%E6%83%85%E4%B9%A6",
+  "libVersion": "2.27.1",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "卖舍友",
+          "pathName": "pages/sale/index/sale",
+          "query": ""
+        },
+        {
+          "name": "发表卖舍友",
+          "pathName": "pages/sale/post_sale/post_sale",
+          "query": ""
+        },
+        {
+          "name": "表白",
+          "pathName": "pages/home/post/post",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "情侣脸",
+          "pathName": "pages/compare_face/face",
+          "query": ""
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/personal/index_2/personal",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "悬赏令",
+          "pathName": "pages/help/help",
+          "query": ""
+        },
+        {
+          "name": "步数旅行",
+          "pathName": "pages/travel/index/index",
+          "query": ""
+        },
+        {
+          "name": "卖舍友详情",
+          "pathName": "pages/sale/comment_sale/comment_sale",
+          "query": "id=142"
+        },
+        {
+          "name": "互留言",
+          "pathName": "pages/personal/letter/letter",
+          "query": "friend_id=4058",
+          "scene": null
+        },
+        {
+          "name": "表白墙_2",
+          "pathName": "pages/home/index_2/index_2",
+          "query": "friend_id=4058",
+          "scene": null
+        },
+        {
+          "name": "卖舍友2",
+          "pathName": "pages/sale/index_2/sale_2",
+          "query": "friend_id=4058",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

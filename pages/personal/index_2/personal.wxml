@@ -257,5 +257,4 @@
               bindinput='getCommentContent'/>
     <view class='send-button' bindtap='sendComment'><view>发送</view></view>
   </view>
-
 </view>

@@ -1,6 +1,11 @@
 const util = require('./../../../utils/util.js');
 const http = require("./../../../utils/http.js");
+const uploader = require("./../../../utils/uploadImage");
+const qiniuUtil = require("./../../../utils/qiniuToken.js");
+const config = require("./../../../config.js");
 const app = getApp();
+
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 Page({
   data: {
@@ -14,21 +19,59 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     showGeMoreLoadin: false,
     notDataTips: false,
     param: app.globalData.param,
-    selectPoster:2,
+    selectPoster:4,
     friendId: '',
     friends: [],
-    user:{"personal_signature":""}
+    user:{"personal_signature":""},
+    avatarUrl: "",
+    nickname:"",
+    qiniuInfo: {
+      uploadNumber: 1,
+      region: config.region,
+      token: '',
+      domain: config.qiniuDomain,
+      returnAllImage: true
+    },
   },
   onLoad: function (option) {
     let objType = option.type;
     let messageType = option.new_message;
     let selectType = option.t
+    this.getQiNiuToken()    
     this.setData({selectPoster:selectType})
     this.getPersonalInfo()
     this.friends();
     this.getInboxList(objType, messageType);
     this.setData({ param: app.globalData.param })
     this.getService()
+  },
+
+   /**
+   * 获取七牛token
+   */
+  getQiNiuToken: function () {
+    qiniuUtil.getQiniuToken(res => {
+      let qiniuInfo = this.data.qiniuInfo;
+      qiniuInfo.token = res;
+      this.setData({ qiniuInfo: qiniuInfo })
+    })
+  },
+
+  onChooseAvatar:function (e){
+    let configs = this.data.qiniuInfo;
+    console.log("上传开始")
+    let that = this
+    uploader.upload(configs, e.detail.avatarUrl, res => {
+      console.log("上传成功",res)
+      if (res.error == undefined) {
+        that.setData({avatarUrl:config.qiniuDomain+"/"+res.key})
+        console.log(that.data.avatarUrl,"图片上传")
+      } else {
+        //上传失败
+        console.error("上传失败:" + JSON.stringify(res));
+      }
+    })
+
   },
 
  /**

@@ -2,6 +2,8 @@
 const app = getApp();
 const http = require("./../../../utils/http.js");
 
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+
 Page({
   data: {
     user: '',
@@ -26,11 +28,12 @@ Page({
     commentValue: '',
     showSubmit: false,
     canComment:true,
-
     leftList: [],
     rightList: [],
     leftHeight: 0,
     rightHeigt: 1,
+    avatarUrl:defaultAvatarUrl,
+    nickname:""
   },
   onLoad: function () {
     this.checkAuth();
@@ -48,6 +51,14 @@ Page({
     this.getMyRank()
     this.getPost()
     this.getSaleList()
+  },
+
+  onChooseAvatar:function(e) {
+    const { avatarUrl } = e.detail 
+    console.log(e.detail,"头像")
+    this.setData({
+      avatarUrl,
+    })
   },
 
   /**
@@ -396,7 +407,7 @@ Page({
    */
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/personal/message/message?type=0&new_message=0&t=2'
+      url: '/pages/personal/message/message?type=0&new_message=0&t=4'
     })
   },
 

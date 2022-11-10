@@ -57,6 +57,10 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     })
   },
 
+  userInfoSave:function (params) {
+      console.log(this.data.avatarUrl,this.data.nickname)
+  },
+
   onChooseAvatar:function (e){
     let configs = this.data.qiniuInfo;
     console.log("上传开始")
@@ -72,6 +76,11 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
       }
     })
 
+  },
+
+  getNickname:function(e) {
+    this.setData({nickname:e.detail.value})
+    console.log(e.detail.value)
   },
 
  /**

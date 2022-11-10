@@ -108,9 +108,9 @@
       </button> 
       <view class="nickname-input">
         <view class="nickname-tab">昵称</view>
-        <input type="nickname" class="nickname-data-input" placeholder="请输入昵称"/>
+        <input type="nickname" class="nickname-data-input" bindinput="getNickname" placeholder="请输入昵称"/>
       </view>
-      <view class="set-save"><view class="set-save-button" bindtap="signatureSave"><view>保存修改</view></view></view>
+      <view class="set-save"><view class="set-save-button" bindtap="userInfoSave"><view>保存修改</view></view></view>
     </view>
 
 

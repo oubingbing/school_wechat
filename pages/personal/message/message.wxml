@@ -3,7 +3,6 @@
     <!-- 头部切换Tab -->
     <view class="poster-container">
       <view class="poster-data">
-        <view class="poster-data-item"><view data-type="4" bindtap="switch" class="select-tab">头像昵称</view><view class='{{selectPoster==4?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
         <view class="poster-data-item"><view data-type="2" bindtap="switch" class="select-tab">资料设置</view><view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
         <view class="poster-data-item"><view data-type="3" bindtap="switch" class="select-tab">留言列表</view><view class='{{selectPoster==3?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
         <view class="poster-data-item select-item"><view data-type="1" bindtap="switch" class="select-tab">消息列表</view><view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view></view>
@@ -89,8 +88,17 @@
     </view>
     <!-- 资料设置 -->
     <view class="settle-info" wx:if="{{selectPoster==2}}">
-      <view class="set-ttile">个性签名</view>
+      <image class="user-avatar-border" src="/image/v2/border.png"></image>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="settle-avatar" src="{{user.avatar}}" style="width: 100%;height: 100%;"></image>
+      </button> 
+      <view class="nickname-input">
+        <view class="nickname-tab">昵称</view>
+        <input type="nickname" class="nickname-data-input" bindinput="getNickname" value='{{user.nickname}}' placeholder="请输入昵称"/>
+      </view>
+
       <view class="set-input">
+        <view class="set-ttile">个性签名</view>
         <textarea 
         maxlength="128"
         value='{{user.personal_signature}}'
@@ -100,20 +108,6 @@
       </view>
       <view class="set-save"><view class="set-save-button" bindtap="signatureSave"><view>保存修改</view></view></view>
     </view>
-
-    <!-- 头像昵称设置 -->
-    <view class="settle-info" wx:if="{{selectPoster==4}}">
-      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-        <image class="settle-avatar" src="{{avatarUrl}}"></image>
-      </button> 
-      <view class="nickname-input">
-        <view class="nickname-tab">昵称</view>
-        <input type="nickname" class="nickname-data-input" bindinput="getNickname" placeholder="请输入昵称"/>
-      </view>
-      <view class="set-save"><view class="set-save-button" bindtap="userInfoSave"><view>保存修改</view></view></view>
-    </view>
-
-
   </view>
 
   <view class="call-server" bindtap='openSugesstion'>客服</view>

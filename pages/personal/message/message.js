@@ -5,8 +5,6 @@ const qiniuUtil = require("./../../../utils/qiniuToken.js");
 const config = require("./../../../config.js");
 const app = getApp();
 
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-
 Page({
   data: {
 image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc37bd8dfd424f.jpg',
@@ -19,10 +17,10 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     showGeMoreLoadin: false,
     notDataTips: false,
     param: app.globalData.param,
-    selectPoster:4,
+    selectPoster:2,
     friendId: '',
     friends: [],
-    user:{"personal_signature":""},
+    user:{"personal_signature":"","nickname":"","avatar":""},
     avatarUrl: "",
     nickname:"",
     qiniuInfo: {
@@ -32,6 +30,7 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
       domain: config.qiniuDomain,
       returnAllImage: true
     },
+    messageType:0
   },
   onLoad: function (option) {
     let objType = option.type;
@@ -42,9 +41,16 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
     this.getPersonalInfo()
     this.friends();
     this.getInboxList(objType, messageType);
-    this.setData({ param: app.globalData.param })
+    this.setData({ param: app.globalData.param,messageType:messageType})
     this.getService()
   },
+
+  switch:function(e){
+    let objType = e.target.dataset.type;
+    this.setData({
+      selectPoster:objType
+    })
+},
 
    /**
    * 获取七牛token
@@ -63,13 +69,12 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
 
   onChooseAvatar:function (e){
     let configs = this.data.qiniuInfo;
-    console.log("上传开始")
     let that = this
     uploader.upload(configs, e.detail.avatarUrl, res => {
-      console.log("上传成功",res)
       if (res.error == undefined) {
-        that.setData({avatarUrl:config.qiniuDomain+"/"+res.key})
-        console.log(that.data.avatarUrl,"图片上传")
+        let user = that.data.user
+        user.avatar = config.qiniuDomain+"/"+res.key
+        that.setData({user:user})
       } else {
         //上传失败
         console.error("上传失败:" + JSON.stringify(res));
@@ -79,8 +84,10 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
   },
 
   getNickname:function(e) {
-    this.setData({nickname:e.detail.value})
+    let user = this.data.user
+    user.nickname = e.detail.value
     console.log(e.detail.value)
+    this.setData({user:user})
   },
 
  /**
@@ -111,11 +118,31 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
   },
 
   signatureSave:function(){
+    if(!this.data.user.avatar){
+      wx.showLoading({
+        title: '头像不能为空！',
+      });
+      setTimeout(function(){
+        wx.hideLoading();
+      },1500)
+      return false
+    }
+
+    if(!this.data.user.nickname){
+      wx.showLoading({
+        title: '昵称不能为空！',
+      });
+      setTimeout(function(){
+        wx.hideLoading();
+      },1500)
+      return false
+    }
+
     wx.showLoading({
       title: '提交中...',
     });
     let that = this
-    http.post('/user/update/signature', {signature: this.data.user.personal_signature,}, res => {
+    http.post('/user/update/signature', {signature: this.data.user.personal_signature,nickname:this.data.user.nickname,avatar:this.data.user.avatar}, res => {
       wx.hideLoading();
       if(res.data.error_code == 0){
         wx.setStorageSync('user', that.data.user);
@@ -145,13 +172,6 @@ image:'tmp/wx46d5674c81153f30.o6zAJs3oh85Zb1lJE8oWix57vny0.2b862a6493fd893b7fbc3
       })
       wx.setStorageSync('user', res.data.data);
     });
-  },
-
-  switch:function(e){
-      let objType = e.target.dataset.type;
-      this.setData({
-        selectPoster:objType
-      })
   },
 
     /**

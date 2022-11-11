@@ -306,7 +306,7 @@ Page({
     this.newLetterCount();
     this.checkLogin();
     let user = wx.getStorageSync('user')
-    this.setData({sinageture:user.personal_signature})
+    this.setData({sinageture:user.personal_signature,user:user})
   },
 
   getMyRank: function () {
@@ -407,7 +407,7 @@ Page({
    */
   openMessage: function () {
     wx.navigateTo({
-      url: '/pages/personal/message/message?type=0&new_message=0&t=4'
+      url: '/pages/personal/message/message?type=0&new_message=0&t=2'
     })
   },
 
@@ -481,6 +481,16 @@ Page({
       that.statistic()
       that.getMyRank()
       this.getPost()
+
+      wx.showLoading({
+        title: '登录成功后可修改用户昵称和头像！',
+      });
+      setTimeout(res=>{
+        wx.hideLoading();
+        wx.navigateTo({
+          url: '/pages/personal/message/message?type=0&new_message=0&t=2'
+        })
+      },1500)
     });
   },
 

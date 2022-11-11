@@ -207,7 +207,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 200rpx;
+  margin-top: 50rpx;
 }
 
 .set-ttile{
@@ -362,13 +362,29 @@ page{
 /** 用户头像昵称设置 **/
 
 .avatar-wrapper{
-  width: 100rpx;
-  height: 100rpx;
+  width: 120rpx;
+  height: 120rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 50rpx;
+  border: 5rpx solid #303030;
+  border-radius: 40rpx;
+  padding: 0rpx 0rpx;
+}
+
+.settle-avatar{
+
+}
+
+.user-avatar-border{
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  z-index: 200;
+  left: 295rpx;
+  top: 180rpx;
 }
 
 .settle-avatar{
@@ -379,20 +395,32 @@ page{
 .nickname-input{
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 50rpx;
 }
 
 .nickname-tab{
-  width: 30%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Heavy;
+  font-weight: 800;
+  text-align: center;
+  color: #303030;
+  line-height: 32rpx;
+  margin-bottom: 30rpx;
 }
 
 .nickname-data-input{
-  width: 60%;
+  width: 600rpx;
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
 }
 
 .nickname-input input{
-  padding: 10rpx 20rpx;
+  padding: 15rpx 15rpx;
 }

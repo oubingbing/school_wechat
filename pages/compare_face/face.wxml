@@ -85,7 +85,7 @@
       <view class="anime-image-result" wx:if="{{!showSelectAnime}}">
         <image class="anime-data-border" src="/image/v2/anime-border.png"></image>
         <view class="anime-image-data">
-          <image class="anime-image-info" src="{{animeResult}}"></image>
+          <image class="anime-image-info" src="{{animeResult}}" mode="aspectFill"></image>
         </view>
       </view>
     </view>
@@ -102,7 +102,11 @@
         <view class='line {{select==2?"selected":""}}'>漫画脸</view>
       </view>
     </view>
-    <view class="switch-right" wx:if="{{select==2}}"><view class="switch-right-item"  bindtap='getAnime'>开始绘制</view></view>
+    <view class="switch-right" wx:if="{{select==2&&showSelectAnime}}"><view class="switch-right-item"  bindtap='getAnime'>开始绘制</view></view>
+    <view class="save-button" wx:if="{{select==2&&!showSelectAnime}}">
+      <view class="save-button-item"  bindtap='getAnimeAgant'>再来一次</view>
+      <view class="save-button-item save-img"  bindtap='downLoadAnime'>保存图片</view>
+    </view>
     <view class="switch-right" wx:if="{{select==1}}">
       <view class="switch-right-item" bindtap='showSelect' wx-if="{{showBegin}}">开始检测</view>
       <view class="switch-right-item" bindtap='submit' wx-if="{{showSelect}}">提交</view>

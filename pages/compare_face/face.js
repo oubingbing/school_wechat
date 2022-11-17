@@ -40,6 +40,7 @@ Page({
     },
     select:1,
     animeUrl:"",
+    base64Image:"",
     animeResult:"",
     showSelectAnime:true
   },
@@ -56,6 +57,34 @@ Page({
     this.setData({ select: objType})
   },
 
+  // 保存本地图片 
+  downLoadAnime(){
+    var aa = wx.getFileSystemManager();
+    let that = this
+    let nameTime = Date.now()
+    aa.writeFile({
+      filePath:wx.env.USER_DATA_PATH+'/anime_face_'+nameTime+'.png',
+      data: that.data.animeResult.slice(22),
+      encoding:'base64',
+      success: res => {
+        wx.saveImageToPhotosAlbum({
+          filePath: wx.env.USER_DATA_PATH + '/anime_face_'+nameTime+'.png',
+          success: function (res) {
+            wx.showToast({
+              title: '保存成功',
+            })
+          },
+          fail: function (err) {
+            console.log(err)
+          }
+        })
+        console.log(res)
+      }, fail: err => {
+        console.log(err)
+      }
+    })
+  },
+
   /**
    * 获取上传的图片
    */
@@ -63,9 +92,13 @@ Page({
     this.setData({ animeUrl: this.data.baseImageUrl +uploadData.detail[0].uploadResult.key})
   },
 
+  getAnimeAgant:function() {
+      this.setData({showSelectAnime:true})
+  },
+
   getAnime:function() {
     wx.showLoading({
-      title: '检测中',
+      title: '转化中',
     });
 
     if(!this.data.animeUrl){
@@ -85,13 +118,13 @@ Page({
         })
         setTimeout(function () {
           wx.hideLoading();
-        }, 2000);
+        }, 3000);
         return false;
       }
-      console.log(res.data.data.ResultImage)
       this.setData({
         animeResult: "data:image/png;base64,"+res.data.data,
-        showSelectAnime:false
+        showSelectAnime:false,
+        base64Image:res.data.data
       });
     });
   },

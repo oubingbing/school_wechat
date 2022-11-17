@@ -444,6 +444,31 @@ page{
   justify-content: center;
 }
 
+.save-button{
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:flex-end;
+}
+
+.save-img{
+  margin-left: 20rpx;
+}
+
+.save-button-item{
+  width: 130rpx;
+  height: 60rpx;
+  background: linear-gradient(126deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 100rpx;
+  box-shadow: 0px 0px 20rpx 0px rgba(229,161,34,0.69); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 23rpx;
+}
+
 .line{
   width: 100%;
   display: flex;

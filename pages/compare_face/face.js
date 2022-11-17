@@ -26,16 +26,74 @@ Page({
       path: "http://image.qiuhuiyi.cn/face-select.png",
       showImage: true
     },
+    anime_icon: {
+      width: "500rpx",
+      height: "700rpx",
+      path: "/image/v2/anime-select.png",
+      showImage: true
+    },
     qiniu: {
       uploadNumber: 1,
       region: config.region,
       token: '',
       domain: config.qiniuDomain
     },
+    select:1,
+    animeUrl:"",
+    animeResult:"",
+    showSelectAnime:true
   },
   onLoad: function (option) {
     this.hiddenSelect();
     this.getQiNiuToken();
+  },
+
+    /**
+   * 获取具体类型的贴子
+   */
+  selected(e) {
+    let objType = e.currentTarget.dataset.type;
+    this.setData({ select: objType})
+  },
+
+  /**
+   * 获取上传的图片
+   */
+  getAnimeUrl: function (uploadData) {
+    this.setData({ animeUrl: this.data.baseImageUrl +uploadData.detail[0].uploadResult.key})
+  },
+
+  getAnime:function() {
+    wx.showLoading({
+      title: '检测中',
+    });
+
+    if(!this.data.animeUrl){
+      wx.showToast({
+        title: '请上传图片！',
+        icon: 'none'
+      })
+      return false;
+    }
+
+    http.post(`/anime_face`, { image: this.data.animeUrl}, res => {
+      wx.hideLoading();
+      if (res.data.error_code){
+        wx.showToast({
+          title: res.data.error_message,
+          icon: 'none'
+        })
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 2000);
+        return false;
+      }
+      console.log(res.data.data.ResultImage)
+      this.setData({
+        animeResult: "data:image/png;base64,"+res.data.data,
+        showSelectAnime:false
+      });
+    });
   },
 
   /**

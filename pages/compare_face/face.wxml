@@ -63,11 +63,49 @@
   <view>请在上方上传你和TA的自拍照</view>
 </view>
 
-<view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
+<!--<view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
   <view class='beging-button'>开始检测</view>
-</view>
+</view>-->
 
-<view class='beging' bindtap='submit' wx-if="{{showSelect}}">
+<!--<view class='beging' bindtap='submit' wx-if="{{showSelect}}">
   <view class='beging-button'>提交</view>
+</view>-->
+
+<view class="anime-face" wx:if="{{select==2}}">
+  <view class="anime-content">
+    <view class="anime-title">
+      <image class="anime-border" src="/image/v2/anime-title.png"></image>
+    </view>
+    <view class="anime-select-image">
+      <upload icon-info="{{anime_icon}}" 
+              wx:if="{{showSelectAnime}}"
+              qiniu-info="{{qiniu}}"  
+              class="upload"
+              bind:success="getAnimeUrl"/>
+      <view class="anime-image-result" wx:if="{{!showSelectAnime}}">
+        <image class="anime-data-border" src="/image/v2/anime-border.png"></image>
+        <view class="anime-image-data">
+          <image class="anime-image-info" src="{{animeResult}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
+<view class='switch-container'>
+  <view class="switch-container-content">
+    <view class="switch-left">
+      <view bindtap="selected" data-type="1">
+        <view class='line {{select==1?"selected":""}}'>情侣脸</view>
+      </view>
+      <view bindtap="selected" data-type="2">
+        <view class='line {{select==2?"selected":""}}'>漫画脸</view>
+      </view>
+    </view>
+    <view class="switch-right" wx:if="{{select==2}}"><view class="switch-right-item"  bindtap='getAnime'>开始绘制</view></view>
+    <view class="switch-right" wx:if="{{select==1}}">
+      <view class="switch-right-item" bindtap='showSelect' wx-if="{{showBegin}}">开始检测</view>
+      <view class="switch-right-item" bindtap='submit' wx-if="{{showSelect}}">提交</view>
+    </view>
+  </view>
+</view>

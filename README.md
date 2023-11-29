@@ -21,11 +21,7 @@
 
 #### 效果图
 
-扫码进入小程序
-
-<img src="http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3"  width="100px" />
-
-![](https://dandan-1304667790.cos.ap-shenzhen-fsi.myqcloud.com/attachments/wechat-tmp.jpeg)
+![](https://dandan-1304667790.cos.ap-shenzhen-fsi.myqcloud.com/attachments/wechat-tmp.jpeg?imageMogr2/format/webp/thumbnail/400x)
 
 
 #### 一、注册管理后台

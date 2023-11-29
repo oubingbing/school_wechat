@@ -25,7 +25,7 @@
 
 <img src="http://article.qiuhuiyi.cn/Fthvoe308wnXc0vy0IsrY9GKmzx3"  width="100px" />
 
-![](http://article.qiuhuiyi.cn/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20221028153621.jpg)
+![](https://dandan-1304667790.cos.ap-shenzhen-fsi.myqcloud.com/attachments/wechat-tmp.jpeg)
 
 
 #### 一、注册管理后台

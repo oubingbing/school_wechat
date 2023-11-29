@@ -21,7 +21,7 @@
 
 #### 效果图
 
-![](https://dandan-1304667790.cos.ap-shenzhen-fsi.myqcloud.com/attachments/wechat-tmp.jpeg?imageMogr2/format/webp/thumbnail/400x)
+![](https://dandan-1304667790.cos.ap-shenzhen-fsi.myqcloud.com/attachments/wechat-tmp.jpeg?imageMogr2/format/webp/thumbnail/1000x)
 
 
 #### 一、注册管理后台
